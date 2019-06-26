@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<!-- saved from url=(0117)https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/#casting-e-promoo -->
+<html lang="pt-BR" class="js svg ratio1x  appcache offline-not-installed"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+
+        
+        <link rel="next" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/orientacao-a-objetos-basica/index.html">
+        
+        
+        <link rel="prev" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/o-que-e-java/index.html">
+        
+
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Variáveis primitivas e Controle de fluxo | Java e Orientação a Objetos</title>
+        <script type="text/javascript" async="" defer="" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/goal.min.js.download"></script><script type="text/javascript" async="" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/ga.js.download"></script><script>
+            if (location.protocol != "https:" && location.hostname == "www.caelum.com.br")
+                location.href = "https:" + location.href.substring(location.protocol.length);
+
+            document.documentElement.className = 'js ' + (!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect ? 'svg ':'no-svg ') + 'ratio' + (!!(devicePixelRatio > 1.3) ? '2x ' : '1x ');
+        </script>
+        
+        <!-- Facebook -->
+        <meta property="og:title" content="Variáveis primitivas e Controle de fluxo | Java e Orientação a Objetos">
+        <meta property="og:image" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        <meta property="og:site_name" content="Apostilas Caelum">
+        <meta property="fb:app_id" content="140078819399376">
+        
+        <!-- Google+ -->
+        <meta itemprop="name" content="Variáveis primitivas e Controle de fluxo | Java e Orientação a Objetos">
+        <meta itemprop="image" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        
+        <!-- iOS webapp -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Java e OO">
+        <link rel="apple-touch-icon" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        
+        <script>
+        if(("standalone" in navigator) && navigator.standalone){
+            document.documentElement.className += ' ios-webapp'
+        }
+        </script>     
+        
+    <meta property="fb:url" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/">
+    <link rel="canonical" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/"> 
+
+        
+    <style type="text/css">.CodeWindow{background-color:#f7f7f7;font-family:sans-serif;position:fixed;bottom:0;right:0;left:0;z-index:50;width:100%;height:35vh;min-height:280px;box-shadow:0 2px 15px 0 rgba(0,0,0,.4);transition:transform .3s;transform:translateY(100%);font-family:sans-serif!important;font-size:1rem!important}@media(max-width:500px){.CodeWindow{height:100vh}}.CodeWindow--active{transform:translateY(0)!important}.CodeWindow *{font-family:inherit!important}.CodeWindow-btnToggle{position:absolute;top:0;max-height:35px;right:0;z-index:10;border:1px solid #333;background-color:#495465;color:#fff;font-size:.7em;padding:.7em 1em;border-radius:0 0 0 5px;outline:0;cursor:pointer}.CodeWindow-btnToggle:hover{opacity:.9}.CodeWindow-block{display:inline-block;width:49%;height:100%;overflow:hidden;position:relative;display:inline-flex;flex-direction:column}.CodeWindow-block:first-of-type{margin-right:2%}@media (max-width:500px){.CodeWindow-block{width:100%;height:50%}}.CodeWindow-form{flex:1;margin:0;display:flex;flex-direction:column;height:100%;overflow:hidden}.CodeWindow-blockTitle{margin-top:0;padding:15px 18px;margin-bottom:0}.CodeWindow-run{position:absolute;bottom:0;max-height:40px;right:0;z-index:10;border:1px solid green;background-color:#42bc79;color:#fff;font-size:.9em;padding:.7em 2.3em .7em 1.4em;border-radius:5px 0 0 0;outline:0;cursor:pointer}.CodeWindow-run:hover{opacity:.9}.CodeWindow-run:after{content:"";border:10px solid transparent;border-left-color:green;width:0;height:0;position:absolute;top:0;bottom:0;right:0;margin:auto}.CodeWindow-run[disabled=true]{opacity:.5;cursor:wait}#compilerReturn+.CodeMirror .CodeMirror-linenumber{display:none}</style><style type="text/css">.CodeMirror{height:75%;flex:1;font-family:monospace!important}</style><style type="text/css">.execCodeBtn{color:#fff;margin:10px 0;background:#202020;border:2px solid #000;font-family:sans-serif;font-weight:inherit;font-size:14px;border-radius:4px;display:inline-block;padding:1em;cursor:pointer;outline:0;font-family:sans-serif!important;font-size:1rem!important}.execCodeBtn:hover{opacity:.9}</style><style type="text/css">.CodeMirror{font-family:monospace;height:300px;color:#000;direction:ltr}.CodeMirror-lines{padding:4px 0}.CodeMirror pre{padding:0 4px}.CodeMirror-gutter-filler,.CodeMirror-scrollbar-filler{background-color:#fff}.CodeMirror-gutters{border-right:1px solid #ddd;background-color:#f7f7f7;white-space:nowrap}.CodeMirror-linenumber{padding:0 3px 0 5px;min-width:20px;text-align:right;color:#999;white-space:nowrap}.CodeMirror-guttermarker{color:#000}.CodeMirror-guttermarker-subtle{color:#999}.CodeMirror-cursor{border-left:1px solid #000;border-right:none;width:0}.CodeMirror div.CodeMirror-secondarycursor{border-left:1px solid silver}.cm-fat-cursor .CodeMirror-cursor{width:auto;border:0!important;background:#7e7}.cm-fat-cursor div.CodeMirror-cursors{z-index:1}.cm-fat-cursor-mark{background-color:rgba(20,255,20,.5)}.cm-animate-fat-cursor,.cm-fat-cursor-mark{-webkit-animation:blink 1.06s steps(1) infinite;-moz-animation:blink 1.06s steps(1) infinite;animation:blink 1.06s steps(1) infinite}.cm-animate-fat-cursor{width:auto;border:0;background-color:#7e7}@-moz-keyframes blink{50%{background-color:transparent}}@-webkit-keyframes blink{50%{background-color:transparent}}@keyframes blink{50%{background-color:transparent}}.cm-tab{display:inline-block;text-decoration:inherit}.CodeMirror-rulers{position:absolute;left:0;right:0;top:-50px;bottom:-20px;overflow:hidden}.CodeMirror-ruler{border-left:1px solid #ccc;top:0;bottom:0;position:absolute}.cm-s-default .cm-header{color:blue}.cm-s-default .cm-quote{color:#090}.cm-negative{color:#d44}.cm-positive{color:#292}.cm-header,.cm-strong{font-weight:700}.cm-em{font-style:italic}.cm-link{text-decoration:underline}.cm-strikethrough{text-decoration:line-through}.cm-s-default .cm-keyword{color:#708}.cm-s-default .cm-atom{color:#219}.cm-s-default .cm-number{color:#164}.cm-s-default .cm-def{color:#00f}.cm-s-default .cm-variable-2{color:#05a}.cm-s-default .cm-type,.cm-s-default .cm-variable-3{color:#085}.cm-s-default .cm-comment{color:#a50}.cm-s-default .cm-string{color:#a11}.cm-s-default .cm-string-2{color:#f50}.cm-s-default .cm-meta,.cm-s-default .cm-qualifier{color:#555}.cm-s-default .cm-builtin{color:#30a}.cm-s-default .cm-bracket{color:#997}.cm-s-default .cm-tag{color:#170}.cm-s-default .cm-attribute{color:#00c}.cm-s-default .cm-hr{color:#999}.cm-s-default .cm-link{color:#00c}.cm-invalidchar,.cm-s-default .cm-error{color:red}.CodeMirror-composing{border-bottom:2px solid}div.CodeMirror span.CodeMirror-matchingbracket{color:#0b0}div.CodeMirror span.CodeMirror-nonmatchingbracket{color:#a22}.CodeMirror-matchingtag{background:rgba(255,150,0,.3)}.CodeMirror-activeline-background{background:#e8f2ff}.CodeMirror{position:relative;overflow:hidden;background:#fff}.CodeMirror-scroll{overflow:scroll!important;margin-bottom:-30px;margin-right:-30px;padding-bottom:30px;height:100%;outline:none;position:relative}.CodeMirror-sizer{position:relative;border-right:30px solid transparent}.CodeMirror-gutter-filler,.CodeMirror-hscrollbar,.CodeMirror-scrollbar-filler,.CodeMirror-vscrollbar{position:absolute;z-index:6;display:none}.CodeMirror-vscrollbar{right:0;top:0;overflow-x:hidden;overflow-y:scroll}.CodeMirror-hscrollbar{bottom:0;left:0;overflow-y:hidden;overflow-x:scroll}.CodeMirror-scrollbar-filler{right:0;bottom:0}.CodeMirror-gutter-filler{left:0;bottom:0}.CodeMirror-gutters{position:absolute;left:0;top:0;min-height:100%;z-index:3}.CodeMirror-gutter{white-space:normal;height:100%;display:inline-block;vertical-align:top;margin-bottom:-30px}.CodeMirror-gutter-wrapper{position:absolute;z-index:4;background:none!important;border:none!important}.CodeMirror-gutter-background{position:absolute;top:0;bottom:0;z-index:4}.CodeMirror-gutter-elt{position:absolute;cursor:default;z-index:4}.CodeMirror-gutter-wrapper ::selection{background-color:transparent}.CodeMirror-gutter-wrapper ::-moz-selection{background-color:transparent}.CodeMirror-lines{cursor:text;min-height:1px}.CodeMirror pre{-moz-border-radius:0;-webkit-border-radius:0;border-radius:0;border-width:0;background:transparent;font-family:inherit;font-size:inherit;margin:0;white-space:pre;word-wrap:normal;line-height:inherit;color:inherit;z-index:2;position:relative;overflow:visible;-webkit-tap-highlight-color:transparent;-webkit-font-variant-ligatures:contextual;font-variant-ligatures:contextual}.CodeMirror-wrap pre{word-wrap:break-word;white-space:pre-wrap;word-break:normal}.CodeMirror-linebackground{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0}.CodeMirror-linewidget{position:relative;z-index:2;padding:.1px}.CodeMirror-rtl pre{direction:rtl}.CodeMirror-code{outline:none}.CodeMirror-gutter,.CodeMirror-gutters,.CodeMirror-linenumber,.CodeMirror-scroll,.CodeMirror-sizer{-moz-box-sizing:content-box;box-sizing:content-box}.CodeMirror-measure{position:absolute;width:100%;height:0;overflow:hidden;visibility:hidden}.CodeMirror-cursor{position:absolute;pointer-events:none}.CodeMirror-measure pre{position:static}div.CodeMirror-cursors{visibility:hidden;position:relative;z-index:3}.CodeMirror-focused div.CodeMirror-cursors,div.CodeMirror-dragcursors{visibility:visible}.CodeMirror-selected{background:#d9d9d9}.CodeMirror-focused .CodeMirror-selected{background:#d7d4f0}.CodeMirror-crosshair{cursor:crosshair}.CodeMirror-line::selection,.CodeMirror-line>span::selection,.CodeMirror-line>span>span::selection{background:#d7d4f0}.CodeMirror-line::-moz-selection,.CodeMirror-line>span::-moz-selection,.CodeMirror-line>span>span::-moz-selection{background:#d7d4f0}.cm-searching{background-color:#ffa;background-color:rgba(255,255,0,.4)}.cm-force-border{padding-right:.1px}@media print{.CodeMirror div.CodeMirror-cursors{visibility:hidden}}.cm-tab-wrap-hack:after{content:""}span.CodeMirror-selectedtext{background:none}.CodeMirror-hints{position:absolute;z-index:10;overflow:hidden;list-style:none;margin:0;padding:2px;-webkit-box-shadow:2px 3px 5px rgba(0,0,0,.2);-moz-box-shadow:2px 3px 5px rgba(0,0,0,.2);box-shadow:2px 3px 5px rgba(0,0,0,.2);border-radius:3px;border:1px solid silver;background:#fff;font-size:90%;font-family:monospace;max-height:20em;overflow-y:auto}.CodeMirror-hint{margin:0;padding:0 4px;border-radius:2px;white-space:pre;color:#000;cursor:pointer}li.CodeMirror-hint-active{background:#08f;color:#fff}</style><script src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/f.txt"></script><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+    <body><div id="MathJax_Message" style="display: none;"></div>
+        
+        
+            
+                <script async="" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/apostila-aberta.js.download"></script>
+            
+        
+            
+                <script async="" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/bundle.js.download"></script>
+            
+        
+            
+                <script src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/MathJax.js.download" id=""></script>
+            
+        
+            
+                <script async="" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/plugin.js.download"></script>
+            
+        
+
+        
+        
+
+    
+    <link rel="stylesheet" href="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/apostila-aberta.css">
+    
+
+    
+    <link rel="stylesheet" href="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/hljs.css">
+    
+
+    
+    <link rel="stylesheet" href="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/anuncio.css">
+    
+
+    
+    <link rel="stylesheet" href="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/global.css">
+    
+
+
+        
+        
+    
+    <div class="barra-topo" role="banner">
+    <div class="container barra-container">
+        <div class="sombra"></div>
+        <div>
+            
+            <a href="http://www.caelum.com.br/" class="logo">
+                <img src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/caelum-logo-cinza.svg" alt="Caelum" onerror="this.src=this.src.replace(&#39;.svg&#39;, &#39;.png&#39;); this.onerror=null">
+            </a>
+            <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/" class="book-title" title="Ir para Capa e Sumário da apostila">Apostila Java e Orientação a Objetos</a>
+            
+            <div class="menu-mais">
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caelum.com.br%2Fapostila-java-orientacao-objetos%2F" class="share" rel="nofollow" title="Compartilhar no Facebook">
+                    <span aria-hidden="true" class="icone-facebook"></span>
+                    <span class="ir">Compartilhar apostila FJ-11 no Facebook</span>
+                </a>
+                <div class="config">
+                    <span aria-hidden="true" class="icone-list icone" title="Opções"></span>
+                    <span tabindex="0" class="ir">Opções</span>
+
+                    <div class="submenu">
+
+                        <section class="submenu-sub">
+                            <h3 class="submenu-divisor submenu-label">Navegação</h3>
+
+                            <ul>
+                                
+                                <li>
+                                    <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/index.html" title="Ir para Capa e Sumário da apostila" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-house"></span>
+                                        <span>Capa &amp; Sumário</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <form>
+                                        <label for="chapter-nav-select" id="chapter-nav-label" class="submenu-label">Capítulos</label>
+                                        <select class="chapter-nav" title="Navegue nos capítulos da apostila" id="chapter-nav-select" aria-labeledby="chapter-nav-label">
+                                            <option></option>
+                                            
+                                                
+                                                    <option value="../como-aprender-java/index.html">
+                                                        1. Como Aprender Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../o-que-e-java/index.html">
+                                                        2. O que é Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../variaveis-primitivas-e-controle-de-fluxo/index.html" selected="">
+                                                        3. Variáveis primitivas e Controle de fluxo
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../orientacao-a-objetos-basica/index.html">
+                                                        4. Orientação a objetos básica
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../modificadores-de-acesso-e-atributos-de-classe/index.html">
+                                                        5. Modificadores de acesso e atributos de classe
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../eclipse-ide/index.html">
+                                                        6. Eclipse IDE
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../pacotes-organizando-suas-classes-e-bibliotecas/index.html">
+                                                        7. Pacotes - Organizando suas classes e bibliotecas
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../ferramentas-jar-e-javadoc/index.html">
+                                                        8. Ferramentas: jar e javadoc
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../heranca-reescrita-e-polimorfismo/index.html">
+                                                        9. Herança, reescrita e polimorfismo
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../classes-abstratas/index.html">
+                                                        10. Classes Abstratas
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../interfaces/index.html">
+                                                        11. Interfaces
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../excecoes-e-controle-de-erros/index.html">
+                                                        12. Exceções e controle de erros
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../o-pacote-java-lang/index.html">
+                                                        13. O pacote java.lang
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../um-pouco-de-arrays/index.html">
+                                                        14. Um pouco de arrays
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../collections-framework/index.html">
+                                                        15. Collections framework
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../pacote-java-io/index.html">
+                                                        16. Pacote java.io
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../e-agora/index.html">
+                                                        17. E agora?
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-programacao-concorrente-e-threads/index.html">
+                                                        18. Apêndice - Programação Concorrente e Threads
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-sockets/index.html">
+                                                        19. Apêndice - Sockets
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-problemas-com-concorrencia/index.html">
+                                                        20. Apêndice - Problemas com concorrência
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-instalacao-do-java/index.html">
+                                                        21. Apêndice - Instalação do Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-debugging/index.html">
+                                                        22. Apêndice - Debugging
+                                                    </option>
+                                                
+                                            
+                                        </select>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="https://www.caelum.com.br/busca" method="GET">
+                                        <input type="hidden" name="apostila_sigla" value="FJ-11">
+                                        <input type="hidden" name="apostila_path" value="apostila-java-orientacao-objetos">
+                                        <label for="apostila-busca-input" id="apostila-busca-label" class="submenu-label">Busca</label>
+                                        <input type="search" id="apostila-busca-input" aria-labeledby="apostila-busca-label" name="q">
+                                        <button title="Buscar" class="search-form-action">
+                                            <span aria-hidden="true" class="icone-search"></span>
+                                            <span class="ir">Buscar</span>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="submenu-sub">
+                            <h3 class="submenu-divisor submenu-label">Mais</h3>
+
+                            <ul>
+                                <li>
+                                    <a href="https://www.caelum.com.br/curso-java-orientacao-objetos" title="Java e Orientação a Objetos" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-star"></span>
+                                        <span>Curso Caelum dessa apostila</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caelum.com.br%2Fapostila-java-orientacao-objetos%2F" rel="nofollow" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-facebook"></span>
+                                        <span>Compartilhar no Facebook</span>
+                                    </a>
+                                </li>
+                                <!--<li>
+                                    <a href="../offline/" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-browser"></span>
+                                        <span class="novo">Leitura offline</span>
+                                    </a>
+                                </li>-->
+                                <li>
+                                    <a href="http://www.caelum.com.br/apostilas/#download" title="Baixe em PDF, epub e mobi" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-install"></span>
+                                        <span>Download da apostila</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.caelum.com.br/apostilas/" title="Apostilas abertas da Caelum" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-plus"></span>
+                                        <span>Outras apostilas abertas</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div><!-- /.menu-mais -->
+        </div>
+    </div>
+</div>
+    
+    
+<ol itemscope="" itemtype="http://schema.org/BreadcrumbList" class="container breadcrumb">
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/curso-java-orientacao-objetos">
+            <span itemprop="name">Curso Java e Orientação a Objetos</span>
+        </a>
+        <meta itemprop="position" content="1">
+    </li>
+    ›
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/">
+            <span itemprop="name">Apostila</span>
+        </a>
+        <meta itemprop="position" content="2">
+    </li>
+    ›
+    <li itemprop="itemListElement" itemscope="" class="breadcrumb-item" itemtype="http://schema.org/ListItem">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/">
+            <span itemprop="name">Capítulo 3 - Variáveis primitivas e Controle de fluxo</span>
+        </a>
+        <meta itemprop="position" content="3">
+    </li>
+</ol>
+
+    <div class="tubaina container" role="main">
+        
+            <div class="chapterHeader">Capítulo 3</div><h1 class="book-chapter">Variáveis primitivas e Controle de fluxo</h1>
+            <p><em>"Péssima ideia, a de que não se pode mudar" -- Montaigne</em></p>
+<p>Aprenderemos a trabalhar com os seguintes recursos da linguagem Java:</p>
+<ul>
+<li>declaração, atribuição de valores, casting e comparação de variáveis;</li>
+<li>controle de fluxo através de <code>if</code> e <code>else</code>;</li>
+<li>instruções de laço <code>for</code> e <code>while</code>, controle de fluxo com break e continue.</li>
+</ul>
+
+<h2 id="declarando-e-usando-variveis">3.1 Declarando e usando variáveis</h2>
+<p><strong>Dentro de um bloco</strong>, podemos declarar variáveis e usá-las. Em Java, toda variável tem um tipo que não
+pode ser mudado, uma vez que declarado:</p>
+<pre><code>tipoDaVariavel nomeDaVariavel;
+</code></pre><p>Por exemplo, é possível ter uma <code>idade</code> que guarda um número inteiro:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade;
+</code></pre>
+<p>Com isso, você declara a variável <code>idade</code>, que passa a existir a partir daquela linha. Ela é do
+tipo <code>int</code>, que guarda um número inteiro. A partir daí, você pode usá-la, primeiramente
+atribuindo valores.</p>
+<p>A linha a seguir é a tradução de: <strong>"<code>idade</code> deve valer quinze"</strong>.</p>
+<pre><code class="lang-java">idade = <span class="hljs-number">15</span>;
+</code></pre>
+<blockquote>
+<p><strong>Comentários em Java</strong></p>
+<p>Para fazer um comentário em java, você pode usar o <code>//</code> para comentar até o final da linha, ou então
+usar o <code>/* */</code> para comentar o que estiver entre eles.</p>
+<pre><code class="lang-java">     <span class="hljs-comment">/* comentário daqui,
+    ate aqui */</span>
+
+    <span class="hljs-comment">// uma linha de comentário sobre a idade</span>
+    <span class="hljs-keyword">int</span> idade;
+</code></pre>
+</blockquote>
+
+<p>Além de atribuir, você pode utilizar esse valor. O código a seguir declara novamente a variável
+<code>idade</code> com valor 15 e imprime seu valor na saída padrão através da chamada a <code>System.out.println</code>.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// declara a idade</span>
+<span class="hljs-keyword">int</span> idade;
+idade = <span class="hljs-number">15</span>;
+
+<span class="hljs-comment">// imprime a idade</span>
+System.out.println(idade);
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Por fim, podemos utilizar o valor de uma variável para algum outro propósito, como alterar ou
+definir uma segunda variável. O código a seguir cria uma variável chamada <code>idadeNoAnoQueVem</code> com
+valor de <strong>idade mais um</strong>.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// calcula a idade no ano seguinte</span>
+<span class="hljs-keyword">int</span> idadeNoAnoQueVem;
+idadeNoAnoQueVem = idade + <span class="hljs-number">1</span>;
+</code></pre>
+<p>No mesmo momento que você declara uma variável, também é possível inicializá-la por praticidade:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">15</span>;
+</code></pre>
+<p>Você pode usar os operadores +, -, / e <em> para operar com números, sendo eles responsáveis
+pela adição, subtração, divisão e multiplicação, respectivamente. Além desses operadores
+básicos, há o operador % (módulo) que nada mais é que o <em>*resto de uma divisão inteira</em></em>.
+Veja alguns exemplos:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> quatro = <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;
+<span class="hljs-keyword">int</span> tres = <span class="hljs-number">5</span> - <span class="hljs-number">2</span>;
+
+<span class="hljs-keyword">int</span> oito = <span class="hljs-number">4</span> * <span class="hljs-number">2</span>;
+<span class="hljs-keyword">int</span> dezesseis = <span class="hljs-number">64</span> / <span class="hljs-number">4</span>;
+
+<span class="hljs-keyword">int</span> um = <span class="hljs-number">5</span> % <span class="hljs-number">2</span>; <span class="hljs-comment">// 5 dividido por 2 dá 2 e tem resto 1; </span>
+                <span class="hljs-comment">// o operador % pega o resto da divisão inteira</span>
+</code></pre>
+<blockquote>
+<p><strong>Como rodar esses códigos?</strong></p>
+<p>Você deve colocar esses trechos de código dentro do bloco main que vimos no capítulo anterior.
+Isto é, isso deve ficar no miolo do programa. Use bastante <code>System.out.println</code>, dessa forma você
+pode ver algum resultado, caso contrário, ao executar a aplicação, nada aparecerá.</p>
+<p>Por exemplo, para imprimir a <code>idade</code> e a <code>idadeNoAnoQueVem</code> podemos escrever o seguinte programa
+de exemplo:</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestaIdade</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">// imprime a idade</span>
+        <span class="hljs-keyword">int</span> idade = <span class="hljs-number">20</span>;
+        System.out.println(idade);
+
+        <span class="hljs-comment">// gera uma idade no ano seguinte</span>
+        <span class="hljs-keyword">int</span> idadeNoAnoQueVem;
+        idadeNoAnoQueVem = idade + <span class="hljs-number">1</span>;
+
+        <span class="hljs-comment">// imprime a idade</span>
+        System.out.println(idadeNoAnoQueVem);
+    }
+}
+</code></pre>
+</blockquote>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+
+<p>Representar números inteiros é fácil, mas como guardar valores reais, tais como frações de números
+inteiros e outros? Outro tipo de variável muito utilizado é o <code>double</code>, que armazena um número
+com ponto flutuante (e que também pode armazenar um número inteiro).</p>
+<pre><code class="lang-java"><span class="hljs-keyword">double</span> pi = <span class="hljs-number">3.14</span>;
+<span class="hljs-keyword">double</span> x = <span class="hljs-number">5</span> * <span class="hljs-number">10</span>;
+</code></pre>
+<p>O tipo boolean armazena um valor verdadeiro ou falso, e só: nada de números,
+palavras ou endereços, como em algumas outras linguagens.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">boolean</span> verdade = <span class="hljs-keyword">true</span>;
+</code></pre>
+<p><code>true</code> e <code>false</code> são palavras reservadas do Java. É comum que um <code>boolean</code>
+seja determinado através de uma <strong>expressão booleana</strong>, isto é, um trecho
+de código que retorna um booleano, como o exemplo:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">30</span>;
+<span class="hljs-keyword">boolean</span> menorDeIdade = idade &lt; <span class="hljs-number">18</span>;
+</code></pre>
+<p>O tipo char guarda um, e apenas um, caractere. Esse caractere deve estar entre aspas simples. Não se
+esqueça dessas duas características de uma variável do tipo char! Por exemplo, ela não pode guardar
+um código como <code>''</code> pois o vazio não é um caractere!</p>
+<pre><code class="lang-java"><span class="hljs-keyword">char</span> letra = <span class="hljs-string">'a'</span>;
+System.out.println(letra);
+</code></pre>
+<p>Variáveis do tipo <code>char</code> são pouco usadas no dia a dia. Veremos mais a frente
+o uso das <code>String</code>s, que usamos constantemente, porém estas não são definidas por
+um tipo primitivo.</p>
+<div class="anuncio">
+	<a href="https://www.caelum.com.br/curso-java-orientacao-objetos/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Curso Java e Orientação a Objetos">
+		<h4>Você pode também fazer o curso FJ-11 dessa apostila na Caelum</h4>
+
+		
+			<img class="icone" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/caelum_2x.png" style="width: 100.00px; height: 100.00px" width="100.00" height="100.00" aria-hidden="true">
+		
+
+		<p>Querendo aprender ainda mais sobre? Esclarecer dúvidas dos exercícios? Ouvir explicações detalhadas com um instrutor?<br>A Caelum oferece o <strong>curso FJ-11</strong> presencial nas cidades de São Paulo, Rio de Janeiro e Brasília, além de turmas incompany.</p>
+		<p><span class="action">Consulte as vantagens do curso <em>Java e Orientação a Objetos</em></span></p>
+	</a>
+</div>
+<h2 id="tipos-primitivos-e-valores">3.2 Tipos primitivos e valores</h2>
+<p>Esses tipos de variáveis são tipos primitivos do Java: o valor que elas guardam são o real conteúdo
+da variável. Quando você utilizar o <strong>operador de atribuição</strong> <code>=</code> o valor será <strong>copiado</strong>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; <span class="hljs-comment">// i recebe uma cópia do valor 5</span>
+<span class="hljs-keyword">int</span> j = i; <span class="hljs-comment">// j recebe uma cópia do valor de i</span>
+i = i + <span class="hljs-number">1</span>; <span class="hljs-comment">// i vira 6, j continua 5</span>
+</code></pre>
+<p>Aqui, <code>i</code> fica com o valor de 6. Mas e <code>j</code>? Na segunda linha, <code>j</code> está valendo 5. Quando
+<code>i</code> passa a valer 6, será que <code>j</code> também muda de valor? Não, pois o valor de um tipo primitivo
+sempre é copiado.</p>
+<p>Apesar da linha 2 fazer <code>j = i</code>, a partir desse momento essas variáveis não tem relação nenhuma:
+o que acontece com uma, não reflete em nada com a outra.</p>
+
+<blockquote>
+<p><strong>Outros tipos primitivos</strong></p>
+<p>Vimos aqui os tipos primitivos que mais aparecem. O Java tem outros, que são o <code>byte</code>, <code>short</code>,
+<code>long</code> e <code>float</code>.</p>
+<p>Cada tipo possui características especiais que, para um programador avançado, podem fazer muita
+diferença.</p>
+</blockquote>
+
+<h2 id="exerccios-variveis-e-tipos-primitivos">3.3 Exercícios: Variáveis e tipos primitivos</h2>
+<ol>
+<li><p>Na empresa onde trabalhamos, há tabelas com o quanto foi gasto em cada mês. Para fechar o balanço do
+ primeiro trimestre, precisamos somar o gasto total. Sabendo que, em Janeiro, foram gastos 15000
+ reais, em Fevereiro, 23000 reais e em Março, 17000 reais, faça um programa que calcule e imprima o
+ gasto total no trimestre. Siga esses passos:</p>
+<ul>
+<li>Crie uma classe chamada <code>BalancoTrimestral</code> com um bloco main, como nos
+exemplos anteriores;</li>
+<li>Dentro do <code>main</code> (o miolo do programa), declare uma variável inteira chamada
+<code>gastosJaneiro</code> e inicialize-a com 15000;</li>
+<li>Crie também as variáveis <code>gastosFevereiro</code> e <code>gastosMarco</code>, inicializando-as
+com 23000 e 17000, respectivamente, utilize uma linha para cada declaração;</li>
+<li><p>Crie uma variável chamada <code>gastosTrimestre</code> e inicialize-a com a soma das outras 3 variáveis:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> gastosTrimestre = gastosJaneiro + gastosFevereiro + gastosMarco;
+</code></pre>
+</li>
+<li><p>Imprima a variável <code>gastosTrimestre</code>.</p>
+<!--@answer
+``` java
+class BalancoTrimestral {
+  public static void main(String[] args) {
+      int gastosJaneiro = 15000;
+      int gastosFevereiro = 23000;
+      int gastosMarco = 17000;
+      int gastosTrimestre = gastosJaneiro + gastosFevereiro + gastosMarco;
+
+      System.out.println("Gasto do trimestre: R$" + gastosTrimestre);
+  }
+}
+```
+--></li>
+</ul>
+</li>
+<li><p>Adicione código (sem alterar as linhas que já existem) na classe anterior para
+ imprimir a média mensal de gasto, criando uma variável <code>mediaMensal</code> junto com
+ uma mensagem. Para isso, concatene a <code>String</code> com o valor, usando
+ <code>"Valor da média mensal = " + mediaMensal</code>.</p>
+ <!--@answer
+ ``` java h="9,10"
+ class BalancoTrimestral {
+     public static void main(String[] args) {
+         int gastosJaneiro = 15000;
+         int gastosFevereiro = 23000;
+         int gastosMarco = 17000;
+         int gastosTrimestre = gastosJaneiro + gastosFevereiro + gastosMarco;
+
+         System.out.println("Gasto do trimestre: R$" + gastosTrimestre);
+         int mediaPorMes = gastosTrimestre / 3;
+         System.out.println("Média mensal: R$" + mediaPorMes);            }
+ }
+ ```
+ -->
+</li>
+</ol>
+<h2 id="discusso-em-aula-convenes-de-cdigo-e-cdigo-legvel">3.4 Discussão em aula: convenções de código e código legível</h2>
+
+<p>Discuta com o instrutor e seus colegas sobre convenções de código Java. Por que existem?
+Por que são importantes?</p>
+<p>Discuta também as vantagens de se escrever código fácil de ler e se evitar comentários em
+excesso. (Dica: procure por <em>java code conventions</em>).</p>
+<div class="anuncio">
+	<a href="https://www.casadocodigo.com.br/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Editora Casa do Código">
+		<h4>Seus livros de tecnologia parecem do século passado?</h4>
+
+		
+			<img class="icone" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/casa-do-codigo_2x.png" style="width: 93.50px; height: 120.00px" width="93.50" height="120.00" aria-hidden="true">
+		
+
+		<p>Conheça a <strong>Casa do Código</strong>, uma <strong>nova</strong> editora, com autores de destaque no mercado, foco em <strong>ebooks</strong> (PDF, epub, mobi), preços <strong>imbatíveis</strong> e assuntos <strong>atuais</strong>.<br>Com a curadoria da <strong>Caelum</strong> e excelentes autores, é uma abordagem <strong>diferente</strong> para livros de tecnologia no Brasil.</p>
+		<p><span class="action">Casa do Código, Livros de Tecnologia.</span></p>
+	</a>
+</div>
+<h2 id="casting-e-promoo">3.5 Casting e promoção</h2>
+
+<p>Alguns valores são incompatíveis se você tentar fazer uma atribuição direta. Enquanto um número real
+costuma ser representado em uma variável do tipo <code>double</code>, tentar atribuir ele a uma variável
+<code>int</code> não funciona porque é um código que diz: <strong>"i deve valer d"</strong>, mas não se sabe se <code>d</code>
+realmente é um número inteiro ou não.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">double</span> d = <span class="hljs-number">3.1415</span>;
+<span class="hljs-keyword">int</span> i = d; <span class="hljs-comment">// não compila</span>
+</code></pre>
+<p>O mesmo ocorre no seguinte trecho:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">3.14</span>;
+</code></pre>
+<p>O mais interessante, é que nem mesmo o seguinte código compila:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">double</span> d = <span class="hljs-number">5</span>; <span class="hljs-comment">// ok, o double pode conter um número inteiro</span>
+<span class="hljs-keyword">int</span> i = d; <span class="hljs-comment">// não compila</span>
+</code></pre>
+<p>Apesar de 5 ser um bom valor para um <code>int</code>, o compilador não tem como saber que valor estará dentro
+desse <code>double</code> no momento da execução. Esse valor pode ter sido digitado pelo usuário, e ninguém
+vai garantir que essa conversão ocorra sem perda de valores.</p>
+<p>Já no caso a seguir, é o contrário:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">double</span> d2 = i;
+</code></pre>
+<p>O código acima compila sem problemas, já que um <code>double</code> pode guardar um número com ou sem ponto
+flutuante. Todos os inteiros representados por uma variável do tipo <code>int</code> podem ser guardados em
+uma variável double, então não existem problemas no código acima.</p>
+<p>Às vezes, precisamos que um número quebrado seja arredondado e armazenado num número inteiro.
+Para fazer isso sem que haja o erro de compilação, é preciso ordenar que o número quebrado seja
+<strong>moldado (casted)</strong> como um número inteiro. Esse processo recebe o nome de <strong>casting</strong>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">double</span> d3 = <span class="hljs-number">3.14</span>;
+<span class="hljs-keyword">int</span> i = (<span class="hljs-keyword">int</span>) d3;
+</code></pre>
+<p>O casting foi feito para moldar a variável <code>d3</code> como um <code>int</code>. O valor de <code>i</code> agora é 3.</p>
+<p>O mesmo ocorre entre valores <code>int</code> e <code>long</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">long</span> x = <span class="hljs-number">10000</span>;
+<span class="hljs-keyword">int</span> i = x; <span class="hljs-comment">// não compila, pois pode estar perdendo informação</span>
+</code></pre>
+<p>E, se quisermos realmente fazer isso, fazemos o casting:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">long</span> x = <span class="hljs-number">10000</span>;
+<span class="hljs-keyword">int</span> i = (<span class="hljs-keyword">int</span>) x;
+</code></pre>
+<blockquote>
+<p><strong>Casos não tão comuns de casting e atribuição</strong></p>
+<p>Alguns <strong>castings</strong> aparecem também:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">float</span> x = <span class="hljs-number">0.0</span>;
+</code></pre>
+<p>O código acima não compila pois todos os literais com ponto flutuante são considerados
+<code>double</code> pelo Java. E <code>float</code> não pode receber um <code>double</code> sem perda de informação, para fazer
+isso funcionar podemos escrever o seguinte:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">float</span> x = <span class="hljs-number">0.0</span>f;
+</code></pre>
+<p>A letra f, que pode ser maiúscula ou minúscula, indica que aquele literal deve ser tratado como
+<code>float</code>.</p>
+<p>Outro caso, que é mais comum:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">double</span> d = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">float</span> f = <span class="hljs-number">3</span>;
+
+<span class="hljs-keyword">float</span> x = f + (<span class="hljs-keyword">float</span>) d;
+</code></pre>
+<p>Você precisa do casting porque o Java faz as contas e vai armazenando sempre no maior tipo que
+apareceu durante as operações, no caso o <code>double</code>.</p>
+<p>E, uma observação: no mínimo, o Java armazena o resultado em um <code>int</code>, na hora de fazer as contas.</p>
+<p>Até casting com variáveis do tipo <code>char</code> podem ocorrer. O único tipo primitivo que não pode ser
+atribuído a nenhum outro tipo é o <code>boolean</code>.</p>
+</blockquote>
+
+<blockquote>
+<p><strong>Castings possíveis</strong></p>
+<p>Abaixo estão relacionados todos os casts possíveis na linguagem Java, mostrando a conversão
+<strong>de</strong> um valor <strong>para</strong> outro. A indicação <strong>Impl.</strong> quer dizer que aquele cast é implícito e
+automático, ou seja, você não precisa indicar o cast explicitamente (lembrando que o tipo boolean
+não pode ser convertido para nenhum outro tipo).</p>
+<p></p><div class="figure"><img src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/casting.png" alt="" style="max-width: 700px;"></div>
+</blockquote>
+
+<blockquote>
+<p><strong>Tamanho dos tipos</strong></p>
+<p>Na tabela abaixo, estão os tamanhos de cada tipo primitivo do Java.</p>
+<p></p><div class="figure"><img src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/tamanho_tipos.png" alt="" style="max-width: 600px;"></div>
+</blockquote>
+
+<h2 id="o-if-e-o-else">3.6 O if e o else</h2>
+<p>A sintaxe do <code>if</code> no Java é a seguinte:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (condicaoBooleana) {
+    codigo;
+}
+</code></pre>
+<p>Uma <strong>condição booleana</strong> é qualquer expressão que retorne <code>true</code> ou <code>false</code>. Para isso, você
+pode usar os operadores <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> e outros. Um exemplo:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">15</span>;
+<span class="hljs-keyword">if</span> (idade &lt; <span class="hljs-number">18</span>) {
+    System.out.println(<span class="hljs-string">"Não pode entrar"</span>);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Além disso, você pode usar a cláusula <code>else</code> para indicar o comportamento que deve ser executado
+no caso da expressão booleana ser falsa:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">15</span>;
+<span class="hljs-keyword">if</span> (idade &lt; <span class="hljs-number">18</span>) {
+    System.out.println(<span class="hljs-string">"Não pode entrar"</span>);
+} <span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">"Pode entrar"</span>);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Você pode concatenar expressões booleanas através dos operadores lógicos <strong>"E"</strong> e <strong>"OU"</strong>.
+O <strong>"E"</strong> é representado pelo <code>&amp;&amp;</code> e o <strong>"OU"</strong> é representado pelo <code>||</code>.</p>
+<p>Um exemplo seria verificar se ele tem menos de 18 anos <strong>e</strong> se ele não é amigo do dono:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">15</span>;
+<span class="hljs-keyword">boolean</span> amigoDoDono = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">if</span> (idade &lt; <span class="hljs-number">18</span> &amp;&amp; amigoDoDono == <span class="hljs-keyword">false</span>) {
+    System.out.println(<span class="hljs-string">"Não pode entrar"</span>);
+}
+<span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">"Pode entrar"</span>);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Esse código poderia ficar ainda mais legível, utilizando-se o operador de negação, o <code>!</code>.
+Esse operador transforma o resultado de uma expressão booleana de <code>false</code> para <code>true</code> e vice
+versa.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">15</span>;
+<span class="hljs-keyword">boolean</span> amigoDoDono = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">if</span> (idade &lt; <span class="hljs-number">18</span> &amp;&amp; !amigoDoDono) {
+    System.out.println(<span class="hljs-string">"Não pode entrar"</span>);
+}
+<span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">"Pode entrar"</span>);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Repare na linha 3 que o trecho <code>amigoDoDono == false</code>  virou <code>!amigoDoDono</code>. <strong>Eles
+têm o mesmo valor.</strong></p>
+<p>Para comparar se uma variável tem o <strong>mesmo valor</strong> que outra variável ou valor, utilizamos
+o operador <code>==</code>. Repare que utilizar o operador <code>=</code> dentro de um <code>if</code> vai retornar um
+erro de compilação, já que o operador <code>=</code> é o de atribuição.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> mes = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">if</span> (mes == <span class="hljs-number">1</span>) {
+    System.out.println(<span class="hljs-string">"Você deveria estar de férias"</span>);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<h2 id="o-while">3.7 O While</h2>
+<p>O <code>while</code> é um comando usado para fazer um <strong>laço (loop)</strong>, isto é, repetir um trecho de código
+algumas vezes. A ideia é que esse trecho de código seja repetido enquanto uma determinada condição
+permanecer verdadeira.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> idade = <span class="hljs-number">15</span>;
+<span class="hljs-keyword">while</span> (idade &lt; <span class="hljs-number">18</span>) {
+    System.out.println(idade);    
+    idade = idade + <span class="hljs-number">1</span>;
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>O trecho dentro do bloco do <code>while</code> será executado até o momento em que a condição <code>idade &lt; 18</code>
+passe a ser falsa. E isso ocorrerá exatamente no momento em que <code>idade == 18</code>, o que não o fará
+imprimir <code>18</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) {
+    System.out.println(i);    
+    i = i + <span class="hljs-number">1</span>;
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Já o <code>while</code> acima imprime de 0 a 9.</p>
+<div class="anuncio">
+	<a href="https://www.alura.com.br/promocao/aluno-caelum/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Cursos Online Alura">
+		<h4>Agora é a melhor hora de aprender algo novo</h4>
+
+		
+			<img class="icone" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/alura_2x.png" style="width: 120.00px; height: 54.00px" width="120.00" height="54.00" aria-hidden="true">
+		
+
+		<p>Se você está gostando dessa apostila, certamente vai aproveitar os <strong>cursos online</strong> que lançamos na plataforma <b>Alura</b>. Você estuda a qualquer momento com a <strong>qualidade</strong> Caelum. Programação, Mobile, Design, Infra, Front-End e Business! Ex-aluno da Caelum tem 15% de desconto, siga o link!</p>
+		<p><span class="action">Conheça a Alura Cursos Online.</span></p>
+	</a>
+</div>
+<h2 id="o-for">3.8 O For</h2>
+<p>Outro comando de <strong>loop</strong> extremamente utilizado é o <code>for</code>. A ideia é a mesma do <code>while</code>:
+fazer um trecho de código ser repetido enquanto uma condição continuar verdadeira. Mas além
+disso, o <code>for</code> isola também um espaço para inicialização de variáveis e o modificador dessas
+variáveis. Isso faz com que fiquem mais legíveis, as variáveis que são relacionadas ao loop:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (inicializacao; condicao; incremento) {
+    codigo;
+}
+</code></pre>
+<p>Um exemplo é o a seguir:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i = i + <span class="hljs-number">1</span>) {
+    System.out.println(<span class="hljs-string">"olá!"</span>);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Repare que esse <code>for</code> poderia ser trocado por:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) {
+    System.out.println(<span class="hljs-string">"olá!"</span>);
+    i = i + <span class="hljs-number">1</span>;
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Porém, o código do <code>for</code> indica claramente que a variável <code>i</code> serve, em especial, para
+controlar a quantidade de laços executados. Quando usar o <code>for</code>? Quando usar o <code>while</code>?
+Depende do gosto e da ocasião.</p>
+<blockquote>
+<p><strong>Pós incremento ++</strong></p>
+<p><code>i = i + 1</code> pode realmente ser substituído por <code>i++</code> quando isolado, porém, em alguns
+casos, temos essa instrução envolvida em, por exemplo, uma atribuição:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">int</span> x = i++;
+</code></pre>
+<p>Qual é o valor de <code>x</code>? O de <code>i</code>, após essa linha, é 6.</p>
+<p>O operador <code>++</code>, quando vem após a variável, retorna o valor antigo, e incrementa
+(pós incremento), fazendo <code>x</code> valer 5.</p>
+<p>Se você tivesse usado o <code>++</code> antes da variável (pré incremento), o resultado seria 6:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">int</span> x = ++i; <span class="hljs-comment">// aqui x valera 6</span>
+</code></pre>
+</blockquote>
+
+<h2 id="controlando-loops">3.9 Controlando loops</h2>
+<p>Apesar de termos condições booleanas nos nossos laços, em algum momento, podemos decidir
+parar o loop por algum motivo especial sem que o resto do laço seja executado.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = x; i &lt; y; i++) {
+    <span class="hljs-keyword">if</span> (i % <span class="hljs-number">19</span> == <span class="hljs-number">0</span>) {
+        System.out.println(<span class="hljs-string">"Achei um número divisível por 19 entre x e y"</span>);
+        <span class="hljs-keyword">break</span>;
+    }
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>O código acima vai percorrer os números de x a y e parar quando encontrar um número divisível por
+19, uma vez que foi utilizada a palavra chave <code>break</code>.</p>
+<p>Da mesma maneira, é possível obrigar o loop a executar o próximo laço. Para isso
+usamos a palavra chave <code>continue</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">50</span> &amp;&amp; i &lt; <span class="hljs-number">60</span>) {
+        <span class="hljs-keyword">continue</span>;
+    }
+    System.out.println(i);
+}
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>O código acima não vai imprimir alguns números. (Quais exatamente?)</p>
+<h2 id="escopo-das-variveis">3.10 Escopo das variáveis</h2>
+<p>No Java, podemos declarar variáveis a qualquer momento. Porém, dependendo de onde você
+as declarou, ela vai valer de um determinado ponto a outro.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// aqui a variável i não existe</span>
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-comment">// a partir daqui ela existe</span>
+</code></pre>
+<p>O <strong>escopo da variável</strong> é o nome dado ao trecho de código em que aquela variável existe
+e onde é possível acessá-la.</p>
+<p>Quando abrimos um novo bloco com as chaves, as variáveis declaradas ali dentro <strong>só valem
+até o fim daquele bloco</strong>.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// aqui a variável i não existe</span>
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-comment">// a partir daqui ela existe</span>
+<span class="hljs-keyword">while</span> (condicao) {
+    <span class="hljs-comment">// o i ainda vale aqui</span>
+    <span class="hljs-keyword">int</span> j = <span class="hljs-number">7</span>;
+    <span class="hljs-comment">// o j passa a existir</span>
+}
+<span class="hljs-comment">// aqui o j não existe mais, mas o i continua dentro do escopo</span>
+</code></pre>
+<p>No bloco acima, a variável <code>j</code> pára de existir quando termina o bloco onde ela foi declarada. Se
+você tentar acessar uma variável fora de seu escopo, ocorrerá um erro de compilação.</p>
+<p></p><div class="figure"><img src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/cannot_find_symbol.png" alt="" style="max-width: 500px;"></div>
+<p>O mesmo vale para um if:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (algumBooleano) {
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;
+} 
+<span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">10</span>;
+}
+System.out.println(i); <span class="hljs-comment">// cuidado!</span>
+</code></pre>
+<p>Aqui a variável <code>i</code> não existe fora do <code>if</code> e do <code>else</code>! Se você declarar a variável
+antes do <code>if</code>, vai haver outro erro de compilação: dentro do <code>if</code> e do <code>else</code> a
+variável está sendo redeclarada! Então o código para compilar e fazer sentido fica:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i;
+<span class="hljs-keyword">if</span> (algumBooleano) {
+    i = <span class="hljs-number">5</span>;
+} 
+<span class="hljs-keyword">else</span> {
+    i = <span class="hljs-number">10</span>;
+}
+System.out.println(i);
+</code></pre>
+<p>Uma situação parecida pode ocorrer com o <code>for</code>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+    System.out.println(<span class="hljs-string">"olá!"</span>);
+}
+System.out.println(i); <span class="hljs-comment">// cuidado!</span>
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<p>Neste <code>for</code>, a variável <code>i</code> morre ao seu término, não podendo ser acessada de fora do <code>for</code>,
+gerando um erro de compilação. Se você realmente quer acessar o contador depois do loop
+terminar, precisa de algo como:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i;
+<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+    System.out.println(<span class="hljs-string">"olá!"</span>);
+}
+System.out.println(i);
+</code></pre>
+
+						<button class="execCodeBtn">
+							Executar código
+						</button>
+						<template></template>
+<div class="anuncio">
+	<a href="https://www.casadocodigo.com.br/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Editora Casa do Código">
+		<h4>Editora Casa do Código com livros de uma forma diferente</h4>
+
+		
+			<img class="icone" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/casa-do-codigo_2x.png" style="width: 93.50px; height: 120.00px" width="93.50" height="120.00" aria-hidden="true">
+		
+
+		<p>Editoras tradicionais pouco ligam para ebooks e novas tecnologias. Não dominam tecnicamente o assunto para revisar os livros a fundo. Não têm anos de experiência em didáticas com cursos.<br>Conheça a <strong>Casa do Código</strong>, uma editora diferente, com curadoria da <strong>Caelum</strong> e obsessão por livros de qualidade a preços justos.</p>
+		<p><span class="action">Casa do Código, ebook com preço de ebook.</span></p>
+	</a>
+</div>
+<h2 id="um-bloco-dentro-do-outro">3.11 Um bloco dentro do outro</h2>
+<p>Um bloco também pode ser declarado dentro de outro. Isto é, um <code>if</code> dentro de um <code>for</code>,
+ou um <code>for</code> dentro de um <code>for</code>, algo como:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">while</span> (condicao) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+        <span class="hljs-comment">// código</span>
+    }
+}
+</code></pre>
+<h2 id="para-saber-mais">3.12 Para saber mais</h2>
+<ul>
+<li><p>Vimos apenas os comandos mais usados para controle de fluxo. O Java ainda possui o <code>do..while</code>
+e o <code>switch</code>. Pesquise sobre eles e diga quando é interessante usar cada um deles.</p>
+</li>
+<li><p>Algumas vezes, temos vários laços encadeados. Podemos utilizar o <code>break</code> para quebrar o laço mais
+interno. Mas, se quisermos quebrar um laço mais externo, teremos de encadear diversos ifs e seu
+código ficará uma bagunça. O Java possui um artifício chamado <strong>labeled loops</strong>; pesquise sobre eles.</p>
+</li>
+<li><p>O que acontece se você tentar dividir um número inteiro por 0? E por 0.0?</p>
+</li>
+<li><p>Existe um caminho entre os tipos primitivos que indicam se há a necessidade ou não de casting
+entre os tipos. Por exemplo, <code>int</code> -&gt; <code>long</code> -&gt; <code>double</code> (um <code>int</code> pode ser tratado como um
+<code>double</code>, mas não o contrário). Pesquise (ou teste), e posicione os outros tipos primitivos
+nesse fluxo.</p>
+</li>
+<li><p>Além dos operadores de incremento, existem os de decremento, como <code>--i</code> e <code>i--</code>. Além desses,
+você pode usar instruções do tipo <code>i += x</code> e <code>i -= x</code>, o que essas instruções fazem? Teste.</p>
+</li>
+</ul>
+<h2 id="exerccios-fixao-de-sintaxe">3.13 Exercícios: Fixação de sintaxe</h2>
+<p>Mais exercícios de fixação de sintaxe. Para quem já conhece um pouco de Java, pode ser muito simples;
+mas recomendamos fortemente que você faça os exercícios para se acostumar com erros de compilação,
+mensagens do javac, convenção de código, etc...</p>
+<p>Apesar de extremamente simples, precisamos praticar a sintaxe que estamos aprendendo. Para cada
+exercício, crie um novo arquivo com extensão <strong>.java</strong>, e declare aquele estranho cabeçalho, dando nome
+a uma classe e com um bloco <code>main</code> dentro dele:</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExercicioX</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">// seu exercício vai aqui</span>
+    }
+}
+</code></pre>
+<p>Não copie e cole de um exercício já existente! Aproveite para praticar.</p>
+<ol>
+<li>Imprima todos os números de 150 a 300. <!--@answer
+ ``` java
+     class ImprimeIntervalo {
+         public static void main(String[] args) {
+             int i = 150;
+             while (i<=300){
+                 System.out.println(i);
+                 i++;
+             }
+         }
+     }
+ ```
+ ou
+ ``` java
+     class ImprimeIntervalo {
+         public static void main(String[] args) {
+             for (int i = 150; i<=300; i++){
+                 System.out.println(i);
+             }
+         }
+     }
+ ```
+ --></li>
+<li><p>Imprima a soma de 1 até 1000.</p>
+ <!--@note Mostre também a solução com soma de progressão aritmética. -->
+ <!--@answer
+ ``` java
+     class ImprimeSoma {
+         public static void main(String[] args) {
+             int soma = 0;
+             int i = 1;
+             while (i<=1000){
+                 soma = soma + i;
+                 i++;
+             }
+             System.out.println(i);
+         }
+     }
+ ```
+ ou
+ ``` java
+     class ImprimeSoma {
+         public static void main(String[] args) {
+             soma = 0;
+             for (int i = 1; i<=1000; i++){
+                 soma = soma + i;
+             }
+             System.out.println(i);
+         }
+     }
+ ```
+ --></li>
+<li><p>Imprima todos os múltiplos de 3, entre 1 e 100.</p>
+ <!--@note
+ A maioria procura múltiplos olhando pro resto (%). Mostrar um que faz
+ incremento de 3 em 3.
+ -->
+ <!--@answer
+ ```
+     class MultiplosDeTresAteCem {
+         public static void main (String[] args) {
+             for (int i = 1; i < 100; i++ ){
+                 if (i % 3 == 0)    {
+                     System.out.println(i);
+                 }
+             }
+         }
+     }
+ ```
+ ou, entre outras tantas opções, a mais simples:
+ ```
+     class MultiplosDeTresAteCem {
+         public static void main (String[] args) {
+             for (int i = 1; i < 100; i += 3 ){
+                 System.out.println(i);
+             }
+         }
+     }
+ ```
+ --></li>
+<li><p>Imprima os fatoriais de 1 a 10.</p>
+<p> O fatorial de um número n é n * (n-1) * (n-2) * ... * 1. Lembre-se de utilizar os parênteses.</p>
+<p> O fatorial de 0 é 1</p>
+<p> O fatorial de 1 é (0!) * 1 = 1</p>
+<p> O fatorial de 2 é (1!) * 2 = 2</p>
+<p> O fatorial de 3 é (2!) * 3 = 6</p>
+<p> O fatorial de 4 é (3!) * 4 = 24</p>
+<p> Faça um for que inicie uma variável n (número) como 1 e fatorial (resultado)
+ como 1 e varia n de 1 até 10:</p>
+<pre><code class="lang-java"> <span class="hljs-keyword">int</span> fatorial = <span class="hljs-number">1</span>;
+ <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">1</span>; n &lt;= <span class="hljs-number">10</span>; n++) {
+
+ }
+</code></pre>
+ <!--@answer
+ ``` java
+     class Fatorial {
+         public static void main (String[] args) {
+             int fatorial = 1;
+             for (int n = 1; n <= 10; n++) {
+                 fatorial = fatorial * n;
+                 System.out.println("fat(" + n + ") = " + fatorial);
+             }
+         }
+     }
+ ```
+ --></li>
+<li><p>No código do exercício anterior, aumente a quantidade de números que terão os
+ fatoriais impressos, até 20, 30, 40. Em um  determinado momento, além desse
+ cálculo demorar, vai começar a mostrar respostas completamente erradas.
+ Por quê?</p>
+<p> Mude de <code>int</code> para <code>long</code> para ver alguma mudança.</p>
+ <!--@answer
+ Isso acontece porque, a partir de 16!, o valor supera o limite superior do
+ tipo `int`. O tipo `long` consegue armazenar o cálculo dos fatoriais
+ até 21!. Teste!
+ --></li>
+<li><p>(opcional) Imprima os primeiros números da série de Fibonacci até passar de 100.
+ A série de Fibonacci é a seguinte: 0, 1, 1, 2, 3, 5, 8, 13, 21, etc...
+ Para calculá-la, o primeiro elemento vale 0, o segundo vale 1, daí por diante,
+ o n-ésimo elemento vale o (n-1)-ésimo elemento somado ao (n-2)-ésimo elemento
+ (ex: 8 = 5 + 3).</p>
+ <!--@answer
+ ``` java
+     class Fibonacci {
+         public static void main(String[] args) {
+             int anterior = 0;
+             int atual = 1;
+             while (atual < 100) {
+                 System.out.println(atual);
+                 int proximo = anterior + atual;
+                 anterior = atual;
+                 atual = proximo;
+             }
+             System.out.println(atual);
+         }
+     }
+ ```
+ --></li>
+<li><p>(opcional) Escreva um programa que, dada uma variável <code>x</code> com algum valor
+ inteiro, temos um novo <code>x</code> de acordo com a seguinte regra:</p>
+<ul>
+<li>se <code>x</code> é par, <code>x = x / 2</code></li>
+<li>se <code>x</code> é impar, <code>x = 3 * x + 1</code></li>
+<li>imprime <code>x</code></li>
+<li><p>O programa deve parar quando <code>x</code> tiver o valor final de 1. Por exemplo,
+para <code>x = 13</code>, a saída será:</p>
+<p>40 -&gt; 20 -&gt; 10 -&gt; 5 -&gt; 16 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1</p>
+<blockquote>
+<p><strong>Imprimindo sem pular linha</strong></p>
+<p>Um detalhe importante é que uma quebra de linha é impressa toda vez que
+chamamos <code>println</code>. Para não pular uma linha, usamos o código a seguir:</p>
+<pre><code class="lang-java">            System.out.print(variavel);
+</code></pre>
+</blockquote>
+<!-- comentario para separar quotes adjacentes -->
+<!--@answer
+``` java
+  class TresNMaisUm {
+      public static void main(String[] args) {
+          int x = 13;
+          System.out.println("Iniciando...\n" + x);
+          while (x != 1) {
+              if (x % 2 == 0) {
+                  x = x / 2;
+              } else {
+                  x = 3 * x + 1;
+              }
+              System.out.println(x);
+          }
+      }
+  }
+```
+
+Curiosamente, essa é a famosa conjectura de Collatz. Ninguém nunca
+conseguiu demonstrar que sempre vai cair em um desses casos até convergir
+a 1.
+--></li>
+</ul>
+</li>
+<li><p>(opcional)  Imprima a seguinte tabela, usando <code>for</code>s encadeados:</p>
+<pre><code> 1
+ 2 4
+ 3 6 9
+ 4 8 12 16
+ n n*2 n*3 .... n*n
+</code></pre> <!--@answer
+ ``` java
+     class Triangulo {
+         public static void main(String[] args) {
+             int numero = 5;
+             for (int linha = 1; linha <= numero; linha++) {
+                 for (int coluna = 1; coluna <= linha; coluna++) {
+                     System.out.print(linha * coluna + " ");
+                 }
+                 System.out.println();
+             }
+         }
+     }
+ ```
+ -->
+</li>
+</ol>
+<div class="anuncio">
+	<a href="https://www.alura.com.br/promocao/aluno-caelum/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Cursos Online Alura">
+		<h4>Já conhece os cursos online Alura?</h4>
+
+		
+			<img class="icone" src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/alura_2x.png" style="width: 120.00px; height: 54.00px" width="120.00" height="54.00" aria-hidden="true">
+		
+
+		<p>A <strong>Alura</strong> oferece centenas de <strong>cursos online</strong> em sua plataforma exclusiva de ensino que favorece o aprendizado com a <strong>qualidade</strong> reconhecida da Caelum. Você pode escolher um curso nas áreas de Programação, Front-end, Mobile, Design &amp; UX, Infra e Business, com um plano que dá acesso a todos os cursos. Ex-aluno da Caelum tem 15% de desconto neste link!</p>
+		<p><span class="action">Conheça os cursos online Alura.</span></p>
+	</a>
+</div>
+<h2 id="desafios-fibonacci">3.14 Desafios: Fibonacci</h2>
+<ol>
+<li><p>Faça o exercício da série de Fibonacci usando apenas duas variáveis.</p>
+ <!--@answer
+ ``` java
+     class Desafio {
+         public static void main(String[] args) {
+             int anterior = 0;
+             int atual = 1;
+             while (atual < 100) {
+                 System.out.println(atual);
+                 atual = anterior + atual;
+                 anterior = atual - anterior;
+             }
+             System.out.println(atual);
+         }
+     }
+ ```
+ -->
+</li>
+</ol>
+
+<div class="CodeWindow exec-code-no-js">
+    <nav class="CodeWindow-menu">
+        <button class="CodeWindow-btnToggle CodeWindow-btn--black">Fechar</button>
+    </nav>
+    <div class="CodeWindow-block">
+        <h4 class="CodeWindow-blockTitle">Código</h4>
+        <!-- CodeMirror: Result -->
+        <form id="formCodigo" class="CodeWindow-form">
+            <textarea name="codigo" id="userEditor">// Seja bem vindo a apostila interativa de Java da Caelum.
+// Sempre que encontrar um botão "Executar Código"
+// Teste e veja os resultados do trecho :)
+
+class Teste {
+    public static void main(String[] args) {
+        System.out.println("Minha primeira aplicação Java!");
+    }
+}
+  
+            </textarea>
+            <button class="CodeWindow-run">Executar</button>
+        </form>
+    </div><!--
+    --><div class="CodeWindow-block">
+        <h4 class="CodeWindow-blockTitle">Resultado</h4>            
+        <!-- CodeMirror: Result -->
+        <textarea id="compilerReturn">        </textarea>
+    </div>
+</div>
+    
+        
+    </div>
+
+    <nav class="nav-simple container" role="navigation">
+    
+        <div class="nav-simple-item">
+            <p class="nav-simple-type">Capítulo anterior:</p>
+            
+                <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/o-que-e-java/" class="nav-simple-chapter">
+                    <span>O que é Java</span>
+                </a>
+            
+        </div>
+    
+    
+        <div class="nav-simple-item">
+            <p class="nav-simple-type">Próximo capítulo:</p>
+            
+                <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/orientacao-a-objetos-basica/" class="nav-simple-chapter">
+                    <span>Orientação a objetos básica</span>
+                </a>                
+            
+        </div>
+    
+</nav>
+
+
+
+        <div class="container comunidade">
+    <h2 class="comunidade-chamada">Você encontra a Caelum também em:</h2>
+    <ul class="comunidade-itens">
+        <li class="comunidade-item comunidade-blog">
+            <a href="http://blog.caelum.com.br/">
+                <span class="sp-comunidade sp-comunidade-blog"></span>
+                <h3>Blog Caelum</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-online">
+            <a href="http://www.alura.com.br/" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-online"></span>
+                <h3>Cursos Online</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-facebook">
+            <a href="http://facebook.com/caelumbr" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-facebook"></span>
+                <h3>Facebook</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-newsletter">
+            <a href="http://www.caelum.com.br/newsletter/">
+                <span class="sp-comunidade sp-comunidade-newsletter"></span>
+                <h3>Newsletter</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-editora">
+            <a href="http://www.casadocodigo.com.br/">
+                <span class="sp-comunidade sp-comunidade-editora"></span>
+                <h3>Casa do Código</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-twitter">
+            <a href="http://twitter.com/caelum" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-twitter"></span>
+                <h3>Twitter</h3>
+            </a>
+        </li>
+    </ul>
+</div>
+        <!-- Google remarketing tag -->
+<script>
+var google_conversion_id = 995678627;
+var google_conversion_label = "DYcgCO3T_gMQo7Pj2gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+</script>
+<script src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/f(1).txt"></script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995678627/?value=0&amp;label=DYcgCO3T_gMQo7Pj2gM&amp;guid=ON&amp;script=0">
+</div>
+</noscript>
+
+<!-- Mailchimp -->
+<script>
+var $mcGoal = {'settings':{'uuid':'422bed2b74623ede65048a641','dc':'us1'}};
+(function() {
+var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+})();
+</script>
+
+<!-- RD Station -->
+<script src="./Variáveis primitivas e Controle de fluxo _ Java e Orientação a Objetos_files/lead-tracking.min.js.download"></script>
+<script>
+LeadTracking.init({ token: '4b7bbfbbbe5c7e29f1c12ecb3b59096b' });
+</script>
+        
+    
+    
+
+</body></html>

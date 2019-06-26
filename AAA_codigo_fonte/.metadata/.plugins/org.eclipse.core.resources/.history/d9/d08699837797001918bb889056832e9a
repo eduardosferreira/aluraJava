@@ -1,0 +1,46 @@
+package br.com.alura.java.io.teste;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+public class TesteUnicodeEEncoding {
+
+	public static void Ex1() {
+		try {
+			String string = "C";
+			Charset charset = Charset.defaultCharset();
+			System.out.println(string.codePointAt(0) + ", " + charset.displayName());
+
+			byte[] bytes = string.getBytes();
+			System.out.print(bytes.length + " , windows-1252 : ");
+			String newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+
+			bytes = string.getBytes("UTF-16");
+			System.out.print(bytes.length + " , UTF-16 : ");
+			newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+
+			bytes = string.getBytes("UTF-8");
+			System.out.print(bytes.length + " , UTF-8 : ");
+			newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+
+			bytes = string.getBytes(StandardCharsets.US_ASCII);
+			System.out.print(bytes.length + " , StandardCharsets.US_ASCII : ");
+			newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public TesteUnicodeEEncoding() {
+		Ex1();
+	}
+
+	public static void main(String[] args) {
+		new TesteUnicodeEEncoding();
+	}
+
+}

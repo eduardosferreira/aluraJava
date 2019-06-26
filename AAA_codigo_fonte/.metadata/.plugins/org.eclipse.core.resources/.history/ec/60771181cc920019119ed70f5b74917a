@@ -1,0 +1,86 @@
+package bytebank_herdado_conta.br.com.bytebank.banco.modelo.util;
+
+import java.util.ArrayList;
+
+import bytebank_herdado_conta.br.com.bytebank.banco.modelo.Conta;
+import bytebank_herdado_conta.br.com.bytebank.banco.modelo.ContaCorrente;
+import bytebank_herdado_conta.br.com.bytebank.banco.modelo.ContaPoupanca;
+
+public class TesteArrayListJavaUtil {
+
+	private static void Ex1() {
+		ArrayList lst = new ArrayList();
+		lst.add(new ContaCorrente(0, 1));
+		lst.add(new ContaPoupanca(13, 4));
+		lst.add(1, new ContaPoupanca(11, 41));
+		for (int i = 0; i < lst.size(); i++) {
+			System.out.println(lst);
+		}
+		
+		System.out.println(lst.size());
+		System.out.println(lst.get(0));
+		Conta ref = (Conta) lst.get(1);
+		System.out.println(ref);
+		System.out.println(((Conta) lst.get(0)).getNumero());
+		ContaCorrente cc1 = null;
+		if (lst.get(0) instanceof ContaCorrente) {
+			cc1 =  (ContaCorrente) lst.get(0);
+		}
+		System.out.println(cc1);
+		lst.remove(1);
+		for (Object iRef : lst) {
+			System.out.println(iRef);
+		}
+	}
+	private static void Ex2() {
+		ArrayList<Conta> lst = new ArrayList<>();
+		lst.add(new ContaCorrente(0, 1));
+		lst.add(new ContaPoupanca(13, 4));
+		lst.add(1, new ContaPoupanca(11, 41));
+		for (int i = 0; i < lst.size(); i++) {
+			System.out.println(lst);
+		}
+		
+		System.out.println(lst.size());
+		System.out.println(lst.get(0));
+		Conta ref = lst.get(1);
+		System.out.println(ref);
+		System.out.println(lst.get(0).getNumero());
+		ContaCorrente cc1 = null;
+		if (lst.get(0) instanceof ContaCorrente) {
+			cc1 =  (ContaCorrente) lst.get(0);
+		}
+		System.out.println(cc1);
+		lst.remove(1);
+		for (Conta iRef : lst) {
+			System.out.println(iRef);
+		}
+	}
+	
+	private static void Ex3() {
+		ArrayList array = new ArrayList(26);
+		System.out.println(array.size());
+		for (int i = 0; i < 10; i++) {
+			String s = new String(""+(i+1)+"");
+			array.add(i, new String("[" + i + "] " + s));	
+		}
+		System.out.println(array.size());
+		for (Object string : array) {
+			System.out.println(string);
+		}
+		
+		
+	}
+	
+	public TesteArrayListJavaUtil() {
+		super();
+		Ex2();
+		Ex1();
+		Ex3();
+	}
+	
+	public static void main(String[] args) {
+		new TesteArrayListJavaUtil();
+	}
+
+}

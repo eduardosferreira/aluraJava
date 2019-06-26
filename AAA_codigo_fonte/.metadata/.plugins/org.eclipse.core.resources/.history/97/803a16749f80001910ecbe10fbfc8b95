@@ -1,0 +1,11 @@
+package bytebank;
+
+public class Conta { 
+    private double saldo;
+    int agencia = 43;
+    int numero;
+    String titular;
+
+    public void depositar(double saldo) {
+    }
+}

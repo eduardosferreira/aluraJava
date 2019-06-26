@@ -1,0 +1,12 @@
+package bytebank_herdado_conta.br.com.bytebank.banco.modelo;
+
+public class GuardadorDeContas {
+
+	private Conta referencias;
+	
+	public GuardadorDeContas() {
+		super();
+		 referencias = new Conta();
+	}
+
+}

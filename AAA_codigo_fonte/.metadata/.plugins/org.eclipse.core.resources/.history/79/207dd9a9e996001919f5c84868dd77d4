@@ -1,0 +1,67 @@
+package br.com.alura.java.io.teste;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+public class TesteUnicodeEEncoding {
+
+	public static void Ex2() {
+		String string = "C";
+		System.out.println(string.codePointAt(0));
+
+		// create a CharSequence seq and assign value
+		CharSequence seq = "Hello";
+
+		// create and assign value to index
+		int index = 4;
+
+		// create an int res
+		int res;
+
+		// assign result of codePointAt on seq at index to res
+		res = Character.codePointAt(seq, index);
+
+		String str = "Unicode code point is " + res;
+
+		// print res value
+		System.out.println(str);
+	}
+
+	public static void Ex1() throws Exception {
+			String string = "C";
+			System.out.println(string.codePointAt(0));
+
+			Charset charset = Charset.defaultCharset();
+			System.out.println(charset.displayName());
+			
+			byte[] bytes = string.getBytes();
+			System.out.println(bytes.length + " , windows-1252");
+			
+			bytes = string.getBytes("windows-1252");
+			System.out.println(bytes.length + " , windows-1252");
+
+			bytes = string.getBytes("UTF-16");
+			System.out.println(bytes.length + " , UTF-16");
+
+			bytes = string.getBytes("UTF-8");
+			System.out.println(bytes.length + " , UTF-8");
+
+			bytes = string.getBytes(StandardCharsets.US_ASCII);
+			System.out.println(bytes.length + " , UTF-8");
+			
+	}
+	
+	public TesteUnicodeEEncoding() {
+		try {
+			Ex1();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteUnicodeEEncoding();
+	}
+
+}

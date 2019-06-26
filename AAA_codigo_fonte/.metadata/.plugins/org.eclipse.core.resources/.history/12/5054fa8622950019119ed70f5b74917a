@@ -1,0 +1,73 @@
+package br.com.alura.javaio.teste;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public final class TesteLeitura1 {
+
+	private static FileInputStream fisFile(final String nomeArquivo) throws IOException {
+		FileInputStream fis = new FileInputStream(nomeArquivo);
+		return fis;
+	}
+	public static void exemploLeituraArquivo() {
+		System.err.println(" ---------- Exemplo : Fluxo de Entrada com Arquivo---------------- ");
+		FileInputStream fis;
+		InputStreamReader isr;
+		
+		try {
+			fis = fisFile("lorem.txt");
+			isr = new InputStreamReader(fis);
+		
+		} catch (Exception e) {
+			System.out.println("Erro na leitura do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+		
+		try (BufferedReader br = new BufferedReader(isr)) {
+			StringBuffer stringBuffer = new StringBuffer();
+			do {
+				stringBuffer.delete(0, stringBuffer.length());
+				stringBuffer.append(br.readLine());
+				System.out.println(stringBuffer.toString());
+			} while ( (!stringBuffer.toString().trim().equals(""))
+					|| (stringBuffer.toString() != "null")
+					);
+		} catch (Exception e) {
+			System.out.println("Erro na leitura dos dados do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		} 
+		
+		
+		System.out.println("Fim");
+		
+		
+	}
+
+	public static void Ex() {
+		System.err.println(" ---------- Ex ---------------- ");
+	}
+	
+	public TesteLeitura1() {
+		super();
+		Ex();
+		
+		exemploLeituraArquivo();
+	}
+	public TesteLeitura1(String[] args) {
+		super();
+		for (int i = 0; i < args.length; i++) {
+			String string = args[i];
+			System.out.println(string);
+		}
+	}
+	
+	public static void main(String[] args) {
+		new TesteLeitura1();
+		new TesteLeitura1(args);
+	}
+
+}

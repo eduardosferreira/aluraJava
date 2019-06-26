@@ -1,0 +1,6 @@
+
+    setTimeout(function(){
+        var banners = document.querySelectorAll(".share-social");
+        banners[Math.floor(Math.random()*4)].style.display = "block";
+    }, 1000);
+

@@ -1,0 +1,93 @@
+package br.com.alura.javaio.teste;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import java.net.Socket;
+
+public final class TesteEscrita2 {
+
+	private static FileOutputStream fosFile(final String nomeArquivo) throws IOException {
+		FileOutputStream fos = new FileOutputStream(nomeArquivo);
+		return fos;
+	}
+
+	private static OutputStream osFile(final String nomeArquivo) throws Exception {
+		OutputStream os = new FileOutputStream(nomeArquivo);
+		return os;
+	}
+
+	private static InputStream isFile(final String nomeArquivo) throws Exception {
+		InputStream is = new FileInputStream(nomeArquivo);
+		return is;
+	}
+
+	public static void exemploEscritaArquivo21() {
+
+		// System.err.println(" ---------- Exemplo : InputStream -> OutputStream
+		// ---------------- ");
+
+		InputStream is;
+		Reader r;
+
+		FileWriter fw;
+
+		try {
+			is = isFile("lorem.txt");
+			r = new InputStreamReader(is);
+			FileWriter fileWriter = fw = new FileWriter("lorem211.txt");
+		} catch (Exception e) {
+			System.out.println("Erro na leitura/escrita do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+
+		try (BufferedReader br = new BufferedReader(r)) {
+			String string = br.readLine();
+			while (string != null && !string.isEmpty()) {
+				fw.write(string);
+				fw.write("\n");
+				string = br.readLine();
+			}
+		} catch (Exception e) {
+			System.out.println("Erro na leitura/escrita do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+
+		System.out.println("Fim");
+	}
+
+	public static void Ex() {
+		System.err.println(" ---------- Ex ---------------- ");
+	}
+
+	public TesteEscrita2() {
+		super();
+		// Ex();
+		exemploEscritaArquivo21();
+	}
+
+	public TesteEscrita2(String[] args) {
+		super();
+		for (int i = 0; i < args.length; i++) {
+			String string = args[i];
+			System.out.println(string);
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteEscrita2();
+		new TesteEscrita2(args);
+	}
+
+}

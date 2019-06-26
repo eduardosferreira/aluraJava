@@ -1,0 +1,17 @@
+package br.com.alura.java.io.teste;
+
+public final class TesteSerializacao {
+
+	public static void Ex1() {
+		String nome = "Nico Steppat";
+	}
+	public TesteSerializacao() {
+		Ex1();
+	}
+
+	public static void main(String[] args) {
+		new TesteSerializacao();
+
+	}
+
+}

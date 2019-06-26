@@ -1,0 +1,5 @@
+1554162754969	Encapsulate field 'autoincremento'
+1554163000877	Encapsulate field 'codigo'
+1554163142764	Encapsulate field 'descricao'
+1554250610605	Convert local variable 'iniciaValores' to field
+1554250646988	Convert local variable 'b' to field

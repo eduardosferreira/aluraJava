@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://pragprog.com/the-pragmatic-programmer/extracts/tips -->
+<html lang="en" style="" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="google-site-verification" content="Y0U-2qfR5wHZl72gpEtOdc0gHrYcFRSsl4PsKagctzE">
+
+      <noscript>
+        <meta http-equiv="refresh" content="2;url=https://pragprog.com/no_js">
+      </noscript>
+
+    
+<script type="text/javascript" src="./List of Tips _ The Pragmatic Bookshelf_files/4460760967"></script><script src="./List of Tips _ The Pragmatic Bookshelf_files/nr-1123.min.js.download"></script><script type="text/javascript" async="" src="./List of Tips _ The Pragmatic Bookshelf_files/dc.js.download"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"4460760967","applicationID":"340824","transactionName":"cQ5YEkJeCFpTQEsFXkFORQ5fRg==","queueTime":0,"applicationTime":114,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1123.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);</script>
+<title>
+  List of Tips |  The Pragmatic Bookshelf 
+</title>
+<meta name="copyright" content="Copyright (c) 1999-2019 The Pragmatic Programmers, LLC. All rights reserved.">
+<meta name="description" content="">
+<meta name="keywords" content="pragmatic programmer, tips, rules, agile methods, software development">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta content="authenticity_token" name="csrf-param">
+<meta content="W75Savc5j5UjsRV1Y6+Tp1DlfwI853pxaXu5SD8+AoY=" name="csrf-token">
+
+<script src="./List of Tips _ The Pragmatic Bookshelf_files/modernizr-ff9b87cb63ff1ddf96f98cde7b915abd.js.download" type="text/javascript"></script>
+
+<link rel="shortcut icon" href="https://pragprog.com/favicon.png">
+<link rel="icon" href="https://pragprog.com/favicon.png">
+
+<link href="./List of Tips _ The Pragmatic Bookshelf_files/pip-foundation-404b73cb747d6a60feebbf23032560a0.css" media="screen" rel="stylesheet" type="text/css">
+
+
+<link href="https://pragprog.com/feed/global" rel="alternate" title="RSS" type="application/rss+xml">
+
+<link rel="apple-touch-icon" href="https://pragprog.com/assets/apple-touch-icon-b2b0ae35523796f7d278b585ee6e3fdc.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://pragprog.com/assets/apple-touch-icon-72-8324ac157c6cd2515c3221be5ba1c82f.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://pragprog.com/assets/apple-touch-icon-114-e9be9a15c4d0003dd3fbd480d1a1d887.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://pragprog.com/assets/apple-touch-icon-144-31cdbfd7af29d49d73981b0cf1719ab4.png">
+
+
+    <link href="./List of Tips _ The Pragmatic Bookshelf_files/css" rel="stylesheet">
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-280358-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  <style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><link type="text/css" rel="stylesheet" charset="UTF-8" href="./List of Tips _ The Pragmatic Bookshelf_files/translateelement.css"><meta class="foundation-data-attribute-namespace"><meta class="foundation-mq-xxlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-large-only"><meta class="foundation-mq-large"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-small-only"><meta class="foundation-mq-small"><style></style><meta class="foundation-mq-topbar"></head>
+
+  <body class="cms show  ">
+    <div class="menu-sidebar">
+      <div class="row">
+        <input class="left menu-search ui-autocomplete-input" placeholder="Search" type="search" autocomplete="off">
+        <i class="fa fa-search left"></i>
+      </div>
+      <ul class="list-unstyled">
+        <li><a href="https://pragprog.com/categories/all">Books &amp; Screencasts</a></li>
+        <li><a href="https://forums.pragprog.com/">Forums</a></li>
+        <li><a href="https://pragprog.com/frequently-asked-questions/">Support</a></li>
+        <li><a href="https://pragmaticstudio.com/">Video Courses</a></li>
+        <li><a href="http://write-for-us.pragprog.com/">Become an Author</a></li>
+        <li>
+          <a href="https://pragprog.com/login">Log in</a>
+        </li>
+        <li>
+        </li>
+      </ul>
+    </div> <!-- /menu-sidebar -->
+    <div id="wrapper-for-content">
+      <div class="overlay"><i class="fa fa-close"></i></div>
+      <div class="off-canvas-wrap" data-offcanvas="">
+        <div class="inner-wrap">
+          <div id="skip">
+            <a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips#main">Skip to main content</a>
+          </div>
+
+          
+<section class="navigation">
+  <a class="logo" href="https://pragprog.com/" alt="The Pragmatic Bookshelf">
+    <div id="logo-svg-container" style="padding-bottom: 36.364% /* 100% * 100/275 */">
+  <svg version="1.1" id="logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 8.5 275 108.5" preserveAspectRatio="xMinYMin meet" xml:space="preserve">
+
+  <style type="text/css">
+   .logo_letters{fill:#e0e0f0;}
+  </style>
+
+  <g id="Trapezoid">
+    <polygon class="trapezoid" points="247,108.5 24,108.5 0,0 275,0"></polygon>
+  </g>
+
+  <g id="The">
+    <g>
+      <g>
+	<path class="logo_letters" d="M61.3,26.4l-0.8,0.3c-0.9-1.8-2.6-3.1-4.6-3.1c-0.8,0-0.8,0.4-0.8,0.9V34c0,0.5,0,1.2,0.2,1.6
+				      c0.3,0.7,1,0.7,1.6,0.7h0.4V37h-6.5v-0.6l0.4,0c0.6,0,1.3-0.1,1.6-0.7c0.2-0.4,0.2-1.2,0.2-1.7v-9.4c0-0.7,0-1.1-0.9-1.1
+				      c-2.1,0-3.7,1.3-4.7,3.1l-0.7-0.3l1.2-3.7h12.2L61.3,26.4z"></path>
+	<path class="logo_letters" d="M72.3,34.3c0,1.2,0.2,1.9,1.5,2H74V37h-5.6v-0.6h0.3c1.4-0.1,1.6-0.7,1.6-2v-4.5
+				      c0-0.5,0-1.1-0.3-1.5c-0.3-0.4-0.9-0.6-1.4-0.6c-1.2,0-2.9,0.8-3.7,1.7v5c0,1.2,0.1,2,1.4,2h0.3V37h-5.6v-0.6h0.2
+				      c1.4-0.1,1.7-0.7,1.7-2v-9c0-1.1-0.1-1.9-1.6-2l-0.3,0v-0.6c1-0.1,2.1-0.3,3-0.7h0.8v6.4c1.2-1,2.6-1.8,4.3-1.8
+				      c0.8,0,1.7,0.2,2.4,0.7c0.8,0.6,0.8,1.5,0.8,2.4v0.1V34.3z"></path>
+	<path class="logo_letters" d="M77.4,30.9l0,1.1c0,1,0.4,2.1,0.9,2.9c0.6,0.9,1.6,1.3,2.7,1.3c1.4,0,2.4-0.7,3.1-1.9l0.7,0.4
+				      c-0.8,1.7-2.5,2.5-4.3,2.5c-1.4,0-2.6-0.4-3.7-1.4c-1-1-1.6-2.5-1.6-3.9c0-3,1.9-5.2,5-5.2h0c2.5,0,4.5,1.7,4.5,4.2v0.1H77.4z
+				      M82.5,30.1c0-1.6-1-2.6-2.4-2.6c-1.5,0-2.5,1.2-2.6,2.6H82.5z"></path>
+      </g>
+    </g>
+  </g>
+  <g id="Pragmatic">
+    <g>
+      <g>
+	<path class="logo_letters" d="M29.9,53.7c0,0.8,0,1.8,0.3,2.4c0.5,1.1,1.7,1.2,2.7,1.3l0.7,0v1.1H23.1v-1.1l0.3,0
+				      c1-0.1,2-0.2,2.4-1.2c0.4-0.8,0.4-2,0.4-3V38.6c0-1.9-0.2-3.3-2.7-3.5l-0.5,0V34h11.8c2.1,0,4.2,0.2,6,1.3c2,1.2,3.1,3.2,3.1,5.5
+				      c0,2.1-0.9,4.1-2.6,5.4c-1.8,1.4-4.4,1.6-6.6,1.6h-5V53.7z M34.3,46.4c1.8,0,3.4-0.1,4.7-1.5c1.1-1.2,1.4-2.5,1.4-4.1
+				      c0-1.5-0.5-3.1-1.7-4.1c-1.2-1-2.8-1.3-4.3-1.3c-0.9,0-3.3,0.1-4,0.7c-0.5,0.3-0.5,1.1-0.5,1.7v8.6H34.3z"></path>
+	<path class="logo_letters" d="M51.7,53.9c0.1,2.1,0.4,3.3,2.7,3.5l0.6,0v1.1h-9.9v-1.1h0.4c2.4-0.1,2.8-1.3,2.8-3.5v-7.5
+				      c0-2-0.4-3.3-2.6-3.5H45v-1.1l5.5-0.8h1.2v2.7c1.6-1.6,3.6-3.1,6-3.1c1.2,0,2.7,0.5,2.7,1.9c0,1.2-0.9,1.9-2,1.9
+				      c-1.7,0-2.1-1.2-3.2-1.2c-1.2,0-2.7,1.1-3.5,2V53.9z"></path>
+	<path class="logo_letters" d="M81.3,57.6c-0.9,0.8-2.3,1.2-3.5,1.2h-0.1c-1.8,0-3.4-0.8-3.9-2.6c-2.1,1.7-4.1,2.6-6.8,2.6
+				      c-2.5,0-5.5-1.4-5.5-4.2c0-2.4,1.5-3.6,3.6-4.5c1.9-0.9,4-1.3,6-1.5l2.7-0.3v-2.6c-0.1-1.1-0.3-2.1-1.3-2.7
+				      c-0.9-0.6-2.2-0.8-3.2-0.8c-1.1,0-3.5,0.5-3.5,1.9v0.5c0,1.2-0.5,2.2-1.8,2.2c-0.9,0-1.7-0.7-1.7-1.6c0-1.5,1.7-2.8,2.9-3.4
+				      c1.5-0.6,3.5-1,5.1-1h0.1c1.5,0,3.4,0.5,4.7,1.2c1.9,1,2.1,2.4,2.1,4.4v7.1c0,1.5,0.2,3.8,2,3.8c0.5,0,1-0.3,1.5-0.5L81.3,57.6z
+				      M73.7,49.5c-2.7,0.3-8.6,1-8.6,4.6c0,1.8,1.5,2.9,3.3,2.9c1.9,0,3.9-1.2,5.4-2.4V49.5z"></path>
+	<path class="logo_letters" d="M94.6,56.8c2.7,0.4,5.8,0.9,5.8,4.4c0,4.9-5.8,6-9.7,6c-2.9,0-9.1-0.7-9.1-4.6
+				      c0-2.1,2.1-3.2,3.7-3.8v-0.1c-1.4-0.4-2.6-1.3-2.6-2.9c0-2,1.7-3.3,3.5-3.7c-1.8-1-2.8-2.9-2.8-4.9v-0.2c0.1-4,3.5-6.3,7.2-6.3
+				      c1.1,0,2.2,0.2,3.3,0.6c0.9-1.7,2.5-3.2,4.5-3.2c1,0,2.1,0.4,2.1,1.5c0,0.7-0.5,1.4-1.3,1.4c-0.8,0-1.5-0.6-2.3-0.6
+				      s-1.4,0.8-1.9,1.4c1.8,1.3,3,3.1,3,5.4c0,1.7-0.9,3.5-2.2,4.5c-1.4,1.2-3.4,1.5-5.3,1.5c-1.2,0-2.2-0.2-3.2-0.6
+				      c-0.7,0.3-1.7,1.1-1.7,1.9c0,1.3,2,1.4,2.8,1.5L94.6,56.8z M86.7,59.2c-1.4,0.4-2.9,1.7-2.9,3.2c0,3.2,4.8,3.7,7.1,3.7
+				      c2.3,0,6.9-0.5,6.9-3.6c0-2-2.6-2.2-4.1-2.4L86.7,59.2z M86.9,47c0,2.7,0.7,5,3.9,5c1.2,0,2.6-0.6,3.1-1.7
+				      c0.5-0.9,0.6-2.4,0.6-3.4c0-2.6-0.6-4.9-3.7-4.9C87.8,42,86.9,44.5,86.9,47z"></path>
+	<path class="logo_letters" d="M107.7,53.9c0,2,0.3,3.3,2.6,3.5h0.4v1.1h-9.2v-1.1c2.4-0.2,2.8-1.4,2.8-3.5v-7.5
+				      c0-2-0.4-3.3-2.6-3.5h-0.6v-1.1l5.5-0.8h1.2v2.5c1.6-1.7,4-2.8,6.8-2.8c2.3,0,3.9,0.6,5,2.8c1.8-1.6,4.3-2.8,6.6-2.8h0.1
+				      c1.5,0,3.1,0.5,4.1,1.8c0.8,1,0.9,2.3,0.9,3.5v7.9c0,1.9,0.3,3.3,2.7,3.5v1.1h-9.1v-1.1h0.3c2.3-0.2,2.7-1.4,2.7-3.5v-7.1
+				      c0-0.8,0-1.7-0.3-2.4c-0.4-1.1-1.4-1.8-2.6-1.8c-1.9,0-3.8,1.2-5.4,2.4v9c0,2.1,0.4,3.3,2.7,3.5h0.3v1.1H113v-1.1h0.3
+				      c2.3-0.2,2.7-1.4,2.7-3.5v-7.2c0-2-0.1-4.1-2.7-4.1c-2.1,0-4.1,1.2-5.5,2.4V53.9z"></path>
+	<path class="logo_letters" d="M155.4,57.6c-0.9,0.8-2.3,1.2-3.5,1.2h-0.1c-1.8,0-3.4-0.8-3.9-2.6c-2.1,1.7-4.1,2.6-6.8,2.6
+				      c-2.5,0-5.5-1.4-5.5-4.2c0-2.4,1.5-3.6,3.6-4.5c1.9-0.9,4-1.3,6-1.5l2.7-0.3v-2.6c-0.1-1.1-0.3-2.1-1.3-2.7
+				      c-0.9-0.6-2.2-0.8-3.2-0.8c-1.1,0-3.5,0.5-3.5,1.9v0.5c0,1.2-0.5,2.2-1.8,2.2c-0.9,0-1.7-0.7-1.7-1.6c0-1.5,1.7-2.8,2.9-3.4
+				      c1.5-0.6,3.5-1,5.1-1h0.1c1.5,0,3.4,0.5,4.7,1.2c1.9,1,2.1,2.4,2.1,4.4v7.1c0,1.5,0.2,3.8,2,3.8c0.5,0,1-0.3,1.5-0.5L155.4,57.6z
+				      M147.9,49.5c-2.7,0.3-8.6,1-8.6,4.6c0,1.8,1.5,2.9,3.3,2.9c1.9,0,3.9-1.2,5.4-2.4V49.5z"></path>
+	<path class="logo_letters" d="M167.5,42.2h-5.1v10.1c0,2,0,4.9,2.7,4.9c1.3,0,2.3-0.7,3.1-1.6l0.9,0.8c-1.2,1.6-3.1,2.3-5.1,2.3
+				      c-1.2,0-2.6-0.3-3.6-0.9c-1.4-0.9-1.6-2.3-1.6-3.9V42.2h-3v-1.2c4.1-0.1,4.9-3.1,4.9-6.6h1.5v6.6h5.1V42.2z"></path>
+	<path class="logo_letters" d="M176.3,53.9c0,2,0.3,3.3,2.6,3.5h0.4v1.1h-9.5v-1.1h0.3c2.4-0.1,2.7-1.3,2.7-3.5v-7.5
+				      c0-2-0.4-3.3-2.6-3.5h-0.6v-1.1l5.5-0.8h1.2V53.9z M174.5,39.3c-1.3,0-2.1-1-2.1-2.2c0-1.1,1-2.1,2.2-2.1c1.3,0,2.2,1,2.2,2.2
+				      C176.7,38.4,175.7,39.3,174.5,39.3z"></path>
+	<path class="logo_letters" d="M197.6,54.8c-1.8,2.8-4.4,4-7.7,4c-5.4,0-8.9-3.5-8.9-8.9c0-5.4,3.3-9.2,8.9-9.2
+				      c1.7,0,3.3,0.3,4.8,1.3c1.2,0.8,2.4,2,2.4,3.5c0,1.1-0.7,2-1.8,2c-1,0-1.8-0.7-1.8-1.7c0-0.5,0.1-0.9,0.1-1.4
+				      c0-1.6-2.3-2.3-3.6-2.3c-4.1,0-4.9,4.5-4.9,7.7v0.1c0,3.6,1.6,7.5,5.8,7.5c2.5,0,4.1-1.4,5.6-3.3L197.6,54.8z"></path>
+      </g>
+    </g>
+  </g>
+  <g id="Bookshelf">
+    <g>
+      <g>
+	<path class="logo_letters" d="M68.6,86v-1.1l0.4,0c1-0.1,2.1-0.2,2.6-1.2c0.3-0.6,0.4-1.7,0.4-2.6V66.1c0-1.9-0.2-3.3-2.7-3.5
+				      l-0.6-0.1v-1.1H81c1.9,0,4.7,0.1,6.5,0.7c2.3,0.8,4,2.6,4,5.1c0,3.1-2.4,4.6-5.2,5.1v0.1c3.3,0.5,6.5,2.5,6.5,6.2
+				      c0,2.7-1.4,4.9-3.8,6.1c-2.2,1.1-5.2,1.2-7.6,1.2H68.6z M79.5,72c3.3,0,8.3,0,8.3-4.6c0-4.1-4.2-4.6-7.4-4.6c-1,0-3.3,0-4.2,0.8
+				      c-0.6,0.6-0.7,1.7-0.7,2.6V72H79.5z M75.5,80.3c0,1,0,2.6,0.6,3.3c0.8,0.8,3.1,0.9,4.2,0.9c1.8,0,4.2-0.2,5.8-1.1
+				      c1.7-1,2.6-2.8,2.6-4.8c0-2.2-1-4.2-3.3-4.8c-1.5-0.4-3.6-0.4-5.3-0.4h-4.6V80.3z"></path>
+	<path class="logo_letters" d="M110.4,70.5c1.8,1.7,2.6,4.4,2.6,6.8c0,5.4-3.4,9-8.8,9c-5.3,0-8.8-3.5-8.8-8.8
+				      c0-5.4,3.1-9.3,8.7-9.3C106.4,68.2,108.8,68.9,110.4,70.5z M104.3,69.7c-4.1,0-5.1,4.4-5.1,7.7c0,3.5,1,7.5,5.3,7.5
+				      c3.9,0,4.8-4.1,4.8-7.2c0-1.7-0.1-3.7-0.9-5.3c-0.8-1.5-2.3-2.7-4-2.7H104.3z"></path>
+	<path class="logo_letters" d="M130.6,70.5c1.8,1.7,2.6,4.4,2.6,6.8c0,5.4-3.4,9-8.8,9c-5.3,0-8.8-3.5-8.8-8.8
+				      c0-5.4,3.1-9.3,8.7-9.3C126.5,68.2,129,68.9,130.6,70.5z M124.5,69.7c-4.1,0-5.1,4.4-5.1,7.7c0,3.5,1,7.5,5.3,7.5
+				      c3.9,0,4.8-4.1,4.8-7.2c0-1.7-0.1-3.7-0.9-5.3c-0.8-1.5-2.3-2.7-4-2.7H124.5z"></path>
+	<path class="logo_letters" d="M141.8,77l5.1-4.5c0.4-0.4,1.3-1,1.3-1.7c0-1-1.2-1.1-2-1.2v-1.1h9.6v1.1c-3.2,0.3-5.4,1.7-7.7,3.8
+				      l-0.9,0.8l5,7.3c1.2,1.7,2.6,3.1,4.8,3.4V86h-9.8v-1.1h0.4c0.7,0,1.6,0,1.6-1c0-0.8-0.8-1.8-1.2-2.4l-3.4-4.9l-2.9,2.6v2.3
+				      c0,2.1,0.2,3.4,2.5,3.5h0.6V86h-9.8v-1.1h0.4c2.4-0.1,2.8-1.2,2.8-3.5V66c0-1.9-0.2-3.3-2.7-3.5l-0.5,0v-1.1
+				      c1.8-0.2,3.5-0.5,5.2-1.2h1.4V77z"></path>
+	<path class="logo_letters" d="M173,74.1h-1.2c-0.9-2.4-3.7-4.4-6.3-4.4c-1.6,0-3.7,0.7-3.7,2.6c0,1.8,2.1,2.1,3.4,2.4l4.1,1
+				      c2.7,0.6,5,1.6,5,4.8c0,4-4,5.8-7.5,5.8c-2.1,0-4.1-0.5-5.8-1.8l-0.4,1.5h-1.2l-1.3-6.4h1.3c1,3.2,4,5.2,7.3,5.2
+				      c1.8,0,4.5-0.9,4.5-3.2c0-1.8-1.6-2.2-3-2.5l-3.7-1c-2.7-0.7-5.8-1.4-5.8-4.8c0-3.3,3.7-5.1,6.6-5.1c1.8,0,3.7,0.5,5.1,1.6
+				      l0.4-1.3h1L173,74.1z"></path>
+	<path class="logo_letters" d="M195.7,81.4c0,2,0.3,3.3,2.5,3.5h0.4V86H189v-1.1h0.4c2.4-0.1,2.8-1.2,2.8-3.5v-7.7
+				      c0-0.9,0-1.8-0.6-2.6c-0.6-0.7-1.5-1-2.4-1c-2.1,0-4.9,1.4-6.3,2.8v8.5c0,2,0.3,3.3,2.4,3.5h0.5V86h-9.6v-1.1h0.4
+				      c2.4-0.1,2.8-1.2,2.8-3.5V66c0-1.9-0.2-3.3-2.7-3.5l-0.5,0v-1.1c1.8-0.2,3.5-0.5,5.2-1.2h1.4v11.1c2.1-1.8,4.5-3,7.3-3
+				      c1.3,0,3,0.4,4,1.2c1.4,1.1,1.4,2.6,1.4,4.1v0.3V81.4z"></path>
+	<path class="logo_letters" d="M204.4,75.6l-0.1,1.8c0,1.7,0.6,3.6,1.5,5c1,1.5,2.8,2.2,4.6,2.2c2.4,0,4.1-1.2,5.3-3.3l1.2,0.6
+				      c-1.3,2.8-4.3,4.3-7.3,4.3c-2.4,0-4.5-0.6-6.3-2.3c-1.8-1.8-2.7-4.3-2.7-6.7c0-5.2,3.3-9,8.6-9h0.1c4.2,0,7.7,2.8,7.7,7.2v0.1
+				      H204.4z M213.1,74.1c0-2.7-1.7-4.4-4.1-4.4c-2.6,0-4.2,2.1-4.5,4.4H213.1z"></path>
+	<path class="logo_letters" d="M225.4,81.4c0,1.9,0.3,3.3,2.5,3.5l0.4,0V86h-9.4v-1.1h0.3c2.3-0.2,2.7-1.3,2.7-3.5V66
+				      c0-1.9-0.2-3.3-2.7-3.5l-0.5,0v-1.1c1.8-0.2,3.5-0.5,5.2-1.2h1.4V81.4z"></path>
+	<path class="logo_letters" d="M239.6,69.7H236v11.7c0,2,0.3,3.3,2.5,3.5l0.5,0V86h-9.5v-1.1h0.3c2.3-0.1,2.7-1.3,2.7-3.5V69.7
+				      h-3.1v-1.2h3.1v-1.5c0-1.9,0.1-3.6,1.5-5.1c1.6-1.6,4.3-2.4,6.5-2.4c1.2,0,3.1,0.6,3.1,2.1c0,0.9-0.8,1.6-1.7,1.6
+				      c-1.7,0-1.7-2.1-3.4-2.1c-0.6,0-1.3,0.4-1.8,0.8c-0.8,0.8-0.8,1.7-0.8,2.8v3.9h3.6V69.7z"></path>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+
+  </a>
+  <nav class="main-nav clearfix">
+    <ul class="non-mobile non-tablet large-6 large-offset-3 columns text-left">
+      <li><a href="https://pragprog.com/categories/all">Books &amp; Screencasts</a></li>
+      <li><a href="https://forums.pragprog.com/">Forums</a></li>
+      <li><a href="https://pragprog.com/frequently-asked-questions/">Support</a></li>
+      <li><a href="https://pragmaticstudio.com/">Video Courses</a></li>
+      <li><a href="http://write-for-us.pragprog.com/">Become an Author</a></li>
+    </ul>
+    <ul class="non-mobile tablet-menu large-3 columns">
+      <li><a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips#" class="mobile tablet left menu-btn" aria-expanded="true"><span class="fa fa-bars"></span></a></li>
+      <li><a href="https://pragprog.com/cart" class="cart-in-navbar not-empty" data-reveal-ajax="true" data-reveal-id="common-modal" title="Display your cart and proceed to checkout"><figure class="icon-text">
+         
+        <i class="fa fa-shopping-cart cart-overlay">
+        </i>
+    
+         <figcaption>Cart <span class="cart-count" aria-live="polite" aria-label="number of items in cart">
+                (0)
+             </span></figcaption>
+      </figure>
+    </a></li>
+      <li><a href="https://pragprog.com/login">Login</a></li>
+    </ul>
+    <a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips#" class="mobile non-tablet left menu-btn" aria-expanded="true"><span class="fa fa-bars"></span></a>
+    <div class="right mobile non-tablet"><a href="https://pragprog.com/cart" class="cart-in-navbar not-empty" data-reveal-ajax="true" data-reveal-id="common-modal" title="Display your cart and proceed to checkout"><figure class="icon-text">
+         
+        <i class="fa fa-shopping-cart cart-overlay">
+        </i>
+    
+         <figcaption>Cart <span class="cart-count" aria-live="polite" aria-label="number of items in cart">
+                (0)
+             </span></figcaption>
+      </figure>
+    </a></div>
+  </nav>
+  <div class="secondary-nav clearfix">
+    <div class="large-6 large-offset-3 medium-6 small-12 columns tagline non-mobile text-center">
+      <h2>By professional developers for professional developers.</h2>
+    </div>
+    <div class="large-2 medium-3 small-8 right">
+      <form accept-charset="UTF-8" action="https://pragprog.com/search" class="search-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="W75Savc5j5UjsRV1Y6+Tp1DlfwI853pxaXu5SD8+AoY="></div>
+  <div class="clearfix">
+    <input name="q" placeholder="Search our catalog…" type="search" class="left ui-autocomplete-input" autocomplete="off">
+    <button class="left"><span class="fa fa-search"></span></button>
+  </div>
+</form>
+    </div>
+  </div>
+</section> <!-- /section -->
+
+
+          <div id="layout">
+            <p class="panel hide">
+              <strong class="show-for-small-only">small</strong>
+              <strong class="show-for-medium-only">medium</strong>
+              <strong class="show-for-large-only">large</strong>
+              <strong class="show-for-xlarge-up">xlarge</strong>
+            </p>
+            <div id="error-popup" class="reveal-modal small" data-reveal="" aria-hidden="true" role="dialog">
+  <a href="https://pragprog.com/the-pragmatic-programmer/extracts/tips#" tabindex="0" class="close-reveal-modal" aria-label="Close Alert">×</a>
+  <div data-alert="" class="alert-box" tabindex="0" aria-live="assertive" role="dialogalert">
+  </div>
+</div>
+
+            <main id="#main">
+                <div class="panel radius alert-box xalert-error gdpr__cookie_consent js-gdpr__cookie_consent">
+    <div class="gdpr__cookie_consent__text">
+      <strong>This website uses cookies for account and order processing. By using this site you understand and agree to our use of cookies, our <a href="https://pragprog.com/terms-of-use">Terms Of Use</a>, and <a href="https://pragprog.com/privacy">Privacy Policy</a></strong>
+    </div>
+    <div class="gdpr__cookie_consent__buttons">
+      <button class="button btn gdpr__cookie_consent__buttons__ok js-gdpr__cookie_consent__buttons__ok"> I agree</button>
+    </div>
+  </div>
+
+              
+                <div class="row">
+    <div class="medium-6 medium-offset-3 columns end">
+      <header id="content-header">
+        <h1>List of Tips</h1>
+      </header>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="medium-6 medium-offset-3 columns end">
+    <div id="cms-content">
+        <p style="float:right;;"><a href="https://pragprog.com/book/tpp/the-pragmatic-programmer"><img alt="Cover Image For The Pragmatic Programmer…" class="cover-large b-lazy" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/tpp_largecover.jpg" width="120"></a></p>
+
+
+	<p>Extracted From <em>The Pragmatic Programmer</em><br>
+by Andrew Hunt and David Thomas.
+Copyright 2000, Addison Wesley.</p>
+
+
+	<p>We’ve been busy since we first wrote <em>The Pragmatic Programmer</em> back in 1999.
+Have you seen all of our <a href="https://pragprog.com/titles">recent books that we’ve written or published</a>?</p>
+
+
+	<p>From Agility to Elixir and Rust, project management to debugging your career, we’ve got the titles to help keep you on top of your game.</p>
+
+
+	<p>—Andy and Dave</p>
+
+
+	<ul>
+	<li><a href="https://pragprog.com/titles">Browse all titles</a></li>
+		<li><a href="https://pragprog.com/categories">Browse by category</a></li>
+	</ul>
+
+
+	<h4>Pragmatic Software Development Tips</h4>
+
+
+	<p><strong>Care About Your Craft</strong><br>
+Why spend your life developing software unless you care about doing it well?</p>
+
+
+	<p><strong>Provide Options, Don’t Make Lame Excuses</strong><br>
+Instead of excuses, provide options. Don’t say it can’t be done; explain what can be done.</p>
+
+
+	<p><strong>Be a Catalyst for Change</strong><br>
+You can’t force change on people. Instead, show them how the future might be and help them participate in creating it.</p>
+
+
+	<p><strong>Make Quality a Requirements Issue</strong><br>
+Involve your users in determining the project’s real quality requirements.</p>
+
+
+	<p><strong>Critically Analyze What You Read and Hear</strong><br>
+Don’t be swayed by vendors, media hype, or dogma. Analyze information in terms of you and your project.</p>
+
+
+	<p><strong><span class="caps">DRY</span>—Don’t Repeat Yourself</strong><br>
+Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.</p>
+
+
+	<p><strong>Eliminate Effects Between Unrelated Things</strong><br>
+Design components that are self-contained, independent, and have a single, well-defined purpose.</p>
+
+
+	<p><strong>Use Tracer Bullets to Find the Target</strong><br>
+Tracer bullets let you home in on your target by trying things and seeing how close they land.</p>
+
+
+	<p><strong>Program Close to the Problem Domain</strong><br>
+Design and code in your user’s language.</p>
+
+
+	<p><strong>Iterate the Schedule with the Code</strong><br>
+Use experience you gain as you implement to refine the project time scales.</p>
+
+
+	<p><strong>Use the Power of Command Shells</strong><br>
+Use the shell when graphical user interfaces don’t cut it.</p>
+
+
+	<p><strong>Always Use Source Code Control</strong><br>
+Source code control is a time machine for your work—you can go back.</p>
+
+
+	<p><strong>Don’t Panic When Debugging</strong><br>
+Take a deep breath and <span class="caps">THINK</span>! about what could be causing the bug.</p>
+
+
+	<p><strong>Don’t Assume It—Prove It</strong><br>
+Prove your assumptions in the actual environment—with real data and boundary conditions.</p>
+
+
+	<p><strong>Write Code That Writes Code</strong><br>
+Code generators increase your productivity and help avoid duplication.</p>
+
+
+	<p><strong>Design with Contracts</strong><br>
+Use contracts to document and verify that code does no more and no less than it claims to do.</p>
+
+
+	<p><strong>Use Assertions to Prevent the Impossible</strong><br>
+Assertions validate your assumptions. Use them to protect your code from an uncertain world.</p>
+
+
+	<p><strong>Finish What You Start</strong><br>
+Where possible, the routine or object that allocates a resource should be responsible for deallocating it.</p>
+
+
+	<p><strong>Configure, Don’t Integrate</strong><br>
+Implement technology choices for an application as configuration options, not through integration or engineering.</p>
+
+
+	<p><strong>Analyze Workflow to Improve Concurrency</strong><br>
+Exploit concurrency in your user’s workflow.</p>
+
+
+	<p><strong>Always Design for Concurrency</strong><br>
+Allow for concurrency, and you’ll design cleaner interfaces with fewer assumptions.</p>
+
+
+	<p><strong>Use Blackboards to Coordinate Workflow</strong><br>
+Use blackboards to coordinate disparate facts and agents, while maintaining independence and isolation among participants.</p>
+
+
+	<p><strong>Estimate the Order of Your Algorithms</strong><br>
+Get a feel for how long things are likely to take before you write code.</p>
+
+
+	<p><strong>Refactor Early, Refactor Often</strong><br>
+Just as you might weed and rearrange a garden, rewrite, rework, and re-architect code when it needs it. Fix the root of the problem.</p>
+
+
+	<p><strong>Test Your Software, or Your Users Will</strong><br>
+Test ruthlessly. Don’t make your users find bugs for you.</p>
+
+
+	<p><strong>Don’t Gather Requirements—Dig for Them</strong><br>
+Requirements rarely lie on the surface. They’re buried deep beneath layers of assumptions, misconceptions, and politics.</p>
+
+
+	<p><strong>Abstractions Live Longer than Details</strong><br>
+Invest in the abstraction, not the implementation. Abstractions can survive the barrage of changes from different implementations and new technologies.</p>
+
+
+	<p><strong>Don’t Think Outside the Box—Find the Box</strong><br>
+When faced with an impossible problem, identify the real constraints. Ask yourself: “Does it have to be done this way? Does it have to be done at all?”</p>
+
+
+	<p><strong>Some Things Are Better Done than Described</strong><br>
+Don’t fall into the specification spiral—at some point you need to start coding.</p>
+
+
+	<p><strong>Costly Tools Don’t Produce Better Designs</strong><br>
+Beware of vendor hype, industry dogma, and the aura of the price tag. Judge tools on their merits.</p>
+
+
+	<p><strong>Don’t Use Manual Procedures</strong><br>
+A shell script or batch file will execute the same instructions, in the same order, time after time.</p>
+
+
+	<p><strong>Coding Ain’t Done ‘Til All the Tests Run</strong><br>
+‘Nuff said.</p>
+
+
+	<p><strong>Test State Coverage, Not Code Coverage</strong><br>
+Identify and test significant program states. Just testing lines of code isn’t enough.</p>
+
+
+	<p><strong>English is Just a Programming Language</strong><br>
+Write documents as you would write code: honor the <span class="caps">DRY</span> principle, use metadata, <span class="caps">MVC</span>, automatic generation, and so on.</p>
+
+
+	<p><strong>Gently Exceed Your Users’ Expectations</strong><br>
+Come to understand your users’ expectations, then deliver just that little bit more.</p>
+
+
+	<p><strong>Think! About Your Work</strong><br>
+Turn off the autopilot and take control. Constantly critique and appraise your work.</p>
+
+
+	<p><strong>Don’t Live with Broken Windows</strong><br>
+Fix bad designs, wrong decisions, and poor code when you see them.</p>
+
+
+	<p><strong>Remember the Big Picture</strong><br>
+Don’t get so engrossed in the details that you forget to check what’s happening around you.</p>
+
+
+	<p><strong>Invest Regularly in Your Knowledge Portfolio</strong><br>
+Make learning a habit.</p>
+
+
+	<p><strong>It’s Both What You Say and the Way You Say It</strong><br>
+There’s no point in having great ideas if you don’t communicate them effectively.</p>
+
+
+	<p><strong>Make It Easy to Reuse</strong><br>
+If it’s easy to reuse, people will. Create an environment that supports reuse.</p>
+
+
+	<p><strong>There Are No Final Decisions</strong><br>
+No decision is cast in stone. Instead, consider each as being written in the sand at the beach, and plan for change.</p>
+
+
+	<p><strong>Prototype to Learn</strong><br>
+Prototyping is a learning experience. Its value lies not in the code you produce, but in the lessons you learn.</p>
+
+
+	<p><strong>Estimate to Avoid Surprises</strong><br>
+Estimate before you start. You’ll spot potential problems up front.</p>
+
+
+	<p><strong>Keep Knowledge in Plain Text</strong><br>
+Plain text won’t become obsolete. It helps leverage your work and simplifies debugging and testing.</p>
+
+
+	<p><strong>Use a Single Editor Well</strong><br>
+The editor should be an extension of your hand; make sure your editor is configurable, extensible, and programmable.</p>
+
+
+	<p><strong>Fix the Problem, Not the Blame</strong><br>
+It doesn’t really matter whether the bug is your fault or someone else’s—it is still your problem, and it still needs to be fixed.</p>
+
+
+	<p><strong>“select” Isn’t Broken</strong><br>
+It is rare to find a bug in the OS or the compiler, or even a third-party product or library. The bug is most likely in the application.</p>
+
+
+	<p><strong>Learn a Text Manipulation Language</strong><br>
+You spend a large part of each day working with text. Why not have the computer do some of it for you?</p>
+
+
+	<p><strong>You Can’t Write Perfect Software</strong><br>
+Software can’t be perfect. Protect your code and users from the inevitable errors.</p>
+
+
+	<p><strong>Crash Early</strong><br>
+A dead program normally does a lot less damage than a crippled one.</p>
+
+
+	<p><strong>Use Exceptions for Exceptional Problems</strong><br>
+Exceptions can suffer from all the readability and maintainability problems of classic spaghetti code. Reserve exceptions for exceptional things.</p>
+
+
+	<p><strong>Minimize Coupling Between Modules</strong><br>
+Avoid coupling by writing “shy” code and applying the Law of Demeter.</p>
+
+
+	<p><strong>Put Abstractions in Code, Details in Metadata</strong><br>
+Program for the general case, and put the specifics outside the compiled code base.</p>
+
+
+	<p><strong>Design Using Services</strong><br>
+Design in terms of services—independent, concurrent objects behind well-defined, consistent interfaces.</p>
+
+
+	<p><strong>Separate Views from Models</strong><br>
+Gain flexibility at low cost by designing your application in terms of models and views.</p>
+
+
+	<p><strong>Don’t Program by Coincidence</strong><br>
+Rely only on reliable things. Beware of accidental complexity, and don’t confuse a happy coincidence with a purposeful plan.</p>
+
+
+	<p><strong>Test Your Estimates</strong><br>
+Mathematical analysis of algorithms doesn’t tell you everything. Try timing your code in its target environment.</p>
+
+
+	<p><strong>Design to Test</strong><br>
+Start thinking about testing before you write a line of code.</p>
+
+
+	<p><strong>Don’t Use Wizard Code You Don’t Understand</strong><br>
+Wizards can generate reams of code. Make sure you understand all of it before you incorporate it into your project.</p>
+
+
+	<p><strong>Work with a User to Think Like a User</strong><br>
+It’s the best way to gain insight into how the system will really be used.</p>
+
+
+	<p><strong>Use a Project Glossary</strong><br>
+Create and maintain a single source of all the specific terms and vocabulary for a project.</p>
+
+
+	<p><strong>Start When You’re Ready</strong><br>
+You’ve been building experience all your life. Don’t ignore niggling doubts.</p>
+
+
+	<p><strong>Don’t Be a Slave to Formal Methods</strong><br>
+Don’t blindly adopt any technique without putting it into the context of your development practices and capabilities.</p>
+
+
+	<p><strong>Organize Teams Around Functionality</strong><br>
+Don’t separate designers from coders, testers from data modelers. Build teams the way you build code.</p>
+
+
+	<p><strong>Test Early. Test Often. Test Automatically.</strong><br>
+Tests that run with every build are much more effective than test plans that sit on a shelf.</p>
+
+
+	<p><strong>Use Saboteurs to Test Your Testing</strong><br>
+Introduce bugs on purpose in a separate copy of the source to verify that testing will catch them.</p>
+
+
+	<p><strong>Find Bugs Once</strong><br>
+Once a human tester finds a bug, it should be the last time a human tester finds that bug. Automatic tests should check for it from then on.</p>
+
+
+	<p><strong>Build Documentation In, Don’t Bolt It On</strong><br>
+Documentation created separately from code is less likely to be correct and up to date.</p>
+
+
+	<p><strong>Sign Your Work</strong><br>
+Craftsmen of an earlier age were proud to sign their work. You should be, too.</p>
+
+
+<ul class="list-unstyled list-inline">
+  <li><a href="https://pragprog.com/titles/tpp" class="btn btn-small">Buy&nbsp;eBook</a></li>
+    <li class="divider">&nbsp; | &nbsp;</li>
+   <li><a href="https://pragprog.com/titles" class="btn btn-small">Browse&nbsp;Titles</a></li>
+</ul>
+<br><br>
+
+	<p>For more interesting tidbits on software development, see <a href="https://pragprog.com/titles">all of our titles</a>.</p>
+
+
+<ul class="4 book-cover-list clearfix"><li class="book-cover-item cover-large" data-id="539" data-pubdate="2019-&amp;06-12" data-title="build chatbot interactions" style=""><a href="https://pragprog.com/book/dpchat/build-chatbot-interactions" title="Cover for Build Chatbot Interactions. Click to pop-up details."><img alt="Cover Image For Build Chatbot Interactions…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/dpchat_largecover.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="537" data-pubdate="2019-&amp;05-31" data-title="small, sharp software tools" style=""><a href="https://pragprog.com/book/bhcldev/small-sharp-software-tools" title="Cover for Small, Sharp Software Tools. Click to pop-up details."><img alt="Cover Image For Small, Sharp Software Tools…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/bhcldev_largecover.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="580" data-pubdate="2019-&amp;11-10" data-title="ios unit testing by example" style=""><a href="https://pragprog.com/book/jrlegios/ios-unit-testing-by-example" title="Cover for iOS Unit Testing by Example. Click to pop-up details."><img alt="Cover Image For iOS Unit Testing by Example…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/jrlegios_largebeta.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="595" data-pubdate="2019-&amp;09-15" data-title="pragmatic programmer, 20th anniversary edition" style=""><a href="https://pragprog.com/book/tpp20/the-pragmatic-programmer-20th-anniversary-edition" title="Cover for The Pragmatic Programmer, 20th Anniversary Edition. Click to pop-up details."><img alt="Cover Image For The Pragmatic Programmer, 20th Anniversary Edition…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/tpp20_largebeta.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="597" data-pubdate="2019-&amp;05-15" data-title="from chaos to successful distributed agile teams" style=""><a href="https://pragprog.com/book/d-rkteams/from-chaos-to-successful-distributed-agile-teams" title="Cover for From Chaos to Successful Distributed Agile Teams. Click to pop-up details."><img alt="Cover Image For From Chaos to Successful Distributed Agile Teams…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/d-rkteams_largecover.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="588" data-pubdate="2020-&amp;02-10" data-title="agile web development with rails 6" style=""><a href="https://pragprog.com/book/rails6/agile-web-development-with-rails-6" title="Cover for Agile Web Development with Rails 6. Click to pop-up details."><img alt="Cover Image For Agile Web Development with Rails 6…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/rails6_largebeta.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="526" data-pubdate="2019-&amp;08-10" data-title="designing elixir systems with otp" style=""><a href="https://pragprog.com/book/jgotp/designing-elixir-systems-with-otp" title="Cover for Designing Elixir Systems with OTP. Click to pop-up details."><img alt="Cover Image For Designing Elixir Systems with OTP…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/jgotp_largebeta.jpg" width="120"></a></li><li class="book-cover-item cover-large" data-id="568" data-pubdate="2019-&amp;11-10" data-title="scrum book" style=""><a href="https://pragprog.com/book/jcscrum/a-scrum-book" title="Cover for A Scrum Book. Click to pop-up details."><img alt="Cover Image For A Scrum Book…" class="cover-large b-lazy book-cover" height="144" src="./List of Tips _ The Pragmatic Bookshelf_files/jcscrum_largebeta.jpg" width="120"></a></li></ul> 
+      </div>
+     
+  </div>
+</div>
+
+
+
+            </main>
+          </div>
+          <div id="common-modal" class="reveal-modal" data-reveal="" aria-hidden="true" role="dialog"></div>
+
+<div id="medium-modal" class="medium reveal-modal" data-reveal="" aria-hidden="true" role="dialog"></div>
+
+<div id="small-modal" class="small reveal-modal" data-reveal="" aria-hidden="true" role="dialog"></div>
+
+<div id="confirm-add-to-cart-modal" class="medium reveal-modal" data-reveal="" aria-hidden="true" role="dialog">
+  <h1>Added to your cart</h1>
+  <p id="message"></p>
+  <button aria-label="Close" class="btn" onclick="$(&#39;.reveal-modal.open&#39;).foundation(&#39;reveal&#39;, &#39;close&#39;); return false" type="submit"><span>Continue Shopping</span></button>
+  <a href="https://pragprog.com/cart" class="btn yellow-btn" data-reveal-ajax="true" data-reveal-id="common-modal" title="Display your cart and proceed to checkout">View Your Cart</a>
+</div>
+
+<div id="confirm-add-to-cart-prior-purchase-modal" class="medium reveal-modal" data-reveal="" aria-hidden="true" role="dialog">
+  <div class="row">
+    <div class="small-8 small-offset-2 columns end">
+      <p id="header-message"></p>
+      <ul id="items"></ul>
+      <p id="footer-message"></p>
+    </div>
+  </div> <!-- /row -->
+
+  <div class="row">
+    <div class="small-4 small-offset-2 columns">
+      <button class="small radius success" id="yes-confirm-buy" type="submit"><span>Yes</span></button>
+    </div>
+    <div class="small-4 columns end">
+      <button aria-label="Close" class="small radius secondary" onclick="$(&#39;.reveal-modal.open&#39;).foundation(&#39;reveal&#39;, &#39;close&#39;); return false" type="submit"><span>No</span></button>
+    </div>
+  </div> <!-- /row -->
+</div>
+
+        </div>
+      </div>
+    </div> <!-- /#wrapper-for-content -->
+
+    <footer>
+  <div class="row">
+    <div class="large-3 large-offset-2 medium-5 small-12 columns">
+      <div class="row">
+        <div class="large-12 columns">
+          <h2>Customer Service</h2>
+        </div>
+      </div> <!-- /row -->
+      <div class="row">
+        <ul class="large-6 medium-6 small-4 columns">
+          <li><a href="https://pragprog.com/contact">Contact</a></li>
+          <li><a href="https://pragprog.com/privacy">Privacy</a></li>
+          <li><a href="https://pragprog.com/terms-of-use">Terms of Use</a></li>
+        </ul>
+        <ul class="large-6 medium-6 small-8 columns">
+          <li><a href="http://write-for-us.pragprog.com/">Become an Author</a></li>
+          <li><a href="https://pragprog.com/security">Security</a></li>
+        </ul>
+      </div> <!-- /row -->
+    </div> <!-- /customer service -->
+    <div class="large-4 medium-6 small-12 medium-offset-1 columns end">
+      <div class="row">
+        <div class="large-12 columns">
+          <h2>Menu</h2>
+        </div>
+      </div> <!-- /row -->
+      <div class="row">
+        <ul class="large-4 medium-4 small-4 columns">
+          <li><a href="https://pragprog.com/titles/category/all">Categories</a></li>
+          <li><a href="https://pragprog.com/screencasts">Screencasts</a></li>
+          <li><a href="https://pragmaticstudio.com/">Video Courses</a></li>
+          <li><a href="https://pragprog.com/magazines">Magazine</a></li>
+        </ul>
+        <ul class="large-4 medium-4 small-4 columns">
+          <li><a href="https://pragprog.com/articles">Articles</a></li>
+          <li><a href="http://forums.pragprog.com/">Forums</a></li>
+          <li><a href="https://pragprog.com/help-wanted">Help Wanted</a></li>
+          <li><a href="https://pragprog.com/promotions">Promotions</a></li>
+        </ul>
+        <ul class="large-4 medium-4 small-4 columns">
+          <li><a href="https://pragprog.com/about">About</a></li>
+          <li><a href="https://pragprog.com/login">Login</a></li>
+        </ul>
+      </div> <!-- /row -->
+    </div> <!-- /Menu -->
+  </div> <!-- /row -->
+  <div class="row">
+    <div class="large-4 large-offset-2 columns social">
+      <ul class="list-unstyled list-inline">
+        <li><a href="https://twitter.com/pragprog" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://www.youtube.com/user/PragProg" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+        <li>
+          <a href="https://pragprog.com/feed/global/news.rss" target="_blank" type="application/rss+xml">
+            <i class="fa fa-rss"></i>
+</a>        </li>
+        <li>
+          <a href="https://pragprog.com/frequently-asked-questions/ebooks/sending-ebooks-to-your-dropbox">
+            <i class="fa fa-dropbox"></i>
+</a>        </li>
+        <li>
+          <a href="https://pragprog.com/frequently-asked-questions/ebooks/sending-ebooks-to-your-google-drive">
+            <i class="fa fa-google"></i>
+</a>        </li>
+      </ul>
+      <div class="copyright">
+        © 1999–2019 The Pragmatic Programmers, LLC
+      </div> <!-- Copyright -->
+    </div>
+  </div> <!-- /row -->
+</footer>
+
+
+
+      <script async="async" src="./List of Tips _ The Pragmatic Bookshelf_files/pip-foundation-d02fc6d697d14a2f561c1f2bc7e2ae1f.js.download" type="text/javascript"></script>
+
+    <script src="./List of Tips _ The Pragmatic Bookshelf_files/braintree.js.download"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./List of Tips _ The Pragmatic Bookshelf_files/translate_24dp.png" width="20" height="20" alt="Google Tradutor"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Texto original</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Sugerir uma tradução melhor</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+    
+  
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-2" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span></body></html>

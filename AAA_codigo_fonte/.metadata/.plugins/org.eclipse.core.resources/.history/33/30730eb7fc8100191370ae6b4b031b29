@@ -1,0 +1,10 @@
+
+public class Program {
+
+	public static void main(String[] args) {
+		Cliente clientePaulo = new Cliente("Paulo","0000000000-1","programador java");
+		Conta   contaPaulo = new Conta(1, (long) Math.random(), clientePaulo);
+		System.out.println(contaPaulo);
+	}
+	
+}

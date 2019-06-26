@@ -1,0 +1,32 @@
+package bytebank_herdado_conta.br.com.bytebank.banco.test;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class TesteWrapper {
+
+	private static void wrapperInteger_1() {
+		System.out.println("------------- Wrapper Integer 01  ---------------------");
+
+	}
+
+	public TesteWrapper() {
+		wrapperInteger_1();
+
+	}
+
+	public TesteWrapper(String[] args) {
+		System.out.println(" ----  parametros ----");
+		List<String> argsArray = Arrays.asList(args);
+		for (String string : argsArray) {
+			System.out.println(string);
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteWrapper();
+		new TesteWrapper(args);
+
+	}
+
+}

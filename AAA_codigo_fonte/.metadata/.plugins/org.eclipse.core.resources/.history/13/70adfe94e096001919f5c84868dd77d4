@@ -1,0 +1,37 @@
+package br.com.alura.java.io.teste;
+
+import sun.tools.tree.CharExpression;
+
+public class TesteUnicodeEEncoding {
+
+	public static void Ex1() {
+		String C1 = "C";
+		System.out.println(C1.codePointAt(0));
+
+		// create a CharSequence seq and assign value
+		CharSequence seq = "Hello";
+
+		// create and assign value to index
+		int index = 4;
+
+		// create an int res
+		int res;
+
+		// assign result of codePointAt on seq at index to res
+		res = Character.codePointAt(seq, index);
+
+		String str = "Unicode code point is " + res;
+
+		// print res value
+		System.out.println(str);
+	}
+
+	public TesteUnicodeEEncoding() {
+		Ex1();
+	}
+
+	public static void main(String[] args) {
+		new TesteUnicodeEEncoding();
+	}
+
+}

@@ -1,0 +1,108 @@
+package br.com.alura.javaio.teste;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+
+public final class TesteEscrita1 {
+
+	private static FileOutputStream fosFile(final String nomeArquivo) throws IOException {
+		FileOutputStream fos = new FileOutputStream(nomeArquivo);
+		return fos;
+	}
+
+	private static OutputStream osFile(final String nomeArquivo) throws Exception {
+		OutputStream os = new FileOutputStream(nomeArquivo);
+		return os;
+	}
+
+	public static void exemploEscritaArquivo1() {
+		System.err.println(" ---------- Exemplo : FileOutputStream ---------------- ");
+
+		FileOutputStream fos;
+		OutputStreamWriter osw;
+
+		try {
+			fos = fosFile("lorem.txt");
+			osw = new OutputStreamWriter(fos);
+		} catch (Exception e) {
+			System.out.println("Erro na escrita do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+
+		try (BufferedWriter bw = new BufferedWriter(osw)) {
+			String string = "Linha";
+			bw.write(string);
+		} catch (Exception e) {
+			System.out.println("Erro na leitura dos dados do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+
+		System.out.println("Fim");
+		TesteLeitura1.exemploLeituraArquivo1();
+	}
+
+	public static void exemploEscritaArquivo2() {
+		System.err.println(" ---------- Exemplo : OutputStream ---------------- ");
+
+		OutputStream os;
+		Writer w;
+
+		try {
+			os = osFile("lorem.txt");
+			w = new OutputStreamWriter(os);
+
+		} catch (Exception e) {
+			System.out.println("Erro na escrita do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+
+		try (BufferedWriter bw = new BufferedWriter(w)) {
+			String string = Long.toString(System.nanoTime()); 
+			bw.write(string);
+		} catch (Exception e) {
+			System.out.println("Erro na escrita dos dados do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+		
+		System.out.println("Fim");
+		TesteLeitura1.exemploLeituraArquivo2();
+	}
+
+	public static void Ex() {
+		System.err.println(" ---------- Ex ---------------- ");
+	}
+
+	public TesteEscrita1() {
+		super();
+		Ex();
+		exemploEscritaArquivo1();
+		exemploEscritaArquivo2();
+	}
+
+	public TesteEscrita1(String[] args) {
+		super();
+		for (int i = 0; i < args.length; i++) {
+			String string = args[i];
+			System.out.println(string);
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteEscrita1();
+		new TesteEscrita1(args);
+	}
+
+}

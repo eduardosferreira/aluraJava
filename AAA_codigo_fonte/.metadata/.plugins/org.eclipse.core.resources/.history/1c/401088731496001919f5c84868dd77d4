@@ -1,0 +1,16 @@
+package br.com.alura.javaio.teste;
+
+import java.util.Locale;
+
+public final class TesteProperties {
+
+	public TesteProperties() {
+		super();
+		Locale.setDefault(new Locale("pt","BR"));
+	}
+	
+	public static void main(String[] args) {
+		new TesteProperties();
+	}
+
+}

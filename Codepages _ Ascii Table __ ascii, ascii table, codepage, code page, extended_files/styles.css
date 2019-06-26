@@ -1,0 +1,119 @@
+/* css for GENERAL */
+body { text-align:center; margin:0; }
+body, td, div, p, span, a { font-family:tahoma; font-size:20px; }
+form { margin:0; }
+a {color: #000000;}
+a, a:visited {text-decoration: none;}
+a:hover, a:visited:hover {text-decoration: underline;}
+b .mid {position: relative; top: 2px;}
+a:image, a:visited {text-decoration: none;}
+h1 {text-align:center; font-size:28px; color:#000; margin:0 0 0 0; padding:0 0 0 0; }
+h2 {text-align:center; font-size:20px; color:#000; margin:0 0 0 0; padding:0 0 0 0; }
+h3 {text-align:center; font-size:13px; color:#000; margin:0 1px 0 1px; padding:0 0 5px 0; }
+input {font-family: tahoma;font-size: 14px;color: #000000;}
+option {font-family: tahoma;font-size: 10px;color: #000000;}
+select {font-family: tahoma;font-size: 12px;color: #000000;}
+.box { border:1px solid #ed864f; }
+/* css for GENERAL */
+
+#main { background:#fff; width:960px; height:100%; border-left:1px solid #666; border-right:1px solid #666; margin:0 auto; }
+#header_top { background:url(../images/header_top.gif) bottom repeat-x; vertical-align:top; font-size:1px; height:16px; padding:0 0 0 0; }
+#header_bottom { background:url(../images/header_bottom.gif); font-size:1px; height:10px; }
+#search { padding:5px 5px 0 5px; font-size:26px;}
+#adplace { text-align:center;  font-size:26px; height:50px;}
+#mheader { text-align:center;  font-size:26px; height:50px;}
+#title { text-align:center; font-weight: bold; font-size:18px; height:20px; padding:0 0 0 0; }
+/* #freetext { background:#fff; width:900px; height:100%; margin:10px 10px 10px 10px; } */
+#content { top; text-align:center; vertical-align:center; padding:0px; height:507px;}
+#content_phone { text-align:center; vertical-align:top; padding:0px; height:507px; width:770px;}
+#copyright { background:url(../images/bg_copyright.gif); text-align:center; color:#000; height:87px; }
+#copyright a { color:#395148; text-decoration:none; }
+#copyright a:hover { text-decoration:underline; }
+#copyright b { color:#395148 }
+
+/* css for Menu */
+.btn { background:url(../images/btn.gif); color:#fff; height:31px; }
+.btn ul { margin:0; padding:0; font-weight: bold; }
+.btn ul li { float:left; background:url(../images/btn_border.gif) right repeat-y; text-align:center; width:110px; list-style-type:none; }
+.btn ul li.li_last { background:none; }
+.btn ul li a { position:relative; text-decoration:none; color:#fff; padding:9px 0 9px 0; margin:0 2px 0 0; display:block; }
+.btn ul li a.a_last { margin:0; }
+.btn ul li a:hover { background:#0c74b5 url(../images/btn_over.gif); text-decoration:none; }
+.btn ul li a.active { font-weight:bold; }
+
+.btnl { background:url(../images/r2.gif) repeat-y; color:#000; height:20px; padding:3px 0 4px 0; margin:0 0px 0 0; display:block; }
+.btnl ul { margin:0; padding:0; font-weight: bold; }
+.btnl ul li { float:left; background:url(../images/r2.gif) right repeat-y; text-align:left; width:180px; margin:0 0px 0 0; list-style-type:none; }
+.btnl ul li a { position:relative; text-decoration:none; color:#000; padding:3px 0 4px 0; margin:0 0px 0 0; display:block; }
+.btnl ul li a.a_last { margin:0; }
+.btnl ul li a:hover { background:#0c74b5 url(../images/r22.gif); text-decoration:none; }
+.btnl ul li a.active { font-weight:bold; }
+
+.btna { background:url(../images/btn.gif); color:#fff; height:16px; }
+.btna ul { margin:0; padding:0; font-weight: bold; }
+.btna ul li { float:left; background:url(../images/btn_border.gif) right repeat-y; text-align:center; width:37px; list-style-type:none; }
+.btna ul li.li_edge { float:left; background:url(../images/btn_border.gif) right repeat-y; padding:5px 0 29px 0; text-align:center; width:20px; list-style-type:none; margin:0;  }
+.btna ul li a { position:relative; text-decoration:none; color:#fff; padding:5px 0 5px 0; margin:0 2px 0 0; display:block; }
+.btna ul li a:hover { background:#0c74b5 url(../images/btn_over.gif); text-decoration:none; }
+.btna ul li a.active { font-weight:bold; }
+/* css for Menu */
+
+.nav_phone td {position:relative; text-align:left; font-family: Tahoma;font-size: 22px;text-decoration: none;color: #000000;}
+.nav_phone a  {position:relative; text-align:left; font-family: Tahoma;font-size: 22px;text-decoration: none;color: #000000;}
+.phone_detail td {COLOR: #001F47; font-family: Tahoma;font-size: 20px; LETTER-SPACING: 0px;}
+.phone_detail_head td b {display:block; background-color: #E0EEFB;}
+.phone_detail0 {background-color: #FFFFFF;}
+.phone_detail1 {background-color: #F4F4FF;}
+
+.redline {margin: 0px 0px 0px 0px; color: #000000; background-color: #D80025; height:2px;}
+.greyline {padding:2px 2px 2px 2px; margin: 0px 0px 0px 0px; color: #000000; background-color: #999999; height:1px;}
+.separa {margin: 0px 0px 0px 0px; height:5px;}
+.tbcenter { text-align:center; }
+.tbleft { text-align:left; }
+.greyheader {background-color: #C0C0C0;}
+.bggrey {background-color: #999999;}
+.bggrey1 {background-color: #EEEEEE;}
+.bggrey2 {background-color: #454545;}
+.bggreen {background-color: #99FF99;}
+.related_link {color: #008000;}
+.phone_city0 {background-color: #AEC9FE; width:180px;}
+.phone_city1 {background-color: #0099FF; width:180px;}
+.bdsilver {color: #CCCCCC;}
+.width10  {width:10px;}
+.width65  {width:65px;}
+.width100 {width:100px;}
+.width160 {width:220px;}
+.width400 {width:400px;}
+.width705 {width:705px;}
+.width770 {width:770px;}
+.imgborder {border-style: solid; border-color: #000000; border-width: 1px 1px 1px 1px;}
+.imgborder0 {border-style: solid; border-color: #000000; border-width: 0px 0px 0px 0px;}
+.tah9  {font-family: Tahoma;font-size:  9px;text-decoration: none;color: #000000;}
+.tah10 {font-family: Tahoma;font-size: 16px;text-decoration: none;color: #000000;}
+.tah11 {font-family: Tahoma;font-size: 11px;text-decoration: none;color: #000000;}
+.tah30 {font-family: Tahoma;font-size: 40px;text-decoration: none;color: #000000;}
+.ver9  {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 9px;text-decoration: none;color: #000000;}
+.ver10 {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 10px;text-decoration: none;color: #000000;}
+.ver11 {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 11px;text-decoration: none;color: #000000;}
+.bgtop1 {background-repeat: repeat;background-position: top;}
+.bgtop {background-repeat: no-repeat;background-position: top;}
+
+/* css for Factbook */
+.SectionHeading {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #000000; background-color: #CCCCCC}
+.FieldLabel {font-family: Arial, Helvetica, sans-serif; font-size: 14px; background-color: #FFFFFF; color: #000000; font-weight: bold;}
+.Classification {font-weight: bold; color: #FFFFFF; text-align: center}
+.AnchorLinks {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #FFFFFF; background-color: #666666}
+.TopofPage {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000}
+.Normal {font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; font-size: 12px}
+.CountryLink {font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; font-size: 12px; font-weight: bold}
+.SectionHeadingPrint {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #000000}
+.Banner {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: large}
+.MainLinks {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #000000; font-size: 14px}
+.Definition {font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; font-size: 12px ; line-height: 18px}
+.LastUpdate {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; background-position: center}
+.LastUpdatePrint {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; background-position: center}
+.FinePrint {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 10px;color: #000000;}
+.CountryName {font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;font-size: 16px;font-weight: bold;}
+.Categories {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 14px;font-weight: bold;color: #000000;}
+.IndexFactbook {font-family: Arial, Helvetica, sans-serif; font-size: 18px; background-color: #FFFFFF; color: #000000; font-weight: bold;}
+/* css for Factbook */

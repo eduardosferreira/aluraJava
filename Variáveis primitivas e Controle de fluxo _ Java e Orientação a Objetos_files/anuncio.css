@@ -1,0 +1,49 @@
+.anuncio {
+    color: #000;
+    page-break-inside: avoid;
+    background: #eef2f5;
+    border-radius: 5px;
+    border: 2px solid #cfd9de;
+}
+
+.anuncio * {
+    color: black;
+}
+
+.anuncio a {
+    text-decoration: none;
+    display: block;
+    padding: 1.5em;
+    margin: 1.5em 0;
+}
+
+.anuncio h4 {
+    margin-bottom: 1em;
+}
+
+.anuncio p {
+    text-indent: 0;
+}
+
+.anuncio p br {
+    line-height: 3em;
+}
+
+.anuncio .action,
+.anuncio .action * {
+    color: #00e;
+    text-decoration: underline;
+}
+
+.anuncio .icone {
+    float: left;
+    margin: 0.5em 1em 1em 0;
+    max-width: 57%;
+    width: auto;
+    height: auto!important;
+}
+
+.anuncio :last-child {
+    /*colapsa margin de baixo do ultimo elemento com padding interno do box*/
+    margin-bottom: 0;
+}

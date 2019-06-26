@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/ -->
+<html lang="pt-BR" prefix="og: http://ogp.me/ns#" style="" class=" js csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/analytics.js.download"></script>
+
+
+
+<link rel="pingback" href="https://blog.caelum.com.br/xmlrpc.php">
+
+<!-- This site is optimized with the Yoast SEO plugin v10.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Entendendo Unicode e os Character Encodings - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum</title>
+<link rel="canonical" href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Entendendo Unicode e os Character Encodings - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta property="og:description" content="Todo mundo já passou por problemas com character encodings. Quem nunca abriu uma conexão JDBC com o MySQL e puxou do banco um monte de caracteres onde em vez de acentos só se viam pontos …">
+<meta property="og:url" content="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/">
+<meta property="og:site_name" content="Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta property="article:tag" content="encoding">
+<meta property="article:tag" content="iso88591">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="latin1">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="unicode">
+<meta property="article:tag" content="utf8">
+<meta property="article:section" content="Programação">
+<meta property="article:published_time" content="2006-10-23T04:09:09+00:00">
+<meta property="article:modified_time" content="2017-03-06T15:41:26+00:00">
+<meta property="og:updated_time" content="2017-03-06T15:41:26+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Todo mundo já passou por problemas com character encodings. Quem nunca abriu uma conexão JDBC com o MySQL e puxou do banco um monte de caracteres onde em vez de acentos só se viam pontos […]">
+<meta name="twitter:title" content="Entendendo Unicode e os Character Encodings - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script async="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/analytics.js.download"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","url":"https://blog.caelum.com.br/","sameAs":[],"@id":"https://blog.caelum.com.br/#organization","name":"Caelum","logo":""}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://secure.gravatar.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Feed para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum »" href="https://blog.caelum.com.br/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum »" href="https://blog.caelum.com.br/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum » Entendendo Unicode e os Character Encodings" href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.caelum.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-layout-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="prism-theme-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/prism-css.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/related-posts.min.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/fitvids.min.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/modernizr.min.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/general.js.download"></script>
+<link rel="https://api.w.org/" href="https://blog.caelum.com.br/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.caelum.com.br/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.caelum.com.br/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.1.1">
+<link rel="shortlink" href="https://wp.me/p8tqQy-N">
+<link rel="alternate" type="application/json+oembed" href="https://blog.caelum.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.caelum.com.br%2Fentendendo-unicode-e-os-character-encodings%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://blog.caelum.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.caelum.com.br%2Fentendendo-unicode-e-os-character-encodings%2F&amp;format=xml">
+<link rel="stylesheet" type="text/css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/all.css"><!--[if IE]><link rel="stylesheet" type="text/css" href="https://blog.caelum.com.br/wp-content/plugins/highlight-source-pro/ie.css" /><![endif]--><script type="text/javascript" data-cfasync="false">var _mmunch = {'front': false, 'page': false, 'post': false, 'category': false, 'author': false, 'search': false, 'attachment': false, 'tag': false};_mmunch['post'] = true; _mmunch['postData'] = {"ID":49,"post_name":"entendendo-unicode-e-os-character-encodings","post_title":"Entendendo Unicode e os Character Encodings","post_type":"post","post_author":"2","post_status":"publish"}; _mmunch['postCategories'] = [{"term_id":1367,"name":"Programa\u00e7\u00e3o","slug":"programacao","term_group":0,"term_taxonomy_id":1440,"taxonomy":"category","description":"","parent":0,"count":301,"filter":"raw","cat_ID":1367,"category_count":301,"category_description":"","cat_name":"Programa\u00e7\u00e3o","category_nicename":"programacao","category_parent":0}]; _mmunch['postTags'] = [{"term_id":439,"name":"encoding","slug":"encoding","term_group":0,"term_taxonomy_id":495,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"},{"term_id":441,"name":"iso88591","slug":"iso88591","term_group":0,"term_taxonomy_id":497,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"},{"term_id":2,"name":"Java","slug":"java","term_group":0,"term_taxonomy_id":2,"taxonomy":"post_tag","description":"","parent":0,"count":228,"filter":"raw"},{"term_id":701,"name":"latin1","slug":"latin1","term_group":0,"term_taxonomy_id":776,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"},{"term_id":360,"name":"mysql","slug":"mysql","term_group":0,"term_taxonomy_id":408,"taxonomy":"post_tag","description":"","parent":0,"count":2,"filter":"raw"},{"term_id":438,"name":"unicode","slug":"unicode","term_group":0,"term_taxonomy_id":494,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"},{"term_id":440,"name":"utf8","slug":"utf8","term_group":0,"term_taxonomy_id":496,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"}]; _mmunch['postAuthor'] = {"name":"Paulo Silveira","ID":2};</script><script data-cfasync="false" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/site.js.download" id="mailmunch-script" data-plugin="mc_mm" data-mailmunch-site-id="400098" async=""></script>
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://i1.wp.com/">
+<link rel="dns-prefetch" href="https://i2.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<!-- Theme version -->
+<meta name="generator" content="On Topic 1.1.2">
+<meta name="generator" content="WooFramework 5.5.5">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile viewport scale | Disable user zooming as the layout is optimised -->
+<meta content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no" name="viewport">
+<!--[if lt IE 9]>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+		<link rel="amphtml" href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/amp/"><link rel="stylesheet" type="text/css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shThemeEclipse.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+			<style type="text/css" id="wp-custom-css">
+				/*
+Você pode adicionar seu próprio CSS aqui.
+
+Clique no ícone de ajuda acima para saber mais.
+*/
+
+/* author Alex feat Mairo ajuste no blockquote */
+.post .entry blockquote {
+    border-left: 5px solid #ccc;
+    padding-left: 25px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+}
+
+.post .entry blockquote:before {
+	display: none;
+}
+
+.post .entry blockquote p {
+	margin: 0px
+}
+			</style>
+		
+<!-- Woo Custom Styling -->
+<style type="text/css">
+body { background: #ffffff !important; }
+.entry a, .home-tabber li a { color: #7D95A5 !important; }
+.entry a:hover, .home-tabber li a:hover { color: #5A7C92 !important; }
+a.button, a.comment-reply-link, #commentform #submit, #contact-page .submit { background: #7D95A5 !important; }
+a.button:hover, a.button.hover, a.button.active, a.comment-reply-link:hover, #commentform #submit:hover, #contact-page .submit:hover { background: #7D95A5 !important; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+</style>
+
+<!-- Google Webfonts -->
+<link href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/css" rel="stylesheet" type="text/css">
+
+<!-- Woo Custom Typography -->
+<style type="text/css">
+body { font:normal 1.6em/1.9em 'Merriweather', arial, sans-serif;color:#1c1c1c; }
+#navigation ul.nav > li > a { font:300 1.1em/1em 'Varela', arial, sans-serif;color:#FFFFFF; }
+.page header h1 { font:bold italic 3.5em/1em 'Open Sans', arial, sans-serif;color:#000000; }
+.post header h1, .post header h1 a:link, .post header h1 a:visited { font:bold 3em/1em 'PT Sans', arial, sans-serif;color:#25343F; }
+.post header h1 a:link, .post header h1 a:visited { font:bold 0.7em/1em 'PT Sans', arial, sans-serif;color:#000000; }
+.post-meta { font:300 0.9em/1em 'Merriweather', arial, sans-serif;color:#828282; }
+.entry, .entry p { font:300 1em/1.5em 'Merriweather', arial, sans-serif;color:#1c1c1c; } h1, h2, h3, h4, h5, h6 { font-family: Merriweather, arial, sans-serif; }
+</style>
+
+<!-- Alt Stylesheet -->
+<link href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/default.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Favicon -->
+<link rel="shortcut icon" href="https://blog.caelum.com.br/wp-content/uploads/2006/08/favicon.ico">
+<!-- Options Panel Custom CSS -->
+<style type="text/css">
+.entry a, .home-tabber li a { color:#068AE0 !important; }
+
+</style>
+
+
+<!-- Woo Shortcodes CSS -->
+<link href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shortcodes.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Stylesheet -->
+<link href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/custom.css" rel="stylesheet" type="text/css">
+
+
+	<style>
+	
+		
+		#header  {
+			
+							background-color: #081c27;
+						
+							background-image: url(https://blog.caelum.com.br/wp-content/uploads/2006/08/bg-02.jpg);
+						
+							background-position: top left;
+						
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+		}
+	
+				
+			@media only screen and (min-width: 768px) {
+				
+				.page #post-entries a, .single-post #post-entries a, .single-product #post-entries a  {
+					background-color: #081c27;
+				}
+				
+			}
+			
+			
+	</style>
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-270161-5');
+</script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/services.min.css"><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><link rel="stylesheet" type="text/css" href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/styles.css"><style type="text/css">/*===============================
+=            Choices            =
+===============================*/
+.choices {
+    position: relative;
+    margin-bottom: 24px;
+    font-size: 16px;
+    background-color: #FFF;
+    height: 38px;
+  }
+
+  .choices:focus {
+    outline: none;
+  }
+
+  .choices:last-child {
+    margin-bottom: 0;
+  }
+
+  .choices.is-disabled .choices__inner,
+  .choices.is-disabled .choices__input {
+    background-color: #EAEAEA;
+    cursor: not-allowed;
+    user-select: none;
+  }
+
+  .choices.is-disabled .choices__item {
+    cursor: not-allowed;
+  }
+
+  .choices[data-type*="select-one"] {
+    cursor: pointer;
+  }
+
+  .choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 7.5px;
+  }
+
+  .choices[data-type*="select-one"] .choices__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    margin: 0;
+  }
+
+  .choices[data-type*="select-one"] .choices__button {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+    padding: 0;
+    background-size: 8px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    margin-right: 25px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10em;
+    opacity: .5;
+  }
+
+  .choices[data-type*="select-one"] .choices__button:hover, .choices[data-type*="select-one"] .choices__button:focus {
+    opacity: 1;
+  }
+
+  .choices[data-type*="select-one"] .choices__button:focus {
+    box-shadow: 0px 0px 0px 2px #00BCD4;
+  }
+
+  .choices[data-type*="select-one"]:after {
+    content: "";
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent;
+    border-width: 5px;
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    margin-top: -2.5px;
+    pointer-events: none;
+  }
+
+  .choices[data-type*="select-one"].is-open:after {
+    border-color: transparent transparent #333333 transparent;
+    margin-top: -7.5px;
+  }
+
+  .choices[data-type*="select-one"][dir="rtl"]:after {
+    left: 11.5px;
+    right: auto;
+  }
+
+  .choices[data-type*="select-one"][dir="rtl"] .choices__button {
+    right: auto;
+    left: 0;
+    margin-left: 25px;
+    margin-right: 0;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__inner,
+  .choices[data-type*="text"] .choices__inner {
+    cursor: text;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button,
+  .choices[data-type*="text"] .choices__button {
+    position: relative;
+    display: inline-block;
+    margin-top: 0;
+    margin-right: -4px;
+    margin-bottom: 0;
+    margin-left: 8px;
+    padding-left: 16px;
+    border-left: 1px solid #008fa1;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+    background-size: 8px;
+    width: 8px;
+    line-height: 1;
+    opacity: .75;
+    border-radius: 0;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button:hover, .choices[data-type*="select-multiple"] .choices__button:focus,
+  .choices[data-type*="text"] .choices__button:hover,
+  .choices[data-type*="text"] .choices__button:focus {
+    opacity: 1;
+  }
+
+  .choices__inner {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 7.5px 7.5px 3.75px;
+    border-radius: 2.5px;
+    font-size: 14px;
+    min-height: 38px;
+    overflow: hidden;
+  }
+
+  .is-focused .choices__inner,
+  .is-open .choices__inner {
+    border-color: #5897fb !important;
+  }
+
+  .is-open .choices__inner {
+    border-radius: 2.5px 2.5px 0 0 !important;
+    border-bottom: none !important;
+  }
+
+  .is-flipped.is-open .choices__inner {
+    border-radius: 0 0 2.5px 2.5px !important;
+    border-bottom: 1px solid #5897fb !important;
+  }
+
+  .choices__list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    padding:4px !important;
+  }
+
+  .choices__list--single {
+    display: inline-block;
+    padding: 4px 16px 4px 4px;
+    width: 100%;
+    line-height: 28px !important;
+    text-indent: 5px;
+  }
+
+  [dir="rtl"] .choices__list--single {
+    padding-right: 4px;
+    padding-left: 16px;
+  }
+
+  .choices__list--single .choices__item {
+    width: 100%;
+  }
+
+  .choices__list--multiple {
+    display: inline;
+  }
+
+  .choices__list--multiple .choices__item {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 3.75px;
+    margin-bottom: 3.75px;
+    background-color: #00BCD4;
+    border: 1px solid #00a5bb;
+    color: #FFFFFF;
+    word-break: break-all;
+  }
+
+  .choices__list--multiple .choices__item[data-deletable] {
+    padding-right: 5px;
+  }
+
+  [dir="rtl"] .choices__list--multiple .choices__item {
+    margin-right: 0;
+    margin-left: 3.75px;
+  }
+
+  .choices__list--multiple .choices__item.is-highlighted {
+    background-color: #00a5bb;
+    border: 1px solid #008fa1;
+  }
+
+  .is-disabled .choices__list--multiple .choices__item {
+    background-color: #aaaaaa;
+    border: 1px solid #919191;
+  }
+
+  .choices__list--dropdown {
+    display: none;
+    z-index: 999999 !important;
+    position: absolute;
+    width: 100%;
+    background-color: #FFFFFF;
+    top: 100%;
+    margin-top: -1px;
+    border-bottom-left-radius: 2.5px;
+    border-bottom-right-radius: 2.5px;
+    overflow: hidden;
+    word-break: break-all;
+    border-bottom: 1px solid #cacaca !important;
+    border-left: 1px solid #cacaca !important;
+    border-right: 1px solid #cacaca !important;
+
+  }
+
+  .choices__list--dropdown.is-active {
+    display: block;
+    border-bottom: 1px solid #5897fb !important;
+    border-left: 1px solid #5897fb !important;
+    border-right: 1px solid #5897fb !important;
+    margin-top: -1px !important;
+  }
+
+  .is-open .choices__list--dropdown {
+    border-color: #b7b7b7;
+  }
+
+  .is-flipped .choices__list--dropdown {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: -1px !important;
+    border-radius: .25rem .25rem 0 0;
+    border-top: 1px solid #5897fb !important;
+    border-bottom: none !important;
+  }
+
+  .choices__list--dropdown .choices__list {
+    position: relative;
+    max-height: 300px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+  }
+
+  .choices__list--dropdown .choices__item {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    padding: 5px !important;
+  }
+
+  [dir="rtl"] .choices__list--dropdown .choices__item {
+    text-align: right;
+  }
+
+  @media (min-width: 640px) {
+    .choices__list--dropdown .choices__item--selectable {
+      padding-right: 100px;
+    }
+    .choices__list--dropdown .choices__item--selectable:after {
+      content: attr(data-select-text);
+      font-size: 12px;
+      opacity: 0;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    [dir="rtl"] .choices__list--dropdown .choices__item--selectable {
+      text-align: right;
+      padding-left: 100px;
+      padding-right: 10px;
+    }
+    [dir="rtl"] .choices__list--dropdown .choices__item--selectable:after {
+      right: auto;
+      left: 10px;
+    }
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background-color: #3875d7 !important;
+    color: #fff !important;
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted:after {
+    opacity: .5;
+  }
+
+  .choices__item {
+    cursor: default;
+  }
+
+  .choices__item--selectable {
+    cursor: pointer;
+  }
+
+  .choices__item--disabled {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: .5;
+  }
+
+  .choices__heading {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #f7f7f7;
+    color: gray;
+  }
+
+  .choices__button {
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .choices__button:focus {
+    outline: none;
+  }
+
+  .choices__input {
+    display: inline-block;
+    vertical-align: baseline;
+    background-color: #f9f9f9;
+    border: 1px solid #aaa !important;
+    font-size: 14px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    max-width: 100%;
+    padding: 4px 0 4px 2px;
+    margin-top: 6px;
+    height:28px !important;
+  }
+
+  .choices__input:focus {
+    outline: 0;
+  }
+
+  [dir="rtl"] .choices__input {
+    padding-right: 2px;
+    padding-left: 0;
+  }
+
+  .choices__placeholder {
+    opacity: .5;
+  }
+
+  .choices__input.is-hidden,
+  .choices[data-type*="select-one"] .choices__input.is-hidden,
+  .choices[data-type*="select-multiple"] .choices__input.is-hidden {
+    display: none !important;
+  }
+
+  /*=====  End of Choices  ======*/
+</style></head>
+<body class="post-template-default single single-post postid-49 single-format-standard chrome alt-style-default layout-default"><div id="popup-_49m2putbd" style="display: none;">
+
+<!-- Bricks Main Styles -->
+<style type="text/css" rel="stylesheet">
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw article, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw aside,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw details, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw figcaption,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw figure, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw footer,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw header, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw hgroup,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw menu, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw nav,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw section {
+    display: block;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw ol, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw ul {
+    list-style: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q {
+    quotes: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote:before, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote:after,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q:before, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q:after {
+    content: '';
+    content: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw b, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw strong {
+    font-weight: bold;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw i, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw em {
+    font-style: italic;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--section {
+    width: 100%;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--section > div {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 600px;
+    position: relative;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--row {
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--column > div {
+    padding: 7px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-box {
+    width: 100%
+  }
+
+  @media screen and (min-width: 768px) {
+    #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--row {
+      flex-flow: row nowrap;
+    }
+  }
+</style>
+
+<!-- Bricks Component Text Styles -->
+<style>
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text {
+    color: #333;
+    line-height: 1.42;
+    word-wrap: break-word;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text a {
+    color: #31a2ff;
+    text-decoration: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sub,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sub {
+    bottom: -0.25em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sup {
+    top: -0.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul {
+    padding-left: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol > li,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul > li {
+    list-style-type: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul > li::before {
+    content: '\2022';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li:not(.ql-direction-rtl)::before {
+    margin-left: -1.5em;
+    margin-right: 0.3em;
+    text-align: right;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-direction-rtl::before {
+    margin-left: 0.3em;
+    margin-right: -1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li:not(.ql-direction-rtl),
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul li:not(.ql-direction-rtl) {
+    padding-left: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-direction-rtl,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul li.ql-direction-rtl {
+    padding-right: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li:before {
+    content: counter(list-0, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1 {
+    counter-increment: list-1;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1:before {
+    content: counter(list-1, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1 {
+    counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2 {
+    counter-increment: list-2;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2:before {
+    content: counter(list-2, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2 {
+    counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3 {
+    counter-increment: list-3;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3:before {
+    content: counter(list-3, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3 {
+    counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4 {
+    counter-increment: list-4;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4:before {
+    content: counter(list-4, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4 {
+    counter-reset: list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5 {
+    counter-increment: list-5;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5:before {
+    content: counter(list-5, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5 {
+    counter-reset: list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6 {
+    counter-increment: list-6;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6:before {
+    content: counter(list-6, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6 {
+    counter-reset: list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7 {
+    counter-increment: list-7;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7:before {
+    content: counter(list-7, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7 {
+    counter-reset: list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8 {
+    counter-increment: list-8;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8:before {
+    content: counter(list-8, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8 {
+    counter-reset: list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-9 {
+    counter-increment: list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-9:before {
+    content: counter(list-9, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 3em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 4.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 3em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 4.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 6em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 7.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 6em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 7.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 9em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 10.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 9em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 10.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 12em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 13.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 12em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 13.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 15em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 16.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 15em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 16.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 18em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 19.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 18em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 19.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 21em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 22.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 21em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 22.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 24em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 25.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 24em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 25.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 27em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 28.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 27em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 28.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-direction-rtl {
+    direction: rtl;
+    text-align: inherit;
+  }
+</style>
+
+<!-- Bricks Component Form Styles -->
+<style>
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form {
+    padding: 0 5px;
+    height: auto;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__fieldset {
+    display: flex;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  /* Hide generated jQuery validator label */
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field label.error {
+    display: none !important;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    line-height: 1.42857;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__input {
+    display: block;
+    width: 100%;
+    padding: 0 10px;
+    line-height: 1.42857;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__input.error {
+    border: 1px solid red !important;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option + #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option {
+    margin-top: -5px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__submit {
+    width: 100%;
+    position: relative;
+  }
+
+  @media screen and (min-width: 768px) {
+    #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form {
+      padding: 0;
+    }
+  }
+</style>
+
+<link href="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/css(1)" rel="stylesheet">
+
+<style type="text/css" rel="stylesheet">
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw {
+    position: fixed;
+    z-index: 99999;
+  }
+
+  .rdstation-popup-position-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .rdstation-popup-position-top_left {
+    top: 0;
+    left: 0;
+  }
+
+  .rdstation-popup-position-top_right {
+    top: 0;
+    right: 0;
+  }
+
+  .rdstation-popup-position-bottom_left {
+    bottom: 0;
+    left: 0;
+  }
+
+  .rdstation-popup-position-bottom_right {
+    bottom: 0;
+    right: 0;
+  }
+
+  
+    #bricks-component-_l47rIZkz89xeBMOvNEKKw-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      display: block !important;
+      background: #000 !important;
+      opacity: .6 !important;
+    }
+
+    #bricks-component-_l47rIZkz89xeBMOvNEKKw {
+      position: relative;
+      display: block !important;
+      min-width: 600px;
+      min-height: 1px;
+      width: 600px;
+      box-shadow: 0px 0px 8px #333 !important;
+      overflow: hidden !important;
+      border-bottom-style: solid;
+      border-color: transparent;
+      border-left-style: solid;
+      border-radius: 0px;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-width: 0px;
+      background-color: #fff;
+      z-index: 999999 !important;
+    }
+  
+</style>
+
+
+
+<div id="rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw" class="rdstation-popup-position-center">
+  
+    <div id="bricks-component-_l47rIZkz89xeBMOvNEKKw-overlay" class="rdstation-popup-js-overlay"></div>
+  
+  <div id="bricks-component-_l47rIZkz89xeBMOvNEKKw" class="bricks--component bricks--component-popup">
+    
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-gTU1wZeIrUfmsL_JBZP8UQ {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border: none;
+      background: transparent;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    #rd-gTU1wZeIrUfmsL_JBZP8UQ svg {
+      width: 12px;
+      height: 12px;
+      fill: #888;
+    }
+  
+</style>
+
+<button id="rd-gTU1wZeIrUfmsL_JBZP8UQ" class="bricks--close--button rdstation-popup-js-close-button ">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 348.333 348.334">
+      <title>Fechar</title>
+      <path d="M336.559,68.611L231.016,174.165l105.543,105.549c15.699,15.705,15.699,41.145,0,56.85
+          c-7.844,7.844-18.128,11.769-28.407,11.769c-10.296,0-20.581-3.919-28.419-11.769L174.167,231.003L68.609,336.563
+          c-7.843,7.844-18.128,11.769-28.416,11.769c-10.285,0-20.563-3.919-28.413-11.769c-15.699-15.698-15.699-41.139,0-56.85
+          l105.54-105.549L11.774,68.611c-15.699-15.699-15.699-41.145,0-56.844c15.696-15.687,41.127-15.687,56.829,0l105.563,105.554
+          L279.721,11.767c15.705-15.687,41.139-15.687,56.832,0C352.258,27.466,352.258,52.912,336.559,68.611z"></path>
+    </svg>
+</button>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-uNPbaeMYY4py1SfiqqvCLA {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-uNPbaeMYY4py1SfiqqvCLA > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-uNPbaeMYY4py1SfiqqvCLA" class="bricks--section ">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-96HyVlxjcuXOgtB1lEXIfQ {
+      min-height: 0px;
+    }
+
+    #rd-96HyVlxjcuXOgtB1lEXIfQ .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-96HyVlxjcuXOgtB1lEXIfQ" class="bricks--row ">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-1EGU9DqtuA_24lgALiNbiA {
+      flex: 12 0 0;
+    }
+
+    #rd-1EGU9DqtuA_24lgALiNbiA > div {
+      
+          background-color: transparent;
+        
+      justify-content: center;
+      padding-top: 7px;
+      padding-right: 7px;
+      padding-bottom: 7px;
+      padding-left: 7px;
+    }
+  
+</style>
+
+<div id="rd-1EGU9DqtuA_24lgALiNbiA" class="bricks--column ">
+  <div>
+    
+<style type="text/css" rel="stylesheet">
+  
+    #rd-h5gk818MuNT0uF_RzfAuUw {
+      border-bottom-style: none;
+      border-color: transparent;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 0px;
+      min-height: auto-35px;
+      max-width: 550px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-h5gk818MuNT0uF_RzfAuUw" class="bricks--component bricks--component-text ">
+  <h3 style="text-align: center; line-height: 200%;"><strong style="font-size: 30px; font-family: Helvetica, Arial, sans-serif; color: #4e4e4e;">Quer receber mais conteúdo bacana de tecnologia?</strong></h3>
+</div>
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-text-johhf15c {
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+      min-height: auto-20px;
+      max-width: 550px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-text-johhf15c" class="bricks--component bricks--component-text rd-text">
+  <p style="line-height: 125%; text-align: center;"><span style="font-size: 17px; font-family: Helvetica, Arial, sans-serif; color: #4e4e4e;">Temos bastante material pra te ajudar a alavancar sua carreira</span></p>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-section-johhefho {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-section-johhefho > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-section-johhefho" class="bricks--section rd-section">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-row-johhefhp {
+      min-height: 0px;
+    }
+
+    #rd-row-johhefhp .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-row-johhefhp" class="bricks--row rd-row">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-column-johhefhq {
+      flex: 12 0 0;
+    }
+
+    #rd-column-johhefhq > div {
+      
+          background-color: #f2f2f2;
+        
+      justify-content: center;
+      padding-top: 0px;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      padding-left: 10px;
+    }
+  
+</style>
+
+<div id="rd-column-johhefhq" class="bricks--column rd-column">
+  <div>
+    
+
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-4XK-4tKscGl-FE1AjAlOBQ {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      max-width: 550px;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__fieldset {
+      flex-flow: column nowrap;
+      align-items: flex-start;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__field {
+      margin-bottom: 13px;
+      padding: 0;
+      width: 100.0%;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__label {
+      color: #888;
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__label.always-visible,
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__field__option .bricks-form__label {
+      display: inline-block;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input {
+      color: #000000;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+
+      background-color: #fff;
+
+      border-bottom-style: solid;
+      border-left-style: solid;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-color: #cdcfd3;
+      border-radius: 2px;
+      border-width: 1px;
+
+      
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input::placeholder {
+      color: transparent;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input.select2-container {
+      padding: 0 !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .select2-container .select2-choice {
+      height: 40px !important;
+      line-height: 40px !important;
+
+      color: #000000 !important;
+      font-family: Helvetica, Arial, sans-serif !important;
+      font-size: 16px !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .select2-container .select2-choice .select2-arrow b {
+      background-position: 0 7px !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input:not(textarea) {
+      height: 40px;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__submit {
+      display: flex;
+      flex-direction: column;
+    }
+  
+</style>
+
+
+<div id="rd-4XK-4tKscGl-FE1AjAlOBQ" class="bricks--component bricks-form ">
+  <form id="conversion-form" class="rdstation-popup-js-form-identifier" action="https://www.rdstation.com.br/api/1.3/conversions">
+    <input type="hidden" name="token_rdstation" value="4b7bbfbbbe5c7e29f1c12ecb3b59096b">
+    <input type="hidden" name="identificador" value="blog-da-caelum">
+    <input type="hidden" name="_is" value="9">
+    <input type="hidden" name="c_utmz" value="33425121.1561130612.10.9.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)">
+    <input type="hidden" name="traffic_source" value="encoded_eyJmaXJzdF9zZXNzaW9uIjp7InZhbHVlIjoiMzM0MjUxMjEuMTU1ODk3NDI4Ny4yLjIudXRtY3NyPWdvb2dsZXx1dG1jY249KG9yZ2FuaWMpfHV0bWNtZD1vcmdhbmljfHV0bWN0cj0obm90IHByb3ZpZGVkKSIsImV4dHJhX3BhcmFtcyI6e319LCJjdXJyZW50X3Nlc3Npb24iOnsidmFsdWUiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyIsImV4dHJhX3BhcmFtcyI6e319LCJjcmVhdGVkX2F0IjoxNTYxNDg5MDc3NDA4fQ==">
+    <input type="hidden" name="client_id" value="08ccee05-439a-4b91-9e1a-73fef2efa967">
+    <input type="hidden" name="redirect_to" value="">
+    <input type="hidden" name="_doe" value="">
+    <div class="bricks-form__fieldset" data-progressive-profiling="">
+  <div class="bricks-form__field">
+  <label for="form-name" class="bricks-form__label">
+    Nome*
+  </label>
+  <input id="form-name" class="bricks-form__input required js-text" name="name" type="text" placeholder="Nome" required="required">
+</div>
+<div class="bricks-form__field">
+  <label for="form-email" class="bricks-form__label">
+    Email*
+  </label>
+  <input id="form-email" class="bricks-form__input required js-email" name="email" type="email" placeholder="Email" required="required">
+</div>
+
+</div>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-yBU0Jb4Qzbx2I2deBdpDvA.bricks--component {
+      -ms-flex-align: center;
+      -ms-flex-direction: column;
+      -ms-flex-pack: center;
+      align-items: center;
+      align-self: center;
+      background-color: #16a085;
+      border-bottom-style: solid;
+      border-color: #138770;
+      border-left-style: solid;
+      border-radius: 2px;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-width: 1px;
+      color: #fff;
+      cursor: pointer;
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+      height: 38px;
+      justify-content: center;
+      line-height: 1.42857;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      max-width: 550px;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+    }
+  
+</style>
+
+
+  <div class="bricks-form__submit">
+    <button class="bricks--component bricks--component-button rdstation-popup-js-submit-button " id="rd-yBU0Jb4Qzbx2I2deBdpDvA">
+      QUERO RECEBER!
+    </button>
+  </div>
+
+
+  </form>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-section-johhhu55 {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-section-johhhu55 > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-section-johhhu55" class="bricks--section rd-section">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-row-johhhu56 {
+      min-height: 0px;
+    }
+
+    #rd-row-johhhu56 .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-row-johhhu56" class="bricks--row rd-row">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-column-johhhu57 {
+      flex: 12 0 0;
+    }
+
+    #rd-column-johhhu57 > div {
+      
+          background-color: #fff;
+        
+      justify-content: center;
+      padding-top: 0px;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      padding-left: 10px;
+    }
+  
+</style>
+
+<div id="rd-column-johhhu57" class="bricks--column rd-column">
+  <div>
+    
+<style type="text/css" rel="stylesheet">
+  
+    #rd-text-johhhvvo {
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+      min-height: auto-20px;
+      max-width: 550px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-text-johhhvvo" class="bricks--component bricks--component-text rd-text">
+  <p style="text-align: center;"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#closePopup" target="_self" title="" style="color: #888; font-size: 14px; font-family: Helvetica, Arial, sans-serif;"><u>Não quero alavancar minha carreira :(</u></a></p>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+  </div>
+</div>
+</div>
+
+<div id="wrapper" class="loaded">
+	<div id="inner-wrapper">
+
+    
+	<header id="header">
+		
+	<a id="logo" href="https://blog.caelum.com.br/" title="Aprenda sobre tecnologia com a Caelum. Artigos de programação, web, mobile, ux e agile">
+						<img src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/caelum-logo.png" alt="Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum" scale="0">
+			
+	</a>
+
+
+
+		<span class="nav-toggle"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#navigation"><span>Navigation</span></a></span>
+		
+		<!--
+	    <hgroup>
+			<h1 class="site-title"><a href="https://blog.caelum.com.br/">Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum</a></h1>
+			<h2 class="site-description">Aprenda sobre tecnologia com a Caelum. Artigos de programação, web, mobile, ux e agile</h2>
+		</hgroup>
+		-->
+
+                
+        
+        <div class="search_main fix"><form role="search" class="searchform" method="get" id="searchform" action="https://blog.caelum.com.br/">
+				<div>
+					<label class="screen-reader-text" for="s">Pesquisar por:</label>
+					<input type="text" value="" name="s" class="field s" placeholder="Busca..." id="s">
+					<input type="submit" class="search-submit" id="searchsubmit" value="Pesquisar">
+				</div>
+			</form></div>
+		<nav id="navigation" class="col-full" role="navigation">
+
+			<section class="menus">
+
+			<a href="https://blog.caelum.com.br/" class="nav-home"><span>Home</span></a>
+			
+			<div class="menu-toggle"><h3>Categorias</h3><ul id="menu-categorias" class="nav main-nav"><li id="menu-item-8609" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-8609"><a href="https://blog.caelum.com.br/category/programacao/">Programação</a></li>
+<li id="menu-item-4145" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4145"><a href="https://blog.caelum.com.br/category/front-end/">Front-end</a></li>
+<li id="menu-item-8610" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8610"><a href="https://blog.caelum.com.br/category/mobile/">Mobile</a></li>
+<li id="menu-item-7474" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7474"><a href="https://blog.caelum.com.br/category/design-ux/">Design &amp; UX</a></li>
+<li id="menu-item-4143" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4143"><a href="https://blog.caelum.com.br/category/agile/">Agile</a></li>
+<li id="menu-item-4142" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4142"><a href="https://blog.caelum.com.br/category/arquitetura/">Arquitetura</a></li>
+<li id="menu-item-4141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4141"><a href="https://blog.caelum.com.br/category/inovacao/">Inovação</a></li>
+</ul></div><div class="menu-toggle"><h3>Conheça também</h3><ul id="menu-sec-menu" class="nav main-nav"><li id="menu-item-6142" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6142"><a href="https://www.caelum.com.br/">Cursos Caelum</a></li>
+<li id="menu-item-6143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6143"><a href="https://www.alura.com.br/">Cursos online Alura</a></li>
+<li id="menu-item-6144" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6144"><a href="https://www.casadocodigo.com.br/">Editora Casa do Código</a></li>
+</ul></div>	        <ul class="nav rss">
+	            
+				
+	        </ul>
+
+	    	</section><!--/.menus-->
+
+	    	 <div id="connect">
+<div class="social">
+<a href="https://blog.caelum.com.br/feed/" title="Subscribe to our RSS feed" class="subscribe"><span>Subscribe to our RSS feed</span></a>
+<a href="https://twitter.com/caelum" title="Follow Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Twitter" class="twitter"><span>Follow Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Twitter</span></a>
+<a href="https://www.facebook.com/caelumbr" title="Like Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Facebook" class="facebook"><span>Like Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Facebook</span></a>
+</div>
+</div>
+
+	        <!-- <a href="#top" class="nav-close"><span>Return to Content</span></a> -->
+
+		</nav><!-- /#navigation -->
+
+				
+	</header><!-- /#header -->
+
+	
+    <div id="content" class="col-full">
+
+    	
+		<section id="main">
+        			<article class="post-49 post type-post status-publish format-standard hentry category-programacao tag-encoding tag-iso88591 tag-java tag-latin1 tag-mysql tag-unicode tag-utf8">
+
+				
+                <header style="background-image: url(); background-size: cover; background-position: center center;">
+                
+                	<section class="header-content">
+
+	                	<h1>Entendendo Unicode e os Character Encodings</h1>
+                		<aside class="post-meta">
+	<span class="post-date">Postado dia 22/10/2006</span>
+	<span class="post-author">por Paulo Silveira</span>
+	<span class="post-category">em <a href="https://blog.caelum.com.br/category/programacao/" rel="category tag">Programação</a></span>
+	<span class="post-comments"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comments">28</a></span>
+	</aside>
+
+                	</section>
+                	
+                	<!--
+                	<nav id="post-entries" class="fix">
+	        		    <div class="nav-prev fl"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-heranca/" rel="prev">Como não aprender orientação a objetos: Herança</a></div>
+	        		    <div class="nav-next fr"><a href="https://blog.caelum.com.br/brincando-com-generics-o-bizarregenericdao/" rel="next">Brincando com Generics: o BizarreGenericDao</a></div>
+	        		</nav>
+	        	-->
+                	
+                	                	
+<!--                 	<a href="#" title="#"><img src="" alt="" /></a> -->
+
+                </header>
+
+                <section class="entry fix">
+					
+                	<div class="mailmunch-forms-before-post" style="display: none !important;"></div><p>Todo mundo já passou por problemas com character encodings. Quem nunca abriu uma conexão JDBC com o MySQL e puxou do banco um monte de caracteres onde em vez de acentos só se viam pontos de interrogação e caracteres estranhos?</p>
+<p>O blog do Joel Spolsky já publicou um <a href="http://www.joelonsoftware.com/articles/Unicode.html">post sobre esse assunto</a>, que é bem simples e direto. O fato importante é mostar que <a href="http://www.unicode.org/">Unicode</a> não é um encoding. Unicode define <em>codepoints</em> (um número) para cada letra (ou símbolo). Por exemplo, a letra ´<code>A</code>´ é o codepoint 65. A partir do Unicode 3.1, o codepoint pode até mesmo ser maior que 2^16: o fatídico 65536 (atualmente vai até 16*65536, ou seja 0x10FFFF). Sim! Unicode nada mais é que um <em>tabelão</em>! Nas <a href="http://en.wikipedia.org/wiki/Unicode">palavras do wikipedia</a>, “<em>… (Unicode) assign a unique number to each character used in the written languages of the world</em>“, traduzindo, Unicode associa um número único para cada caractere usado nas línguas escritas de todo o mundo.</p>
+<p>Pois é, unicode não é uma maneira de se representar caracteres com 2 bytes. Aliás, <strong>Unicode não é um encoding</strong>.  A pergunta “<em>Você está usando unicode ou latin1?</em>” está completamente errada. Quem é responsável por codificar um codepoint em bytes é o encoding. Aqui estamos falando de <a href="http://en.wikipedia.org/wiki/Utf-8">UTF-8</a>, o <a href="http://en.wikipedia.org/wiki/ISO_8859-1">ISO-8859-1</a> (vulgo latin1), entre outros. Alguns encodings podem não suportar todos os codepoints possíveis, outros podem tentar economizar alguns bytes quando codificar alguns caracteres (caso do UTF-8).</p>
+<p>Mas não quero ficar na teoria, quero passar para o código. Vamos então codificar o ‘<code>ç</code>‘ em diferentes encodings: <strong>ISO-8859-1</strong>, <strong>UTF-8</strong> e <strong>UTF-16</strong>.  Basta colocar o seguinte código no main:</p>
+<div><div id="highlighter_390213" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">String[] codes = { </code><code class="java string">"ISO-8859-1"</code><code class="java plain">, </code><code class="java string">"UTF-8"</code><code class="java plain">, </code><code class="java string">"UTF-16"</code> <code class="java plain">};</code></div><div class="line number2 index1 alt1"><code class="java plain">String palavra = </code><code class="java string">"ç"</code><code class="java plain">;</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="java keyword">for</code> <code class="java plain">(String encoding : codes) {</code></div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">byte</code><code class="java plain">[] b = palavra.getBytes(encoding);</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java plain">System.out.printf(</code><code class="java string">"%10s\t%d\t"</code><code class="java plain">, encoding, b.length);</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">for</code> <code class="java plain">(</code><code class="java keyword">int</code> <code class="java plain">k = </code><code class="java value">0</code><code class="java plain">; k &lt; b.length; k++) {</code></div><div class="line number8 index7 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">String hex = Integer.toHexString((b[k] + </code><code class="java value">256</code><code class="java plain">) % </code><code class="java value">256</code><code class="java plain">);</code></div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">if</code> <code class="java plain">(hex.length() == </code><code class="java value">1</code><code class="java plain">)</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">hex = </code><code class="java string">"0"</code> <code class="java plain">+ hex;</code></div><div class="line number11 index10 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">System.out.print(hex);</code></div><div class="line number12 index11 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java plain">}</code></div><div class="line number13 index12 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java plain">System.out.println();</code></div><div class="line number14 index13 alt1"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>E ao rodar, teremos em cada linha o encoding, a quantidade de bytes utilizada para codificar o ‘<code>ç</code>‘ e sua representação em hexadecimal codificada.</p>
+<p><code></code></p><code>
+<pre>ISO-8859-1	1	e7
+     UTF-8	2	c3a7
+    UTF-16	4	feff00e7
+</pre>
+</code><p><code></code></p>
+<p>Vamos tentar o mesmo para a letra ‘<code>a</code>‘:</p>
+<p><code></code></p><code>
+<pre>ISO-8859-1	1	61
+     UTF-8	1	61
+    UTF-16	4	feff0061
+</pre>
+</code><p><code></code></p><div class="mailmunch-forms-in-post-middle" style="display: none !important;"></div>
+<p>É interessante reparar aqui que o <strong>UTF-8</strong> gastou 2 bytes em um caso, e 1 byte no outro. Outro fato importante é que <strong>UTF-8</strong> codifica diversos caracteres da mesma forma que o <strong>ISO-8859-1</strong> (e este por sua vez tem uma estrita relação com o <strong>US-ASCII</strong>). Você pode incrementar esse código e testar com outros encodings, tais como <strong>US-ASCII</strong>, <strong>Cp1252</strong>  e <strong>UTF-16</strong>. Você pode ver quais encodings a sua JVM suporta com <code>Charset.availableCharsets()</code>.</p>
+<p>Como falei anteriormente, existem caracteres que extrapolam o índice do 65535. Então como ficam esses caracteres no java, já que o <code>char</code> tem apenas 2 bytes? É aí que entram os <em>surrogate pairs</em>: alguns caracteres agora são utilizados para indicar que o restante do caractere ainda está por vir! Alguns problemas surgem com isso: o método <code>length()</code> da <code>String</code> não funciona mais tão bem: ele apenas diz quantos <code>char</code>s aquela <code>String</code> possui.</p>
+<p>Para resolver esses problemas novos métodos e classes foram adicionados ao java 5 (através da <a href="http://jcp.org/en/jsr/detail?id=204">JSR-204</a>), como o <code>codePointCount</code>, na <code>String</code>. <a href="http://java.sun.com/mailers/techtips/corejava/2006/tt0822.html">Esse artigo da Sun</a> discute bem esse assunto.</p>
+<p>Mas quando ocorrem os problemas de encoding que citamos no começo do post? Um caso em potencial é quando tentamos ler uma sequência de bytes usando um encoding que não foi o que utilizamos para codificar aquela <code>String</code>. Vamos simular isso escrevendo o ‘ç’ em <strong>UTF-8</strong> e lendo como <strong>ISO-8859-1</strong>, e vice-versa:</p>
+<div><div id="highlighter_411259" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java comments">// ç escrito em UTF-8 mas lido em ISO-8859-1</code></div><div class="line number2 index1 alt1"><code class="java plain">System.out.println(</code><code class="java keyword">new</code> <code class="java plain">String(</code><code class="java string">"ç"</code><code class="java plain">.getBytes(</code><code class="java string">"UTF-8"</code><code class="java plain">), </code><code class="java string">"ISO-8859-1"</code><code class="java plain">));</code></div><div class="line number3 index2 alt2"><code class="java comments">// ç escrito em ISO-8859-1 mas lido em UTF-8</code></div><div class="line number4 index3 alt1"><code class="java plain">System.out.println(</code><code class="java keyword">new</code> <code class="java plain">String(</code><code class="java string">"ç"</code><code class="java plain">.getBytes(</code><code class="java string">"ISO-8859-1"</code><code class="java plain">), </code><code class="java string">"UTF-8"</code><code class="java plain">));</code></div></div></td></tr></tbody></table></div></div>
+<p>E o resultado:</p>
+<p><code></code></p><code>
+<pre>Ã§
+?
+</pre>
+</code><p><code></code></p>
+<p>Cadê o c cedilha? Você pode não ver, mas ele está por aí! Esses caracteres lhe trazem algumas lembranças?</p>
+<div class="mailmunch-forms-after-post" style="display: none !important;"></div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Compartilhe isso:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-49" class="share-twitter sd-button share-icon no-text" href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/?share=twitter&amp;nb=1" target="_blank" title="Clique para compartilhar no Twitter"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Twitter(abre em nova janela)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-49" class="share-facebook sd-button share-icon no-text" href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/?share=facebook&amp;nb=1" target="_blank" title="Clique para compartilhar no Facebook"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Facebook(abre em nova janela)</span></a></li><li class="share-end"></li></ul></div></div></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Relacionado</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal jp-relatedposts-grid "><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="10407" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/quais-as-diferencas-entre-python-2-e-python-3/" title="Quais as diferenças entre Python 2 e Python 3?
+
+Antes de se iniciar no Python, surge sempre a dúvida - qual versão da linguagem devo aprender? Talvez mais difícil que esta é a dúvida que vem de quem já programa em Python - devo fazer meus programas em qual versão do Python? Tratando de algumas outras linguagens de programação,…" rel="nofollow" data-origin="49" data-position="0">Quais as diferenças entre Python 2 e Python 3?</a></span><span class="jp-relatedposts-post-date">20/06/2018</span><span class="jp-relatedposts-post-context">In “Programação”</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="10655" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/dicas-politicas-de-senha/" title="Algumas dicas importantes sobre políticas de senha
+
+Recentemente, realizei alguns testes de segurança em uma aplicação web que mantenho online. Ao final, consegui acesso a uma grande parte das contas de diferentes usuários. Mesmo assim, os resultados do teste me mostraram que meu sistema, no geral, estava seguro. Não havia uma vulnerabilidade no meu banco de dados,…" rel="nofollow" data-origin="49" data-position="1">Algumas dicas importantes sobre políticas de senha</a></span><span class="jp-relatedposts-post-date">18/07/2018</span><span class="jp-relatedposts-post-context">In “Arquitetura”</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="45" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/ensinando-que-e-o-hashcode/" title="Ensinando o que é o hashCode
+
+Sem dúvida um dos pontos mais difíceis para quem está fazendo um curso inicial de java é entender hashCode, em especial para quem nunca viu estruturas de dados além de filas e pilhas, isso porque o desenvolvedor já está bem confuso em ter seu primeiro contato com a API das…" rel="nofollow" data-origin="49" data-position="2">Ensinando o que é o hashCode</a></span><span class="jp-relatedposts-post-date">04/09/2006</span><span class="jp-relatedposts-post-context">In “Programação”</span></p></div></div>					
+
+
+<a class="share-social" href="https://www.alura.com.br/" style="padding: 16px">
+<img src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/alura-logo.1465499610.svg" alt="Alura" style="margin-right: 16px" scale="0">
+<strong style="">Estude online na Alura</strong>
+<p style="margin: 12px 0 0 0">Programação, Mobile, Front-end, Design &amp; UX, Infraestrutura e Business</p>
+</a>
+
+					<div class="tags">Tags: <a href="https://blog.caelum.com.br/tag/encoding/" rel="tag">encoding</a>, <a href="https://blog.caelum.com.br/tag/iso88591/" rel="tag">iso88591</a>, <a href="https://blog.caelum.com.br/tag/java/" rel="tag">Java</a>, <a href="https://blog.caelum.com.br/tag/latin1/" rel="tag">latin1</a>, <a href="https://blog.caelum.com.br/tag/mysql/" rel="tag">mysql</a>, <a href="https://blog.caelum.com.br/tag/unicode/" rel="tag">unicode</a>, <a href="https://blog.caelum.com.br/tag/utf8/" rel="tag">utf8</a></div>
+				</section>
+
+            </article><!-- .post -->
+
+						<aside id="post-author" class="fix">
+				<div class="profile-image">
+											<img src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/paulo-silveira-90.jpg" scale="0">
+									</div>
+				<div class="profile-content">
+					<h3 class="title">
+						Paulo Silveira						
+													<small>(<a rel="author" href="https://plus.google.com/107186798704105535569?rel=author">Google+</a>)</small>
+											</h3>
+
+											<div class="profile-link">
+							<a href="http://www.caelum.com.br/instrutores/paulo-silveira">
+								Mais sobre o autor
+							</a><br>
+							<a href="https://blog.caelum.com.br/author/peas">
+								Outros posts do autor
+							</a>
+						</div><!-- #profile-link	-->
+									</div><!-- .post-entries -->
+			</aside><!-- .post-author-box -->
+			
+			
+				
+            
+
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+			<h3>28 Comentários</h3>
+
+		<ol class="commentlist">
+
+			
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-225"></a>
+
+	      	<div id="li-comment-225" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/94780f8df830079a6113b490c17b0549.jpeg" srcset="https://secure.gravatar.com/avatar/94780f8df830079a6113b490c17b0549?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-94780f8df830079a6113b490c17b0549-0" originals="50" src-orig="https://secure.gravatar.com/avatar/94780f8df830079a6113b490c17b0549?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.boaglio.com/" rel="external nofollow" url="" url'="">Fernando Boaglio</a></span>
+	                <span class="date">24/10/2006 at 09:04</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-225" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-225">
+				<p>Outro artigo interessante sobre esse assunto:</p>
+<p>USING CHARSETS AND ENCODINGS<br>
+<a href="http://java.sun.com/developer/JDCTechTips/2003/tt0110.html#1" rel="nofollow">http://java.sun.com/developer/JDCTechTips/2003/tt0110.html#1</a></p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-433"></a>
+
+	      	<div id="li-comment-433" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/3107d6089c6f702056e916070f813c68.jpg" srcset="https://secure.gravatar.com/avatar/3107d6089c6f702056e916070f813c68?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-3107d6089c6f702056e916070f813c68-0" originals="50" src-orig="https://secure.gravatar.com/avatar/3107d6089c6f702056e916070f813c68?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.rangelviotti.com/" rel="external nofollow" url="" url'="">Rangel Viotti</a></span>
+	                <span class="date">02/12/2006 at 10:30</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-433" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-433">
+				<p>Gostei muito de sua explicação. Mas agora eu te faço a pergunta que não quer calar:</p>
+<p>Qual deles eu, como brasileiro e desejando que as pessoas leiam as palavras por inteiro, devo usar???</p>
+<p>Abraços.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-2588"></a>
+
+	      	<div id="li-comment-2588" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/a3a101aabb6f8412b35b5e5eb2b11b32.jpeg" srcset="https://secure.gravatar.com/avatar/a3a101aabb6f8412b35b5e5eb2b11b32?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-a3a101aabb6f8412b35b5e5eb2b11b32-0" originals="50" src-orig="https://secure.gravatar.com/avatar/a3a101aabb6f8412b35b5e5eb2b11b32?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Eliezer Reis</span>
+	                <span class="date">15/02/2007 at 07:22</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-2588" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-2588">
+				<p>O que eu entendi é que não adianta você pegar uma String escrita em UTF-8 e tentar ler ela como ISO ou vice-versa. O certo é definir um charset e usá-lo do início ao fim sem excessões. Desde seus arquivos .html, .jsp, .css, .js, .java, solicitações ajax, no banco de dados e o que mais você utilizar.</p>
+<p>Exemplificando:</p>
+<p>A situação do ç só daria correto se você tentar algo assim:</p>
+<p>System.out.println(new String(“ç”.getBytes(“UTF-8”), “UTF-8”));</p>
+<p>ou </p>
+<p>System.out.println(new String(“ç”.getBytes(“ISO-8859-1”), “ISO-8859-1”));</p>
+<p>Eu já tive muita dor de cabeça com uma situação onde acontecia o seguinte. O usuário entrava com os dados em um textarea no meu formulário web  que estava configurado com o charset UTF-8. Quando ele enviava era o ajax que “submetia” logo o XmlHttpRequest utiliza o padrao UTF-8. Infelizmente quando pegava o requisição o meu servlet fazia o decode automático (penso eu) e convertia para ISO-8859-1, isso porque o servlet estava configurado para pegar o padrão do sistema operacional entao a situação era a seguinte.</p>
+<p>System.out.println(new String(“ç”.getBytes(“UTF-8”), “ISO-8859-1”));</p>
+<p>Resultado = Ã§;</p>
+<p>Não consegui perceber onde estava errado porque quando dava um request.getParameter(“”) o decode rolava automático e me descabelei todo.</p>
+<p>Portanto, Nunca misture as coisas trabalhe com um charset do ínicio ao fim. Prefira o UTF-8 porque é uma tentativa de padronizar tudo e como é feita pelo W3C você tem a garantia de que empresas como Microsoft, Sun, e demais o utilizam (ou pelo menos é o que se espera).</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-2589"></a>
+
+	      	<div id="li-comment-2589" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/a3a101aabb6f8412b35b5e5eb2b11b32.jpeg" srcset="https://secure.gravatar.com/avatar/a3a101aabb6f8412b35b5e5eb2b11b32?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-a3a101aabb6f8412b35b5e5eb2b11b32-1" originals="50" src-orig="https://secure.gravatar.com/avatar/a3a101aabb6f8412b35b5e5eb2b11b32?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Eliezer Reis</span>
+	                <span class="date">15/02/2007 at 07:31</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-2589" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-2589">
+				<p>Outro motivo para utilizar UTF-8 é que ele aceita muitos mais caracters que o ISO-8859-1.</p>
+<p>Exemplo:</p>
+<p>O caracter &amp;rdquo que é parecido com o " (aspas duplas) aparece como ? no ISO-8859-1.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-10144"></a>
+
+	      	<div id="li-comment-10144" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c7c5f45c27a7ecce6de1a8867da53be6.jpeg" srcset="https://secure.gravatar.com/avatar/c7c5f45c27a7ecce6de1a8867da53be6?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c7c5f45c27a7ecce6de1a8867da53be6-0" originals="50" src-orig="https://secure.gravatar.com/avatar/c7c5f45c27a7ecce6de1a8867da53be6?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Gabriel Corrêa de Oliveira</span>
+	                <span class="date">16/05/2007 at 12:57</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-10144" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-10144">
+				<p>Acabo de descobrir que quando executamos aplicações de linha de comando no Windows o encode usado pelo prompt do DOS é o Cp850.<br>
+Assim, a única maneira de apresentar corretamente caracteres com acento é usar:</p>
+<p>OutputStreamWriter o = new OutputStreamWriter(System.out, “Cp850”);	PrintWriter pw = new PrintWriter(o, true);<br>
+pw.println(“àáçãé”);</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-36539"></a>
+
+	      	<div id="li-comment-36539" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/37827b2e422838915b2ffb0ddcaead17.jpg" srcset="https://secure.gravatar.com/avatar/37827b2e422838915b2ffb0ddcaead17?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-37827b2e422838915b2ffb0ddcaead17-0" originals="50" src-orig="https://secure.gravatar.com/avatar/37827b2e422838915b2ffb0ddcaead17?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://luanda/" rel="external nofollow" url="" url'="">Alberto Matias</a></span>
+	                <span class="date">22/04/2008 at 06:49</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-36539" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-36539">
+				<p>so estudante universitario quero estar atualizado em codigo</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-36542"></a>
+
+	      	<div id="li-comment-36542" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/37827b2e422838915b2ffb0ddcaead17.jpg" srcset="https://secure.gravatar.com/avatar/37827b2e422838915b2ffb0ddcaead17?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-37827b2e422838915b2ffb0ddcaead17-1" originals="50" src-orig="https://secure.gravatar.com/avatar/37827b2e422838915b2ffb0ddcaead17?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://luanda/" rel="external nofollow" url="" url'="">Alberto Matias</a></span>
+	                <span class="date">22/04/2008 at 06:53</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-36542" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-36542">
+				<p>O Unicode tornou-se o esquema predominante para o processamento interno de texto, e por vezes também para armazenamento</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-49456"></a>
+
+	      	<div id="li-comment-49456" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/9e30f471114d3b7fdd680eea70570a99.jpg" srcset="https://secure.gravatar.com/avatar/9e30f471114d3b7fdd680eea70570a99?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-9e30f471114d3b7fdd680eea70570a99-0" originals="50" src-orig="https://secure.gravatar.com/avatar/9e30f471114d3b7fdd680eea70570a99?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Jomello</span>
+	                <span class="date">03/11/2008 at 02:18</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-49456" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-49456">
+				<p>Muito bom esse artigo, mas tenho uma duvida.<br>
+Estou utilizando utf-8 em tudo .html,xml,servlet,css e banco Postgresql.<br>
+Só que quando mando algo via ajax pelo Firefox tudo funciona maravilhosamente, mas quando mando pelo nosso querido IE eis que ele manda sei lá o que.<br>
+A minha pergunta é, como faço para saber qual charset foi enviado?</p>
+<p>Abraços</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-61979"></a>
+
+	      	<div id="li-comment-61979" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/b5ce8eacf2c2f36eb551e5315b298e94.png" srcset="https://secure.gravatar.com/avatar/b5ce8eacf2c2f36eb551e5315b298e94?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-b5ce8eacf2c2f36eb551e5315b298e94-0" originals="50" src-orig="https://secure.gravatar.com/avatar/b5ce8eacf2c2f36eb551e5315b298e94?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://jlandim.wordpress.com/" rel="external nofollow" url="" url'="">Jean Landim</a></span>
+	                <span class="date">12/12/2009 at 12:52</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-61979" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-61979">
+				<p>De fato o UTF-8 é melhor que o latin-1.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-peas bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-62214"></a>
+
+	      	<div id="li-comment-62214" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c621f1575c6b408ed20d110b86873357.jpeg" srcset="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c621f1575c6b408ed20d110b86873357-0" originals="50" src-orig="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.paulo.com.br/" rel="external nofollow" url="" url'="">Paulo Silveira</a></span>
+	                <span class="date">19/12/2009 at 02:25</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-62214" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-62214">
+				<p>pra quem quiser algo mais prático para resolver os problemas, tem o famoso post do luca:<br>
+<a href="http://www.guj.com.br/posts/list/12456.java" rel="nofollow">http://www.guj.com.br/posts/list/12456.java</a></p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-peas bypostauthor even thread-even depth-1">
+
+	    	<a name="comment-63968"></a>
+
+	      	<div id="li-comment-63968" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c621f1575c6b408ed20d110b86873357.jpeg" srcset="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c621f1575c6b408ed20d110b86873357-1" originals="50" src-orig="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.paulo.com.br/" rel="external nofollow" url="" url'="">Paulo Silveira</a></span>
+	                <span class="date">08/03/2010 at 20:04</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-63968" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-63968">
+				<p>Legal ver o método DataInputStream.readUTF. Como ler um unicode, se acabamos de discutir que não há arquivos em “formato Unicode” . Na verdade ele usa algo parecido, mas nao igual, ao UTF-8:  <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/DataInputStream.html" rel="nofollow">http://java.sun.com/j2se/1.4.2/docs/api/java/io/DataInputStream.html</a></p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-81676"></a>
+
+	      	<div id="li-comment-81676" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/f596ec03461a7a760eca65ba3a3c987f.jpeg" srcset="https://secure.gravatar.com/avatar/f596ec03461a7a760eca65ba3a3c987f?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-f596ec03461a7a760eca65ba3a3c987f-0" originals="50" src-orig="https://secure.gravatar.com/avatar/f596ec03461a7a760eca65ba3a3c987f?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.cleysonlago.com/" rel="external nofollow" url="" url'="">Cleyson Lago</a></span>
+	                <span class="date">26/05/2011 at 10:38</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-81676" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-81676">
+				<p>Já tive muitos problemas com Character Encodings no php, já que ele trabalha nativamente com ISO-8859-1 , mas conseguindo intender como funciona essas codificações facilita um pouco.</p>
+<p>Ótimo artigo</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-81870"></a>
+
+	      	<div id="li-comment-81870" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e5f28811fa9a462d064478942b19ca2e.jpg" srcset="https://secure.gravatar.com/avatar/e5f28811fa9a462d064478942b19ca2e?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-e5f28811fa9a462d064478942b19ca2e-0" originals="50" src-orig="https://secure.gravatar.com/avatar/e5f28811fa9a462d064478942b19ca2e?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Adriano</span>
+	                <span class="date">29/05/2011 at 00:41</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-81870" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-81870">
+				<p>recomendo quem for testar o codigo do exemplo testar tamben com essa lista de Charset</p>
+<p>String[] codes = Charset.availableCharsets().keySet().toArray(new String[0]);</p>
+<p>existe encodings de até 72bits.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-95810"></a>
+
+	      	<div id="li-comment-95810" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/ce54bbd427e3682a78e35c0493315555.jpeg" srcset="https://secure.gravatar.com/avatar/ce54bbd427e3682a78e35c0493315555?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-ce54bbd427e3682a78e35c0493315555-0" originals="50" src-orig="https://secure.gravatar.com/avatar/ce54bbd427e3682a78e35c0493315555?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Anonimo</span>
+	                <span class="date">19/12/2011 at 06:31</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-95810" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-95810">
+				<p>Como eliminar este problema???<br>
+Como verificar qual/quais encodes estou a usar na minha aplicação???<br>
+Java + mysql + ZK + Spring</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-123865"></a>
+
+	      	<div id="li-comment-123865" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/de1bbf113cc1df2aa2435b1fbc0527b3.jpg" srcset="https://secure.gravatar.com/avatar/de1bbf113cc1df2aa2435b1fbc0527b3?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-de1bbf113cc1df2aa2435b1fbc0527b3-0" originals="50" src-orig="https://secure.gravatar.com/avatar/de1bbf113cc1df2aa2435b1fbc0527b3?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Marcos</span>
+	                <span class="date">16/06/2013 at 18:43</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-123865" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-123865">
+				<p>Muito bom o post. Agradeço ao autor aí por tê-lo escrito.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-138107"></a>
+
+	      	<div id="li-comment-138107" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/422b80d4b9acdd3189fc9976915b08d9.jpeg" srcset="https://secure.gravatar.com/avatar/422b80d4b9acdd3189fc9976915b08d9?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-422b80d4b9acdd3189fc9976915b08d9-0" originals="50" src-orig="https://secure.gravatar.com/avatar/422b80d4b9acdd3189fc9976915b08d9?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://about.me/palerique" rel="external nofollow" url="" url'="">PH</a></span>
+	                <span class="date">04/12/2013 at 17:12</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-138107" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-138107">
+				<p>Paulo, porque a gente soma com 256 e depois pega o resto da divisão por 256???</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-peas bypostauthor even thread-even depth-1">
+
+	    	<a name="comment-141456"></a>
+
+	      	<div id="li-comment-141456" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c621f1575c6b408ed20d110b86873357.jpeg" srcset="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c621f1575c6b408ed20d110b86873357-2" originals="50" src-orig="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.caelum.com.br/" rel="external nofollow" url="" url'="">Paulo Silveira</a></span>
+	                <span class="date">16/12/2013 at 11:48</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-141456" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-141456">
+				<p>por uma questao de lidar com os numeros negativos e complemento da divisao</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-286429"></a>
+
+	      	<div id="li-comment-286429" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/a9cfd484bc791b14aa913573a1bec03f.jpg" srcset="https://secure.gravatar.com/avatar/a9cfd484bc791b14aa913573a1bec03f?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-a9cfd484bc791b14aa913573a1bec03f-0" originals="50" src-orig="https://secure.gravatar.com/avatar/a9cfd484bc791b14aa913573a1bec03f?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Jorge Reis</span>
+	                <span class="date">05/02/2015 at 10:48</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-286429" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-286429">
+				<p>Olá meu caro, gosto muito de seus textos e de todo o material da Caelum / Alura, gostaria de saber o seguinte:<br>
+A informação de encoding fica onde no arquivo: em um “head”, ela é uma informação/atributo do arquivo, ou ela não é uma informação que se aplique a todo arquivo, ou seja, é possível misturar vários encodes no mesmo arquivo, (pelo que entendi sim), neste caso, como faço pra saber o encoding de um arquivo? tem como fazer isso de forma determinística?<br>
+Me desculpe as perguntas.<br>
+Grato.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-345585"></a>
+
+	      	<div id="li-comment-345585" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/3c3f9d77a43212435f983aa3b623c362.jpg" srcset="https://secure.gravatar.com/avatar/3c3f9d77a43212435f983aa3b623c362?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-3c3f9d77a43212435f983aa3b623c362-0" originals="50" src-orig="https://secure.gravatar.com/avatar/3c3f9d77a43212435f983aa3b623c362?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">caio</span>
+	                <span class="date">14/05/2016 at 04:03</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-345585" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-345585">
+				<p>é possível que o usuario digite “possível” na jsp, no banco grave “possível” e ao exibir na tela exiba “possível”, sem uma maracutaia louca?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-351798"></a>
+
+	      	<div id="li-comment-351798" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e49de6139ea43be4d6dcb23b045daf5e.jpg" srcset="https://secure.gravatar.com/avatar/e49de6139ea43be4d6dcb23b045daf5e?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-e49de6139ea43be4d6dcb23b045daf5e-0" originals="50" src-orig="https://secure.gravatar.com/avatar/e49de6139ea43be4d6dcb23b045daf5e?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">MAX</span>
+	                <span class="date">07/08/2016 at 01:16</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-351798" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-351798">
+				<p>Não estou achando um exemplo para um exercicio de criar uma moldura usando ascii caracteres 205, 187, 210 etc que são elementos que formam um frame no Java, alguém tem uma dica ?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-384118"></a>
+
+	      	<div id="li-comment-384118" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/80aeeed5e5aa2b3789fa3d0d29f51803.jpeg" srcset="https://secure.gravatar.com/avatar/80aeeed5e5aa2b3789fa3d0d29f51803?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-80aeeed5e5aa2b3789fa3d0d29f51803-0" originals="50" src-orig="https://secure.gravatar.com/avatar/80aeeed5e5aa2b3789fa3d0d29f51803?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Edson</span>
+	                <span class="date">13/11/2018 at 21:35</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#comment-384118" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-384118">
+				<p>Muito bom Paulo! Tornou mais simples ainda do que o do Joel.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		</ol>
+
+		<nav class="navigation fix">
+			<div class="fl"></div>
+			<div class="fr"></div>
+		</nav><!-- /.navigation -->
+	
+</div> <!-- /#comments_wrap -->
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Deixe uma resposta <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://blog.caelum.com.br/entendendo-unicode-e-os-character-encodings/#respond" style="display:none;">Click here to cancel reply.</a></small></h3>			<form action="https://blog.caelum.com.br/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-form-comment"><label for="comment">Comentário</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><input id="author" class="txt" name="author" type="text" value="" size="30" aria-required="true" placeholder="Nome  (Obrigatório)"></p>
+<p class="comment-form-email"><input id="email" class="txt" name="email" type="text" value="" size="30" aria-required="true" placeholder="E-mail  (Obrigatório)"></p>
+<p class="comment-form-url"><input id="url" class="txt" name="url" type="text" value="" size="30" placeholder="Site"></p>
+<p class="form-submit"></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notifique-me sobre novos comentários por e-mail.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notifique-me sobre novas publicações por e-mail.</label></p><input name="submit" type="submit" id="submit" class="submit" value="Enviar comentário"> <input type="hidden" name="comment_post_ID" value="49" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+<p></p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="81c5f1e65d"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1561489076666"></form>
+			</div><!-- #respond -->
+	
+		</section><!-- #main -->
+
+		
+    </div><!-- #content -->
+
+	
+	<footer id="footer">
+	
+		<div class="footer-inner">
+	
+					
+				<div id="copyright" class="col-left">
+									<p>Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum © 2019.</p>
+								</div>
+		
+				<div id="credit" class="col-right">
+		        								</div>
+		
+		</div>
+
+	</footer><!-- /#footer  -->
+	</div><!-- /#inner-wrapper -->
+</div><!-- /#wrapper -->
+<!-- Your Google Analytics Plugin is missing the tracking ID -->
+	<div style="display:none">
+	<div class="grofile-hash-map-94780f8df830079a6113b490c17b0549">
+	</div>
+	<div class="grofile-hash-map-3107d6089c6f702056e916070f813c68">
+	</div>
+	<div class="grofile-hash-map-a3a101aabb6f8412b35b5e5eb2b11b32">
+	</div>
+	<div class="grofile-hash-map-c7c5f45c27a7ecce6de1a8867da53be6">
+	</div>
+	<div class="grofile-hash-map-37827b2e422838915b2ffb0ddcaead17">
+	</div>
+	<div class="grofile-hash-map-9e30f471114d3b7fdd680eea70570a99">
+	</div>
+	<div class="grofile-hash-map-b5ce8eacf2c2f36eb551e5315b298e94">
+	</div>
+	<div class="grofile-hash-map-c621f1575c6b408ed20d110b86873357">
+	</div>
+	<div class="grofile-hash-map-f596ec03461a7a760eca65ba3a3c987f">
+	</div>
+	<div class="grofile-hash-map-e5f28811fa9a462d064478942b19ca2e">
+	</div>
+	<div class="grofile-hash-map-ce54bbd427e3682a78e35c0493315555">
+	</div>
+	<div class="grofile-hash-map-de1bbf113cc1df2aa2435b1fbc0527b3">
+	</div>
+	<div class="grofile-hash-map-422b80d4b9acdd3189fc9976915b08d9">
+	</div>
+	<div class="grofile-hash-map-a9cfd484bc791b14aa913573a1bec03f">
+	</div>
+	<div class="grofile-hash-map-3c3f9d77a43212435f983aa3b623c362">
+	</div>
+	<div class="grofile-hash-map-e49de6139ea43be4d6dcb23b045daf5e">
+	</div>
+	<div class="grofile-hash-map-80aeeed5e5aa2b3789fa3d0d29f51803">
+	</div>
+	</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-270161-5', 'caelum.com.br');
+  ga('send', 'pageview');
+
+</script>
+<!--[if lt IE 9]>
+<script src="https://blog.caelum.com.br/wp-content/themes/blog-v3/includes/js/respond.js"></script>
+<![endif]-->
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/blog.caelum.com.br\/entendendo-unicode-e-os-character-encodings\/":49};
+	</script>
+				<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shBrushJava.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://blog.caelum.com.br/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://blog.caelum.com.br/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/photon.min.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/devicepx-jetpack.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/gprofiles.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wpgroho.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/prism-js.min.js.download"></script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/form.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/sharing.min.js.download"></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e-201926.js.download" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.1.1',blog:'125225402',post:'49',tz:'-3',srv:'blog.caelum.com.br'} ]);
+	_stq.push([ 'clickTrackerInit', '125225402', '49' ]);
+</script>
+<script type="text/javascript" async="" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/20bd5d95-759f-4313-ad3e-1663fd4de6c0-loader.js.download"></script>
+
+<script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/traffic-source-cookie.min.js.download"></script><iframe style="width: 1px; height: 1px; position: absolute; top: -100px;" id="rd_tmgr" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/saved_resource.html"></iframe><script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/lead-tracking.min.js.download"></script><script type="text/javascript" src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/rdstation-popup.min.js.download"></script><img src="./Entendendo Unicode e os Character Encodings - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/g.gif" alt=":)" width="6" height="5" id="wpstats" scale="0"></body></html>

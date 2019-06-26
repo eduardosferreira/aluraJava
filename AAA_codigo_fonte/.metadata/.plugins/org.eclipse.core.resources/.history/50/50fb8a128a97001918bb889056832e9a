@@ -1,0 +1,38 @@
+package br.com.alura.java.io.teste;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public final class TesteSerializacao {
+
+	public static void Ex1() throws Exception {
+		String nome = "Nico Steppat";
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("objeto.bin"));
+		oos.writeObject(nome);
+		oos.close();
+	}
+
+	public static void Ex2() throws Exception {
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("objeto.bin"));
+		@SuppressWarnings("deprecation")
+		String nome = (String) ois.readObject();
+		ois.close();
+		System.out.println(nome);
+	}	
+	public TesteSerializacao() {
+		try {
+			Ex1();
+			Ex2();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteSerializacao();
+
+	}
+
+}

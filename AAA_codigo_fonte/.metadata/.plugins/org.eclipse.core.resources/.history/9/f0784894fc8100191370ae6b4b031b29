@@ -1,0 +1,9 @@
+
+public class Program {
+
+	public static void main(String[] args) {
+		Cliente clientePaulo = new Cliente("Paulo","0000000000-1","programador java");
+		
+	}
+	
+}

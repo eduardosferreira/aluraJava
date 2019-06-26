@@ -1,0 +1,128 @@
+package data1;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+public class DataExemplo implements Serializable {
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6340651415290115420L;
+	private static long autoIncremento;
+	/**
+	 * @return the autoIncremento
+	 */
+	public static long getAutoIncremento() {
+		return autoIncremento;
+	}
+
+
+
+	/**
+	 * @param autoIncremento the autoIncremento to set
+	 */
+	public static void setAutoIncremento(long autoIncremento) {
+		DataExemplo.autoIncremento = autoIncremento;
+	}
+
+	
+	private Long codigo;
+
+	/**
+	 * @return the codigo
+	 */
+	public Long getCodigo() {
+		return codigo;
+	}
+
+
+
+	/**
+	 * @param codigo the codigo to set
+	 */
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}	
+
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof DataExemplo)) {
+			return false;
+		}
+		DataExemplo other = (DataExemplo) obj;
+		return Objects.equals(codigo, other.codigo);
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "[codigo=" + codigo + "]";
+	}
+
+
+
+	public DataExemplo() {
+		super();
+		DataExemplo.autoIncremento++;
+		this.setCodigo(DataExemplo.autoIncremento);
+	}
+
+
+
+	public static void main(String[] args) {
+		
+	}
+
+
+
+}

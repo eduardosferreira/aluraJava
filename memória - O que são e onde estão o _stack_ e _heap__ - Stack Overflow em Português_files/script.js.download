@@ -1,0 +1,18 @@
+var TL = new TimelineMax({delay:.3});
+
+function init(){
+
+	TL.add( TweenMax.to('#wrapper', 0, {opacity: 1}) )
+
+	TL.add([
+	    TweenMax.from('#logo', 1, { autoAlpha:0, scale:1.1, ease:Power1.easeInOut, force3D:true, rotation: 0.1, transformStyle: "preserve-3d", transformOrigin: "841px 74px" }),
+	    
+	    TweenMax.from('#txt1', 1, { autoAlpha:0, scale:1.1, ease:Power1.easeInOut, delay:0.1, force3D:true, rotation: 0.1, transformStyle: "preserve-3d", transformOrigin: "154px 54px" }),
+	    TweenMax.from('#txt2', 1, { autoAlpha:0, scale:1.1, ease:Power1.easeInOut, delay:0.2, force3D:true, rotation: 0.1, transformStyle: "preserve-3d", transformOrigin: "154px 54px" }),
+	    TweenMax.from('#cta', 1, { autoAlpha:0, scale:1.1, ease:Power1.easeInOut, delay:0.6, force3D:true, rotation: 0.1, transformStyle: "preserve-3d", transformOrigin: "154px 54px" }),
+	    TweenMax.from('#arrow', 1, { autoAlpha:0, scale:1.1, ease:Power1.easeInOut, delay:0.6, force3D:true, rotation: 0.1, transformStyle: "preserve-3d", transformOrigin: "154px 54px" }),
+	    TweenMax.to('#arrow', 0.2, { x:3, ease:Power1.easeInOut, delay:1.8, force3D:true, transformStyle: "preserve-3d", yoyo:true, repeat:3 }),
+	]);
+
+	console.log(TL.totalDuration())
+}

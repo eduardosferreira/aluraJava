@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://www.caelum.com.br/apostila-java-orientacao-objetos/como-aprender-java/ -->
+<html lang="pt-BR" class="js svg ratio1x "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+
+        
+        <link rel="next" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/como-aprender-java/o-que-e-java/index.html">
+        
+        
+
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Como Aprender Java | Java e Orientação a Objetos</title>
+        <script type="text/javascript" async="" defer="" src="./Como Aprender Java _ Java e Orientação a Objetos_files/goal.min.js.download"></script><script>
+            if (location.protocol != "https:" && location.hostname == "www.caelum.com.br")
+                location.href = "https:" + location.href.substring(location.protocol.length);
+
+            document.documentElement.className = 'js ' + (!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect ? 'svg ':'no-svg ') + 'ratio' + (!!(devicePixelRatio > 1.3) ? '2x ' : '1x ');
+        </script>
+        
+        <!-- Facebook -->
+        <meta property="og:title" content="Como Aprender Java | Java e Orientação a Objetos">
+        <meta property="og:image" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        <meta property="og:site_name" content="Apostilas Caelum">
+        <meta property="fb:app_id" content="140078819399376">
+        
+        <!-- Google+ -->
+        <meta itemprop="name" content="Como Aprender Java | Java e Orientação a Objetos">
+        <meta itemprop="image" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        
+        <!-- iOS webapp -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Java e OO">
+        <link rel="apple-touch-icon" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        
+        <script>
+        if(("standalone" in navigator) && navigator.standalone){
+            document.documentElement.className += ' ios-webapp'
+        }
+        </script>     
+        
+    <meta property="fb:url" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/README.md/">
+    <link rel="canonical" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/README.md/"> 
+
+        
+    <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+    <body><div id="MathJax_Message" style="display: none;"></div>
+        
+        
+            
+                <script async="" src="./Como Aprender Java _ Java e Orientação a Objetos_files/apostila-aberta.js.download"></script>
+            
+        
+            
+                <script async="" src="./Como Aprender Java _ Java e Orientação a Objetos_files/bundle.js.download"></script>
+            
+        
+            
+                <script src="./Como Aprender Java _ Java e Orientação a Objetos_files/MathJax.js.download" id=""></script>
+            
+        
+            
+                <script async="" src="./Como Aprender Java _ Java e Orientação a Objetos_files/plugin.js.download"></script>
+            
+        
+
+        
+        
+
+    
+    <link rel="stylesheet" href="./Como Aprender Java _ Java e Orientação a Objetos_files/apostila-aberta.css">
+    
+
+    
+    <link rel="stylesheet" href="./Como Aprender Java _ Java e Orientação a Objetos_files/hljs.css">
+    
+
+    
+    <link rel="stylesheet" href="./Como Aprender Java _ Java e Orientação a Objetos_files/anuncio.css">
+    
+
+    
+    <link rel="stylesheet" href="./Como Aprender Java _ Java e Orientação a Objetos_files/global.css">
+    
+
+
+        
+        
+    
+    <div class="barra-topo" role="banner">
+    <div class="container barra-container">
+        <div class="sombra"></div>
+        <div>
+            
+            <a href="http://www.caelum.com.br/" class="logo">
+                <img src="./Como Aprender Java _ Java e Orientação a Objetos_files/caelum-logo-cinza.svg" alt="Caelum" onerror="this.src=this.src.replace(&#39;.svg&#39;, &#39;.png&#39;); this.onerror=null">
+            </a>
+            <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/" class="book-title" title="Ir para Capa e Sumário da apostila">Apostila Java e Orientação a Objetos</a>
+            
+            <div class="menu-mais">
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caelum.com.br%2Fapostila-java-orientacao-objetos%2F" class="share" rel="nofollow" title="Compartilhar no Facebook">
+                    <span aria-hidden="true" class="icone-facebook"></span>
+                    <span class="ir">Compartilhar apostila FJ-11 no Facebook</span>
+                </a>
+                <div class="config">
+                    <span aria-hidden="true" class="icone-list icone" title="Opções"></span>
+                    <span tabindex="0" class="ir">Opções</span>
+
+                    <div class="submenu">
+
+                        <section class="submenu-sub">
+                            <h3 class="submenu-divisor submenu-label">Navegação</h3>
+
+                            <ul>
+                                
+                                <li>
+                                    <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/index.html" title="Ir para Capa e Sumário da apostila" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-house"></span>
+                                        <span>Capa &amp; Sumário</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <form>
+                                        <label for="chapter-nav-select" id="chapter-nav-label" class="submenu-label">Capítulos</label>
+                                        <select class="chapter-nav" title="Navegue nos capítulos da apostila" id="chapter-nav-select" aria-labeledby="chapter-nav-label">
+                                            <option></option>
+                                            
+                                                
+                                                    <option value="./como-aprender-java/index.html" selected="">
+                                                        1. Como Aprender Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./o-que-e-java/index.html">
+                                                        2. O que é Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./variaveis-primitivas-e-controle-de-fluxo/index.html">
+                                                        3. Variáveis primitivas e Controle de fluxo
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./orientacao-a-objetos-basica/index.html">
+                                                        4. Orientação a objetos básica
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./modificadores-de-acesso-e-atributos-de-classe/index.html">
+                                                        5. Modificadores de acesso e atributos de classe
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./eclipse-ide/index.html">
+                                                        6. Eclipse IDE
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./pacotes-organizando-suas-classes-e-bibliotecas/index.html">
+                                                        7. Pacotes - Organizando suas classes e bibliotecas
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./ferramentas-jar-e-javadoc/index.html">
+                                                        8. Ferramentas: jar e javadoc
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./heranca-reescrita-e-polimorfismo/index.html">
+                                                        9. Herança, reescrita e polimorfismo
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./classes-abstratas/index.html">
+                                                        10. Classes Abstratas
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./interfaces/index.html">
+                                                        11. Interfaces
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./excecoes-e-controle-de-erros/index.html">
+                                                        12. Exceções e controle de erros
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./o-pacote-java-lang/index.html">
+                                                        13. O pacote java.lang
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./um-pouco-de-arrays/index.html">
+                                                        14. Um pouco de arrays
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./collections-framework/index.html">
+                                                        15. Collections framework
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./pacote-java-io/index.html">
+                                                        16. Pacote java.io
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./e-agora/index.html">
+                                                        17. E agora?
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./apendice-programacao-concorrente-e-threads/index.html">
+                                                        18. Apêndice - Programação Concorrente e Threads
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./apendice-sockets/index.html">
+                                                        19. Apêndice - Sockets
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./apendice-problemas-com-concorrencia/index.html">
+                                                        20. Apêndice - Problemas com concorrência
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./apendice-instalacao-do-java/index.html">
+                                                        21. Apêndice - Instalação do Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="./apendice-debugging/index.html">
+                                                        22. Apêndice - Debugging
+                                                    </option>
+                                                
+                                            
+                                        </select>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="https://www.caelum.com.br/busca" method="GET">
+                                        <input type="hidden" name="apostila_sigla" value="FJ-11">
+                                        <input type="hidden" name="apostila_path" value="apostila-java-orientacao-objetos">
+                                        <label for="apostila-busca-input" id="apostila-busca-label" class="submenu-label">Busca</label>
+                                        <input type="search" id="apostila-busca-input" aria-labeledby="apostila-busca-label" name="q">
+                                        <button title="Buscar" class="search-form-action">
+                                            <span aria-hidden="true" class="icone-search"></span>
+                                            <span class="ir">Buscar</span>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="submenu-sub">
+                            <h3 class="submenu-divisor submenu-label">Mais</h3>
+
+                            <ul>
+                                <li>
+                                    <a href="https://www.caelum.com.br/curso-java-orientacao-objetos" title="Java e Orientação a Objetos" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-star"></span>
+                                        <span>Curso Caelum dessa apostila</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caelum.com.br%2Fapostila-java-orientacao-objetos%2F" rel="nofollow" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-facebook"></span>
+                                        <span>Compartilhar no Facebook</span>
+                                    </a>
+                                </li>
+                                <!--<li>
+                                    <a href="../offline/" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-browser"></span>
+                                        <span class="novo">Leitura offline</span>
+                                    </a>
+                                </li>-->
+                                <li>
+                                    <a href="http://www.caelum.com.br/apostilas/#download" title="Baixe em PDF, epub e mobi" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-install"></span>
+                                        <span>Download da apostila</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.caelum.com.br/apostilas/" title="Apostilas abertas da Caelum" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-plus"></span>
+                                        <span>Outras apostilas abertas</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div><!-- /.menu-mais -->
+        </div>
+    </div>
+</div>
+    
+    
+<ol itemscope="" itemtype="http://schema.org/BreadcrumbList" class="container breadcrumb">
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/curso-java-orientacao-objetos">
+            <span itemprop="name">Curso Java e Orientação a Objetos</span>
+        </a>
+        <meta itemprop="position" content="1">
+    </li>
+    ›
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/">
+            <span itemprop="name">Apostila</span>
+        </a>
+        <meta itemprop="position" content="2">
+    </li>
+    ›
+    <li itemprop="itemListElement" itemscope="" class="breadcrumb-item" itemtype="http://schema.org/ListItem">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/como-aprender-java/index.html">
+            <span itemprop="name">Capítulo 1 - Como Aprender Java</span>
+        </a>
+        <meta itemprop="position" content="3">
+    </li>
+</ol>
+
+    <div class="tubaina container" role="main">
+        
+            <div class="chapterHeader">Capítulo 1</div><h1 class="book-chapter">Como Aprender Java</h1>
+            <p><em>"Busco um instante feliz que justifique minha existência" -- Fiodór Dostoiévski</em></p>
+
+
+<h2 id="o-que--realmente-importante">1.1 O que é realmente importante?</h2>
+<p>Muitos livros, ao passar dos capítulos, mencionam todos os detalhes da linguagem
+juntamente com seus princípios básicos. Isso acaba criando muita confusão, em especial
+porque o estudante não consegue distinguir exatamente o que é primordial aprender no início,
+daquilo que pode ser estudado mais adiante.</p>
+<p>Se uma classe abstrata deve ou não ter ao menos um método abstrato, se o if só
+aceita argumentos booleanos e todos os detalhes sobre classes internas, realmente não
+devem se tornar preocupações para aquele cujo objetivo primário é aprender Java.
+Esse tipo de informação será adquirida com o tempo, e não é necessário no início.</p>
+<p>Neste curso, separamos essas informações em quadros especiais, já que são informações extras.
+Ou então, apenas citamos num exercício e deixamos para o leitor procurar informações se
+for de seu interesse.</p>
+<p>Por fim, falta mencionar algo sobre a prática, que deve ser tratada seriamente: todos os exercícios
+são muito importantes e os desafios podem ser feitos quando o curso terminar. De qualquer maneira
+recomendamos aos alunos estudarem em casa, e praticarem bastante código e variações.</p>
+<blockquote>
+<p><strong>O curso</strong></p>
+<p>Para aqueles que estão fazendo o curso Java e Orientação a Objetos, recomendamos estudarem em
+casa aquilo que foi visto durante a aula, tentando resolver os exercícios opcionais e
+os desafios apresentados.</p>
+</blockquote>
+
+<div class="anuncio">
+	<a href="https://www.caelum.com.br/curso-java-orientacao-objetos/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Curso Java e Orientação a Objetos">
+		<h4>Você pode também fazer o curso FJ-11 dessa apostila na Caelum</h4>
+
+		
+			<img class="icone" src="./Como Aprender Java _ Java e Orientação a Objetos_files/caelum_2x.png" style="width: 100.00px; height: 100.00px" width="100.00" height="100.00" aria-hidden="true">
+		
+
+		<p>Querendo aprender ainda mais sobre? Esclarecer dúvidas dos exercícios? Ouvir explicações detalhadas com um instrutor?<br>A Caelum oferece o <strong>curso FJ-11</strong> presencial nas cidades de São Paulo, Rio de Janeiro e Brasília, além de turmas incompany.</p>
+		<p><span class="action">Consulte as vantagens do curso <em>Java e Orientação a Objetos</em></span></p>
+	</a>
+</div>
+<h2 id="sobre-os-exerccios">1.2 Sobre os exercícios</h2>
+<p>Os exercícios do curso variam de práticos até pesquisas na Internet, ou mesmo consultas sobre assuntos
+avançados em determinados tópicos para incitar a curiosidade do aprendiz na tecnologia.</p>
+<p>Existem também, em determinados capítulos, uma série de desafios. Eles focam mais no problema
+computacional que na linguagem, porém são uma excelente forma de treinar a sintaxe e,
+principalmente, familiarizar o aluno com a biblioteca padrão Java, além de proporcionar
+um ganho na velocidade de desenvolvimento.</p>
+<h2 id="tirando-dvidas-e-indo-alm">1.3 Tirando dúvidas e indo além</h2>
+<p>Para tirar dúvidas dos exercícios, ou de Java em geral, recomendamos o fórum
+do GUJ (<a href="http://www.guj.com.br/" target="_blank" rel="nofollow">http://www.guj.com.br/</a>), onde sua dúvida será respondida prontamente.
+O GUJ foi fundado por desenvolvedores da Caelum, e hoje conta com mais de um milhão
+de mensagens.</p>
+<p>Fora isso, sinta-se à vontade para entrar em contato com seu instrutor para tirar todas
+as  dúvidas que surgirem durante o curso.</p>
+<p>Se o que você está buscando são livros de apoio, sugerimos conhecer a editora Casa do Código:</p>
+<p><a href="http://www.casadocodigo.com.br/" target="_blank">http://www.casadocodigo.com.br</a></p>
+<p>A Caelum fornece muitos outros cursos Java, com destaque para o FJ-21 que traz a aplicação
+do Java na web.</p>
+<p><a href="http://www.caelum.com.br/" target="_blank">http://www.caelum.com.br/</a></p>
+<p>Há também cursos online que vão te ajudar a ir além, com muita interação
+com os instrutores, a Alura:</p>
+<p><a href="http://www.alura.com.br/" target="_blank">http://www.alura.com.br/</a></p>
+
+<div class="CodeWindow exec-code-no-js">
+    <nav class="CodeWindow-menu">
+        <button class="CodeWindow-btnToggle CodeWindow-btn--black">Fechar</button>
+    </nav>
+    <div class="CodeWindow-block">
+        <h4 class="CodeWindow-blockTitle">Código</h4>
+        <!-- CodeMirror: Result -->
+        <form id="formCodigo" class="CodeWindow-form">
+            <textarea name="codigo" id="userEditor">// Seja bem vindo a apostila interativa de Java da Caelum.
+// Sempre que encontrar um botão "Executar Código"
+// Teste e veja os resultados do trecho :)
+
+class Teste {
+    public static void main(String[] args) {
+        System.out.println("Minha primeira aplicação Java!");
+    }
+}
+  
+            </textarea>
+            <button class="CodeWindow-run">Executar</button>
+        </form>
+    </div><!--
+    --><div class="CodeWindow-block">
+        <h4 class="CodeWindow-blockTitle">Resultado</h4>            
+        <!-- CodeMirror: Result -->
+        <textarea id="compilerReturn">        </textarea>
+    </div>
+</div>
+    
+        
+    </div>
+
+    <nav class="nav-simple container" role="navigation">
+    
+    
+        <div class="nav-simple-item">
+            <p class="nav-simple-type">Próximo capítulo:</p>
+            
+                <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/o-que-e-java/" class="nav-simple-chapter">
+                    <span>O que é Java</span>
+                </a>                
+            
+        </div>
+    
+</nav>
+
+
+
+        <div class="container comunidade">
+    <h2 class="comunidade-chamada">Você encontra a Caelum também em:</h2>
+    <ul class="comunidade-itens">
+        <li class="comunidade-item comunidade-blog">
+            <a href="http://blog.caelum.com.br/">
+                <span class="sp-comunidade sp-comunidade-blog"></span>
+                <h3>Blog Caelum</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-online">
+            <a href="http://www.alura.com.br/" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-online"></span>
+                <h3>Cursos Online</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-facebook">
+            <a href="http://facebook.com/caelumbr" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-facebook"></span>
+                <h3>Facebook</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-newsletter">
+            <a href="http://www.caelum.com.br/newsletter/">
+                <span class="sp-comunidade sp-comunidade-newsletter"></span>
+                <h3>Newsletter</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-editora">
+            <a href="http://www.casadocodigo.com.br/">
+                <span class="sp-comunidade sp-comunidade-editora"></span>
+                <h3>Casa do Código</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-twitter">
+            <a href="http://twitter.com/caelum" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-twitter"></span>
+                <h3>Twitter</h3>
+            </a>
+        </li>
+    </ul>
+</div>
+        <!-- Google remarketing tag -->
+<script>
+var google_conversion_id = 995678627;
+var google_conversion_label = "DYcgCO3T_gMQo7Pj2gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+</script>
+<script src="./Como Aprender Java _ Java e Orientação a Objetos_files/f.txt"></script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995678627/?value=0&amp;label=DYcgCO3T_gMQo7Pj2gM&amp;guid=ON&amp;script=0">
+</div>
+</noscript>
+
+<!-- Mailchimp -->
+<script>
+var $mcGoal = {'settings':{'uuid':'422bed2b74623ede65048a641','dc':'us1'}};
+(function() {
+var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+})();
+</script>
+
+<!-- RD Station -->
+<script src="./Como Aprender Java _ Java e Orientação a Objetos_files/lead-tracking.min.js.download"></script>
+<script>
+LeadTracking.init({ token: '4b7bbfbbbe5c7e29f1c12ecb3b59096b' });
+</script>
+        
+    
+    
+
+</body></html>

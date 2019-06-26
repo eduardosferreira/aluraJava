@@ -1,0 +1,25 @@
+package br.com.alura.java.io.teste;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public final class TesteSerializacao {
+
+	public static void Ex1() throws Exception {
+		String nome = "Nico Steppat";
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("objeto.bin"));
+		oos.writeObject(nome);
+		oos.close();
+	}
+	public TesteSerializacao() {
+		Ex1();
+	}
+
+	public static void main(String[] args) {
+		new TesteSerializacao();
+
+	}
+
+}

@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"br.com.bytebank.banco.especial","c":"ContaEspecial","l":"ContaEspecial(int, int)","url":"%3Cinit%3E(int,int)"},{"p":"br.com.bytebank.banco.especial","c":"ContaEspecial","l":"deposita(double)"}]

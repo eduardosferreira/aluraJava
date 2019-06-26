@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)https://www.caelum.com.br/apostila-java-orientacao-objetos/pacotes-organizando-suas-classes-e-bibliotecas/ -->
+<html lang="pt-BR" class="js svg ratio1x  appcache offline-not-installed"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+
+        
+        <link rel="next" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/ferramentas-jar-e-javadoc/index.html">
+        
+        
+        <link rel="prev" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/eclipse-ide/index.html">
+        
+
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pacotes - Organizando suas classes e bibliotecas | Java e Orientação a Objetos</title>
+        <script type="text/javascript" async="" defer="" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/goal.min.js.download"></script><script type="text/javascript" async="" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/ga.js.download"></script><script>
+            if (location.protocol != "https:" && location.hostname == "www.caelum.com.br")
+                location.href = "https:" + location.href.substring(location.protocol.length);
+
+            document.documentElement.className = 'js ' + (!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect ? 'svg ':'no-svg ') + 'ratio' + (!!(devicePixelRatio > 1.3) ? '2x ' : '1x ');
+        </script>
+        
+        <!-- Facebook -->
+        <meta property="og:title" content="Pacotes - Organizando suas classes e bibliotecas | Java e Orientação a Objetos">
+        <meta property="og:image" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        <meta property="og:site_name" content="Apostilas Caelum">
+        <meta property="fb:app_id" content="140078819399376">
+        
+        <!-- Google+ -->
+        <meta itemprop="name" content="Pacotes - Organizando suas classes e bibliotecas | Java e Orientação a Objetos">
+        <meta itemprop="image" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        
+        <!-- iOS webapp -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Java e OO">
+        <link rel="apple-touch-icon" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/share.png">
+        
+        <script>
+        if(("standalone" in navigator) && navigator.standalone){
+            document.documentElement.className += ' ios-webapp'
+        }
+        </script>     
+        
+    <meta property="fb:url" content="https://www.caelum.com.br/apostila-java-orientacao-objetos/pacotes-organizando-suas-classes-e-bibliotecas/">
+    <link rel="canonical" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/pacotes-organizando-suas-classes-e-bibliotecas/"> 
+
+        
+    <style type="text/css">.CodeWindow{background-color:#f7f7f7;font-family:sans-serif;position:fixed;bottom:0;right:0;left:0;z-index:50;width:100%;height:35vh;min-height:280px;box-shadow:0 2px 15px 0 rgba(0,0,0,.4);transition:transform .3s;transform:translateY(100%);font-family:sans-serif!important;font-size:1rem!important}@media(max-width:500px){.CodeWindow{height:100vh}}.CodeWindow--active{transform:translateY(0)!important}.CodeWindow *{font-family:inherit!important}.CodeWindow-btnToggle{position:absolute;top:0;max-height:35px;right:0;z-index:10;border:1px solid #333;background-color:#495465;color:#fff;font-size:.7em;padding:.7em 1em;border-radius:0 0 0 5px;outline:0;cursor:pointer}.CodeWindow-btnToggle:hover{opacity:.9}.CodeWindow-block{display:inline-block;width:49%;height:100%;overflow:hidden;position:relative;display:inline-flex;flex-direction:column}.CodeWindow-block:first-of-type{margin-right:2%}@media (max-width:500px){.CodeWindow-block{width:100%;height:50%}}.CodeWindow-form{flex:1;margin:0;display:flex;flex-direction:column;height:100%;overflow:hidden}.CodeWindow-blockTitle{margin-top:0;padding:15px 18px;margin-bottom:0}.CodeWindow-run{position:absolute;bottom:0;max-height:40px;right:0;z-index:10;border:1px solid green;background-color:#42bc79;color:#fff;font-size:.9em;padding:.7em 2.3em .7em 1.4em;border-radius:5px 0 0 0;outline:0;cursor:pointer}.CodeWindow-run:hover{opacity:.9}.CodeWindow-run:after{content:"";border:10px solid transparent;border-left-color:green;width:0;height:0;position:absolute;top:0;bottom:0;right:0;margin:auto}.CodeWindow-run[disabled=true]{opacity:.5;cursor:wait}#compilerReturn+.CodeMirror .CodeMirror-linenumber{display:none}</style><style type="text/css">.CodeMirror{height:75%;flex:1;font-family:monospace!important}</style><style type="text/css">.execCodeBtn{color:#fff;margin:10px 0;background:#202020;border:2px solid #000;font-family:sans-serif;font-weight:inherit;font-size:14px;border-radius:4px;display:inline-block;padding:1em;cursor:pointer;outline:0;font-family:sans-serif!important;font-size:1rem!important}.execCodeBtn:hover{opacity:.9}</style><style type="text/css">.CodeMirror{font-family:monospace;height:300px;color:#000;direction:ltr}.CodeMirror-lines{padding:4px 0}.CodeMirror pre{padding:0 4px}.CodeMirror-gutter-filler,.CodeMirror-scrollbar-filler{background-color:#fff}.CodeMirror-gutters{border-right:1px solid #ddd;background-color:#f7f7f7;white-space:nowrap}.CodeMirror-linenumber{padding:0 3px 0 5px;min-width:20px;text-align:right;color:#999;white-space:nowrap}.CodeMirror-guttermarker{color:#000}.CodeMirror-guttermarker-subtle{color:#999}.CodeMirror-cursor{border-left:1px solid #000;border-right:none;width:0}.CodeMirror div.CodeMirror-secondarycursor{border-left:1px solid silver}.cm-fat-cursor .CodeMirror-cursor{width:auto;border:0!important;background:#7e7}.cm-fat-cursor div.CodeMirror-cursors{z-index:1}.cm-fat-cursor-mark{background-color:rgba(20,255,20,.5)}.cm-animate-fat-cursor,.cm-fat-cursor-mark{-webkit-animation:blink 1.06s steps(1) infinite;-moz-animation:blink 1.06s steps(1) infinite;animation:blink 1.06s steps(1) infinite}.cm-animate-fat-cursor{width:auto;border:0;background-color:#7e7}@-moz-keyframes blink{50%{background-color:transparent}}@-webkit-keyframes blink{50%{background-color:transparent}}@keyframes blink{50%{background-color:transparent}}.cm-tab{display:inline-block;text-decoration:inherit}.CodeMirror-rulers{position:absolute;left:0;right:0;top:-50px;bottom:-20px;overflow:hidden}.CodeMirror-ruler{border-left:1px solid #ccc;top:0;bottom:0;position:absolute}.cm-s-default .cm-header{color:blue}.cm-s-default .cm-quote{color:#090}.cm-negative{color:#d44}.cm-positive{color:#292}.cm-header,.cm-strong{font-weight:700}.cm-em{font-style:italic}.cm-link{text-decoration:underline}.cm-strikethrough{text-decoration:line-through}.cm-s-default .cm-keyword{color:#708}.cm-s-default .cm-atom{color:#219}.cm-s-default .cm-number{color:#164}.cm-s-default .cm-def{color:#00f}.cm-s-default .cm-variable-2{color:#05a}.cm-s-default .cm-type,.cm-s-default .cm-variable-3{color:#085}.cm-s-default .cm-comment{color:#a50}.cm-s-default .cm-string{color:#a11}.cm-s-default .cm-string-2{color:#f50}.cm-s-default .cm-meta,.cm-s-default .cm-qualifier{color:#555}.cm-s-default .cm-builtin{color:#30a}.cm-s-default .cm-bracket{color:#997}.cm-s-default .cm-tag{color:#170}.cm-s-default .cm-attribute{color:#00c}.cm-s-default .cm-hr{color:#999}.cm-s-default .cm-link{color:#00c}.cm-invalidchar,.cm-s-default .cm-error{color:red}.CodeMirror-composing{border-bottom:2px solid}div.CodeMirror span.CodeMirror-matchingbracket{color:#0b0}div.CodeMirror span.CodeMirror-nonmatchingbracket{color:#a22}.CodeMirror-matchingtag{background:rgba(255,150,0,.3)}.CodeMirror-activeline-background{background:#e8f2ff}.CodeMirror{position:relative;overflow:hidden;background:#fff}.CodeMirror-scroll{overflow:scroll!important;margin-bottom:-30px;margin-right:-30px;padding-bottom:30px;height:100%;outline:none;position:relative}.CodeMirror-sizer{position:relative;border-right:30px solid transparent}.CodeMirror-gutter-filler,.CodeMirror-hscrollbar,.CodeMirror-scrollbar-filler,.CodeMirror-vscrollbar{position:absolute;z-index:6;display:none}.CodeMirror-vscrollbar{right:0;top:0;overflow-x:hidden;overflow-y:scroll}.CodeMirror-hscrollbar{bottom:0;left:0;overflow-y:hidden;overflow-x:scroll}.CodeMirror-scrollbar-filler{right:0;bottom:0}.CodeMirror-gutter-filler{left:0;bottom:0}.CodeMirror-gutters{position:absolute;left:0;top:0;min-height:100%;z-index:3}.CodeMirror-gutter{white-space:normal;height:100%;display:inline-block;vertical-align:top;margin-bottom:-30px}.CodeMirror-gutter-wrapper{position:absolute;z-index:4;background:none!important;border:none!important}.CodeMirror-gutter-background{position:absolute;top:0;bottom:0;z-index:4}.CodeMirror-gutter-elt{position:absolute;cursor:default;z-index:4}.CodeMirror-gutter-wrapper ::selection{background-color:transparent}.CodeMirror-gutter-wrapper ::-moz-selection{background-color:transparent}.CodeMirror-lines{cursor:text;min-height:1px}.CodeMirror pre{-moz-border-radius:0;-webkit-border-radius:0;border-radius:0;border-width:0;background:transparent;font-family:inherit;font-size:inherit;margin:0;white-space:pre;word-wrap:normal;line-height:inherit;color:inherit;z-index:2;position:relative;overflow:visible;-webkit-tap-highlight-color:transparent;-webkit-font-variant-ligatures:contextual;font-variant-ligatures:contextual}.CodeMirror-wrap pre{word-wrap:break-word;white-space:pre-wrap;word-break:normal}.CodeMirror-linebackground{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0}.CodeMirror-linewidget{position:relative;z-index:2;padding:.1px}.CodeMirror-rtl pre{direction:rtl}.CodeMirror-code{outline:none}.CodeMirror-gutter,.CodeMirror-gutters,.CodeMirror-linenumber,.CodeMirror-scroll,.CodeMirror-sizer{-moz-box-sizing:content-box;box-sizing:content-box}.CodeMirror-measure{position:absolute;width:100%;height:0;overflow:hidden;visibility:hidden}.CodeMirror-cursor{position:absolute;pointer-events:none}.CodeMirror-measure pre{position:static}div.CodeMirror-cursors{visibility:hidden;position:relative;z-index:3}.CodeMirror-focused div.CodeMirror-cursors,div.CodeMirror-dragcursors{visibility:visible}.CodeMirror-selected{background:#d9d9d9}.CodeMirror-focused .CodeMirror-selected{background:#d7d4f0}.CodeMirror-crosshair{cursor:crosshair}.CodeMirror-line::selection,.CodeMirror-line>span::selection,.CodeMirror-line>span>span::selection{background:#d7d4f0}.CodeMirror-line::-moz-selection,.CodeMirror-line>span::-moz-selection,.CodeMirror-line>span>span::-moz-selection{background:#d7d4f0}.cm-searching{background-color:#ffa;background-color:rgba(255,255,0,.4)}.cm-force-border{padding-right:.1px}@media print{.CodeMirror div.CodeMirror-cursors{visibility:hidden}}.cm-tab-wrap-hack:after{content:""}span.CodeMirror-selectedtext{background:none}.CodeMirror-hints{position:absolute;z-index:10;overflow:hidden;list-style:none;margin:0;padding:2px;-webkit-box-shadow:2px 3px 5px rgba(0,0,0,.2);-moz-box-shadow:2px 3px 5px rgba(0,0,0,.2);box-shadow:2px 3px 5px rgba(0,0,0,.2);border-radius:3px;border:1px solid silver;background:#fff;font-size:90%;font-family:monospace;max-height:20em;overflow-y:auto}.CodeMirror-hint{margin:0;padding:0 4px;border-radius:2px;white-space:pre;color:#000;cursor:pointer}li.CodeMirror-hint-active{background:#08f;color:#fff}</style><script src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/f.txt"></script><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+    <body><div id="MathJax_Message" style="display: none;"></div>
+        
+        
+            
+                <script async="" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/apostila-aberta.js.download"></script>
+            
+        
+            
+                <script async="" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/bundle.js.download"></script>
+            
+        
+            
+                <script src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/MathJax.js.download" id=""></script>
+            
+        
+            
+                <script async="" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/plugin.js.download"></script>
+            
+        
+
+        
+        
+
+    
+    <link rel="stylesheet" href="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/apostila-aberta.css">
+    
+
+    
+    <link rel="stylesheet" href="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/hljs.css">
+    
+
+    
+    <link rel="stylesheet" href="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/anuncio.css">
+    
+
+    
+    <link rel="stylesheet" href="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/global.css">
+    
+
+
+        
+        
+    
+    <div class="barra-topo" role="banner">
+    <div class="container barra-container">
+        <div class="sombra"></div>
+        <div>
+            
+            <a href="http://www.caelum.com.br/" class="logo">
+                <img src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/caelum-logo-cinza.svg" alt="Caelum" onerror="this.src=this.src.replace(&#39;.svg&#39;, &#39;.png&#39;); this.onerror=null">
+            </a>
+            <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/" class="book-title" title="Ir para Capa e Sumário da apostila">Apostila Java e Orientação a Objetos</a>
+            
+            <div class="menu-mais">
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caelum.com.br%2Fapostila-java-orientacao-objetos%2F" class="share" rel="nofollow" title="Compartilhar no Facebook">
+                    <span aria-hidden="true" class="icone-facebook"></span>
+                    <span class="ir">Compartilhar apostila FJ-11 no Facebook</span>
+                </a>
+                <div class="config">
+                    <span aria-hidden="true" class="icone-list icone" title="Opções"></span>
+                    <span tabindex="0" class="ir">Opções</span>
+
+                    <div class="submenu">
+
+                        <section class="submenu-sub">
+                            <h3 class="submenu-divisor submenu-label">Navegação</h3>
+
+                            <ul>
+                                
+                                <li>
+                                    <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/index.html" title="Ir para Capa e Sumário da apostila" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-house"></span>
+                                        <span>Capa &amp; Sumário</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <form>
+                                        <label for="chapter-nav-select" id="chapter-nav-label" class="submenu-label">Capítulos</label>
+                                        <select class="chapter-nav" title="Navegue nos capítulos da apostila" id="chapter-nav-select" aria-labeledby="chapter-nav-label">
+                                            <option></option>
+                                            
+                                                
+                                                    <option value="../como-aprender-java/index.html">
+                                                        1. Como Aprender Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../o-que-e-java/index.html">
+                                                        2. O que é Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../variaveis-primitivas-e-controle-de-fluxo/index.html">
+                                                        3. Variáveis primitivas e Controle de fluxo
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../orientacao-a-objetos-basica/index.html">
+                                                        4. Orientação a objetos básica
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../modificadores-de-acesso-e-atributos-de-classe/index.html">
+                                                        5. Modificadores de acesso e atributos de classe
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../eclipse-ide/index.html">
+                                                        6. Eclipse IDE
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../pacotes-organizando-suas-classes-e-bibliotecas/index.html" selected="">
+                                                        7. Pacotes - Organizando suas classes e bibliotecas
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../ferramentas-jar-e-javadoc/index.html">
+                                                        8. Ferramentas: jar e javadoc
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../heranca-reescrita-e-polimorfismo/index.html">
+                                                        9. Herança, reescrita e polimorfismo
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../classes-abstratas/index.html">
+                                                        10. Classes Abstratas
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../interfaces/index.html">
+                                                        11. Interfaces
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../excecoes-e-controle-de-erros/index.html">
+                                                        12. Exceções e controle de erros
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../o-pacote-java-lang/index.html">
+                                                        13. O pacote java.lang
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../um-pouco-de-arrays/index.html">
+                                                        14. Um pouco de arrays
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../collections-framework/index.html">
+                                                        15. Collections framework
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../pacote-java-io/index.html">
+                                                        16. Pacote java.io
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../e-agora/index.html">
+                                                        17. E agora?
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-programacao-concorrente-e-threads/index.html">
+                                                        18. Apêndice - Programação Concorrente e Threads
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-sockets/index.html">
+                                                        19. Apêndice - Sockets
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-problemas-com-concorrencia/index.html">
+                                                        20. Apêndice - Problemas com concorrência
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-instalacao-do-java/index.html">
+                                                        21. Apêndice - Instalação do Java
+                                                    </option>
+                                                
+                                            
+                                                
+                                                    <option value="../apendice-debugging/index.html">
+                                                        22. Apêndice - Debugging
+                                                    </option>
+                                                
+                                            
+                                        </select>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="https://www.caelum.com.br/busca" method="GET">
+                                        <input type="hidden" name="apostila_sigla" value="FJ-11">
+                                        <input type="hidden" name="apostila_path" value="apostila-java-orientacao-objetos">
+                                        <label for="apostila-busca-input" id="apostila-busca-label" class="submenu-label">Busca</label>
+                                        <input type="search" id="apostila-busca-input" aria-labeledby="apostila-busca-label" name="q">
+                                        <button title="Buscar" class="search-form-action">
+                                            <span aria-hidden="true" class="icone-search"></span>
+                                            <span class="ir">Buscar</span>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="submenu-sub">
+                            <h3 class="submenu-divisor submenu-label">Mais</h3>
+
+                            <ul>
+                                <li>
+                                    <a href="https://www.caelum.com.br/curso-java-orientacao-objetos" title="Java e Orientação a Objetos" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-star"></span>
+                                        <span>Curso Caelum dessa apostila</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caelum.com.br%2Fapostila-java-orientacao-objetos%2F" rel="nofollow" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-facebook"></span>
+                                        <span>Compartilhar no Facebook</span>
+                                    </a>
+                                </li>
+                                <!--<li>
+                                    <a href="../offline/" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-browser"></span>
+                                        <span class="novo">Leitura offline</span>
+                                    </a>
+                                </li>-->
+                                <li>
+                                    <a href="http://www.caelum.com.br/apostilas/#download" title="Baixe em PDF, epub e mobi" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-install"></span>
+                                        <span>Download da apostila</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.caelum.com.br/apostilas/" title="Apostilas abertas da Caelum" class="submenu-link">
+                                        <span aria-hidden="true" class="icone icone-plus"></span>
+                                        <span>Outras apostilas abertas</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div><!-- /.menu-mais -->
+        </div>
+    </div>
+</div>
+    
+    
+<ol itemscope="" itemtype="http://schema.org/BreadcrumbList" class="container breadcrumb">
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/curso-java-orientacao-objetos">
+            <span itemprop="name">Curso Java e Orientação a Objetos</span>
+        </a>
+        <meta itemprop="position" content="1">
+    </li>
+    ›
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/">
+            <span itemprop="name">Apostila</span>
+        </a>
+        <meta itemprop="position" content="2">
+    </li>
+    ›
+    <li itemprop="itemListElement" itemscope="" class="breadcrumb-item" itemtype="http://schema.org/ListItem">
+        <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="https://www.caelum.com.br/apostila-java-orientacao-objetos/pacotes-organizando-suas-classes-e-bibliotecas/">
+            <span itemprop="name">Capítulo 7 - Pacotes - Organizando suas classes e bibliotecas</span>
+        </a>
+        <meta itemprop="position" content="3">
+    </li>
+</ol>
+
+    <div class="tubaina container" role="main">
+        
+            <div class="chapterHeader">Capítulo 7</div><h1 class="book-chapter">Pacotes - Organizando suas classes e bibliotecas</h1>
+            <p><em>"Uma discussão prolongada significa que ambas as partes estão erradas"
+-- Voltaire</em></p>
+<p>Ao término desse capítulo, você será capaz de:</p>
+<ul>
+<li>separar suas classes em pacotes;</li>
+<li>preparar arquivos simples para distribuição.</li>
+</ul>
+
+<h2 id="organizao">7.1 Organização</h2>
+<p>Neste capítulo, aconselhamos que você passe a usar o Eclipse. Você já tem conhecimento suficiente
+dos erros de compilação do <code>javac</code> e agora pode aprender as facilidades que o Eclipse te traz ao
+ajudar você no código com os chamados quick fixes e quick assists.</p>
+<p>Quando um programador utiliza as classes feitas por outro, surge um problema clássico: como escrever
+duas classes com o mesmo nome?</p>
+<p>Por exemplo: pode ser que a minha classe de <code>Data</code> funcione de um certo jeito, e a classe <code>Data</code>
+de um colega, de outro jeito. Pode ser que a classe de <code>Data</code> de uma <strong>biblioteca</strong> funcione ainda
+de uma terceira maneira diferente.</p>
+<p>Como permitir que tudo isso realmente funcione? Como controlar quem quer usar qual classe de
+<code>Data</code>?</p>
+<p>Pensando um pouco mais, notamos a existência de um outro problema e da própria solução: o sistema
+operacional não permite a existência de dois arquivos com o mesmo nome sob o mesmo diretório,
+portanto precisamos organizar nossas classes em diretórios diferentes.</p>
+<p>Os diretórios estão diretamente relacionados aos chamados <strong>pacotes</strong> e costumam agrupar classes de
+funcionalidades similares ou relacionadas.</p>
+<p>Por exemplo, no pacote <code>java.util</code> temos as classes <code>Date</code>, <code>SimpleDateFormat</code> e
+<code>GregorianCalendar</code>; todas elas trabalham com datas de formas diferentes.</p>
+<p></p><div class="figure"><img src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/javautil.png" alt="" style="max-width: 600px;"></div>
+<div class="anuncio">
+	<a href="https://www.casadocodigo.com.br/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Editora Casa do Código">
+		<h4>Seus livros de tecnologia parecem do século passado?</h4>
+
+		
+			<img class="icone" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/casa-do-codigo_2x.png" style="width: 93.50px; height: 120.00px" width="93.50" height="120.00" aria-hidden="true">
+		
+
+		<p>Conheça a <strong>Casa do Código</strong>, uma <strong>nova</strong> editora, com autores de destaque no mercado, foco em <strong>ebooks</strong> (PDF, epub, mobi), preços <strong>imbatíveis</strong> e assuntos <strong>atuais</strong>.<br>Com a curadoria da <strong>Caelum</strong> e excelentes autores, é uma abordagem <strong>diferente</strong> para livros de tecnologia no Brasil.</p>
+		<p><span class="action">Casa do Código, Livros de Tecnologia.</span></p>
+	</a>
+</div>
+<h2 id="diretrios">7.2 Diretórios</h2>
+
+<p>Se a classe <code>Cliente</code> está no pacote <code>contas</code>, ela deverá estar no diretório com o mesmo nome:
+<code>contas</code>. Se ela se localiza no pacote <code>br.com.caelum.contas</code>, significa que está no diretório
+<strong><code>br/com/caelum/contas</code></strong>.</p>
+<p>A classe <code>Cliente</code>, que se localiza nesse último diretório mencionado, deve ser escrita da seguinte
+forma:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas;
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cliente</span> </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+</code></pre>
+<p>Fica fácil notar que a palavra chave <code>package</code> indica qual o pacote/diretório contém esta classe.</p>
+<p>Um pacote pode conter nenhum ou mais subpacotes e/ou classes dentro dele.</p>
+<blockquote>
+<p><strong>Padrão da nomenclatura dos pacotes</strong></p>
+<p>O padrão da sun para dar nome aos pacotes é relativo ao nome da empresa que desenvolveu a classe:</p>
+<pre><code>br.com.nomedaempresa.nomedoprojeto.subpacote
+br.com.nomedaempresa.nomedoprojeto.subpacote2
+br.com.nomedaempresa.nomedoprojeto.subpacote2.subpacote3
+</code></pre><p>Os pacotes só possuem letras minúsculas, não importa quantas palavras estejam contidas nele. Esse
+padrão existe para evitar ao máximo o conflito de pacotes de empresas diferentes.</p>
+<p>As classes do pacote padrão de bibliotecas não seguem essa nomenclatura, que foi dada para
+bibliotecas de terceiros.</p>
+</blockquote>
+
+<h2 id="import">7.3 Import</h2>
+<p>Para usar uma classe do mesmo pacote, basta fazer referência a ela como foi feito até agora
+simplesmente escrevendo o próprio nome da classe. Se quisermos que a classe <code>Banco</code> fique
+dentro do pacote <code>br.com.caelum.contas</code>, ela deve ser declarada assim:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas;
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Banco</span> </span>{
+        String nome;
+    }
+</code></pre>
+<p>Para a classe <code>Cliente</code> ficar no mesmo pacote, seguimos a mesma fórmula:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas;
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cliente</span> </span>{
+        String nome;
+        String endereco;
+    }
+</code></pre>
+<p>A novidade chega ao tentar utilizar a classe <code>Banco</code> (ou <code>Cliente</code>) em uma outra classe que
+esteja fora desse pacote, por exemplo, no pacote <code>br.com.caelum.contas.main</code>:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas.main;
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TesteDoBanco</span> </span>{
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+          br.com.caelum.contas.Banco meuBanco = <span class="hljs-keyword">new</span> br.com.caelum.contas.Banco();
+          meuBanco.nome = <span class="hljs-string">"Banco do Brasil"</span>;
+          System.out.println(meuBanco.nome);
+        }
+
+    }
+</code></pre>
+<p>Repare que precisamos referenciar a classe <code>Banco</code> com todo o nome do pacote na sua frente. Esse é
+o conhecido <em>Fully Qualified Name</em> de uma classe. Em outras palavras, esse é o verdadeiro nome de
+uma classe, por isso duas classes com o mesmo nome em pacotes diferentes não conflitam.</p>
+<p>Mesmo assim, ao tentar compilar a classe anterior, surge um erro reclamando que a classe <code>Banco</code>
+não está visível.</p>
+<p>Acontece que as classes só são visíveis para outras no <strong>mesmo pacote</strong> e, para permitir que a classe
+<code>TesteDoBanco</code> veja e acesse a classe <code>Banco</code> em outro pacote, precisamos alterar essa última e
+transformá-la em pública:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Banco</span> </span>{
+        String nome;
+    }
+</code></pre>
+<p>A palavra chave <code>public</code> libera o acesso para classes de outros pacotes. Do mesmo jeito que o
+compilador reclamou que a classe não estava visível, ele reclama que o atributo/variável
+membro também não está. É fácil deduzir como resolver o problema: utilizando novamente o modificador
+<code>public</code>:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Banco</span> </span>{
+        <span class="hljs-keyword">public</span> String nome;
+    }
+</code></pre>
+<p>Podemos testar nosso exemplo anterior, lembrando que utilizar atributos como público não
+traz encapsulamento e está aqui como ilustração.</p>
+<p>Voltando ao código do <code>TesteDoBanco</code>, é necessário escrever todo o pacote para identificar qual
+classe queremos usar? O exemplo que usamos ficou bem complicado de ler:</p>
+<pre><code class="lang-java">    br.com.caelum.contas.Banco meuBanco = <span class="hljs-keyword">new</span> br.com.caelum.contas.Banco();
+</code></pre>
+<p>Existe uma maneira mais simples de se referenciar a classe <code>Banco</code>:  basta <strong>importá-la</strong> do
+pacote <code>br.com.caelum.contas</code>:</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">package</span> br.com.caelum.contas.main;
+
+    <span class="hljs-comment">// para podermos referenciar </span>
+    <span class="hljs-comment">// a Banco diretamente</span>
+    <span class="hljs-keyword">import</span> br.com.caelum.contas.Banco; 
+
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TesteDoBanco</span> </span>{
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+            Banco meuBanco = <span class="hljs-keyword">new</span> Banco();
+            meuBanco.nome = <span class="hljs-string">"Banco do Brasil"</span>;
+        }
+
+    }
+</code></pre>
+<p>Isso faz com que não precisemos nos referenciar utilizando o <em>fully qualified name</em>, podendo
+utilizar <code>Banco</code> dentro do nosso código em vez de escrever o longo
+<code>br.com.caelum.contas.Banco</code>.</p>
+<blockquote>
+<p><strong>package, import, class</strong></p>
+<p>É muito importante manter a ordem! Primeiro, aparece uma (ou nenhuma) vez o <code>package</code>; depois, pode
+aparecer um ou mais <code>import</code>s; e, por último, as declarações de classes.</p>
+</blockquote>
+
+<blockquote>
+<p><strong>import x.y.z.*;</strong></p>
+<p>É possível "importar um pacote inteiro" (todas as classes do pacote, <strong>exceto os subpacotes</strong>) através
+do coringa <code>*</code>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.*;
+</code></pre>
+<p>Importar todas as classes de um pacote não implica em perda de performance em tempo de execução, mas
+pode trazer problemas com classes de mesmo nome! Além disso, importar de um em um é considerado boa
+prática, pois facilita a leitura para outros programadores. Uma IDE como o Eclipse já vai fazer isso
+por você, assim como a organização em diretórios.</p>
+</blockquote>
+
+<h2 id="acesso-aos-atributos-construtores-e-mtodos">7.4 Acesso aos atributos, construtores e métodos</h2>
+<p>Os modificadores de acesso existentes em Java são quatro, e até o momento já vimos três, mas só
+explicamos dois.</p>
+<ul>
+<li><p><code>public</code> - Todos podem acessar aquilo que for definido como <code>public</code>. Classes, atributos,
+construtores e métodos podem ser <code>public</code>.</p>
+</li>
+<li><p><code>protected</code> - Aquilo que é <code>protected</code> pode ser acessado por todas as classes do mesmo pacote
+e por todas as classes que o estendam, mesmo que essas não estejam no mesmo pacote.
+Somente atributos, construtores e métodos podem ser
+<code>protected</code>.</p>
+</li>
+<li><p><strong>padrão (sem nenhum modificador)</strong> - Se nenhum modificador for utilizado, todas as classes do
+mesmo pacote têm acesso ao atributo, construtor, método ou classe.</p>
+</li>
+<li><p><code>private</code> - A única classe capaz de acessar os atributos, construtores e métodos privados é a
+própria classe. Classes, como conhecemos, não podem ser <code>private</code>, mas atributos, construtores e
+métodos sim.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Classes públicas</strong></p>
+<p>Para melhor organizar seu código, o Java não permite mais de uma classe pública por arquivo e o
+arquivo deve ser <code>NomeDaClasse.java</code>.</p>
+<p>Uma vez que outros programadores irão utilizar essa classe, quando precisarem olhar o código da
+mesma, fica mais fácil encontrá-la sabendo que ela está no arquivo de mesmo nome.</p>
+<p>Classes aninhadas podem ser <code>protected</code> ou <code>private</code>, mas esse é um tópico avançado que não
+será estudado nesse momento.</p>
+</blockquote>
+
+<div class="anuncio">
+	<a href="https://www.alura.com.br/promocao/aluno-caelum/?utm_source=apostilas-abertas&amp;utm_medium=apostila&amp;utm_campaign=caelum-site" title="Cursos Online Alura">
+		<h4>Agora é a melhor hora de aprender algo novo</h4>
+
+		
+			<img class="icone" src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/alura_2x.png" style="width: 120.00px; height: 54.00px" width="120.00" height="54.00" aria-hidden="true">
+		
+
+		<p>Se você está gostando dessa apostila, certamente vai aproveitar os <strong>cursos online</strong> que lançamos na plataforma <b>Alura</b>. Você estuda a qualquer momento com a <strong>qualidade</strong> Caelum. Programação, Mobile, Design, Infra, Front-End e Business! Ex-aluno da Caelum tem 15% de desconto, siga o link!</p>
+		<p><span class="action">Conheça a Alura Cursos Online.</span></p>
+	</a>
+</div>
+<h2 id="usando-o-eclipse-com-pacotes">7.5 Usando o Eclipse com pacotes</h2>
+
+<p>Você pode usar a perspectiva Java do Eclipse. A view principal de navegação é o <em>Package
+Explorer</em>, que agrupa classes pelos pacotes em vez de diretórios (você pode usá-la em conjunto com a
+<em>Navigator</em>, basta também abri-la pelo <em>Window/Show View/Package Explorer</em>).</p>
+<p></p><div class="figure"><img src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/javaview.png" alt="" style="max-width: 900px;"></div>
+<p>Antes de movermos nossas classes, declare-as como públicas e coloque-as em seus respectivos arquivos:
+um arquivo para cada classe.</p>
+<p>Você pode mover uma classe de pacote arrastando-a para o destino desejado. Repare que o Eclipse já
+declara <code>package</code>s e <code>import</code>s necessários:</p>
+<p></p><div class="figure"><img src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/packagechange.png" alt="" style="max-width: 600px;"></div>
+<p>No Eclipse nunca precisamos declarar um <code>import</code>, pois ele sempre vai sugerir isso quando usarmos
+o <code>Ctrl+Espaço</code> no nome de uma classe.</p>
+<p>Você também pode usar o <code>Ctrl+1</code> no caso da declaração de pacote possuir algum erro.</p>
+<h2 id="exerccios-pacotes">7.6 Exercícios: Pacotes</h2>
+<p><strong>Atenção:</strong> utilize os recursos do Eclipse para realizar essas mudanças. Use a <code>view
+package-explorer</code>, que vai auxiliar bastante a manipulação dos arquivos e diretórios.
+Também utilize os quick fixes quando o Eclipse reclamar dos diversos problemas
+de compilação que aparecerão. É possível fazer esse exercício inteiro <strong>sem modificar uma linha
+de código manualmente</strong>. Aproveite para praticar e descobrir o Eclipse, evite usá-lo apenas como
+um editor de texto.</p>
+<p>Por exemplo, com o Eclipse nunca precisamos nos preocupar com os imports: ao usar
+o auto complete, ele já joga o import lá em cima. E, se você não fez isso,
+ele sugere colocar o <code>import</code>.</p>
+<ol>
+<li><p>Selecionando o <code>src</code> do seu projeto, faça <strong>ctrl + N</strong> e escreva <code>Package</code> para o seu
+ sistema de Contas começar a utilizar pacotes. Na janela de criação de pacotes escreva o nome
+ completo do pacote seguindo a convenção de código da Sun, desde o br, e o Eclipse tratará
+ de fazer a separação das pastas corretamente.
+ <strong>Cuidado: para esse curso, os nomes dos pacotes precisam ser os seguintes:</strong></p>
+<ul>
+<li><code>br.com.caelum.contas.main</code>: colocar a classe com o método <code>main</code> aqui (o Teste)</li>
+<li><p><code>br.com.caelum.contas.modelo</code>: colocar a classe <code>Conta</code></p>
+<p><strong>Antes de corrigir</strong> qualquer erro de compilação, primeiro <strong>mova todas as suas classes</strong>,
+sem deixar nenhuma no pacote <em>default</em>.</p>
+</li>
+</ul>
+</li>
+<li>Se você ainda não tiver separado cada classe em um arquivo, essa é a hora de mudar isso. Coloque
+ cada classe em seu respectivo arquivo <code>.java</code>. Faça isso independente de ela ser pública:
+ é uma boa prática.</li>
+<li><p>Caso o código não compile prontamente, repare que pelo menos algum método que declaramos é <em>package-private</em>
+ quando, na verdade, precisamos que ele seja <code>public</code>. O mesmo vale para as classes: algumas delas <strong>precisarão</strong> ser públicas.</p>
+<p> Se houver algum erro de compilação, use o recurso de quick fix do Eclipse aqui: ele mesmo vai sugerir que o modificador de acesso
+ deve ser público. Para isso, use o <strong>ctrl + 1</strong> em cada um dos erros, escolhendo o <em>quick fix</em>
+ mais adequado para seu problema.</p>
+</li>
+<li>(Opcional) Abra a view <code>Navigator</code> para ver como ficou os arquivos no sistema de arquivos
+ do seu sistema operacional. Para isso, use <strong>ctrl + 3</strong>, comece a digitar <code>Navigator</code> e escolha
+ a opção de abrir essa view..</li>
+</ol>
+
+<div class="CodeWindow exec-code-no-js">
+    <nav class="CodeWindow-menu">
+        <button class="CodeWindow-btnToggle CodeWindow-btn--black">Fechar</button>
+    </nav>
+    <div class="CodeWindow-block">
+        <h4 class="CodeWindow-blockTitle">Código</h4>
+        <!-- CodeMirror: Result -->
+        <form id="formCodigo" class="CodeWindow-form">
+            <textarea name="codigo" id="userEditor">// Seja bem vindo a apostila interativa de Java da Caelum.
+// Sempre que encontrar um botão "Executar Código"
+// Teste e veja os resultados do trecho :)
+
+class Teste {
+    public static void main(String[] args) {
+        System.out.println("Minha primeira aplicação Java!");
+    }
+}
+  
+            </textarea>
+            <button class="CodeWindow-run">Executar</button>
+        </form>
+    </div><!--
+    --><div class="CodeWindow-block">
+        <h4 class="CodeWindow-blockTitle">Resultado</h4>            
+        <!-- CodeMirror: Result -->
+        <textarea id="compilerReturn">        </textarea>
+    </div>
+</div>
+    
+        
+    </div>
+
+    <nav class="nav-simple container" role="navigation">
+    
+        <div class="nav-simple-item">
+            <p class="nav-simple-type">Capítulo anterior:</p>
+            
+                <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/eclipse-ide/" class="nav-simple-chapter">
+                    <span>Eclipse IDE</span>
+                </a>
+            
+        </div>
+    
+    
+        <div class="nav-simple-item">
+            <p class="nav-simple-type">Próximo capítulo:</p>
+            
+                <a href="https://www.caelum.com.br/apostila-java-orientacao-objetos/ferramentas-jar-e-javadoc/" class="nav-simple-chapter">
+                    <span>Ferramentas: jar e javadoc</span>
+                </a>                
+            
+        </div>
+    
+</nav>
+
+
+
+        <div class="container comunidade">
+    <h2 class="comunidade-chamada">Você encontra a Caelum também em:</h2>
+    <ul class="comunidade-itens">
+        <li class="comunidade-item comunidade-blog">
+            <a href="http://blog.caelum.com.br/">
+                <span class="sp-comunidade sp-comunidade-blog"></span>
+                <h3>Blog Caelum</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-online">
+            <a href="http://www.alura.com.br/" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-online"></span>
+                <h3>Cursos Online</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-facebook">
+            <a href="http://facebook.com/caelumbr" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-facebook"></span>
+                <h3>Facebook</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-newsletter">
+            <a href="http://www.caelum.com.br/newsletter/">
+                <span class="sp-comunidade sp-comunidade-newsletter"></span>
+                <h3>Newsletter</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-editora">
+            <a href="http://www.casadocodigo.com.br/">
+                <span class="sp-comunidade sp-comunidade-editora"></span>
+                <h3>Casa do Código</h3>
+            </a>
+        </li>
+        <li class="comunidade-item comunidade-twitter">
+            <a href="http://twitter.com/caelum" rel="nofollow">
+                <span class="sp-comunidade sp-comunidade-twitter"></span>
+                <h3>Twitter</h3>
+            </a>
+        </li>
+    </ul>
+</div>
+        <!-- Google remarketing tag -->
+<script>
+var google_conversion_id = 995678627;
+var google_conversion_label = "DYcgCO3T_gMQo7Pj2gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+</script>
+<script src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/f(1).txt"></script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995678627/?value=0&amp;label=DYcgCO3T_gMQo7Pj2gM&amp;guid=ON&amp;script=0">
+</div>
+</noscript>
+
+<!-- Mailchimp -->
+<script>
+var $mcGoal = {'settings':{'uuid':'422bed2b74623ede65048a641','dc':'us1'}};
+(function() {
+var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+})();
+</script>
+
+<!-- RD Station -->
+<script src="./Pacotes - Organizando suas classes e bibliotecas _ Java e Orientação a Objetos_files/lead-tracking.min.js.download"></script>
+<script>
+LeadTracking.init({ token: '4b7bbfbbbe5c7e29f1c12ecb3b59096b' });
+</script>
+        
+    
+    
+
+</body></html>

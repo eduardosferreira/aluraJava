@@ -1,0 +1,9 @@
+package bytebank_herdado_conta.br.com.bytebank.banco.modelo;
+
+public class GuardadorDeContas {
+
+	public GuardadorDeContas() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

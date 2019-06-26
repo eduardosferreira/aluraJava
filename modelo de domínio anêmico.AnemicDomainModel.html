@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0057)https://www.martinfowler.com/bliki/AnemicDomainModel.html -->
+<html class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="uft-8" name="charset">
+
+<title>AnemicDomainModel</title>
+
+<meta content="summary" name="twitter:card">
+
+<meta content="16665197" name="twitter:site:id">
+
+<meta content="bliki: AnemicDomainModel" property="og:title">
+
+<meta content="https://martinfowler.com/bliki/AnemicDomainModel.html" property="og:url">
+
+<meta content="If you use an object-oriented domain model, and you don&#39;t put behavior in your objects, you&#39;re missing out on most of the benefits of that pattern." property="og:description">
+
+<meta content="https://martinfowler.com/logo-sq.png" property="og:image">
+
+<meta content="martinfowler.com" property="og:site_name">
+
+<meta content="article" property="og:type">
+
+<meta content="2003-11-25 00:00:00 -0500" property="og:article:modified_time">
+
+<meta content="width=device-width, initial-scale=1" name="viewport">
+
+<link href="./modelo de domínio anêmico.AnemicDomainModel_files/bliki-entry.css" rel="stylesheet" type="text/css">
+<style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><link type="text/css" rel="stylesheet" charset="UTF-8" href="./modelo de domínio anêmico.AnemicDomainModel_files/translateelement.css"></head>
+
+<body><div id="banner" style="background-image: url(&quot;/img/croc.png&quot;); background-repeat: no-repeat">
+
+<div class="name-logo"><a href="https://martinfowler.com/"><img src="./modelo de domínio anêmico.AnemicDomainModel_files/mf-name-white.png"></a></div>
+  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="https://www.google.com/search">
+      <input type="hidden" name="ie" value="UTF-8">
+      <input type="hidden" name="oe" value="UTF-8">
+      <input class="field" type="text" name="q" size="15" maxlength="255" value="">
+      <button class="button" type="submit" name="btnG" value=" " title="Procurar">
+      <input type="hidden" name="domains" value="martinfowler.com">
+      <input type="hidden" name="sitesearch" value=""> 
+      <input type="hidden" name="sitesearch" value="martinfowler.com">
+    
+  </button></form></div>
+
+<div class="menu-button navmenu-button"><a class="icon icon-bars" href="https://www.martinfowler.com/bliki/AnemicDomainModel.html#navmenu-bottom"></a></div>
+
+<div class="top-menu">
+<ul>
+<li><a class="" href="https://refactoring.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Refatoração</font></font></a></li>
+
+<li><a class="" href="https://www.martinfowler.com/agile.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ágil</font></font></a></li>
+
+<li><a class="" href="https://www.martinfowler.com/design.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desenhar</font></font></a></li>
+
+<li><a class="" href="https://www.martinfowler.com/aboutMe.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre</font></font></a></li>
+
+<li><a class="tw" href="https://www.thoughtworks.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThoughtWorks</font></font></a></li>
+
+<li><a class="icon icon-rss" href="https://www.martinfowler.com/feed.atom" title="alimentação"></a></li>
+
+<li><a class="icon icon-twitter" href="https://www.twitter.com/martinfowler" title="fluxo do twitter"></a></li>
+</ul>
+</div>
+</div>
+<div class="div" id="top-navmenu">
+<header class="navmenu">
+<div class="nav-head">  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="https://www.google.com/search">
+      <input type="hidden" name="ie" value="UTF-8">
+      <input type="hidden" name="oe" value="UTF-8">
+      <input class="field" type="text" name="q" size="15" maxlength="255" value="">
+      <button class="button" type="submit" name="btnG" value=" " title="Procurar">
+      <input type="hidden" name="domains" value="martinfowler.com">
+      <input type="hidden" name="sitesearch" value=""> 
+      <input type="hidden" name="sitesearch" value="martinfowler.com">
+    
+  </button></form></div>
+
+<div class="closediv">
+<span class="close" title="perto"></span>
+</div>
+</div>
+
+<div class="nav-body">
+<div class="topics">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tópicos</font></font></h2>
+
+<p><a href="https://www.martinfowler.com/design.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desenhar</font></font></a></p>
+
+<p><a href="https://refactoring.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Refatoração</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/agile.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ágil</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/delivery.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entrega Contínua</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/microservices"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Microsserviços</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/nosql.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NoSQL</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/dsl.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DSL</font></font></a></p>
+</div>
+
+<div class="about">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sobre mim</font></font></h2>
+
+<p><a href="https://www.martinfowler.com/aboutMe.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/books"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livros</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/faq.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perguntas frequentes</font></font></a></p>
+</div>
+
+<div class="content">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">conteúdo</font></font></h2>
+
+<p><a href="https://www.martinfowler.com/videos.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vídeos</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/tags"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Índice de conteúdo</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/articles/eurogames"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jogos de tabuleiro</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/photos"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fotografia</font></font></a></p>
+</div>
+
+<div class="tw">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThoughtWorks</font></font></h2>
+
+<p><a href="https://thoughtworks.com/blogs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Blogs</font></font></a></p>
+
+<p><a href="https://thoughtworks.com/careers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carreiras</font></font></a></p>
+
+<p><a href="https://thoughtworks.com/products"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Produtos</font></font></a></p>
+</div>
+
+<div class="feeds">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Segue</font></font></h2>
+
+<p><a href="https://www.twitter.com/martinfowler"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Twitter</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/feed.atom"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RSS</font></font></a></p>
+</div>
+</div>
+</header>
+</div>
+
+<div id="content">
+<div id="main">
+<h1><a href="https://www.martinfowler.com/bliki/AnemicDomainModel.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AnemicDomainModel</font></font></a></h1>
+
+<div class="author-date">
+<p class="author-photo"><a href="https://www.martinfowler.com/"><img src="./modelo de domínio anêmico.AnemicDomainModel_files/mf.jpg" title="Foto de Martin Fowler"></a></p>
+
+<p class="author"><a href="https://www.martinfowler.com/" rel="author"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Martin Fowler</font></font></a></p>
+
+<p class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25 de novembro de 2003</font></font></p>
+</div>
+
+<p class="tags"><a href="https://www.martinfowler.com/tags/bad%20things.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">coisas ruins</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;· </font></font><a href="https://www.martinfowler.com/tags/domain%20driven%20design.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">design dirigido por domínio</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;· </font></font><a href="https://www.martinfowler.com/tags/application%20architecture.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">arquitetura de aplicativos</font></font></a></p>
+
+<p class="tagLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tag:</font></font></p>
+
+<div class="clear"></div>
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Este é um daqueles anti-padrões que existe há bastante tempo, mas parece estar tendo um surto específico no momento. </font><font style="vertical-align: inherit;">Eu estava conversando com Eric Evans sobre isso, e nós dois notamos que eles parecem estar ficando mais populares. </font><font style="vertical-align: inherit;">Como grandes impulsionadores de um </font></font><a href="https://www.martinfowler.com/eaaCatalog/domainModel.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modelo de Domínio</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> adequado </font><font style="vertical-align: inherit;">, isso não é uma coisa boa.</font></font></p>
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O sintoma básico de um Modelo de Domínio Anêmico é que, à primeira vista, parece a coisa real. </font><font style="vertical-align: inherit;">Há objetos, muitos nomeados após os substantivos no espaço de domínio, e esses objetos estão conectados com os ricos relacionamentos e estrutura que os modelos de domínio verdadeiro possuem. </font><font style="vertical-align: inherit;">O problema surge quando você olha para o comportamento e percebe que quase não há nenhum comportamento nesses objetos, tornando-os pouco mais que sacos de getters e setters. </font><font style="vertical-align: inherit;">Na verdade, muitas vezes esses modelos vêm com regras de design que dizem que você não deve colocar nenhuma lógica de domínio nos objetos de domínio. </font><font style="vertical-align: inherit;">Em vez disso, há um conjunto de objetos de serviço que capturam toda a lógica do domínio, realizando toda a computação e atualizando os objetos do modelo com os resultados. </font><font style="vertical-align: inherit;">Esses serviços estão no topo do modelo de domínio e usam o modelo de domínio para dados.</font></font></p>
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O horror fundamental desse antipadrão é que ele é tão contrário à ideia básica do design orientado a objetos; </font><font style="vertical-align: inherit;">que é combinar dados e processar juntos. </font><font style="vertical-align: inherit;">O modelo de domínio anêmico é, na verdade, apenas um design de estilo de procedimento, exatamente o tipo de coisa que os fanáticos de objeto como eu (e Eric) têm lutado desde nossos primeiros dias em Smalltalk. </font><font style="vertical-align: inherit;">O que é pior, muitas pessoas pensam que os objetos anêmicos são objetos reais e, portanto, perdem completamente o sentido do design orientado a objetos.</font></font></p>
+
+<p>Now object-oriented purism is all very well, but I realize that I
+need more fundamental arguments against this anemia. In essence the
+problem with anemic domain models is that they incur all of the costs
+of a domain model, without yielding any of the benefits. The primary
+cost is the awkwardness of mapping to a database, which typically
+results in a whole layer of O/R mapping. This is worthwhile iff you
+use the powerful OO techniques to organize complex logic. By pulling
+all the behavior out into services, however, you essentially end up
+with <a href="https://www.martinfowler.com/eaaCatalog/transactionScript.html">Transaction
+
+Scripts</a>, and thus lose the advantages that the domain model can
+bring. As I discussed in <a href="https://www.martinfowler.com/books/eaa.html">P of EAA</a>, Domain
+Models aren't always the best tool.</p>
+
+<p>It's also worth emphasizing that putting behavior into the domain
+objects should not contradict the solid approach of using layering to
+separate domain logic from such things as persistence and presentation
+responsibilities. The logic that should be in a domain object is
+domain logic - validations, calculations, business rules - whatever
+you like to call it. (There are cases when you make an argument for
+putting data source or presentation logic in a domain object, but
+that's orthogonal to my view of anemia.)</p>
+
+<p>One source of confusion in all this is that many OO experts do
+recommend putting a layer of procedural services on top of a domain
+model, to form a <a href="https://www.martinfowler.com/eaaCatalog/serviceLayer.html">Service Layer</a>. But this isn't
+an argument to make the domain model void of behavior, indeed service
+layer advocates use a service layer in conjunction with a behaviorally
+rich domain model.</p>
+
+<p>Eric Evans's excellent book <a href="http://domaindrivendesign.org/books/">Domain Driven Design</a> has the
+following to say about these layers.</p>
+
+<blockquote>
+<p>Application Layer [his name for Service Layer]: Defines the jobs the software is supposed to do
+and directs the expressive domain objects to work out problems. The
+tasks this layer is responsible for are meaningful to the business or
+necessary for interaction with the application layers of other
+systems. This layer is kept thin. It does not contain business rules
+or knowledge, but only coordinates tasks and delegates work to
+collaborations of domain objects in the next layer down. It does not
+have state reflecting the business situation, but it can have state
+that reflects the progress of a task for the user or the program.</p>
+
+<p>Domain Layer (or Model Layer): Responsible for representing
+concepts of the business, information about the business situation,
+and business rules. State that reflects the business situation is
+controlled and used here, even though the technical details of storing
+it are delegated to the infrastructure. This layer is the heart of
+business software.</p>
+
+<p class="quote-attribution"></p>
+</blockquote>
+
+<p>The key point here is that the 
+	Service Layer is thin - all the key logic lies in the domain
+	layer. He reiterates this point in his service pattern: </p>
+
+<blockquote>
+<p>Now, the more common mistake is to give up too easily on
+fitting the behavior into an appropriate object, gradually slipping
+toward procedural programming.</p>
+
+<p class="quote-attribution"></p>
+</blockquote>
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eu não sei porque esse anti-padrão é tão comum. </font><font style="vertical-align: inherit;">Suspeito que seja devido a muitas pessoas que não trabalharam com um modelo de domínio adequado, especialmente se forem provenientes de um histórico de dados. </font><font style="vertical-align: inherit;">Algumas tecnologias incentivam isso; </font><font style="vertical-align: inherit;">como Entity Beans do J2EE, que é uma das razões pelas quais prefiro </font><font style="vertical-align: inherit;">modelos de domínio </font></font><a href="https://www.martinfowler.com/bliki/POJO.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">POJO</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Em geral, quanto mais comportamento você encontrar nos serviços, maior a probabilidade de estar roubando os benefícios de um modelo de domínio. </font><font style="vertical-align: inherit;">Se toda a sua lógica está nos serviços, você se roubou.</font></font></p>
+
+<div class="shares">
+<div class="icons"><span class="label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compartilhar:</font></font></span><a href="https://twitter.com/intent/tweet?url=https://martinfowler.com/bliki/AnemicDomainModel.html&amp;text=Bliki:%20AnemicDomainModel%20%E2%9E%99" title="Compartilhar no Twitter"><img src="./modelo de domínio anêmico.AnemicDomainModel_files/t_mini-a.png"></a><a href="https://facebook.com/sharer.php?u=https://martinfowler.com/bliki/AnemicDomainModel.html" title="Compartilhar no Facebook"><img src="./modelo de domínio anêmico.AnemicDomainModel_files/fb-icon-20.png"></a><a href="https://plus.google.com/share?url=https://martinfowler.com/bliki/AnemicDomainModel.html" title="Compartilhar no Google Plus"><img src="./modelo de domínio anêmico.AnemicDomainModel_files/gplus-16.png"></a></div>
+
+<div class="comment"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se você achou este artigo útil, por favor, compartilhe-o. </font><font style="vertical-align: inherit;">Eu aprecio o feedback e encorajamento</font></font></div>
+</div>
+
+<div class="clear"></div>
+</div>
+
+<div class="similar-sidebar">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encontre artigos semelhantes nessas tags</font></font></h2>
+
+<p class="tags"><a href="https://www.martinfowler.com/tags/bad%20things.html"><font style="vertical-align: inherit;"></font></a> <font style="vertical-align: inherit;"><a href="https://www.martinfowler.com/tags/application%20architecture.html"><font style="vertical-align: inherit;">arquitetura de aplicativos de </font></a></font><a href="https://www.martinfowler.com/tags/domain%20driven%20design.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">design orientada por domínio de </font></font></a> <font style="vertical-align: inherit;"><a href="https://www.martinfowler.com/tags/bad%20things.html"><font style="vertical-align: inherit;">coisas ruins</font></a></font><a href="https://www.martinfowler.com/tags/application%20architecture.html"><font style="vertical-align: inherit;"></font></a></p>
+</div>
+
+<div class="clear"></div>
+</div>
+
+<div class="div" id="bottom-navmenu" style="display: none;">
+<header class="navmenu">
+<div class="nav-head">  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="https://www.google.com/search">
+      <input type="hidden" name="ie" value="UTF-8">
+      <input type="hidden" name="oe" value="UTF-8">
+      <input class="field" type="text" name="q" size="15" maxlength="255" value="">
+      <button class="button" type="submit" name="btnG" value=" " title="Procurar">
+      <input type="hidden" name="domains" value="martinfowler.com">
+      <input type="hidden" name="sitesearch" value=""> 
+      <input type="hidden" name="sitesearch" value="martinfowler.com">
+    
+  </button></form></div>
+
+<div class="closediv">
+<span class="close" title="perto"></span>
+</div>
+</div>
+
+<div class="nav-body">
+<div class="topics">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tópicos</font></font></h2>
+
+<p><a href="https://www.martinfowler.com/design.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desenhar</font></font></a></p>
+
+<p><a href="https://refactoring.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Refatoração</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/agile.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ágil</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/delivery.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entrega Contínua</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/microservices"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Microsserviços</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/nosql.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NoSQL</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/dsl.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DSL</font></font></a></p>
+</div>
+
+<div class="about">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sobre mim</font></font></h2>
+
+<p><a href="https://www.martinfowler.com/aboutMe.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/books"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livros</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/faq.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perguntas frequentes</font></font></a></p>
+</div>
+
+<div class="content">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">conteúdo</font></font></h2>
+
+<p><a href="https://www.martinfowler.com/videos.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vídeos</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/tags"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Índice de conteúdo</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/articles/eurogames"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jogos de tabuleiro</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/photos"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fotografia</font></font></a></p>
+</div>
+
+<div class="tw">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThoughtWorks</font></font></h2>
+
+<p><a href="https://thoughtworks.com/blogs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Blogs</font></font></a></p>
+
+<p><a href="https://thoughtworks.com/careers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carreiras</font></font></a></p>
+
+<p><a href="https://thoughtworks.com/products"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Produtos</font></font></a></p>
+</div>
+
+<div class="feeds">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Segue</font></font></h2>
+
+<p><a href="https://www.twitter.com/martinfowler"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Twitter</font></font></a></p>
+
+<p><a href="https://www.martinfowler.com/feed.atom"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RSS</font></font></a></p>
+</div>
+</div>
+</header>
+</div>
+<div id="footer">
+<div class="tw-logo">
+<a href="http://www.thoughtworks.com/">
+<img src="./modelo de domínio anêmico.AnemicDomainModel_files/TW_smb.jpg">
+</a>
+</div>
+<div class="menu-button">
+<div class="icon-bars navmenu-button"></div>
+</div>
+<div class="copyright">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Martin Fowler | </font></font><a href="http://www.thoughtworks.com/privacy-policy"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Política de Privacidade</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> | </font></font><a href="https://www.martinfowler.com/aboutMe.html#disclosures"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Divulgações</font></font></a></p>
+</div>
+</div>
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-17005812-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="" src="./modelo de domínio anêmico.AnemicDomainModel_files/analytics.js.download"></script>
+<!-- End Google Analytics -->
+
+
+
+<script src="./modelo de domínio anêmico.AnemicDomainModel_files/jquery-1.11.3.min.js.download" type="text/javascript"></script>
+
+<script src="./modelo de domínio anêmico.AnemicDomainModel_files/mfcom.js.download" type="text/javascript"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./modelo de domínio anêmico.AnemicDomainModel_files/translate_24dp.png" width="20" height="20" alt="Google Tradutor"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Texto original</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Sugerir uma tradução melhor</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

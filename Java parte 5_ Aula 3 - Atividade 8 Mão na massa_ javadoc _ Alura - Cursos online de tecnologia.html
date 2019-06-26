@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38936 -->
+<html lang="pt-BR" data-product="alura" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	
+		
+
+
+
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script type="text/javascript" async="" src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/analytics.js.download"></script><script async="" id="cio-tracker" data-site-id="fccd7e3d49531457b6b2" src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/track.js.download"></script><script async="" src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/gtm.js.download"></script><script>
+	(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',4000,
+		{'GTM-TN542JN':true});
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-TN542JN');
+</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+	<script type="text/javascript">
+        dataLayer.push({
+            'tipoPagina': 'Aula',
+            'curso': 'Java parte 5: Pacotes e java.lang'
+        });
+	</script>
+
+	
+
+	<title>Java parte 5: Aula 3 - Atividade 8 Mão na massa: javadoc | Alura - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://cursos.alura.com.br/images/alura/favicon.ico">
+	
+	<link href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/video-js.f429230f.css">
+    <link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/video-js-resolutions.d48f855c.css">
+    <link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/prettify.4f36b4ca.css">
+
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/base.1e88adda.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/formattedText.afb4622e.css">
+	
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/container.532971f7.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/classPage.982c18c7.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/menuSettings.ab9e5c02.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/taskProgress.6f863249.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/taskMessageInfo.4becb946.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/alternativeList.ba7ea685.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/taskFeedback.1c82537d.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/markdown.c1e23fdd.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/finishSection.7e40d196.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/phrase.d61af0f3.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/openquestion.811813bb.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/video.7c2303aa.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/singlechoice.4a8caf68.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/music.c02947a9.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/videodialog.7d2041b8.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/fillintheblank.81cde842.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/speakingpractice.5068bb32.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/pronunciationpractice.7d2876f7.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/repetition.e9ba636b.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/genericVideo.9239c799.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/projectSubmit.cd21d24b.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/taskButtons.1c232b93.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/markdownEditor.4bc2327a.css">
+	<link rel="stylesheet" href="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/audioPlayer.a55d412c.css">
+
+	
+	
+	<style type="text/css">
+		.task:before {
+			background-color: #FFE000;
+		}
+	</style>
+	
+	
+	
+	<style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/sha256.min.js.download"></script></head>
+<body>
+
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task" data-allow-answer="true" data-task-section-exam="false" data-task-type="textcontent" data-task-id="38936" data-author-id="292994" data-course-code="java-pacotes-e-java-lang" data-section-name="Distribuição do seu código" data-section-id="6213" data-section-number="3" data-domain="cursos.alura.com.br" data-hasfeedbackanswer="false" data-url-prefix="/">
+	<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-body-button "></button>
+	
+	<section class="task-body">
+		
+		<header class="task-body-header">
+			<div class="container">
+				<h1 class="task-body-header-title">
+					<svg class="task-body-header-title-svg" aria-label="Atividade de Atividade sem Resposta do Aluno">
+						<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+					</svg>
+					<small>08</small>
+					<span class="task-body-header-title-text"> Mão na massa: javadoc</span>
+				</h1>
+				
+					<div class="task-body-header-actions">
+						<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38936/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit">Próxima Atividade</a>
+					</div>
+				
+			</div>
+		</header>
+		<main class="task-body-main" data-should-warn="false">
+			
+
+
+
+
+
+
+
+	
+	
+	
+		
+
+
+
+
+<section id="task-content" class="textContent">
+	
+	<div class="container">
+		
+
+
+
+
+<div class="settings">
+	<button type="button" class="settings-button" aria-label="Configurações">
+		<svg class="settings-button-icon">
+			<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<span class="settings-box-title"></span>
+		<ul class="settings-box-list">
+			
+				
+				
+				
+				
+					<li class="settings-box-item settings-box-item-player"><a class="settings-box-item-player--disabled" onclick="event.preventDefault();">Mudar o player</a></li>
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://cursos.alura.com.br/suggestions/new/java-pacotes-e-java-lang/38936/question">Sugerir alteração</a></li>
+					
+				
+			
+			
+		</ul>
+	</div>
+</div>
+		<div class="formattedText" data-external-links="">
+			<p>Sabemos que um código produzido por um desenvolvedor Java pode ser utilizado por outros desenvolvedores. Nesse sentido, documentar o código e facilitar seu uso por outros desenvolvedores é uma boa prática a ser seguida. </p>
+<p>Sobre a geração de documentação, podemos usar o Javadoc, já para distribuição podemos empacotar a aplicação em um <code>jar</code>. Vamos começar pelo Javadoc.</p>
+<h2>Exercício Javadoc</h2>
+<blockquote>
+<p>O Javadoc só estará disponível para instalações de JDK's e não para JRE's. Certifique-se de estar usando uma JDK.</p>
+</blockquote>
+<p>1 - Quando criamos nossas classes, nada mais justo do que adicionarmos a informação sobre o autor. Nesse sentido, vamos alterar a classe <code>Cliente.java</code> e nela adicionar a meta informação sobre o autor e sua versão.</p>
+<pre class="prettyprint"><code><span class="com">/**
+* Classe que representa um cliente no ByteBank
+*
+* @author Nico Steppat
+* @version 0.1
+*/</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Cliente</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">/* código omitido */</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<blockquote>
+<p>Lembre-se que através do atalho <code>/**</code> o Eclipse automaticamente adiciona a documentação com <code>@author</code> para você. Vale a pena se habituar com esse atalho.</p>
+</blockquote>
+<p>2 - Faça a mesma coisa para a classe <code>Conta.java</code>. </p>
+<p>3 - Sabemos que uma documentação pode ir além do nome do autor e versão, por exemplo, documentando métodos e construtores. Utilizando o atalho <code>/**</code>, documente o construtor da classe <code>Conta.java</code>. O resultado da documentação deve ficar assim:</p>
+<pre class="prettyprint"><code><span class="com">/**
+* @param agencia
+* @param numero
+*/</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Conta</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> agencia</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> numero</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">/* código omitido */</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>O atalho <code>/**</code> apenas adiciona a informação sobre os parâmetros do método, sendo de responsabilidade do desenvolvedor completar a documentação.</p>
+<pre class="prettyprint"><code><span class="com">/**
+* Construtor para inicializar o objeto Conta a partir da agencia e numero
+* @param agencia
+* @param numero
+*/</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Conta</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> agencia</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> numero</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">/* código omitido */</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>4 - Ainda na classe <code>Conta.java</code>, documente o método <code>saca</code>. Utilize mais uma vez o atalho <code>/**</code>:</p>
+<pre class="prettyprint"><code><span class="com">/**
+* Valor precisa ser menor ou igual ao saldo
+* @param valor 
+* @throws SaldoInsuficienteException
+*/</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> saca</span><span class="pun">(</span><span class="kwd">double</span><span class="pln"> valor</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">SaldoInsuficienteException</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">/* código omitido */</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>5 - Através do <em>Quick Access</em>, procure por <strong>Javadoc</strong> em <code>View</code>. Selecionando a opção, será exibida a aba "Javadoc". Experimente clicar nas classes que você acabou de documentar. Na aba "javadoc" será exibida a documentação da classe.</p>
+<p>6 - Além de exibirmos a documentação clicando em cada classe documentada, podemos gerar a documentação como arquivo para ser consultado. Para isso, acesse o menu <code>Project -&gt; Generate Javadoc</code>. </p>
+<p>Na lista de projetos exibidos, não esqueça de selecionar o projeto <code>bytebank-herdando-conta</code>. Certifique-se que em <code>Javadoc command</code> esta preenchido com o caminho da ferramenta <code>javadoc</code>. Utilize na opção <em>User standard docket</em> o caminho padrão projeto já preenchido, sem qualquer alteração. Por fim, clique no botão "Finish" para gerar a documentação.</p>
+<p>7 - Verifique a pasta <code>doc</code> gerada com a documentação. Acesse o arquivo <code>doc/resources/index.html</code>. Essa página é o ponto de entrada para a documentação. Passeie pelas classes documentadas verificando o resultado.</p>
+
+		</div>
+		<div class="task-actions">
+			
+
+
+
+
+    <a href="https://cursos.alura.com.br/forum/curso-java-pacotes-e-java-lang/exercicio-mao-na-massa-javadoc/38936/novo" class=" task-actions-button task-actions-button-forum">Discutir no Forum</a>
+
+			
+				
+				
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38936/next" class="task-actions-button task-body-actions-button task-actions-button-next">Próxima Atividade</a>
+				
+			
+		</div>
+		
+	</div>
+</section>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+			
+				
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+    <a href="https://cursos.alura.com.br/forum/curso-java-pacotes-e-java-lang/exercicio-mao-na-massa-javadoc/38936/novo" class=" task-actions-button task-actions-button-forum">Discutir no Forum</a>
+
+				
+				
+				
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38936/next" class="task-actions-button task-body-actions-button task-actions-button-next">Próxima Atividade</a>
+				
+			</div>
+		</section>
+	
+
+
+			
+		</main>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+<aside class="task-menu" style="position: fixed;">
+	<section class="task-menu-header">
+		<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-menu-button "></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang" title="Ir para página do curso">
+				
+					
+					
+						<img src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/java-pacotes-e-java-lang.svg" alt="ícone Java parte 5: Pacotes e java.lang" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Java parte 5: Pacotes e java.lang</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">51%</span>
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 51%, transparent 51%);"></span>
+				</div>
+			
+		</div>
+	</section>
+	
+	<section class="task-menu-section">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>03</strong>
+				<span>de 05</span></span>
+			<h3 class="task-menu-section-title-text">
+				Distribuição do seu código
+			</h3>
+		</div>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Atividades
+			<span>8 de 12</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/37570" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Conhecendo o Javadoc">
+							Conhecendo o Javadoc
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">13min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38453" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Qual comentário?">
+							Qual comentário?
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38454" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Sobre o javadoc">
+							Sobre o javadoc
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38467" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Explicação concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber mais: Todas as tags">
+							Para saber mais: Todas as tags
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/37571" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Criando uma biblioteca com JAR">
+							Criando uma biblioteca com JAR
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">11min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38468" class="task-menu-nav-item-link task-menu-nav-item-link-MULTIPLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Múltipla Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="O que é um JAR?">
+							O que é um JAR?
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/37572" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="JAR executável (Opcional)">
+							JAR executável (Opcional)
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">11min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38936" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade sem Resposta do Aluno concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Mão na massa: javadoc">
+							Mão na massa: javadoc
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38910" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Atividade sem Resposta do Aluno não concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Mão na massa: jar">
+							Mão na massa: jar
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38490" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber mais: Maven">
+							Para saber mais: Maven
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38455" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">11</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="O que aprendemos?">
+							O que aprendemos?
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/40445" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Atividade sem Resposta do Aluno não concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">12</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Arquivos do projeto atual">
+							Arquivos do projeto atual
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Aulas
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/java-pacotes-e-java-lang/section/&#39;+this.value;">
+			
+				<option value="1">01. Organizando as classes com Pacotes</option>
+			
+				<option value="2">02. Todos os modificadores de acesso</option>
+			
+				<option value="3" selected="">03. Distribuição do seu código</option>
+			
+				<option value="4">04. O pacote java.lang</option>
+			
+				<option value="5">05. A classe Object</option>
+			
+		</select>
+	</section>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Outros Links
+		</h2>
+		<a href="https://cursos.alura.com.br/forum/curso-java-pacotes-e-java-lang/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para o fórum do curso">Fórum</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para a página principal">Trocar Curso</a>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://cursos.alura.com.br/user/ferreedu" title="Ir para sua página de usuário">
+			<img src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/e216be18763275495ee2340fb766a1cb.png" alt="Gravatar de EDUARDO DA SILVA FERREIRA" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">EDUARDO DA SILVA FERREIRA</span>
+					<span class="task-menu-footer-detalhes-xp">
+						43.5k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-footer-logo">
+			<img src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/icon-menu-alura.svg" alt="Logo da Alura" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para a página principal">
+		</a>
+	</section>
+</aside>
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://cursos.alura.com.br/course/java-pacotes-e-java-lang/task/38936" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/jquery-2.1.3.min.32015dd4.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/buttonToggle.1c952a31.js.download" async=""></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/sectionMenu.9c6d35d8.js.download" async=""></script>
+
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/marked.min.a2851798.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/markdownEditor.4b03bd09.js.download" async=""></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/caret.df98f577.js.download" async=""></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/keydownWatchers.f20680cd.js.download" async=""></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/prettify.min.49a10a85.js.download" async=""></script>
+
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/preventsMultipleInteractions.ccefe158.js.download" async=""></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/assessment.050f656f.js.download" async=""></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/login-form.20124546.js.download" async=""></script>
+
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/menuSettings.586ae39e.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/ProjectSubmit.1da29f73.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/classPage.a7020be4.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/aria.1c51db86.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/phrase.dda08bd7.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/feedback.98f71e18.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/ExtraContentProgressRequest.74258bb3.js.download"></script>
+	
+	
+
+	
+	
+	
+	
+
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/partitura.60748cc1.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/audioProgress.71d14880.js.download"></script>
+	<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/audioPlayer.9e2e5334.js.download"></script>
+
+		
+
+	
+		
+
+<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/customerio.ad52be65.js.download"></script>
+<script>
+    var tracker = new CustomerIO('fccd7e3d49531457b6b2');
+    tracker.identify('292994', 'eduardo.s.ferreira@gmail.com', '1550768963');
+</script>
+	
+
+
+
+
+<script src="./Java parte 5_ Aula 3 - Atividade 8 Mão na massa_ javadoc _ Alura - Cursos online de tecnologia_files/MarkdownProcessing.f83261d2.js.download"></script>
+<script>
+	new MarkdownProcessing("https://cursos.alura.com.br").onLoad();
+</script><script type="text/javascript" id="">function eventClick(d,a,b,c){a.includes(" \x3e ")&&(a=document.querySelector(a).textContent);b.includes(" \x3e ")&&(b=document.querySelector(b).textContent);(c=document.querySelector(c))&&c.addEventListener("click",function(){dataLayer.push({event:"gaEvent",eventCategory:d,eventAction:a,eventLabel:b})})}eventClick("Menu","Logo","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e a");eventClick("Menu","Todos os Cursos","Abrir","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e div");
+eventClick("Menu","Todos os Cursos","Cursos de Mobile","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--mobile \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Programa\u00e7\u00e3o","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--programacao \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Front-end","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--front-end \x3e a");
+eventClick("Menu","Todos os Cursos","Cursos de Infraestrutura","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--infraestrutura \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Design \x26 UX","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--design-ux \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Business","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--business \x3e a");
+eventClick("Menu","Carreiras e Forma\u00e7\u00f5es","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(2)");eventClick("Menu","Como funciona","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(3)");eventClick("Menu","Para empresas","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(4)");
+eventClick("Menu","Entrar","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a:nth-child(1)");eventClick("Menu","Matricule-se","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a.header__nav__link.header__nav__link--cta");eventClick("Menu","Busca","Abrir","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(2) \x3e a");
+eventClick("Menu","Busca","Buscar","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(1) \x3e form \x3e button");eventClick("Footer","Primeira Se\u00e7\u00e3o","Alura","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-logos-home");eventClick("Footer","Primeira Se\u00e7\u00e3o","Caelum","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-link-caelum");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Apostilas","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(1) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Planos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(2) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Todos os Cursos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(3) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Carreiras","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(4) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Instrutores","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(5) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Como virar Instrutor","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(6) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Ranking","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(7) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Blog da Alura","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(8) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Podcast Nerdtech","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(9) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Pol\u00edtica de Privacidade","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(10) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Termos de Uso","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(11) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Sobre N\u00f3s","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(12) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Perguntas Frequentes","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(13) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Youtube","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Facebook","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Twitter","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(3)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Hipsters","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(4)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Google Play","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","App Store","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Fale Conosco","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-contato");eventClick("Footer","Primeira Se\u00e7\u00e3o","Empresa?","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-empresa");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(2)","body \x3e nav \x3e div \x3e a:nth-child(2)");
+eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(3)","body \x3e nav \x3e div \x3e a:nth-child(3)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(4)","body \x3e nav \x3e div \x3e a:nth-child(4)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(5)","body \x3e nav \x3e div \x3e a:nth-child(5)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(6)","body \x3e nav \x3e div \x3e a:nth-child(6)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(8)","body \x3e nav \x3e div \x3e a:nth-child(8)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(9)","body \x3e nav \x3e div \x3e a:nth-child(9)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(10)","body \x3e nav \x3e div \x3e a:nth-child(10)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(11)","body \x3e nav \x3e div \x3e a:nth-child(11)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(12)","body \x3e nav \x3e div \x3e a:nth-child(12)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(14)","body \x3e nav \x3e div \x3e a:nth-child(14)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(15)","body \x3e nav \x3e div \x3e a:nth-child(15)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(16)","body \x3e nav \x3e div \x3e a:nth-child(16)");
+eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(17)","body \x3e nav \x3e div \x3e a:nth-child(17)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(18)","body \x3e nav \x3e div \x3e a:nth-child(18)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(20)","body \x3e nav \x3e div \x3e a:nth-child(20)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(21)","body \x3e nav \x3e div \x3e a:nth-child(21)");
+eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(22)","body \x3e nav \x3e div \x3e a:nth-child(22)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(23)","body \x3e nav \x3e div \x3e a:nth-child(23)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(24)","body \x3e nav \x3e div \x3e a:nth-child(24)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(26)","body \x3e nav \x3e div \x3e a:nth-child(26)");
+eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(27)","body \x3e nav \x3e div \x3e a:nth-child(27)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(28)","body \x3e nav \x3e div \x3e a:nth-child(28)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(29)","body \x3e nav \x3e div \x3e a:nth-child(29)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(30)","body \x3e nav \x3e div \x3e a:nth-child(30)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(32)","body \x3e nav \x3e div \x3e a:nth-child(32)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(33)","body \x3e nav \x3e div \x3e a:nth-child(33)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(34)","body \x3e nav \x3e div \x3e a:nth-child(34)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(35)","body \x3e nav \x3e div \x3e a:nth-child(35)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(36)","body \x3e nav \x3e div \x3e a:nth-child(36)");</script><script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script></body></html>

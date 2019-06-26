@@ -1,0 +1,45 @@
+
+public class TestaConversao {
+
+	public static void main(String[] args) {
+		double salario = 1270.50;
+		int valor = (int) salario;
+		System.out.println(valor);
+		long numeroGrande = 32432423523L;
+		short valorPequeno = 2131;
+		byte b = 127;
+		double valor1 = 0.2;
+		double valor2 = 0.1;
+		double total = valor1 + valor2;
+		System.out.println(total);
+		float pontoFlutuante = 3.14f;
+
+		double idade = 30.0;
+		System.out.println("A idade de Marcos é " + (int) idade + "!");
+
+		idade = 30.0;
+		System.out.println("A idade de Marcos é " + idade + "!");
+
+		int idade30 = 30;
+		System.out.println("A idade de Marcos é " + idade30 + "!");
+		/*
+		 * PARA / DE byte short char int long float double byte ---- Impl. (char) Impl.
+		 * Impl. Impl. Impl. short (byte) ---- (char) Impl. Impl. Impl. Impl. char
+		 * (byte) (short) ---- Impl. Impl. Impl. Impl. int (byte) (short) (char) ----
+		 * Impl. Impl. Impl. long (byte) (short) (char) (int) ---- Impl. Impl. float
+		 * (byte) (short) (char) (int) (long) ---- Impl. double (byte) (short) (char)
+		 * (int) (long) (float) ----
+		 * 
+		 */
+		
+		int primeiro = 5;
+		int segundo = 7;
+		segundo = primeiro;
+		primeiro = 10;
+
+		// quanto vale o segundo?
+
+		System.out.println(segundo);
+	}
+
+}

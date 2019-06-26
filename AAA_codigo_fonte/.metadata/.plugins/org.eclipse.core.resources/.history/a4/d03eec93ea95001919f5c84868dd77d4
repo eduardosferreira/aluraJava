@@ -1,0 +1,60 @@
+package br.com.alura.javaio.teste;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+public final class TesteEscrita3 {
+
+
+	public static void exemploEscritaArquivo31() {
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("lorem31.txt"))) {
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("lorem.txt")))) {
+				String string = br.readLine();
+				while (string != null && !string.isEmpty()) {
+					bw.write(string);
+					bw.newLine();
+					string = br.readLine();
+				}				
+			} catch (Exception e) {
+				throw new Exception(e.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("Erro na leitura/escrita dos dados do arquivo: " + e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+		
+	}
+
+	public static void Ex() {
+		System.err.println(" ---------- Ex ---------------- ");
+	}
+
+	public TesteEscrita3() {
+		super();
+		// Ex();
+		exemploEscritaArquivo22();
+		System.out.println("Fim");
+
+	}
+
+	public TesteEscrita3(String[] args) {
+		super();
+		for (int i = 0; i < args.length; i++) {
+			String string = args[i];
+			System.out.println(string);
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteEscrita3();
+		new TesteEscrita3(args);
+	}
+
+}

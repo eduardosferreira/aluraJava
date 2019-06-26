@@ -1,0 +1,19 @@
+package bytebank;
+
+public class CriarConta {
+
+	public static void main(String[] args) {
+	
+		Conta primeiraConta = new Conta();
+		primeiraConta.saldo = 200d;
+		System.out.println("1c: " + primeiraConta.saldo);
+		primeiraConta.saldo += 100d;
+		System.out.println("1c: " + primeiraConta.saldo);
+		
+		Conta segundaConta = new Conta();
+		segundaConta.saldo += 100d;
+		System.out.println("2c: " + segundaConta.saldo);
+		
+	}
+	
+}

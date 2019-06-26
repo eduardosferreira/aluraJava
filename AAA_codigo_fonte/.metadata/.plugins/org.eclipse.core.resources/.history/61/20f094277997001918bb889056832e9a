@@ -1,0 +1,72 @@
+package br.com.alura.java.io.teste;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+public class TesteUnicodeEEncoding {
+
+	public static void Ex1() {
+		try {
+			String string = "C";
+			Charset charset = Charset.defaultCharset();
+			System.out.println(string.codePointAt(0) + ", " + charset.displayName());
+
+			byte[] bytes = string.getBytes();
+			System.out.print(bytes.length + " , windows-1252 : ");
+			String newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+
+	
+			System.out.println();
+			System.err.println(" --- CODIFICAÇÃO INCORRETA!  ----");
+			System.out.println();
+			
+			bytes = string.getBytes(StandardCharsets.UTF_8);
+			System.out.print(bytes.length + " , UTF-8 : ");
+			newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+
+			bytes = string.getBytes(StandardCharsets.UTF_16);
+			System.out.print(bytes.length + " , UTF_16 : ");
+			newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+			
+			bytes = string.getBytes(StandardCharsets.US_ASCII);
+			System.out.print(bytes.length + " , StandardCharsets.US_ASCII : ");
+			newStringC1 = new String(bytes, "windows-1252");
+			System.out.println(newStringC1);
+
+			System.out.println();
+			System.err.println(" --- CODIFICAÇÃO ORRETA!  ----");
+			System.out.println();
+			
+			bytes = string.getBytes("UTF-8");
+			System.out.print(bytes.length + " , UTF-8 : ");
+			newStringC1 = new String(bytes, StandardCharsets.UTF_8);
+			System.out.println(newStringC1);
+
+			bytes = string.getBytes(StandardCharsets.US_ASCII);
+			System.out.print(bytes.length + " , ASCII : ");
+			newStringC1 = new String(bytes, StandardCharsets.US_ASCII);
+			System.out.println(newStringC1);
+			
+			bytes = string.getBytes(StandardCharsets.UTF_16);
+			System.out.print(bytes.length + " , UTF_16 : ");
+			newStringC1 = new String(bytes, StandardCharsets.UTF_16);
+			System.out.println(newStringC1);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public TesteUnicodeEEncoding() {
+		Ex1();
+	}
+
+	public static void main(String[] args) {
+		new TesteUnicodeEEncoding();
+	}
+
+}

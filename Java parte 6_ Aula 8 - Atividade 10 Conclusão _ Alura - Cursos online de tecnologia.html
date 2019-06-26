@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://cursos.alura.com.br/course/java-util-lambdas/task/37835 -->
+<html lang="pt-BR" data-product="alura" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	
+		
+
+
+
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script async="" id="cio-tracker" data-site-id="fccd7e3d49531457b6b2" src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/track.js.download"></script><script type="text/javascript" async="" src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/analytics.js.download"></script><script async="" src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/gtm.js.download"></script><script>
+	(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',4000,
+		{'GTM-TN542JN':true});
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-TN542JN');
+</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+	<script type="text/javascript">
+        dataLayer.push({
+            'tipoPagina': 'Aula',
+            'curso': 'Java parte 6: Conhecendo o java.util'
+        });
+	</script>
+
+	
+
+	<title>Java parte 6: Aula 8 - Atividade 10 Conclusão | Alura - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://cursos.alura.com.br/images/alura/favicon.ico">
+	
+	<link href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video-js.f429230f.css">
+    <link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video-js-resolutions.d48f855c.css">
+    <link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/prettify.4f36b4ca.css">
+
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/base.1e88adda.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/formattedText.afb4622e.css">
+	
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/container.532971f7.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/classPage.982c18c7.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/menuSettings.ab9e5c02.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/taskProgress.6f863249.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/taskMessageInfo.4becb946.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/alternativeList.ba7ea685.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/taskFeedback.1c82537d.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/markdown.c1e23fdd.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/finishSection.7e40d196.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/phrase.d61af0f3.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/openquestion.811813bb.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video.7c2303aa.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/singlechoice.4a8caf68.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/music.c02947a9.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/videodialog.7d2041b8.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/fillintheblank.81cde842.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/speakingpractice.5068bb32.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/pronunciationpractice.7d2876f7.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/repetition.e9ba636b.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/genericVideo.9239c799.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/projectSubmit.cd21d24b.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/taskButtons.1c232b93.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/markdownEditor.4bc2327a.css">
+	<link rel="stylesheet" href="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/audioPlayer.a55d412c.css">
+
+	
+	
+	<style type="text/css">
+		.task:before {
+			background-color: #FFE000;
+		}
+	</style>
+	
+	
+	
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/sha256.min.js.download"></script><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style></head>
+<body>
+
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task" data-allow-answer="true" data-task-section-exam="false" data-task-type="video" data-task-id="37835" data-author-id="292994" data-course-code="java-util-lambdas" data-section-name="Classes anônimas e Lambdas" data-section-id="6254" data-section-number="8" data-domain="cursos.alura.com.br" data-hasfeedbackanswer="false" data-url-prefix="/">
+	<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-body-button "></button>
+	
+	<section class="task-body">
+		
+		<header class="task-body-header">
+			<div class="container">
+				<h1 class="task-body-header-title">
+					<svg class="task-body-header-title-svg" aria-label="Atividade de Vídeo">
+						<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<small>10</small>
+					<span class="task-body-header-title-text"> Conclusão</span>
+				</h1>
+				
+					<div class="task-body-header-actions">
+						<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/37835/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit">Próxima Atividade</a>
+					</div>
+				
+			</div>
+		</header>
+		<main class="task-body-main" data-should-warn="false">
+			
+
+
+
+
+
+
+
+	
+	
+	
+	
+		
+
+
+
+
+
+
+
+    
+    
+        <section class="video" id="task-content">
+            <div class="container theater-mode">
+                
+
+
+
+
+<div class="settings">
+	<button type="button" class="settings-button" aria-label="Configurações">
+		<svg class="settings-button-icon">
+			<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<span class="settings-box-title"></span>
+		<ul class="settings-box-list">
+			
+				
+				
+				
+					<li class="settings-box-item settings-box-item-player">
+						<button class="video-changePlayer" data-uri="https://player.vimeo.com/video/263525064">
+								Mudar o player
+							<span hidden="">indisponível</span>
+						</button>
+					</li>
+					
+						
+							
+							
+								<li class="settings-box-item settings-box-item-suggestion"><a href="https://cursos.alura.com.br/suggestions/new/java-util-lambdas/37835/question">Sugerir alteração</a></li>
+							
+						
+					
+				
+				
+			
+			
+		</ul>
+	</div>
+</div>
+                
+
+
+
+
+<section id="video" class="video-container">
+    <input id="videoPreferences-player" type="hidden" value="VIMEO">
+    
+    <div id="video-container-data" class="" data-section-id="6254" data-course="java-util-lambdas" data-playback-rate="2.0" data-task-id="37835" data-quality="hd" data-course-id="850" data-gnarus-name="alura">
+
+        
+    <iframe id="vimeo-iframe" class="video-js vjs-tech" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/263525064.html" style="" data-ready="true"></iframe><div style="display: none; width: 300px; height: 150px;" poster="/images/video/vinheta-alura.png" preload="auto" class="video-js vjs-default-skin video-player-frame video-player vjs-paused vjs-controls-enabled vjs-user-inactive" id="video-player-frame"><video id="video-player-frame_html5_api" class="vjs-tech" preload="auto" poster="/images/video/vinheta-alura.png" style="display: none;" src="https://player.vimeo.com/play/972543335?s=263525064_1561202385_80c723bf299b0190eb6786a8ac6e3f34&amp;loc=external&amp;context=Vimeo%5CController%5CApi%5CResources%5CVideoController.&amp;download=1&amp;filename=850-javaparte6-video7.3-Conclusao174.mp4"><source type="video/mp4" src="https://player.vimeo.com/play/972543335?s=263525064_1561202385_80c723bf299b0190eb6786a8ac6e3f34&amp;loc=external&amp;context=Vimeo%5CController%5CApi%5CResources%5CVideoController.&amp;download=1&amp;filename=850-javaparte6-video7.3-Conclusao174.mp4" data-res="hd"><source type="video/mp4" src="https://player.vimeo.com/play/972543344?s=263525064_1561202385_bf5d992267f30fd292e892c330faa983&amp;loc=external&amp;context=Vimeo%5CController%5CApi%5CResources%5CVideoController.&amp;download=1&amp;filename=850-javaparte6-video7.3-Conclusao165.mp4" data-res="sd"></video><div></div><div class="vjs-poster" tabindex="-1" style="background-image: url(&quot;/images/video/vinheta-alura.png&quot;);"></div><div class="vjs-loading-spinner"></div><div class="vjs-text-track-display vjs-hidden"></div><div class="vjs-big-play-button" role="button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control " role="button" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time</span> 0:00</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time</span> 0:00</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time</span> -0:00</div></div><div class="vjs-live-controls vjs-control"><div class="vjs-live-display" aria-live="off"><span class="vjs-control-text">Stream Type</span>LIVE</div></div><div class="vjs-progress-control vjs-control"><div role="slider" aria-valuenow="NaN" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:00"><div class="vjs-load-progress" style="width: 9.32152%;"><span class="vjs-control-text" style="left: 0%; width: 100%;"><span>Loaded</span>: 0%</span></div><div class="vjs-play-progress" style="width: 0%;"><span class="vjs-control-text"><span>Progress</span>: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" aria-live="off" style="left: 0%;"><span class="vjs-control-text">0:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " role="button" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div role="slider" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" role="button" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-playback-rate vjs-menu-button vjs-control " role="button" aria-live="polite" tabindex="0" aria-haspopup="true"><div class="vjs-control-content"><span class="vjs-control-text">Playback Rate</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">3x</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">2.5x</li><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">2x</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">1.5x</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">1.2x</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">1x</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">0.8x</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">0.7x</li></ul></div></div><div class="vjs-playback-rate-value">2x</div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Subtitles Menu"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div></div><div class="vjs-captions-button vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Captions Menu"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Chapters Menu"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-title">Chapters</li></ul></div></div></div><div class="vjs-HD-button vjs-control" role="button" aria-live="polite" tabindex="0"><div class="vjs-control-content">HD</div></div></div><div class="vjs-error-display"><div></div></div><div class="vjs-caption-settings vjs-modal-overlay vjs-hidden"><div class="vjs-tracksettings"><div class="vjs-tracksettings-colors"><div class="vjs-fg-color vjs-tracksetting"><label class="vjs-label">Foreground</label><select><option value="">---</option><option value="#FFF">White</option><option value="#000">Black</option><option value="#F00">Red</option><option value="#0F0">Green</option><option value="#00F">Blue</option><option value="#FF0">Yellow</option><option value="#F0F">Magenta</option><option value="#0FF">Cyan</option></select><span class="vjs-text-opacity vjs-opacity"><select><option value="">---</option><option value="1">Opaque</option><option value="0.5">Semi-Opaque</option></select></span></div><div class="vjs-bg-color vjs-tracksetting"><label class="vjs-label">Background</label><select><option value="">---</option><option value="#FFF">White</option><option value="#000">Black</option><option value="#F00">Red</option><option value="#0F0">Green</option><option value="#00F">Blue</option><option value="#FF0">Yellow</option><option value="#F0F">Magenta</option><option value="#0FF">Cyan</option></select><span class="vjs-bg-opacity vjs-opacity"><select><option value="">---</option><option value="1">Opaque</option><option value="0.5">Semi-Transparent</option><option value="0">Transparent</option></select></span></div><div class="window-color vjs-tracksetting"><label class="vjs-label">Window</label><select><option value="">---</option><option value="#FFF">White</option><option value="#000">Black</option><option value="#F00">Red</option><option value="#0F0">Green</option><option value="#00F">Blue</option><option value="#FF0">Yellow</option><option value="#F0F">Magenta</option><option value="#0FF">Cyan</option></select><span class="vjs-window-opacity vjs-opacity"><select><option value="">---</option><option value="1">Opaque</option><option value="0.5">Semi-Transparent</option><option value="0">Transparent</option></select></span></div></div><div class="vjs-tracksettings-font"><div class="vjs-font-percent vjs-tracksetting"><label class="vjs-label">Font Size</label><select><option value="0.50">50%</option><option value="0.75">75%</option><option value="1.00" selected="">100%</option><option value="1.25">125%</option><option value="1.50">150%</option><option value="1.75">175%</option><option value="2.00">200%</option><option value="3.00">300%</option><option value="4.00">400%</option></select></div><div class="vjs-edge-style vjs-tracksetting"><label class="vjs-label">Text Edge Style</label><select><option value="none">None</option><option value="raised">Raised</option><option value="depressed">Depressed</option><option value="uniform">Uniform</option><option value="dropshadow">Dropshadow</option></select></div><div class="vjs-font-family vjs-tracksetting"><label class="vjs-label">Font Family</label><select><option value="">Default</option><option value="monospaceSerif">Monospace Serif</option><option value="proportionalSerif">Proportional Serif</option><option value="monospaceSansSerif">Monospace Sans-Serif</option><option value="proportionalSansSerif">Proportional Sans-Serif</option><option value="casual">Casual</option><option value="script">Script</option><option value="small-caps">Small Caps</option></select></div></div></div><div class="vjs-tracksettings-controls"><button class="vjs-default-button">Defaults</button><button class="vjs-done-button">Done</button></div></div></div></div>
+</section>
+                
+                    
+                        <h2 class="video-transcription-title">Transcrição</h2>
+                    
+                    <section id="transcription" class="video-transcription transcription-toggle">
+                        <div class="formattedText" data-external-links="">
+                                <p>Olá!</p>
+<p>Chegamos ao último vídeo do curso, concluindo uma longa trilha que iniciou desde os conceitos mais básicos do Java.</p>
+<p>Iniciamos pelos <strong>arrays</strong>, a primeira estrutura de dados que vimos. Com ela, aprendemos a armazenar diversos valores de uma só vez, vimos o que é um array de primitivos, com uma sintaxe incomum, que utiliza colchetes (<code>[]</code>).</p>
+<p>Inicializamos o array, indicando a posição desejada, lembrando que ela sempre inicia do <code>0</code>, e aprendemos a acessar determinada posição, bem como a descobrir quantos elementos aquela lista é capaz de armazenar.</p>
+<p>Assim como existem primitivos, aprendemos que podem existir arrays de referências. Ao criar o objeto, o que é armazenado é a indicação à ele, e não ele em si. De resto, o funcionamento é igual ao tipo de array visto anteriormente.</p>
+<p>Um ponto negativo deste tipo de lista é seu número fixo de elementos, uma vez criada, ela terá aquele tamanho, sem possibilidade de alteração ou flexibilização. Além disso, apesar de ser possível sabermos esta capacidade de armazenamento, não há um método que nos permita descobrir o número de elementos armazenados.</p>
+<p>Por este motivo, vimos que foi criado um tipo de armazenador de objetos de referência, que é o <code>ArrayList</code>. Trata-se de uma classe que, internamente, utiliza um array. Sua sintaxe é, portanto, a mesma de uma classe qualquer.</p>
+<p>Além disso, vimos que é possível criar parâmetros nela, para indicarmos que só será possível armazenar um tipo de referência, por exemplo, do tipo <code>Conta</code>, como é o caso abaixo:</p>
+<pre class="prettyprint"><code><span class="typ">ArrayList</span><span class="pun">&lt;</span><span class="typ">Conta</span><span class="pun">&gt;</span><span class="pln"> lista </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;</span><span class="typ">Conta</span><span class="pun">&gt;();</span><span class="pln">
+
+</span><span class="typ">Conta</span><span class="pln"> cc1 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ContaCorrente</span><span class="pun">(</span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">);</span><span class="pln">
+lista</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">cc1</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">Conta</span><span class="pln"> cc2 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ContaPoupanca</span><span class="pun">(</span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">22</span><span class="pun">);</span><span class="pln">
+lista</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">cc2</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Tamanho: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> lista</span><span class="pun">.</span><span class="pln">size</span><span class="pun">());</span></code></pre><p>Ela possui diversos métodos específicos que facilitam o trabalho com estrutura de dados, é o caso do <code>size()</code>, que nos permite descobrir o número de referências armazenadas.</p>
+<p>Há ainda outros tipos de estruturas de dados, como vimos, temos: <code>LinkedList</code> e o <code>Vector</code>.</p>
+<p>O <code>LinkedList</code> é uma lista duplamente encadeada, enquanto o <code>Vector</code> é similar ao <code>ArrayList</code>, mas é capaz de trabalhar com diversos <em>threads</em>. Como são todas listas, implementam a interface <code>List</code>. Lembrando que todas as listas são sequências, e armazenam os elementos com base em um índice, isso não impede que adicionemos duplicados, ou seja, que itens sejam repetidos.</p>
+<p>A ideia de armazenar dados é presente no mundo Java também na <code>Collection</code>, uma interface ainda mais genérica que <code>List</code>, e nos conjuntos <code>Set</code> e <code>HashSet</code>, que por sua vez não aceitam itens duplicados.</p>
+<p>Como não é possível guardarmos valores primitivos em um array, existe para cada um deles uma <strong>classe wrapper</strong> correspondente.</p>
+<p>Esta transformação, do primitivo para o objeto, e vice-versa, é chamada de <em>autoboxing</em> e <em>unboxing</em>, e é feita automaticamente pelo Java.</p>
+<p>Vimos uma variação dos <em>generics</em>, onde omitimos o tipo, e o código continua funcionando:</p>
+<pre class="prettyprint"><code><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;</span><span class="pln"> lista </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;&gt;();</span><span class="pln">
+
+lista</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="lit">5</span><span class="pun">);</span><span class="pln">
+lista</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="lit">12</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Tamanho: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> lista</span><span class="pun">.</span><span class="pln">size</span><span class="pun">());</span></code></pre><p>Aprendemos ainda formas de ordenar nossos métodos. Temos o <code>sort()</code>, bem como a classe <code>Collections</code>, que possui uma série de métodos auxiliares estáticos.</p>
+<p>O <code>sort()</code> recebe um critério de comparação, que é definido por meio de uma interface com um único método.</p>
+<p>Estas classes sem atributos, que possuem uma única funcionalidade, foram trabalhadas quando tratamos das <strong>classes anônimas e lambdas</strong>.</p>
+<p>Como vimos, é menos custoso criar uma classe, a partir da interface, e já criar o objeto, de forma direta, em unidade. Isso significa que, em vez de fazermos isso, que é um processo burocrático:</p>
+<pre class="prettyprint"><code><span class="pln">lista</span><span class="pun">.</span><span class="pln">sort</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Comparator</span><span class="pun">&lt;</span><span class="typ">Conta</span><span class="pun">&gt;()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> compare</span><span class="pun">(</span><span class="typ">Conta</span><span class="pln"> c1</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Conta</span><span class="pln"> c2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Integer</span><span class="pun">.</span><span class="pln">compare</span><span class="pun">(</span><span class="pln">c1</span><span class="pun">.</span><span class="pln">getNumero</span><span class="pun">(),</span><span class="pln"> c2</span><span class="pun">.</span><span class="pln">getNumero</span><span class="pun">());</span><span class="pln">
+
+        </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">});</span></code></pre><p>É melhor escrevermos da seguinte forma:</p>
+<pre class="prettyprint"><code><span class="pln">lista</span><span class="pun">.</span><span class="pln">sort</span><span class="pun">(</span><span class="pln"> </span><span class="pun">(</span><span class="pln">c1</span><span class="pun">,</span><span class="pln"> c2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="typ">Integer</span><span class="pun">.</span><span class="pln">compare</span><span class="pun">(</span><span class="pln">c1</span><span class="pun">.</span><span class="pln">getNumero</span><span class="pun">(),</span><span class="pln"> c2</span><span class="pun">.</span><span class="pln">getNumero</span><span class="pun">())</span><span class="pln"> </span><span class="pun">);</span></code></pre><p>Neste segundo caso, estamos utilizando os lambdas, que facilitam ainda mais o trabalho com funções, no caso <code>(c1, c2)</code>, e em seguida, o código com o resultado desejado, ou seja, o nosso método <code>compare</code>.</p>
+<p>Gostaria de convidar você para o próximo curso, Java Parte 7, no qual falaremos sobre <code>java.io</code>. Aprenderemos a trabalhar com leitura de arquivos, escrita, fluxo de dados oriundos da rede, ou ainda do teclado, onde podemos envia-los, entre outros.</p>
+<p>É um tópico importante, principalmente para aquele que têm interesse em trabalhar com a web, já que se lida bastante com a relação de input e output.</p>
+<p>Se quiser entender este código abaixo, convido você, e agradeço por ter assistido a este curso, até a próxima!</p>
+<pre class="prettyprint"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">TestaEntrada</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">IOException</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                </span><span class="typ">BufferedReader</span><span class="pln"> br </span><span class="pun">=</span><span class="pln">
+
+                        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BufferedReader</span><span class="pun">(</span><span class="pln">
+
+                                </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">InputStreamReader</span><span class="pun">(</span><span class="pln">
+
+                                        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileInputStream</span><span class="pun">(</span><span class="str">"arquivo.txt"</span><span class="pun">)));</span><span class="pln">
+                </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">s </span><span class="pun">!=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+                        </span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">s</span><span class="pun">);</span><span class="pln">
+
+                        s </span><span class="pun">=</span><span class="pln"> br</span><span class="pun">.</span><span class="pln">readLine</span><span class="pun">();</span><span class="pln">
+
+                </span><span class="pun">}</span><span class="pln">
+
+                br</span><span class="pun">.</span><span class="pln">close</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+                        </div>
+                    </section>
+                    
+                        <button class="video-transcription-button transcription-toggle" aria-hidden="true" style="display: none;">
+                            <span class="video-transcription-button-text">continuar lendo</span>
+                        </button>
+                    
+                
+            </div>
+        </section>
+    
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+			
+				
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+    <a href="https://cursos.alura.com.br/forum/curso-java-util-lambdas/exercicio-conclusao/37835/novo" class=" task-actions-button task-actions-button-forum">Discutir no Forum</a>
+
+				
+				
+				
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/37835/next" class="task-actions-button task-body-actions-button task-actions-button-next">Próxima Atividade</a>
+				
+			</div>
+		</section>
+	
+
+
+			
+		</main>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+<aside class="task-menu" style="position: fixed; transform: translateY(-416.8px);">
+	<section class="task-menu-header">
+		<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-menu-button "></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://cursos.alura.com.br/course/java-util-lambdas" title="Ir para página do curso">
+				
+					
+					
+						<img src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/java-util-lambdas.svg" alt="ícone Java parte 6: Conhecendo o java.util" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Java parte 6: Conhecendo o java.util</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">97%</span>
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 97%, transparent 97%);"></span>
+				</div>
+			
+		</div>
+	</section>
+	
+	<section class="task-menu-section">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>08</strong>
+				<span>de 08</span></span>
+			<h3 class="task-menu-section-title-text">
+				Classes anônimas e Lambdas
+			</h3>
+		</div>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Atividades
+			<span>10 de 11</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/37833" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Classes anônimas">
+							Classes anônimas
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">12min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38850" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Qual objeto?">
+							Qual objeto?
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38860" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="O que acontece?">
+							O que acontece?
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/37834" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Finalmente Lambdas">
+							Finalmente Lambdas
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">13min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38815" class="task-menu-nav-item-link task-menu-nav-item-link-MULTIPLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Múltipla Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="E se fosse com lambda?">
+							E se fosse com lambda?
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38782" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade de Única Escolha concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Foreach com lambda">
+							Foreach com lambda
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38843" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Explicação concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="O padrão Iterator">
+							O padrão Iterator
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38972" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade sem Resposta do Aluno concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Mãos na massa: Classes anônimas">
+							Mãos na massa: Classes anônimas
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38991" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Atividade sem Resposta do Aluno concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#TEXT_CONTENT"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Mãos na massa: Lambdas">
+							Mãos na massa: Lambdas
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/37835" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						<svg class="task-menu-nav-item-svg  task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo não concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#VIDEO"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Conclusão">
+							Conclusão
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/java-util-lambdas/task/38844" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+							
+								
+								<use xlink:href="/images/gnarus/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+							
+							
+						
+					</svg>
+					<span class="task-menu-nav-item-number">11</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Projeto final">
+							Projeto final
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Aulas
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/java-util-lambdas/section/&#39;+this.value;">
+			
+				<option value="1">01. Conhecendo Arrays</option>
+			
+				<option value="2">02. Guardando qualquer referência</option>
+			
+				<option value="3">03. ArrayList e Generics</option>
+			
+				<option value="4">04. Equals e mais listas</option>
+			
+				<option value="5">05. Vector e a interface Collection</option>
+			
+				<option value="6">06. As classes Wrappers</option>
+			
+				<option value="7">07. Ordenação de listas</option>
+			
+				<option value="8" selected="">08. Classes anônimas e Lambdas</option>
+			
+		</select>
+	</section>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Outros Links
+		</h2>
+		<a href="https://cursos.alura.com.br/forum/curso-java-util-lambdas/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para o fórum do curso">Fórum</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para a página principal">Trocar Curso</a>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://cursos.alura.com.br/user/ferreedu" title="Ir para sua página de usuário">
+			<img src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/e216be18763275495ee2340fb766a1cb.png" alt="Gravatar de EDUARDO DA SILVA FERREIRA" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">EDUARDO DA SILVA FERREIRA</span>
+					<span class="task-menu-footer-detalhes-xp">
+						51.1k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-footer-logo">
+			<img src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/icon-menu-alura.svg" alt="Logo da Alura" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para a página principal">
+		</a>
+	</section>
+</aside>
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://cursos.alura.com.br/course/java-util-lambdas/task/37835" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div><script type="text/javascript" id="">function eventClick(d,a,b,c){a.includes(" \x3e ")&&(a=document.querySelector(a).textContent);b.includes(" \x3e ")&&(b=document.querySelector(b).textContent);(c=document.querySelector(c))&&c.addEventListener("click",function(){dataLayer.push({event:"gaEvent",eventCategory:d,eventAction:a,eventLabel:b})})}eventClick("Menu","Logo","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e a");eventClick("Menu","Todos os Cursos","Abrir","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e div");
+eventClick("Menu","Todos os Cursos","Cursos de Mobile","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--mobile \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Programa\u00e7\u00e3o","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--programacao \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Front-end","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--front-end \x3e a");
+eventClick("Menu","Todos os Cursos","Cursos de Infraestrutura","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--infraestrutura \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Design \x26 UX","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--design-ux \x3e a");eventClick("Menu","Todos os Cursos","Cursos de Business","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e ul \x3e li.header-cursos-lista-categoria.header-cursos-lista-categoria--business \x3e a");
+eventClick("Menu","Carreiras e Forma\u00e7\u00f5es","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(2)");eventClick("Menu","Como funciona","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(3)");eventClick("Menu","Para empresas","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--menu \x3e a:nth-child(4)");
+eventClick("Menu","Entrar","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a:nth-child(1)");eventClick("Menu","Matricule-se","","body \x3e div.home \x3e div \x3e header \x3e div \x3e nav \x3e div.header__nav__wrapper.header__nav__wrapper--ctas \x3e a.header__nav__link.header__nav__link--cta");eventClick("Menu","Busca","Abrir","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(2) \x3e a");
+eventClick("Menu","Busca","Buscar","body \x3e div.home \x3e div \x3e header \x3e section \x3e div:nth-child(1) \x3e form \x3e button");eventClick("Footer","Primeira Se\u00e7\u00e3o","Alura","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-logos-home");eventClick("Footer","Primeira Se\u00e7\u00e3o","Caelum","body \x3e footer.footer \x3e div \x3e div.footer-info \x3e div.footer-logos \x3e a.footer-link-caelum");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Apostilas","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(1) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Planos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(2) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Todos os Cursos","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(3) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Carreiras","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(4) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Instrutores","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(5) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Como virar Instrutor","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(6) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Ranking","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(7) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Blog da Alura","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(8) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Podcast Nerdtech","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(9) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Pol\u00edtica de Privacidade","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(10) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Termos de Uso","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(11) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Sobre N\u00f3s","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(12) \x3e a");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Perguntas Frequentes","body \x3e footer.footer \x3e div \x3e div.footer-navegue \x3e ul \x3e li:nth-child(13) \x3e a");eventClick("Footer","Primeira Se\u00e7\u00e3o","Youtube","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Facebook","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Twitter","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(3)");eventClick("Footer","Primeira Se\u00e7\u00e3o","Hipsters","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-redes \x3e a:nth-child(4)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Google Play","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(1)");eventClick("Footer","Primeira Se\u00e7\u00e3o","App Store","body \x3e footer.footer \x3e div \x3e div.footer-column.footer-column-cards \x3e div.footer-card-hotLinks \x3e div.footer-card-hotLinks-info.footer-card-mobile \x3e a:nth-child(2)");
+eventClick("Footer","Primeira Se\u00e7\u00e3o","Fale Conosco","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-contato");eventClick("Footer","Primeira Se\u00e7\u00e3o","Empresa?","body \x3e footer.footer \x3e div \x3e div:nth-child(3) \x3e a.footer-card.footer-card-empresa");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(2)","body \x3e nav \x3e div \x3e a:nth-child(2)");
+eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(3)","body \x3e nav \x3e div \x3e a:nth-child(3)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(4)","body \x3e nav \x3e div \x3e a:nth-child(4)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(5)","body \x3e nav \x3e div \x3e a:nth-child(5)");eventClick("Footer","Mobile","body \x3e nav \x3e div \x3e a:nth-child(6)","body \x3e nav \x3e div \x3e a:nth-child(6)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(8)","body \x3e nav \x3e div \x3e a:nth-child(8)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(9)","body \x3e nav \x3e div \x3e a:nth-child(9)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(10)","body \x3e nav \x3e div \x3e a:nth-child(10)");eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(11)","body \x3e nav \x3e div \x3e a:nth-child(11)");
+eventClick("Footer","Programa\u00e7\u00e3o","body \x3e nav \x3e div \x3e a:nth-child(12)","body \x3e nav \x3e div \x3e a:nth-child(12)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(14)","body \x3e nav \x3e div \x3e a:nth-child(14)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(15)","body \x3e nav \x3e div \x3e a:nth-child(15)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(16)","body \x3e nav \x3e div \x3e a:nth-child(16)");
+eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(17)","body \x3e nav \x3e div \x3e a:nth-child(17)");eventClick("Footer","Front-end","body \x3e nav \x3e div \x3e a:nth-child(18)","body \x3e nav \x3e div \x3e a:nth-child(18)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(20)","body \x3e nav \x3e div \x3e a:nth-child(20)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(21)","body \x3e nav \x3e div \x3e a:nth-child(21)");
+eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(22)","body \x3e nav \x3e div \x3e a:nth-child(22)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(23)","body \x3e nav \x3e div \x3e a:nth-child(23)");eventClick("Footer","Infraestrutura","body \x3e nav \x3e div \x3e a:nth-child(24)","body \x3e nav \x3e div \x3e a:nth-child(24)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(26)","body \x3e nav \x3e div \x3e a:nth-child(26)");
+eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(27)","body \x3e nav \x3e div \x3e a:nth-child(27)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(28)","body \x3e nav \x3e div \x3e a:nth-child(28)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(29)","body \x3e nav \x3e div \x3e a:nth-child(29)");eventClick("Footer","Design e UX","body \x3e nav \x3e div \x3e a:nth-child(30)","body \x3e nav \x3e div \x3e a:nth-child(30)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(32)","body \x3e nav \x3e div \x3e a:nth-child(32)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(33)","body \x3e nav \x3e div \x3e a:nth-child(33)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(34)","body \x3e nav \x3e div \x3e a:nth-child(34)");eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(35)","body \x3e nav \x3e div \x3e a:nth-child(35)");
+eventClick("Footer","Business","body \x3e nav \x3e div \x3e a:nth-child(36)","body \x3e nav \x3e div \x3e a:nth-child(36)");</script><script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script>
+
+
+
+
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/jquery-2.1.3.min.32015dd4.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/buttonToggle.1c952a31.js.download" async=""></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/sectionMenu.9c6d35d8.js.download" async=""></script>
+
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/marked.min.a2851798.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/markdownEditor.4b03bd09.js.download" async=""></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/caret.df98f577.js.download" async=""></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/keydownWatchers.f20680cd.js.download" async=""></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/prettify.min.49a10a85.js.download" async=""></script>
+
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/preventsMultipleInteractions.ccefe158.js.download" async=""></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/assessment.050f656f.js.download" async=""></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/login-form.20124546.js.download" async=""></script>
+
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/menuSettings.586ae39e.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/ProjectSubmit.1da29f73.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/classPage.a7020be4.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/aria.1c51db86.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/phrase.dda08bd7.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/feedback.98f71e18.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/ExtraContentProgressRequest.74258bb3.js.download"></script>
+	
+	
+		<!-- video specific -->
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/scroll-top.8c3e8bb3.js.download"></script>
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video.min.42199840.js.download"></script>
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/vimeo.20b9d6f3.js.download"></script>
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video-js.ga.min.277960ee.js.download"></script>
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video-js-resolutions.min.f0ae32b9.js.download"></script>
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/video.d81dca2d.js.download"></script>
+		<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/vimeo.min.ac59d050.js.download"></script>
+	
+
+	
+	
+	
+	
+
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/partitura.60748cc1.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/audioProgress.71d14880.js.download"></script>
+	<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/audioPlayer.9e2e5334.js.download"></script>
+
+		
+
+	
+		
+
+<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/customerio.ad52be65.js.download"></script>
+<script>
+    var tracker = new CustomerIO('fccd7e3d49531457b6b2');
+    tracker.identify('292994', 'eduardo.s.ferreira@gmail.com', '1550768963');
+</script>
+	
+
+
+
+
+<script src="./Java parte 6_ Aula 8 - Atividade 10 Conclusão _ Alura - Cursos online de tecnologia_files/MarkdownProcessing.f83261d2.js.download"></script>
+<script>
+	new MarkdownProcessing("https://cursos.alura.com.br").onLoad();
+</script><style type="text/css">.vjs-control.vjs-HD-button { color: #36D8DE; font-weight:bold; text-shadow: 0 0 1em #fff;}</style></body></html>

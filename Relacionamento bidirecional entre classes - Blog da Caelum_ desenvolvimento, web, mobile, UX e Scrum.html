@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/ -->
+<html lang="pt-BR" prefix="og: http://ogp.me/ns#" style="" class=" js csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<link rel="pingback" href="https://blog.caelum.com.br/xmlrpc.php">
+
+<!-- This site is optimized with the Yoast SEO plugin v10.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Relacionamento bidirecional entre classes - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum</title>
+<link rel="canonical" href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Relacionamento bidirecional entre classes - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta property="og:description" content="Hoje estava pareando com o Lucas Cavalcanti, em um sistema de alunos para a Universidade de São Paulo. Lucas é o novo estagiário da Caelum, e o primeiro da parceria USP-Caelum, onde colocamos um aluno …">
+<meta property="og:url" content="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/">
+<meta property="og:site_name" content="Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta property="article:tag" content="hibernate">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="jf-25">
+<meta property="article:section" content="Programação">
+<meta property="article:published_time" content="2007-03-28T06:41:58+00:00">
+<meta property="article:modified_time" content="2017-03-06T15:41:11+00:00">
+<meta property="og:updated_time" content="2017-03-06T15:41:11+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Hoje estava pareando com o Lucas Cavalcanti, em um sistema de alunos para a Universidade de São Paulo. Lucas é o novo estagiário da Caelum, e o primeiro da parceria USP-Caelum, onde colocamos um aluno […]">
+<meta name="twitter:title" content="Relacionamento bidirecional entre classes - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script type="text/javascript" async="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/analytics.js.download"></script><script async="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/analytics.js.download"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","url":"https://blog.caelum.com.br/","sameAs":[],"@id":"https://blog.caelum.com.br/#organization","name":"Caelum","logo":""}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://secure.gravatar.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Feed para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum »" href="https://blog.caelum.com.br/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum »" href="https://blog.caelum.com.br/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum » Relacionamento bidirecional entre classes" href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.caelum.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-layout-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="prism-theme-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/prism-css.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/related-posts.min.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/fitvids.min.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/modernizr.min.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/general.js.download"></script>
+<link rel="https://api.w.org/" href="https://blog.caelum.com.br/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.caelum.com.br/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.caelum.com.br/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.1.1">
+<link rel="shortlink" href="https://wp.me/p8tqQy-1T">
+<link rel="alternate" type="application/json+oembed" href="https://blog.caelum.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.caelum.com.br%2Fcomo-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://blog.caelum.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.caelum.com.br%2Fcomo-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional%2F&amp;format=xml">
+<link rel="stylesheet" type="text/css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/all.css"><!--[if IE]><link rel="stylesheet" type="text/css" href="https://blog.caelum.com.br/wp-content/plugins/highlight-source-pro/ie.css" /><![endif]--><script type="text/javascript" data-cfasync="false">var _mmunch = {'front': false, 'page': false, 'post': false, 'category': false, 'author': false, 'search': false, 'attachment': false, 'tag': false};_mmunch['post'] = true; _mmunch['postData'] = {"ID":117,"post_name":"como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional","post_title":"Relacionamento bidirecional entre classes","post_type":"post","post_author":"2","post_status":"publish"}; _mmunch['postCategories'] = [{"term_id":1367,"name":"Programa\u00e7\u00e3o","slug":"programacao","term_group":0,"term_taxonomy_id":1440,"taxonomy":"category","description":"","parent":0,"count":301,"filter":"raw","cat_ID":1367,"category_count":301,"category_description":"","cat_name":"Programa\u00e7\u00e3o","category_nicename":"programacao","category_parent":0}]; _mmunch['postTags'] = [{"term_id":13,"name":"hibernate","slug":"hibernate","term_group":0,"term_taxonomy_id":46,"taxonomy":"post_tag","description":"","parent":0,"count":28,"filter":"raw"},{"term_id":2,"name":"Java","slug":"java","term_group":0,"term_taxonomy_id":2,"taxonomy":"post_tag","description":"","parent":0,"count":228,"filter":"raw"},{"term_id":747,"name":"jf-25","slug":"jf-25","term_group":0,"term_taxonomy_id":823,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"}]; _mmunch['postAuthor'] = {"name":"Paulo Silveira","ID":2};</script><script data-cfasync="false" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/site.js.download" id="mailmunch-script" data-plugin="mc_mm" data-mailmunch-site-id="400098" async=""></script>
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://i1.wp.com/">
+<link rel="dns-prefetch" href="https://i2.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<!-- Theme version -->
+<meta name="generator" content="On Topic 1.1.2">
+<meta name="generator" content="WooFramework 5.5.5">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile viewport scale | Disable user zooming as the layout is optimised -->
+<meta content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no" name="viewport">
+<!--[if lt IE 9]>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+		<link rel="amphtml" href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/amp/"><link rel="stylesheet" type="text/css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shThemeEclipse.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+			<style type="text/css" id="wp-custom-css">
+				/*
+Você pode adicionar seu próprio CSS aqui.
+
+Clique no ícone de ajuda acima para saber mais.
+*/
+
+/* author Alex feat Mairo ajuste no blockquote */
+.post .entry blockquote {
+    border-left: 5px solid #ccc;
+    padding-left: 25px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+}
+
+.post .entry blockquote:before {
+	display: none;
+}
+
+.post .entry blockquote p {
+	margin: 0px
+}
+			</style>
+		
+<!-- Woo Custom Styling -->
+<style type="text/css">
+body { background: #ffffff !important; }
+.entry a, .home-tabber li a { color: #7D95A5 !important; }
+.entry a:hover, .home-tabber li a:hover { color: #5A7C92 !important; }
+a.button, a.comment-reply-link, #commentform #submit, #contact-page .submit { background: #7D95A5 !important; }
+a.button:hover, a.button.hover, a.button.active, a.comment-reply-link:hover, #commentform #submit:hover, #contact-page .submit:hover { background: #7D95A5 !important; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+</style>
+
+<!-- Google Webfonts -->
+<link href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/css" rel="stylesheet" type="text/css">
+
+<!-- Woo Custom Typography -->
+<style type="text/css">
+body { font:normal 1.6em/1.9em 'Merriweather', arial, sans-serif;color:#1c1c1c; }
+#navigation ul.nav > li > a { font:300 1.1em/1em 'Varela', arial, sans-serif;color:#FFFFFF; }
+.page header h1 { font:bold italic 3.5em/1em 'Open Sans', arial, sans-serif;color:#000000; }
+.post header h1, .post header h1 a:link, .post header h1 a:visited { font:bold 3em/1em 'PT Sans', arial, sans-serif;color:#25343F; }
+.post header h1 a:link, .post header h1 a:visited { font:bold 0.7em/1em 'PT Sans', arial, sans-serif;color:#000000; }
+.post-meta { font:300 0.9em/1em 'Merriweather', arial, sans-serif;color:#828282; }
+.entry, .entry p { font:300 1em/1.5em 'Merriweather', arial, sans-serif;color:#1c1c1c; } h1, h2, h3, h4, h5, h6 { font-family: Merriweather, arial, sans-serif; }
+</style>
+
+<!-- Alt Stylesheet -->
+<link href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/default.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Favicon -->
+<link rel="shortcut icon" href="https://blog.caelum.com.br/wp-content/uploads/2006/08/favicon.ico">
+<!-- Options Panel Custom CSS -->
+<style type="text/css">
+.entry a, .home-tabber li a { color:#068AE0 !important; }
+
+</style>
+
+
+<!-- Woo Shortcodes CSS -->
+<link href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shortcodes.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Stylesheet -->
+<link href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/custom.css" rel="stylesheet" type="text/css">
+
+
+	<style>
+	
+		
+		#header  {
+			
+							background-color: #081c27;
+						
+							background-image: url(https://blog.caelum.com.br/wp-content/uploads/2006/08/bg-02.jpg);
+						
+							background-position: top left;
+						
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+		}
+	
+				
+			@media only screen and (min-width: 768px) {
+				
+				.page #post-entries a, .single-post #post-entries a, .single-product #post-entries a  {
+					background-color: #081c27;
+				}
+				
+			}
+			
+			
+	</style>
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-270161-5');
+</script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/services.min.css"><link rel="stylesheet" type="text/css" href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/styles.css"><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><style type="text/css">/*===============================
+=            Choices            =
+===============================*/
+.choices {
+    position: relative;
+    margin-bottom: 24px;
+    font-size: 16px;
+    background-color: #FFF;
+    height: 38px;
+  }
+
+  .choices:focus {
+    outline: none;
+  }
+
+  .choices:last-child {
+    margin-bottom: 0;
+  }
+
+  .choices.is-disabled .choices__inner,
+  .choices.is-disabled .choices__input {
+    background-color: #EAEAEA;
+    cursor: not-allowed;
+    user-select: none;
+  }
+
+  .choices.is-disabled .choices__item {
+    cursor: not-allowed;
+  }
+
+  .choices[data-type*="select-one"] {
+    cursor: pointer;
+  }
+
+  .choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 7.5px;
+  }
+
+  .choices[data-type*="select-one"] .choices__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    margin: 0;
+  }
+
+  .choices[data-type*="select-one"] .choices__button {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+    padding: 0;
+    background-size: 8px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    margin-right: 25px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10em;
+    opacity: .5;
+  }
+
+  .choices[data-type*="select-one"] .choices__button:hover, .choices[data-type*="select-one"] .choices__button:focus {
+    opacity: 1;
+  }
+
+  .choices[data-type*="select-one"] .choices__button:focus {
+    box-shadow: 0px 0px 0px 2px #00BCD4;
+  }
+
+  .choices[data-type*="select-one"]:after {
+    content: "";
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent;
+    border-width: 5px;
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    margin-top: -2.5px;
+    pointer-events: none;
+  }
+
+  .choices[data-type*="select-one"].is-open:after {
+    border-color: transparent transparent #333333 transparent;
+    margin-top: -7.5px;
+  }
+
+  .choices[data-type*="select-one"][dir="rtl"]:after {
+    left: 11.5px;
+    right: auto;
+  }
+
+  .choices[data-type*="select-one"][dir="rtl"] .choices__button {
+    right: auto;
+    left: 0;
+    margin-left: 25px;
+    margin-right: 0;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__inner,
+  .choices[data-type*="text"] .choices__inner {
+    cursor: text;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button,
+  .choices[data-type*="text"] .choices__button {
+    position: relative;
+    display: inline-block;
+    margin-top: 0;
+    margin-right: -4px;
+    margin-bottom: 0;
+    margin-left: 8px;
+    padding-left: 16px;
+    border-left: 1px solid #008fa1;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+    background-size: 8px;
+    width: 8px;
+    line-height: 1;
+    opacity: .75;
+    border-radius: 0;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button:hover, .choices[data-type*="select-multiple"] .choices__button:focus,
+  .choices[data-type*="text"] .choices__button:hover,
+  .choices[data-type*="text"] .choices__button:focus {
+    opacity: 1;
+  }
+
+  .choices__inner {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 7.5px 7.5px 3.75px;
+    border-radius: 2.5px;
+    font-size: 14px;
+    min-height: 38px;
+    overflow: hidden;
+  }
+
+  .is-focused .choices__inner,
+  .is-open .choices__inner {
+    border-color: #5897fb !important;
+  }
+
+  .is-open .choices__inner {
+    border-radius: 2.5px 2.5px 0 0 !important;
+    border-bottom: none !important;
+  }
+
+  .is-flipped.is-open .choices__inner {
+    border-radius: 0 0 2.5px 2.5px !important;
+    border-bottom: 1px solid #5897fb !important;
+  }
+
+  .choices__list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    padding:4px !important;
+  }
+
+  .choices__list--single {
+    display: inline-block;
+    padding: 4px 16px 4px 4px;
+    width: 100%;
+    line-height: 28px !important;
+    text-indent: 5px;
+  }
+
+  [dir="rtl"] .choices__list--single {
+    padding-right: 4px;
+    padding-left: 16px;
+  }
+
+  .choices__list--single .choices__item {
+    width: 100%;
+  }
+
+  .choices__list--multiple {
+    display: inline;
+  }
+
+  .choices__list--multiple .choices__item {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 3.75px;
+    margin-bottom: 3.75px;
+    background-color: #00BCD4;
+    border: 1px solid #00a5bb;
+    color: #FFFFFF;
+    word-break: break-all;
+  }
+
+  .choices__list--multiple .choices__item[data-deletable] {
+    padding-right: 5px;
+  }
+
+  [dir="rtl"] .choices__list--multiple .choices__item {
+    margin-right: 0;
+    margin-left: 3.75px;
+  }
+
+  .choices__list--multiple .choices__item.is-highlighted {
+    background-color: #00a5bb;
+    border: 1px solid #008fa1;
+  }
+
+  .is-disabled .choices__list--multiple .choices__item {
+    background-color: #aaaaaa;
+    border: 1px solid #919191;
+  }
+
+  .choices__list--dropdown {
+    display: none;
+    z-index: 999999 !important;
+    position: absolute;
+    width: 100%;
+    background-color: #FFFFFF;
+    top: 100%;
+    margin-top: -1px;
+    border-bottom-left-radius: 2.5px;
+    border-bottom-right-radius: 2.5px;
+    overflow: hidden;
+    word-break: break-all;
+    border-bottom: 1px solid #cacaca !important;
+    border-left: 1px solid #cacaca !important;
+    border-right: 1px solid #cacaca !important;
+
+  }
+
+  .choices__list--dropdown.is-active {
+    display: block;
+    border-bottom: 1px solid #5897fb !important;
+    border-left: 1px solid #5897fb !important;
+    border-right: 1px solid #5897fb !important;
+    margin-top: -1px !important;
+  }
+
+  .is-open .choices__list--dropdown {
+    border-color: #b7b7b7;
+  }
+
+  .is-flipped .choices__list--dropdown {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: -1px !important;
+    border-radius: .25rem .25rem 0 0;
+    border-top: 1px solid #5897fb !important;
+    border-bottom: none !important;
+  }
+
+  .choices__list--dropdown .choices__list {
+    position: relative;
+    max-height: 300px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+  }
+
+  .choices__list--dropdown .choices__item {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    padding: 5px !important;
+  }
+
+  [dir="rtl"] .choices__list--dropdown .choices__item {
+    text-align: right;
+  }
+
+  @media (min-width: 640px) {
+    .choices__list--dropdown .choices__item--selectable {
+      padding-right: 100px;
+    }
+    .choices__list--dropdown .choices__item--selectable:after {
+      content: attr(data-select-text);
+      font-size: 12px;
+      opacity: 0;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    [dir="rtl"] .choices__list--dropdown .choices__item--selectable {
+      text-align: right;
+      padding-left: 100px;
+      padding-right: 10px;
+    }
+    [dir="rtl"] .choices__list--dropdown .choices__item--selectable:after {
+      right: auto;
+      left: 10px;
+    }
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background-color: #3875d7 !important;
+    color: #fff !important;
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted:after {
+    opacity: .5;
+  }
+
+  .choices__item {
+    cursor: default;
+  }
+
+  .choices__item--selectable {
+    cursor: pointer;
+  }
+
+  .choices__item--disabled {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: .5;
+  }
+
+  .choices__heading {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #f7f7f7;
+    color: gray;
+  }
+
+  .choices__button {
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .choices__button:focus {
+    outline: none;
+  }
+
+  .choices__input {
+    display: inline-block;
+    vertical-align: baseline;
+    background-color: #f9f9f9;
+    border: 1px solid #aaa !important;
+    font-size: 14px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    max-width: 100%;
+    padding: 4px 0 4px 2px;
+    margin-top: 6px;
+    height:28px !important;
+  }
+
+  .choices__input:focus {
+    outline: 0;
+  }
+
+  [dir="rtl"] .choices__input {
+    padding-right: 2px;
+    padding-left: 0;
+  }
+
+  .choices__placeholder {
+    opacity: .5;
+  }
+
+  .choices__input.is-hidden,
+  .choices[data-type*="select-one"] .choices__input.is-hidden,
+  .choices[data-type*="select-multiple"] .choices__input.is-hidden {
+    display: none !important;
+  }
+
+  /*=====  End of Choices  ======*/
+</style></head>
+<body class="post-template-default single single-post postid-117 single-format-standard chrome alt-style-default layout-default"><div id="popup-_5n9rtmc21" style="display: none;">
+
+<!-- Bricks Main Styles -->
+<style type="text/css" rel="stylesheet">
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw article, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw aside,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw details, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw figcaption,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw figure, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw footer,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw header, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw hgroup,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw menu, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw nav,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw section {
+    display: block;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw ol, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw ul {
+    list-style: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q {
+    quotes: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote:before, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote:after,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q:before, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q:after {
+    content: '';
+    content: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw b, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw strong {
+    font-weight: bold;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw i, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw em {
+    font-style: italic;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--section {
+    width: 100%;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--section > div {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 600px;
+    position: relative;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--row {
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--column > div {
+    padding: 7px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-box {
+    width: 100%
+  }
+
+  @media screen and (min-width: 768px) {
+    #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--row {
+      flex-flow: row nowrap;
+    }
+  }
+</style>
+
+<!-- Bricks Component Text Styles -->
+<style>
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text {
+    color: #333;
+    line-height: 1.42;
+    word-wrap: break-word;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text a {
+    color: #31a2ff;
+    text-decoration: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sub,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sub {
+    bottom: -0.25em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sup {
+    top: -0.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul {
+    padding-left: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol > li,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul > li {
+    list-style-type: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul > li::before {
+    content: '\2022';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li:not(.ql-direction-rtl)::before {
+    margin-left: -1.5em;
+    margin-right: 0.3em;
+    text-align: right;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-direction-rtl::before {
+    margin-left: 0.3em;
+    margin-right: -1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li:not(.ql-direction-rtl),
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul li:not(.ql-direction-rtl) {
+    padding-left: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-direction-rtl,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul li.ql-direction-rtl {
+    padding-right: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li:before {
+    content: counter(list-0, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1 {
+    counter-increment: list-1;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1:before {
+    content: counter(list-1, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1 {
+    counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2 {
+    counter-increment: list-2;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2:before {
+    content: counter(list-2, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2 {
+    counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3 {
+    counter-increment: list-3;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3:before {
+    content: counter(list-3, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3 {
+    counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4 {
+    counter-increment: list-4;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4:before {
+    content: counter(list-4, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4 {
+    counter-reset: list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5 {
+    counter-increment: list-5;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5:before {
+    content: counter(list-5, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5 {
+    counter-reset: list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6 {
+    counter-increment: list-6;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6:before {
+    content: counter(list-6, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6 {
+    counter-reset: list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7 {
+    counter-increment: list-7;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7:before {
+    content: counter(list-7, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7 {
+    counter-reset: list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8 {
+    counter-increment: list-8;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8:before {
+    content: counter(list-8, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8 {
+    counter-reset: list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-9 {
+    counter-increment: list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-9:before {
+    content: counter(list-9, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 3em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 4.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 3em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 4.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 6em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 7.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 6em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 7.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 9em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 10.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 9em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 10.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 12em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 13.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 12em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 13.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 15em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 16.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 15em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 16.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 18em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 19.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 18em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 19.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 21em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 22.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 21em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 22.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 24em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 25.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 24em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 25.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 27em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 28.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 27em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 28.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-direction-rtl {
+    direction: rtl;
+    text-align: inherit;
+  }
+</style>
+
+<!-- Bricks Component Form Styles -->
+<style>
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form {
+    padding: 0 5px;
+    height: auto;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__fieldset {
+    display: flex;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  /* Hide generated jQuery validator label */
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field label.error {
+    display: none !important;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    line-height: 1.42857;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__input {
+    display: block;
+    width: 100%;
+    padding: 0 10px;
+    line-height: 1.42857;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__input.error {
+    border: 1px solid red !important;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option + #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option {
+    margin-top: -5px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__submit {
+    width: 100%;
+    position: relative;
+  }
+
+  @media screen and (min-width: 768px) {
+    #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form {
+      padding: 0;
+    }
+  }
+</style>
+
+<link href="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/css(1)" rel="stylesheet">
+
+<style type="text/css" rel="stylesheet">
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw {
+    position: fixed;
+    z-index: 99999;
+  }
+
+  .rdstation-popup-position-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .rdstation-popup-position-top_left {
+    top: 0;
+    left: 0;
+  }
+
+  .rdstation-popup-position-top_right {
+    top: 0;
+    right: 0;
+  }
+
+  .rdstation-popup-position-bottom_left {
+    bottom: 0;
+    left: 0;
+  }
+
+  .rdstation-popup-position-bottom_right {
+    bottom: 0;
+    right: 0;
+  }
+
+  
+    #bricks-component-_l47rIZkz89xeBMOvNEKKw-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      display: block !important;
+      background: #000 !important;
+      opacity: .6 !important;
+    }
+
+    #bricks-component-_l47rIZkz89xeBMOvNEKKw {
+      position: relative;
+      display: block !important;
+      min-width: 600px;
+      min-height: 1px;
+      width: 600px;
+      box-shadow: 0px 0px 8px #333 !important;
+      overflow: hidden !important;
+      border-bottom-style: solid;
+      border-color: transparent;
+      border-left-style: solid;
+      border-radius: 0px;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-width: 0px;
+      background-color: #fff;
+      z-index: 999999 !important;
+    }
+  
+</style>
+
+
+
+<div id="rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw" class="rdstation-popup-position-center">
+  
+    <div id="bricks-component-_l47rIZkz89xeBMOvNEKKw-overlay" class="rdstation-popup-js-overlay"></div>
+  
+  <div id="bricks-component-_l47rIZkz89xeBMOvNEKKw" class="bricks--component bricks--component-popup">
+    
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-gTU1wZeIrUfmsL_JBZP8UQ {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border: none;
+      background: transparent;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    #rd-gTU1wZeIrUfmsL_JBZP8UQ svg {
+      width: 12px;
+      height: 12px;
+      fill: #888;
+    }
+  
+</style>
+
+<button id="rd-gTU1wZeIrUfmsL_JBZP8UQ" class="bricks--close--button rdstation-popup-js-close-button ">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 348.333 348.334">
+      <title>Fechar</title>
+      <path d="M336.559,68.611L231.016,174.165l105.543,105.549c15.699,15.705,15.699,41.145,0,56.85
+          c-7.844,7.844-18.128,11.769-28.407,11.769c-10.296,0-20.581-3.919-28.419-11.769L174.167,231.003L68.609,336.563
+          c-7.843,7.844-18.128,11.769-28.416,11.769c-10.285,0-20.563-3.919-28.413-11.769c-15.699-15.698-15.699-41.139,0-56.85
+          l105.54-105.549L11.774,68.611c-15.699-15.699-15.699-41.145,0-56.844c15.696-15.687,41.127-15.687,56.829,0l105.563,105.554
+          L279.721,11.767c15.705-15.687,41.139-15.687,56.832,0C352.258,27.466,352.258,52.912,336.559,68.611z"></path>
+    </svg>
+</button>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-uNPbaeMYY4py1SfiqqvCLA {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-uNPbaeMYY4py1SfiqqvCLA > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-uNPbaeMYY4py1SfiqqvCLA" class="bricks--section ">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-96HyVlxjcuXOgtB1lEXIfQ {
+      min-height: 0px;
+    }
+
+    #rd-96HyVlxjcuXOgtB1lEXIfQ .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-96HyVlxjcuXOgtB1lEXIfQ" class="bricks--row ">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-1EGU9DqtuA_24lgALiNbiA {
+      flex: 12 0 0;
+    }
+
+    #rd-1EGU9DqtuA_24lgALiNbiA > div {
+      
+          background-color: transparent;
+        
+      justify-content: center;
+      padding-top: 7px;
+      padding-right: 7px;
+      padding-bottom: 7px;
+      padding-left: 7px;
+    }
+  
+</style>
+
+<div id="rd-1EGU9DqtuA_24lgALiNbiA" class="bricks--column ">
+  <div>
+    
+<style type="text/css" rel="stylesheet">
+  
+    #rd-h5gk818MuNT0uF_RzfAuUw {
+      border-bottom-style: none;
+      border-color: transparent;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 0px;
+      min-height: auto-35px;
+      max-width: 550px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-h5gk818MuNT0uF_RzfAuUw" class="bricks--component bricks--component-text ">
+  <h3 style="text-align: center; line-height: 200%;"><strong style="font-size: 30px; font-family: Helvetica, Arial, sans-serif; color: #4e4e4e;">Quer receber mais conteúdo bacana de tecnologia?</strong></h3>
+</div>
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-text-johhf15c {
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+      min-height: auto-20px;
+      max-width: 550px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-text-johhf15c" class="bricks--component bricks--component-text rd-text">
+  <p style="line-height: 125%; text-align: center;"><span style="font-size: 17px; font-family: Helvetica, Arial, sans-serif; color: #4e4e4e;">Temos bastante material pra te ajudar a alavancar sua carreira</span></p>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-section-johhefho {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-section-johhefho > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-section-johhefho" class="bricks--section rd-section">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-row-johhefhp {
+      min-height: 0px;
+    }
+
+    #rd-row-johhefhp .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-row-johhefhp" class="bricks--row rd-row">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-column-johhefhq {
+      flex: 12 0 0;
+    }
+
+    #rd-column-johhefhq > div {
+      
+          background-color: #f2f2f2;
+        
+      justify-content: center;
+      padding-top: 0px;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      padding-left: 10px;
+    }
+  
+</style>
+
+<div id="rd-column-johhefhq" class="bricks--column rd-column">
+  <div>
+    
+
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-4XK-4tKscGl-FE1AjAlOBQ {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      max-width: 550px;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__fieldset {
+      flex-flow: column nowrap;
+      align-items: flex-start;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__field {
+      margin-bottom: 13px;
+      padding: 0;
+      width: 100.0%;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__label {
+      color: #888;
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__label.always-visible,
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__field__option .bricks-form__label {
+      display: inline-block;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input {
+      color: #000000;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+
+      background-color: #fff;
+
+      border-bottom-style: solid;
+      border-left-style: solid;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-color: #cdcfd3;
+      border-radius: 2px;
+      border-width: 1px;
+
+      
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input::placeholder {
+      color: transparent;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input.select2-container {
+      padding: 0 !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .select2-container .select2-choice {
+      height: 40px !important;
+      line-height: 40px !important;
+
+      color: #000000 !important;
+      font-family: Helvetica, Arial, sans-serif !important;
+      font-size: 16px !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .select2-container .select2-choice .select2-arrow b {
+      background-position: 0 7px !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input:not(textarea) {
+      height: 40px;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__submit {
+      display: flex;
+      flex-direction: column;
+    }
+  
+</style>
+
+
+<div id="rd-4XK-4tKscGl-FE1AjAlOBQ" class="bricks--component bricks-form ">
+  <form id="conversion-form" class="rdstation-popup-js-form-identifier" action="https://www.rdstation.com.br/api/1.3/conversions">
+    <input type="hidden" name="token_rdstation" value="4b7bbfbbbe5c7e29f1c12ecb3b59096b">
+    <input type="hidden" name="identificador" value="blog-da-caelum">
+    <input type="hidden" name="_is" value="9">
+    <input type="hidden" name="c_utmz" value="33425121.1560468618.4.4.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)">
+    <input type="hidden" name="traffic_source" value="encoded_eyJmaXJzdF9zZXNzaW9uIjp7InZhbHVlIjoiMzM0MjUxMjEuMTU1ODk3NDI4Ny4yLjIudXRtY3NyPWdvb2dsZXx1dG1jY249KG9yZ2FuaWMpfHV0bWNtZD1vcmdhbmljfHV0bWN0cj0obm90IHByb3ZpZGVkKSIsImV4dHJhX3BhcmFtcyI6e319LCJjdXJyZW50X3Nlc3Npb24iOnsidmFsdWUiOiIobm9uZSkiLCJleHRyYV9wYXJhbXMiOnt9fSwiY3JlYXRlZF9hdCI6MTU2MDY0MTYwNTkxNn0=">
+    <input type="hidden" name="client_id" value="08ccee05-439a-4b91-9e1a-73fef2efa967">
+    <input type="hidden" name="redirect_to" value="">
+    <input type="hidden" name="_doe" value="">
+    <div class="bricks-form__fieldset" data-progressive-profiling="">
+  <div class="bricks-form__field">
+  <label for="form-name" class="bricks-form__label">
+    Nome*
+  </label>
+  <input id="form-name" class="bricks-form__input required js-text" name="name" type="text" placeholder="Nome" required="required">
+</div>
+<div class="bricks-form__field">
+  <label for="form-email" class="bricks-form__label">
+    Email*
+  </label>
+  <input id="form-email" class="bricks-form__input required js-email" name="email" type="email" placeholder="Email" required="required">
+</div>
+
+</div>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-yBU0Jb4Qzbx2I2deBdpDvA.bricks--component {
+      -ms-flex-align: center;
+      -ms-flex-direction: column;
+      -ms-flex-pack: center;
+      align-items: center;
+      align-self: center;
+      background-color: #16a085;
+      border-bottom-style: solid;
+      border-color: #138770;
+      border-left-style: solid;
+      border-radius: 2px;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-width: 1px;
+      color: #fff;
+      cursor: pointer;
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+      height: 38px;
+      justify-content: center;
+      line-height: 1.42857;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      max-width: 550px;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+    }
+  
+</style>
+
+
+  <div class="bricks-form__submit">
+    <button class="bricks--component bricks--component-button rdstation-popup-js-submit-button " id="rd-yBU0Jb4Qzbx2I2deBdpDvA">
+      QUERO RECEBER!
+    </button>
+  </div>
+
+
+  </form>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-section-johhhu55 {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-section-johhhu55 > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-section-johhhu55" class="bricks--section rd-section">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-row-johhhu56 {
+      min-height: 0px;
+    }
+
+    #rd-row-johhhu56 .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-row-johhhu56" class="bricks--row rd-row">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-column-johhhu57 {
+      flex: 12 0 0;
+    }
+
+    #rd-column-johhhu57 > div {
+      
+          background-color: #fff;
+        
+      justify-content: center;
+      padding-top: 0px;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      padding-left: 10px;
+    }
+  
+</style>
+
+<div id="rd-column-johhhu57" class="bricks--column rd-column">
+  <div>
+    
+<style type="text/css" rel="stylesheet">
+  
+    #rd-text-johhhvvo {
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+      min-height: auto-20px;
+      max-width: 550px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-text-johhhvvo" class="bricks--component bricks--component-text rd-text">
+  <p style="text-align: center;"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#closePopup" target="_self" title="" style="color: #888; font-size: 14px; font-family: Helvetica, Arial, sans-serif;"><u>Não quero alavancar minha carreira :(</u></a></p>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+  </div>
+</div>
+</div>
+
+<div id="wrapper" class="loaded">
+	<div id="inner-wrapper">
+
+    
+	<header id="header">
+		
+	<a id="logo" href="https://blog.caelum.com.br/" title="Aprenda sobre tecnologia com a Caelum. Artigos de programação, web, mobile, ux e agile">
+						<img src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/caelum-logo.png" alt="Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum" scale="0">
+			
+	</a>
+
+
+
+		<span class="nav-toggle"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#navigation"><span>Navigation</span></a></span>
+		
+		<!--
+	    <hgroup>
+			<h1 class="site-title"><a href="https://blog.caelum.com.br/">Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum</a></h1>
+			<h2 class="site-description">Aprenda sobre tecnologia com a Caelum. Artigos de programação, web, mobile, ux e agile</h2>
+		</hgroup>
+		-->
+
+                
+        
+        <div class="search_main fix"><form role="search" class="searchform" method="get" id="searchform" action="https://blog.caelum.com.br/">
+				<div>
+					<label class="screen-reader-text" for="s">Pesquisar por:</label>
+					<input type="text" value="" name="s" class="field s" placeholder="Busca..." id="s">
+					<input type="submit" class="search-submit" id="searchsubmit" value="Pesquisar">
+				</div>
+			</form></div>
+		<nav id="navigation" class="col-full" role="navigation">
+
+			<section class="menus">
+
+			<a href="https://blog.caelum.com.br/" class="nav-home"><span>Home</span></a>
+			
+			<div class="menu-toggle"><h3>Categorias</h3><ul id="menu-categorias" class="nav main-nav"><li id="menu-item-8609" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-8609"><a href="https://blog.caelum.com.br/category/programacao/">Programação</a></li>
+<li id="menu-item-4145" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4145"><a href="https://blog.caelum.com.br/category/front-end/">Front-end</a></li>
+<li id="menu-item-8610" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8610"><a href="https://blog.caelum.com.br/category/mobile/">Mobile</a></li>
+<li id="menu-item-7474" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7474"><a href="https://blog.caelum.com.br/category/design-ux/">Design &amp; UX</a></li>
+<li id="menu-item-4143" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4143"><a href="https://blog.caelum.com.br/category/agile/">Agile</a></li>
+<li id="menu-item-4142" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4142"><a href="https://blog.caelum.com.br/category/arquitetura/">Arquitetura</a></li>
+<li id="menu-item-4141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4141"><a href="https://blog.caelum.com.br/category/inovacao/">Inovação</a></li>
+</ul></div><div class="menu-toggle"><h3>Conheça também</h3><ul id="menu-sec-menu" class="nav main-nav"><li id="menu-item-6142" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6142"><a href="https://www.caelum.com.br/">Cursos Caelum</a></li>
+<li id="menu-item-6143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6143"><a href="https://www.alura.com.br/">Cursos online Alura</a></li>
+<li id="menu-item-6144" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6144"><a href="https://www.casadocodigo.com.br/">Editora Casa do Código</a></li>
+</ul></div>	        <ul class="nav rss">
+	            
+				
+	        </ul>
+
+	    	</section><!--/.menus-->
+
+	    	 <div id="connect">
+<div class="social">
+<a href="https://blog.caelum.com.br/feed/" title="Subscribe to our RSS feed" class="subscribe"><span>Subscribe to our RSS feed</span></a>
+<a href="https://twitter.com/caelum" title="Follow Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Twitter" class="twitter"><span>Follow Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Twitter</span></a>
+<a href="https://www.facebook.com/caelumbr" title="Like Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Facebook" class="facebook"><span>Like Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Facebook</span></a>
+</div>
+</div>
+
+	        <!-- <a href="#top" class="nav-close"><span>Return to Content</span></a> -->
+
+		</nav><!-- /#navigation -->
+
+				
+	</header><!-- /#header -->
+
+	
+    <div id="content" class="col-full">
+
+    	
+		<section id="main">
+        			<article class="post-117 post type-post status-publish format-standard hentry category-programacao tag-hibernate tag-java tag-jf-25">
+
+				
+                <header style="background-image: url(); background-size: cover; background-position: center center;">
+                
+                	<section class="header-content">
+
+	                	<h1>Relacionamento bidirecional entre classes</h1>
+                		<aside class="post-meta">
+	<span class="post-date">Postado dia 28/03/2007</span>
+	<span class="post-author">por Paulo Silveira</span>
+	<span class="post-category">em <a href="https://blog.caelum.com.br/category/programacao/" rel="category tag">Programação</a></span>
+	<span class="post-comments"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comments">17</a></span>
+	</aside>
+
+                	</section>
+                	
+                	<!--
+                	<nav id="post-entries" class="fix">
+	        		    <div class="nav-prev fl"><a href="https://blog.caelum.com.br/webservices-com-o-xfire/" rel="prev">WebServices com o XFire</a></div>
+	        		    <div class="nav-next fr"><a href="https://blog.caelum.com.br/generics-inferencia-de-tipos-e-reificacao-no-java-7/" rel="next">Generics, inferência de tipos e reificação no Java 7</a></div>
+	        		</nav>
+	        	-->
+                	
+                	                	
+<!--                 	<a href="#" title="#"><img src="" alt="" /></a> -->
+
+                </header>
+
+                <section class="entry fix">
+					
+                	<div class="mailmunch-forms-before-post" style="display: none !important;"></div><p>Hoje estava pareando com o Lucas Cavalcanti, em um sistema de alunos para a Universidade de São Paulo. Lucas é o novo estagiário da Caelum, e o primeiro da parceria USP-Caelum, onde colocamos um aluno para trabalhar nos projetos da universidade, e ele é orientado, treinado e coordenado pela empresa.</p>
+<p>Começamos um projeto novo, e nas primeiras classes de modelo do Hibernate tinhamos uma relação <code>OneToOne</code>. Muitas pessoas ficam em dúvida se devem fazer o relacionamento bidrecional, e isso é um ponto importante a ser considerado não apenas no uso do Hibernate, e sim em qualquer situação. </p>
+<p>Para exemplificar, imagine a classe <code>Carro</code> e a classe <code>Motor</code>, sendo que um <code>Carro</code> tem um e apenas um <code>Motor</code>, e o <code>Motor</code> pertence a um único <code>Carro</code>. </p>
+<p>Como modelar essas classes? Devemos colocar os atributos correspondentes nas duas classes (relacionamento bidirecional)? Apenas <code>Carro</code> tem de saber qual é o seu <code>Motor</code>? Ou é o <code>Motor</code> quem deve saber sobre o seu <code>Carro</code>? Vamos ver o código no caso de optarmos pelo relacionamento bidirecional:</p>
+<div><div id="highlighter_428376" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Motor m = </code><code class="java keyword">new</code> <code class="java plain">Motor();</code></div><div class="line number2 index1 alt1"><code class="java plain">Carro c = </code><code class="java keyword">new</code> <code class="java plain">Carro();</code></div><div class="line number3 index2 alt2"><code class="java plain">c.setMotor(m);</code></div><div class="line number4 index3 alt1"><code class="java plain">m.setCarro(c);&nbsp; </code><code class="java comments">// hummm....</code></div></div></td></tr></tbody></table></div></div>
+<p>Repare que se não tivessemos  <code>m.setCarro(c)</code> cairíamos em um estado inconsistente para o nosso modelo. Poderia ser ainda pior: imagine alterar o <code>Motor m</code> do nosso <code>Carro c</code> criados anteriormente:</p>
+<div><div id="highlighter_356573" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Motor outroMotor = </code><code class="java keyword">new</code> <code class="java plain">Motor();</code></div><div class="line number2 index1 alt1"><code class="java plain">c.setMotor(outroMotor);</code></div><div class="line number3 index2 alt2"><code class="java comments">// e o Motor m? continua apontando para o Carro c</code></div></div></td></tr></tbody></table></div></div>
+<p>Agora o antigo <code>Motor m</code> ficou referenciando a um <code>Carro</code> que não o contem, e o <code>outroMotor</code> aponta para <code>Carro</code> algum (<code>null</code>)! Claro que temos como tentar nos precaver dessa situação, mas sempre teremos um código mais complicado e muito sucetível a deixar o estado de seus objetos incosistente. </p><div class="mailmunch-forms-in-post-middle" style="display: none !important;"></div>
+<p>Imagine agora se essas classes são entidades do Hibernate. Se elas não estiverem concordando a respeito do relacionamento, que lado vai ser considerado na hora de persistir os dados? Quem manda, o <code>Carro</code> ou o <code>Motor</code>? Ou deve ser lançada uma exceção? É para isso que temos os relacionamentos marcados como <code>inverse</code> (os que são <code>mappedBy</code> nas anotações): <a href="http://docs.jboss.org/hibernate/core/3.3/reference/en/html/collections.html#collections-bidirectional">esse lado do relacionamento não é considerado para a atualização</a>.</p>
+<p>Isso tudo pode ser muito mais complicado em relacionamentos 1:N e N:M.  O conselho é tentar evitar o relacionamento bidirecional, e <strong>nunca</strong> cria-lo sem uma real necessidade, assim como já comentamos sobre <a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-heranca/">evitar herança</a> e <a href="https://blog.caelum.com.br/nao-aprender-oo-getters-e-setters/">evitar getters e setters</a>.</p>
+<p><a href="http://www.cs.jyu.fi/~sakkinen/wishes-LMO2005.pdf">Algumas pessoas</a> sugerem que as novas linguagens OO deviam suportar esse tipo de auto ajuste da outra ponta do relacionamento, usando sintaxes novas. O quão dependente suas classes são uma das outras, e quanto mais ciclos elas formam, geram um número que é usado como <a href="http://www.objectmentor.com/resources/articles/oodmetrc.pdf">métrica para avaliar a qualidade de um projeto orientado a objetos</a>. O plugin do Eclipse <a href="http://byecycle.sourceforge.net/">ByeCycle</a> mostra o grafo de relacionamento entre suas classes. Se houver um ciclo, é um sinal de perigo. </p>
+<p>No fim da noite terminamos algumas entidades do hibernate e algumas queries do DAO, e os respectivos testes unitários através de um banco <a href="http://www.h2database.com/">H2</a> criado e derrubado <a href="http://www.h2database.com/html/features.html#connection_modes">em memória</a> para cada teste. Foi extremamente produtivo e interessante.</p>
+<div class="mailmunch-forms-after-post" style="display: none !important;"></div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Compartilhe isso:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-117" class="share-twitter sd-button share-icon no-text" href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/?share=twitter&amp;nb=1" target="_blank" title="Clique para compartilhar no Twitter"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Twitter(abre em nova janela)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-117" class="share-facebook sd-button share-icon no-text" href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/?share=facebook&amp;nb=1" target="_blank" title="Clique para compartilhar no Facebook"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Facebook(abre em nova janela)</span></a></li><li class="share-end"></li></ul></div></div></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Relacionado</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal jp-relatedposts-grid "><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="2096" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/metaprogramacao-eigenclass-em-ruby/" title="Metaprogramação: Eigenclass em Ruby
+
+O modelo de objetos do Ruby não é trivial. Em códigos mais complexos não é simples saber de onde realmente vem um método ou mesmo enxergar que toda classe em Ruby é um objeto, e isso pode causar algumas confusões. Uma das partes mais interessantes do modelo de objetos Ruby…" rel="nofollow" data-origin="117" data-position="0">Metaprogramação: Eigenclass em Ruby</a></span><span class="jp-relatedposts-post-date">10/03/2010</span><span class="jp-relatedposts-post-context">In “Programação”</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="6800" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/o-problema-de-objetos-nao-consistentes/" title="OO na prática: o problema de objetos não consistentes
+
+Programar orientado a objetos é sempre um desafio. E o desafio está justamente na dificuldade de criarmos classes que são fáceis de serem usadas, mantidas e reutilizadas. Uma classe fácil de ser usada, dentre várias coisas, é aquela onde as pré-condições são simples. Por pré-condições, entenda tudo aquilo que você precisa fazer antes…" rel="nofollow" data-origin="117" data-position="1">OO na prática: o problema de objetos não consistentes</a></span><span class="jp-relatedposts-post-date">02/06/2015</span><span class="jp-relatedposts-post-context">In “Arquitetura”</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="5314" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/orientacao-a-objetos-uma-outra-perspectiva-sobre-o-acoplamento/" title="Orientação a objetos: uma outra perspectiva sobre o acoplamento
+
+Todo mundo que já viu orientação a objetos alguma vez na vida conhece a frase &quot;classes devem ter alta coesão e baixo acoplamento&quot;. Uma classe altamente acoplada pode ser sim um problema. Veja o diagrama abaixo, por exemplo, onde temos a classe GerenciadorDeNotaFiscal, que depende de outras 3 classes: um…" rel="nofollow" data-origin="117" data-position="2">Orientação a objetos: uma outra perspectiva sobre o acoplamento</a></span><span class="jp-relatedposts-post-date">24/10/2012</span><span class="jp-relatedposts-post-context">In “Arquitetura”</span></p></div></div>					
+
+
+<a class="share-social" href="https://www.alura.com.br/" style="padding: 16px">
+<img src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/alura-logo.1465499610.svg" alt="Alura" style="margin-right: 16px" scale="0">
+<strong style="">Estude online na Alura</strong>
+<p style="margin: 12px 0 0 0">Programação, Mobile, Front-end, Design &amp; UX, Infraestrutura e Business</p>
+</a>
+
+					<div class="tags">Tags: <a href="https://blog.caelum.com.br/tag/hibernate/" rel="tag">hibernate</a>, <a href="https://blog.caelum.com.br/tag/java/" rel="tag">Java</a>, <a href="https://blog.caelum.com.br/tag/jf-25/" rel="tag">jf-25</a></div>
+				</section>
+
+            </article><!-- .post -->
+
+						<aside id="post-author" class="fix">
+				<div class="profile-image">
+											<img src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/paulo-silveira-90.jpg" scale="0">
+									</div>
+				<div class="profile-content">
+					<h3 class="title">
+						Paulo Silveira						
+													<small>(<a rel="author" href="https://plus.google.com/107186798704105535569?rel=author">Google+</a>)</small>
+											</h3>
+
+											<div class="profile-link">
+							<a href="http://www.caelum.com.br/instrutores/paulo-silveira">
+								Mais sobre o autor
+							</a><br>
+							<a href="https://blog.caelum.com.br/author/peas">
+								Outros posts do autor
+							</a>
+						</div><!-- #profile-link	-->
+									</div><!-- .post-entries -->
+			</aside><!-- .post-author-box -->
+			
+			
+				
+            
+
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+			<h3>17 Comentários</h3>
+
+		<ol class="commentlist">
+
+			
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-5120"></a>
+
+	      	<div id="li-comment-5120" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c103c2687c082b99d7ddb14d620427fe.jpg" srcset="https://secure.gravatar.com/avatar/c103c2687c082b99d7ddb14d620427fe?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c103c2687c082b99d7ddb14d620427fe-0" originals="50" src-orig="https://secure.gravatar.com/avatar/c103c2687c082b99d7ddb14d620427fe?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">T</span>
+	                <span class="date">28/03/2007 at 06:53</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5120" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5120">
+				<p>Neste caso, poderia ser feito o seguinte:<br>
+– o mapeamento feito diretamente nos atributos (podem ser privados, inclusive), o que ajuda a manter o encapsulamento, não expondo tudo com setters se não for conveniente<br>
+– Motor receberia Carro como parâmetro do construtor, atribuindo-o a um atributo final e chamando carro.setMotor(this)<br>
+– o método carro.setMotor(Motor) se asseguraria que ‘motor.getCarro() == this’, lançando uma IllegalStateException caso contrário.<br>
+– ambas classes teriam o getter da outra</p>
+<p>E relacionamentos bidirecionais são muito úteis, nos poupam um monte de HQL…</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-5125"></a>
+
+	      	<div id="li-comment-5125" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/68de0a535c244fa30a8089f6b0d06255.jpeg" srcset="https://secure.gravatar.com/avatar/68de0a535c244fa30a8089f6b0d06255?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-68de0a535c244fa30a8089f6b0d06255-0" originals="50" src-orig="https://secure.gravatar.com/avatar/68de0a535c244fa30a8089f6b0d06255?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://vicouto.wordpress.com/" rel="external nofollow" url="" url'="">Victor de Souza Couto</a></span>
+	                <span class="date">28/03/2007 at 08:09</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5125" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5125">
+				<p>Huuuuuuuum.<br>
+Ainda estou iniciando, mas deu para entender o problema.<br>
+É fácil fácil se perder no sistema dessa forma.</p>
+<p>Até mais.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-peas bypostauthor even thread-even depth-1">
+
+	    	<a name="comment-5135"></a>
+
+	      	<div id="li-comment-5135" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c621f1575c6b408ed20d110b86873357.jpeg" srcset="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c621f1575c6b408ed20d110b86873357-0" originals="50" src-orig="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.paulo.com.br/" rel="external nofollow" url="" url'="">Paulo Silveira</a></span>
+	                <span class="date">28/03/2007 at 10:38</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5135" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5135">
+				<p>Oi T (!). Sua modelagem també não está correta. Continua com as mesmas brehas que o unidirecional teria, ou o bidirecional ingênuo.</p>
+<p>Poderíamos ter DOIS motores para um mesmo Carro, bastando passar o carro do motor1 para o construtor do motor2. E aí o carro ficaria apontando apenas para o último motor: estado totalmente incosistente. </p>
+<p>Pra consertar isso daria um trabalhão, para ver se o Carro já não tem um Motor, e aí decidir se um Carro pode mudar de Motor, etc. Sem contar que você ficar com um setter que só deve ser usado pelo construtor da outra classe: simplesmente bizarro. Em outras palavras, está com um abacaxi na mão, mas como eu disse no post, da sim pra se precaver, como você mesmo tentou. Repare que se o relacionamento fosse N:M você estaria numa situação ainda pior, e o unidirecional tem muitas vantagens.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-5177"></a>
+
+	      	<div id="li-comment-5177" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/b9afac8f50bb52fd0888893c3b56dfc6.jpg" srcset="https://secure.gravatar.com/avatar/b9afac8f50bb52fd0888893c3b56dfc6?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-b9afac8f50bb52fd0888893c3b56dfc6-0" originals="50" src-orig="https://secure.gravatar.com/avatar/b9afac8f50bb52fd0888893c3b56dfc6?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Ricardo Nakamura</span>
+	                <span class="date">28/03/2007 at 22:51</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5177" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5177">
+				<p>Olá Paulo.<br>
+Acompanho sempre seus artigos e o blog da Caelum(gostei muito do evitar herança), mas nunca deixei um comentário ou uma sugestão. Esse artigo me interessou muito, porque já tive e ainda tenho esse problema, e ainda não sei como ter uma boa definição de quando usar ou não o relacionamento bidirecional. Mas eu ainda não entendi quando devo utilizar esse recurso.<br>
+Devo utilizar sempre que for útil a minha aplicação e poder sofrer os efeitos mencionados ? Ou simplesmente evitar ao máximo esse recurso, usando somente quando não tiver outro jeito(tipo quando o prazo é pra ontem) ?<br>
+Um abraço.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-5255"></a>
+
+	      	<div id="li-comment-5255" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c103c2687c082b99d7ddb14d620427fe.jpg" srcset="https://secure.gravatar.com/avatar/c103c2687c082b99d7ddb14d620427fe?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c103c2687c082b99d7ddb14d620427fe-1" originals="50" src-orig="https://secure.gravatar.com/avatar/c103c2687c082b99d7ddb14d620427fe?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">T</span>
+	                <span class="date">29/03/2007 at 11:41</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5255" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5255">
+				<p>Hum… ok, viajei. Afe, acho que estou convivendo demais com esses objetos burros que usam aqui no trabalho (e que querem assim, pq é ‘mais simples’!)…</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-peas bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-5283"></a>
+
+	      	<div id="li-comment-5283" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c621f1575c6b408ed20d110b86873357.jpeg" srcset="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c621f1575c6b408ed20d110b86873357-1" originals="50" src-orig="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.paulo.com.br/" rel="external nofollow" url="" url'="">Paulo Silveira</a></span>
+	                <span class="date">29/03/2007 at 15:07</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5283" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5283">
+				<p>Ola Ricardo</p>
+<p>Creio que eu tenha sido muito xiita no artigo, tanto que recebi algumas críticas construtivas  do próprio pessoal da Caelum (como a do T, logo acima).</p>
+<p>Creio que a regra seja a mesma dos getters e setters: pense se você realmente precisa acessar a relação através do outro lado. Se não tiver uma razão forte, não crie. Vale lembrar que em OO não existem regras mágicas e fixas….</p>
+<p>abraços</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-fkung even thread-even depth-1">
+
+	    	<a name="comment-5285"></a>
+
+	      	<div id="li-comment-5285" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/b4c0f7ba2d6f29f2d164b955b7466cfe.png" srcset="https://secure.gravatar.com/avatar/b4c0f7ba2d6f29f2d164b955b7466cfe?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-b4c0f7ba2d6f29f2d164b955b7466cfe-0" originals="50" src-orig="https://secure.gravatar.com/avatar/b4c0f7ba2d6f29f2d164b955b7466cfe?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.caelum.com.br/" rel="external nofollow" url="" url'="">Fabio Kung</a></span>
+	                <span class="date">29/03/2007 at 15:13</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5285" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5285">
+				<p>O comentário do T realmente não soluciona completamente os problemas, mas os ameniza e é uma alternativa perfeitamente aceitável em muitos contextos.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-5319"></a>
+
+	      	<div id="li-comment-5319" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/b2fa5f2fa7652c9f82e01db48afc5b5d.jpg" srcset="https://secure.gravatar.com/avatar/b2fa5f2fa7652c9f82e01db48afc5b5d?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-b2fa5f2fa7652c9f82e01db48afc5b5d-0" originals="50" src-orig="https://secure.gravatar.com/avatar/b2fa5f2fa7652c9f82e01db48afc5b5d?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://jroller.com/page/dukejeffrie" rel="external nofollow" url="" url'="">Tiago Silveira</a></span>
+	                <span class="date">29/03/2007 at 20:46</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5319" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5319">
+				<p>Opa! Mas aí perde todo sentido usar POJOs!</p>
+<p>Relacionamento bidirecional é uma maravilha. Além de ser super prático (pois vc pode dar load() num objeto só e facilmente acessar o outro), também abre várias portas, por exemplo na montagem de queries e na especificação de operações em cascata (@Cascade).</p>
+<p>Existe um e apenas um jeito de garantir que um relacionamento entre dois objetos Java (quer eles sejam persistentes ou não) está sempre em ordem: ambos devem trabalhar em conjunto para garantir a consistência!</p>
+<p>Ou seja, o setter do Carro que recebe o Motor “m” deve verificar se o novo valor é diferente do antigo e, em caso afirmativo, notificar ambos os motores. O motor antigo deve ter sua propriedade “carro” alterada pra null, e o novo, para “this”.</p>
+<p>Ao mesmo tempo, o Motor tem que ter um código parecido. Esse código é delicado, e se mal construído pode gerar um loop infinito (que em Java acaba provocando uma StackOverflowException).</p>
+<p>Quando os relacionamentos envolvem coleções, eu costumo criar métodos add() e remove() no objeto que contém a coleção. De preferência, esses métodos têm visibilidade reduzida. Quando não é possível, eles passam a fazer parte da API pública e a coleção fica então protegida. Quando tudo mais falha, eu apelo pra o padrão Decorator: crio um componente @Embedded que manipule a coleção do jeito certo e implemente a interface adequada (e.g. java.util.List).</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-fkung even thread-even depth-1">
+
+	    	<a name="comment-5442"></a>
+
+	      	<div id="li-comment-5442" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/b4c0f7ba2d6f29f2d164b955b7466cfe.png" srcset="https://secure.gravatar.com/avatar/b4c0f7ba2d6f29f2d164b955b7466cfe?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-b4c0f7ba2d6f29f2d164b955b7466cfe-1" originals="50" src-orig="https://secure.gravatar.com/avatar/b4c0f7ba2d6f29f2d164b955b7466cfe?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.caelum.com.br/" rel="external nofollow" url="" url'="">Fabio Kung</a></span>
+	                <span class="date">30/03/2007 at 10:54</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-5442" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-5442">
+				<p>Concordo plenamente com você Tiago, e o Paulo provavelmente também.</p>
+<p>Mas como você mesmo mostrou, manter a consistência dos relacionamentos bidirecionais não é tarefa fácil. Por isso o Paulo chamou a atenção para o uso indiscriminado desse tipo de relacionamento.</p>
+<p>Usar não é proibido, até acho necessário em muitos casos. Mas é preciso usar com cautela :D.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-6617"></a>
+
+	      	<div id="li-comment-6617" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/ae265df9743edade17ffa722ef2f7bed.jpg" srcset="https://secure.gravatar.com/avatar/ae265df9743edade17ffa722ef2f7bed?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-ae265df9743edade17ffa722ef2f7bed-0" originals="50" src-orig="https://secure.gravatar.com/avatar/ae265df9743edade17ffa722ef2f7bed?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Bruno Nicoletti</span>
+	                <span class="date">06/04/2007 at 17:07</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-6617" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-6617">
+				<p>Legal, mas tenho uma duvida que permanece.<br>
+Digamos que o modelo mudasse para este caso:</p>
+<p> – Carro possui um motor<br>
+ – Moto possui um motor<br>
+ – Maquina de Lavar Roupas possui um motor<br>
+ – Motor ???</p>
+<p>Ok.. Carro e motor poderiam ser uma extensao de veiculo, neste caso o Motor possuiria um veiculo… mas e neste caso que temos uma maquina de lavar roupas no meio! (Ok, talvez o motor naum seja igual e neste caso teriamos um novo tipo de motor… mas vamos ignorar isso por enquanto)</p>
+<p>Qual seria a melhor saida pensando em OO? </p>
+<p>Um relacionamento bidirecional com o uso de uma interface representando todos que possuem motor??<br>
+Um relacionamento unidirecional?<br>
+ou outro qualquer…</p>
+<p>Pessoalmente eu evito o relacionamento bidirecional nestes casos para evitar tambem a criacao de uma interface como essa, mas a duvida continua me perseguindo… ainda mais depois deste comentario do Tiago que nos lembra sobre os beneficios do Hibernate no aspecto de navegacao nos objetos…</p>
+<p>[]’s</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-7137"></a>
+
+	      	<div id="li-comment-7137" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/a0068843cdd9e1f72805fc71edc6edf8.png" srcset="https://secure.gravatar.com/avatar/a0068843cdd9e1f72805fc71edc6edf8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-a0068843cdd9e1f72805fc71edc6edf8-0" originals="50" src-orig="https://secure.gravatar.com/avatar/a0068843cdd9e1f72805fc71edc6edf8?s=50&amp;r=g" scale="1.25" scale-fail="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.lecom.com.br/" rel="external nofollow" url="" url'="">Lucas Húngaro</a></span>
+	                <span class="date">13/04/2007 at 08:37</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-7137" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-7137">
+				<p>Cheguei um pouco atrasado, mas lá vai:</p>
+<p>Tiago, achei sua abordagem muito válida. Você conseguiu explicar muito bem o “código em prosa”, mas poderia colocar um exemplo simples em código? Creio que isso elimina qualquer possível ambiguidade para quem quiser usar a mesma abordagem.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-77080"></a>
+
+	      	<div id="li-comment-77080" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/d9f1fd74de067aed5dc2cf3c5a43e6f5.jpg" srcset="https://secure.gravatar.com/avatar/d9f1fd74de067aed5dc2cf3c5a43e6f5?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-d9f1fd74de067aed5dc2cf3c5a43e6f5-0" originals="50" src-orig="https://secure.gravatar.com/avatar/d9f1fd74de067aed5dc2cf3c5a43e6f5?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Flávio Almeida</span>
+	                <span class="date">21/03/2011 at 08:35</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-77080" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-77080">
+				<p>Esse tópico é antigo, mas atualmente tenho debatido sobre esse assunto. Acredito que um dos motivos mais atraentes (vejam, um dos motivos) para se implementar apenas o relacionamento unidirecional é o de  bounded contexts provindo do Domain Driven Design. Com relacionamentos bidirecionais, fica muito mais difícil você defintir contextos de acesso bem definidos em um modelo RICO.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-93101"></a>
+
+	      	<div id="li-comment-93101" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/33da3d633d885f8e34fa94aa7777fa7d.jpg" srcset="https://secure.gravatar.com/avatar/33da3d633d885f8e34fa94aa7777fa7d?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-33da3d633d885f8e34fa94aa7777fa7d-0" originals="50" src-orig="https://secure.gravatar.com/avatar/33da3d633d885f8e34fa94aa7777fa7d?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">marco</span>
+	                <span class="date">29/10/2011 at 21:57</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-93101" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-93101">
+				<p>Relacionamento bidirecional é algo praticamente inevitável, principalmente em contabilidade em que se necessita de relatórios do tipo conta/centro de custo e o seu inverso centro de custo/conta. Não há um mais importante que outro. todos os sistemas financeiros terão o mesmo problema.</p>
+<p>Marco</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-103695"></a>
+
+	      	<div id="li-comment-103695" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/5f8d24b8520c85fa2d2a001ef119c313.jpg" srcset="https://secure.gravatar.com/avatar/5f8d24b8520c85fa2d2a001ef119c313?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-5f8d24b8520c85fa2d2a001ef119c313-0" originals="50" src-orig="https://secure.gravatar.com/avatar/5f8d24b8520c85fa2d2a001ef119c313?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Dênis Schimidt</span>
+	                <span class="date">17/05/2012 at 09:09</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-103695" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-103695">
+				<p>Achei interessante a abordagem do assunto. Porém seguindo nessa mesma linha OO e DDD será que faz sentido o motor conhecer o carro ou o carro seria a entidade raiz (agregada) e eu me comunicaria com o motor através do carro?</p>
+<p>Pensando eu como usuário, quando eu quero que um carro acelere eu não falo diretamente com o motor, mas sim com o carro e ele sim “fala” com o motor. Nesse caso o relacionamento poderia ser unidirecional.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-127107"></a>
+
+	      	<div id="li-comment-127107" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/bfc21bfa7790435d59bc2e3e3ec70621.jpg" srcset="https://secure.gravatar.com/avatar/bfc21bfa7790435d59bc2e3e3ec70621?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-bfc21bfa7790435d59bc2e3e3ec70621-0" originals="50" src-orig="https://secure.gravatar.com/avatar/bfc21bfa7790435d59bc2e3e3ec70621?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://lrxsistemas.com.br/" rel="external nofollow" url="" url'="">Ricardo Johannsen</a></span>
+	                <span class="date">17/08/2013 at 23:31</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-127107" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-127107">
+				<p>tópico antigo mas a discussão ainda é muito válida, estes dias andei pensando bastante sobre o assunto, estou em uma dúvida braba em relação a esse tipo de relacionamento para construir uma view no JSF.Pegando o exemplo do Marco  Conta/Centro de custo, no meu bean mesmo centro de custo sendo detalhe de conta eu trataria os dois de forma unidirecional ouseja no managed bean eu teria um objeto conta, um objeto centro de custo e um list de centro de custo da conta atualmente selecionada.pensei assim<br>
+private Conta conta;<br>
+private CentroCusto centroCusto;<br>
+private List centrosCusto;<br>
+e em algum método que selecionasse qual a conta atual,eu faria:<br>
+centrosCusto = centroCustoService.findByConta(conta.getId());<br>
+sendo assim, eu poderia, inserir,editar e remover centros de custos sem ter que salvar a entidade conta,faria a alteração só no centro de custo especifico e após um remove por exemplo eu só precisaria recarregar novamente a lista dos centros de custo com: centrosCusto = centroCustoService.findByConta(conta.getId());<br>
+oque vocês acham dessa abordagem?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-171423"></a>
+
+	      	<div id="li-comment-171423" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/32a9d56791cd75204ce81399960f48fe.jpg" srcset="https://secure.gravatar.com/avatar/32a9d56791cd75204ce81399960f48fe?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-32a9d56791cd75204ce81399960f48fe-0" originals="50" src-orig="https://secure.gravatar.com/avatar/32a9d56791cd75204ce81399960f48fe?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://--/" rel="external nofollow" url="" url'="">Max Dolabella</a></span>
+	                <span class="date">24/05/2014 at 23:21</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#comment-171423" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-171423">
+				<p>Vê se isso ajuda. Adaptado de um exemplo de bidirecionalidade que meu professor me mostrou:</p>
+<p>Carro c = new Carro(new Motor(c));</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		</ol>
+
+		<nav class="navigation fix">
+			<div class="fl"></div>
+			<div class="fr"></div>
+		</nav><!-- /.navigation -->
+	
+</div> <!-- /#comments_wrap -->
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Deixe uma resposta <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/#respond" style="display:none;">Click here to cancel reply.</a></small></h3>			<form action="https://blog.caelum.com.br/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-form-comment"><label for="comment">Comentário</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><input id="author" class="txt" name="author" type="text" value="" size="30" aria-required="true" placeholder="Nome  (Obrigatório)"></p>
+<p class="comment-form-email"><input id="email" class="txt" name="email" type="text" value="" size="30" aria-required="true" placeholder="E-mail  (Obrigatório)"></p>
+<p class="comment-form-url"><input id="url" class="txt" name="url" type="text" value="" size="30" placeholder="Site"></p>
+<p class="form-submit"></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notifique-me sobre novos comentários por e-mail.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notifique-me sobre novas publicações por e-mail.</label></p><input name="submit" type="submit" id="submit" class="submit" value="Enviar comentário"> <input type="hidden" name="comment_post_ID" value="117" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+<p></p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="fa9743c14b"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1560641604633"></form>
+			</div><!-- #respond -->
+	
+		</section><!-- #main -->
+
+		
+    </div><!-- #content -->
+
+	
+	<footer id="footer">
+	
+		<div class="footer-inner">
+	
+					
+				<div id="copyright" class="col-left">
+									<p>Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum © 2019.</p>
+								</div>
+		
+				<div id="credit" class="col-right">
+		        								</div>
+		
+		</div>
+
+	</footer><!-- /#footer  -->
+	</div><!-- /#inner-wrapper -->
+</div><!-- /#wrapper -->
+<!-- Your Google Analytics Plugin is missing the tracking ID -->
+	<div style="display:none">
+	<div class="grofile-hash-map-c103c2687c082b99d7ddb14d620427fe">
+	</div>
+	<div class="grofile-hash-map-68de0a535c244fa30a8089f6b0d06255">
+	</div>
+	<div class="grofile-hash-map-c621f1575c6b408ed20d110b86873357">
+	</div>
+	<div class="grofile-hash-map-b9afac8f50bb52fd0888893c3b56dfc6">
+	</div>
+	<div class="grofile-hash-map-b4c0f7ba2d6f29f2d164b955b7466cfe">
+	</div>
+	<div class="grofile-hash-map-b2fa5f2fa7652c9f82e01db48afc5b5d">
+	</div>
+	<div class="grofile-hash-map-ae265df9743edade17ffa722ef2f7bed">
+	</div>
+	<div class="grofile-hash-map-a0068843cdd9e1f72805fc71edc6edf8">
+	</div>
+	<div class="grofile-hash-map-d9f1fd74de067aed5dc2cf3c5a43e6f5">
+	</div>
+	<div class="grofile-hash-map-33da3d633d885f8e34fa94aa7777fa7d">
+	</div>
+	<div class="grofile-hash-map-5f8d24b8520c85fa2d2a001ef119c313">
+	</div>
+	<div class="grofile-hash-map-bfc21bfa7790435d59bc2e3e3ec70621">
+	</div>
+	<div class="grofile-hash-map-32a9d56791cd75204ce81399960f48fe">
+	</div>
+	</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-270161-5', 'caelum.com.br');
+  ga('send', 'pageview');
+
+</script>
+<!--[if lt IE 9]>
+<script src="https://blog.caelum.com.br/wp-content/themes/blog-v3/includes/js/respond.js"></script>
+<![endif]-->
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/blog.caelum.com.br\/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional\/":117};
+	</script>
+				<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shBrushJava.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://blog.caelum.com.br/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://blog.caelum.com.br/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/photon.min.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/devicepx-jetpack.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/gprofiles.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wpgroho.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/prism-js.min.js.download"></script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/form.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/sharing.min.js.download"></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e-201924.js.download" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.1.1',blog:'125225402',post:'117',tz:'-3',srv:'blog.caelum.com.br'} ]);
+	_stq.push([ 'clickTrackerInit', '125225402', '117' ]);
+</script>
+<script type="text/javascript" async="" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/20bd5d95-759f-4313-ad3e-1663fd4de6c0-loader.js.download"></script>
+
+<script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/traffic-source-cookie.min.js.download"></script><iframe style="width: 1px; height: 1px; position: absolute; top: -100px;" id="rd_tmgr" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/saved_resource.html"></iframe><script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/lead-tracking.min.js.download"></script><script type="text/javascript" src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/rdstation-popup.min.js.download"></script><img src="./Relacionamento bidirecional entre classes - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/g.gif" alt=":)" width="6" height="5" id="wpstats" scale="0"></body></html>

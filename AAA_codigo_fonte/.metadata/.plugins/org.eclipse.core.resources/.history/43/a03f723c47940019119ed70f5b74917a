@@ -1,0 +1,49 @@
+package bytebank_herdado_conta.br.com.bytebank.banco.test;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class TesteWrapper {
+
+	private static void wrapperInteger_1() {
+		
+		System.out.println("------------- Wrapper Integer 01  ---------------------");
+		Integer integerWrapper1 = Integer.valueOf(29); // autoBoxing
+		Double doubleWrapper1 = integerWrapper1.doubleValue(); // unboxing
+		doubleWrapper1 = Double.parseDouble("2.1");
+		System.out.println(integerWrapper1 + " " + doubleWrapper1);
+		Double doubleWrapper2 = new Double(2.2);
+		Double doubleWrapper3 = Double.valueOf(2.3);
+		Double doubleWrapper4 = Double.valueOf("2.3");
+		System.out.println(doubleWrapper4);
+		integerWrapper1 = doubleWrapper1.intValue(); // unboxing
+		System.out.println(doubleWrapper1.toString() + " - " + integerWrapper1.toString());
+		boolean booleanS = Boolean.FALSE;
+		booleanS = Boolean.valueOf("FALSE");
+		Number refInteger = Integer.valueOf(0); 
+		Number refDouble = Double.valueOf(2.1); 
+		
+		System.out.println(booleanS);
+		System.err.println(refInteger);
+		
+	}
+
+	public TesteWrapper() {
+		wrapperInteger_1();
+
+	}
+
+	public TesteWrapper(String[] parametros) {
+		System.out.println(" ----  parametros ---- " + parametros.toString());
+		List<String> argsArray = Arrays.asList(parametros);
+		for (String arrayString : argsArray) {
+			System.out.println(arrayString);
+		}
+	}
+
+	public static void main(String[] args) {
+		new TesteWrapper();
+		new TesteWrapper(args);
+	}
+
+}

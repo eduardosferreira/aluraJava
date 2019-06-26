@@ -1,0 +1,34 @@
+package bytebank;
+
+public class CriarConta {
+
+	public static void main(String[] args) {
+
+		Conta primeiraConta = new Conta();
+		primeiraConta.saldo = 200d;
+		System.out.println("1c: " + primeiraConta.saldo);
+		primeiraConta.saldo += 100d;
+		System.out.println("1c: " + primeiraConta.saldo);
+
+		Conta segundaConta = new Conta();
+		segundaConta.saldo += 100d;
+		System.out.println("2c: " + segundaConta.saldo);
+
+		System.out.println("primeira conta [ Agencia: " + primeiraConta.agencia + 
+				           " - CC: " + primeiraConta.numero +
+				           " - Titular: " + primeiraConta.titular +
+				           " ] tem de saldo : " + primeiraConta.saldo);
+		segundaConta.agencia = 31;
+		System.out.println("segunda conta [ Agencia: " + segundaConta.agencia + 
+				" - CC: " + segundaConta.numero  + 
+				" - Titular: " + segundaConta.titular  + 
+				" ] tem de saldo : "  + segundaConta.saldo);
+		
+		Pessoa pessoa = new Pessoa("João");
+		System.out.println(pessoa);
+		
+		Pessoa pessoa = new Pessoa("Maria");
+		System.out.println(pessoa);
+	}
+
+}

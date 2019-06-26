@@ -1,0 +1,11 @@
+package data1;
+
+import java.io.Serializable;
+
+public class DataExemplo implements Serializable {
+
+	
+	public static void main(String[] args) {
+		
+	}
+}

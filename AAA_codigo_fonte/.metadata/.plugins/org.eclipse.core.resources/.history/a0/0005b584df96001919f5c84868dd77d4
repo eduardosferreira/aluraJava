@@ -1,0 +1,18 @@
+package br.com.alura.java.io.teste;
+
+public class TesteUnicodeEEncoding {
+
+	public static void Ex1() {
+		String C = 'C';
+		System.out.println(C.codePointAt(0));
+	}
+	
+	public TesteUnicodeEEncoding() {
+		Ex1();
+	}
+
+	public static void main(String[] args) {
+		new TesteUnicodeEEncoding();
+	}
+	
+}

@@ -1,0 +1,9 @@
+package br.com.bytebank.banco.test.io;
+
+public class TesteSerializacao {
+
+	public TesteSerializacao() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

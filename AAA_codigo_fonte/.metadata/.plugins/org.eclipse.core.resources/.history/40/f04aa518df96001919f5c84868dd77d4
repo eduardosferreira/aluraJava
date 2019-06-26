@@ -1,0 +1,9 @@
+package br.com.alura.java.io.teste;
+
+public class TesteUnicodeEEncoding {
+
+	public TesteUnicodeEEncoding() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

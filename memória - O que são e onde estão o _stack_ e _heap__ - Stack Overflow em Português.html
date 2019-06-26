@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap -->
+<html itemscope="" itemtype="http://schema.org/QAPage" class="html__responsive"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>memória - O que são e onde estão o "stack" e "heap"? - Stack Overflow em Português</title>
+        <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/br/img/favicon.ico?v=c6678b633455">
+        <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/br/img/apple-touch-icon.png?v=e57f45c9cfaf">
+        <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow em Português" href="https://pt.stackoverflow.com/opensearch.xml">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://pt.stackoverflow.com/questions/3797/o-que-são-e-onde-estão-o-stack-e-heap">
+        <meta property="og:site_name" content="Stack Overflow em Português">
+        <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/br/img/apple-touch-icon@2.png?v=2bb2b60be04f">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="pt.stackoverflow.com">
+        <meta name="twitter:site" content="@StackOverflowPT">
+        <meta name="twitter:creator" content="@StackOverflowPT">
+        <meta name="twitter:title" property="og:title" itemprop="name" content="O que são e onde estão o &quot;stack&quot; e &quot;heap&quot;?">
+        <meta name="twitter:description" property="og:description" itemprop="description" content="O que são esses tais de stack e heap que tanto se fala em gerenciamento de memória?
+
+Isso realmente são porções da memória como algumas pessoas falam ou é apenas um conceito abstrato para facilitar o ">
+            <script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/osd.js.download"></script><script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/pubads_impl_rendering_2019061701.js.download"></script><script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/rules-p-c1rF4kxgLUzNc.js.download" async=""></script><script async="" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/quant.js.download"></script><script async="" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/beacon.js.download"></script><script async="" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/analytics.js.download"></script><script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/jquery.min.js.download"></script>
+        <script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/stub.pt-BR.js.download"></script>
+    
+    <link rel="stylesheet" type="text/css" href="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/stacks.css">
+    <link rel="stylesheet" type="text/css" href="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/primary.css">
+
+    
+            <link rel="alternate" type="application/atom+xml" title="Feed para a pergunta &#39;O que são e onde estão o &quot;stack&quot; e &quot;heap&quot;?&#39;" href="https://pt.stackoverflow.com/feeds/question/3797">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:3797});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('526', '3797');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+        
+        
+        
+        
+        
+        
+        
+
+
+        <script>
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('wss://qa.sockets.stackexchange.com');
+                StackExchange.realtime.subscribeToReputationNotifications('526');
+        StackExchange.realtime.subscribeToTopBarNotifications('526');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"pt-BR","serverTime":1561493595,"routeName":"Questions/Show","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","site":{"name":"Stack Overflow em Português","description":"Perguntas e respostas para programadores profissionais e entusiastas","isNoticesTabEnabled":true,"enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":526,"childUrl":"https://pt.meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"d2d5e201baffc529962e921b2b7c8160720c787d5dbe17337d72660b6bbc0a2f","tid":"b3541199-2b93-f871-68a9-dea9ee677bff","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true},"realtime":{"newest":true,"active":true,"tagged":true,"staleDisconnectIntervalInHours":0},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300},"jobPreferences":{"maxNumDeveloperRoles":2,"maxNumIndustries":4},"svgIconPath":"https://cdn.sstatic.net/Img/svg-icons","svgIconHash":"c0fe2eea72c0"}, {"userProfile":{},"userMessaging":{},"tags":{"allowNonAsciiTags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"slack":{"sidebarAdDismissCookie":"slack-sidebar-ad"},"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableImgurHttps":true,"forceHttpsImages":true},"paths":{},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"mentions":{"maxNumUsersInDropdown":50},"markdown":{"asteriskIntraWordEmphasis":true},"flags":{"allowRetractingFlags":true},"comments":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.pt-BR.js":"e77df73040b8","js/moderator.pt-BR.js":"180a57e8cf5e","js/pseudomoderator.pt-BR.js":"4ad65c962cd2","js/full-anon.pt-BR.js":"ab2e41260b30","js/full.pt-BR.js":"8b7c70382f63","js/wmd.pt-BR.js":"6f1f13d05197","js/mobile.pt-BR.js":"37ae11269e15","js/help.pt-BR.js":"df5c48608f60","js/tageditor.pt-BR.js":"f0c0d0d64fcb","js/tageditornew.pt-BR.js":"5b3e6ccc540a","js/inline-tag-editing.pt-BR.js":"6ab41f9094e4","js/revisions.pt-BR.js":"bb893fb1f302","js/review.pt-BR.js":"c7af41a2ae93","js/tagsuggestions.pt-BR.js":"f98b1004d2d7","js/post-validation.pt-BR.js":"3851a31b9402","js/explore-qlist.pt-BR.js":"66e52888786d","js/events.pt-BR.js":"cc881cde8fa4","js/keyboard-shortcuts.pt-BR.js":"9464f67cae5e","js/adops.pt-BR.js":"6b9883f0531e","js/begin-edit-event.pt-BR.js":"3238dd301e69","js/stacks-polyfills.pt-BR.js":"256ad9fff939","js/snippet-javascript-codemirror.pt-BR.js":"b9efe1bd7da3"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    <noscript id="noscript-css"><style>body,.top-bar{margin-top:1.9em}</style></noscript>
+    <script async="" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/full-anon.pt-BR.js.download"></script><link rel="preload" href="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/f(2).txt" as="script"><script type="text/javascript" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/f(2).txt"></script><link rel="preload" href="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/f(3).txt" as="script"><script type="text/javascript" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/f(3).txt"></script><script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/pubads_impl_2019061701.js.download" async=""></script><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><script async="" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/post-validation.pt-BR.js.download"></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-33/html/container.html"></head>
+        <body class="question-page unified-theme">
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<header class="top-bar js-top-bar top-bar__network _fixed">
+    <div class="-container" role="menubar">
+        <div class="-main">
+                <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle" role="menuitem" aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false"><span class="ps-relative"></span></a>
+                <div class="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
+                    <div class="left-sidebar js-unpinned-left-sidebar" data-can-be="left-sidebar" data-is-here-when="sm"></div>
+                </div>
+                                <a href="https://pt.stackoverflow.com/" class="-logo js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+                        <span class="-img _glyph">Stack Overflow em Português</span>
+                    </a>
+
+
+
+        </div>
+
+
+            <form id="search" action="https://pt.stackoverflow.com/search" method="get" class="searchbar js-searchbar " autocomplete="off">
+                    <div class="ps-relative">
+                        <input name="q" type="text" placeholder="Pesquisar..." value="" autocomplete="off" maxlength="240" class="s-input s-input__search js-search-field " aria-label="Pesquisar">
+                        <svg aria-hidden="true" class="svg-icon s-input-icon s-input-icon__search iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z"></path></svg>
+                    </div>
+            </form>
+
+        
+
+
+
+
+
+<ol class="-secondary js-secondary-topbar-links drop-icons-responsively user-logged-out the-js-is-handling-responsiveness" role="presentation">
+        <li class="-item searchbar-trigger js-searchbar-trigger"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link" role="button" aria-label="Pesquisar" aria-haspopup="true" aria-controls="search" title="Click to show search"><svg aria-hidden="true" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z"></path></svg></a></li>
+            <li class="-item inbox-button-item" data-remove-order="1">
+        <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link js-inbox-button" aria-label="Caixa de entrada" title="Últimas mensagens no inbox" role="menuitem" aria-haspopup="true" aria-expanded="false" data-unread-count="0">
+            <svg aria-hidden="true" class="svg-icon iconInbox" width="20" height="18" viewBox="0 0 20 18"><path d="M4.63 1h10.56a2 2 0 0 1 1.94 1.35L20 10.79V15a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4.21l2.78-8.44c.25-.8 1-1.36 1.85-1.35zm8.28 12l2-2h2.95l-2.44-7.32a1 1 0 0 0-.95-.68H5.35a1 1 0 0 0-.95.68L1.96 11h2.95l2 2h6z"></path></svg>
+            <span class="indicator-badge js-unread-count _important d-none">0</span>
+        </a>
+    </li>
+    <li class="-item achievements-button-item" data-remove-order="2">
+        <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link js-achievements-button" data-unread-class="_highlighted-positive" aria-label="Realizações" title="Conquistas recentes: reputação, medalhas e privilégios obtidos" role="menuitem" aria-haspopup="true" aria-expanded="false" data-unread-count="0" data-lit-up="false">
+            <svg aria-hidden="true" class="svg-icon iconAchievements" width="18" height="18" viewBox="0 0 18 18"><path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3zM3 7c-.5 0-1-.5-1-1V4h1v3zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1zM16 6c0 .5-.5 1-1 1V4h1v2z"></path></svg>
+            <span class="indicator-badge js-unread-count _positive d-none">+0</span>
+        </a>
+    </li>
+    <li class="-item help-button-item">
+        <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link js-help-button" title="Central de ajuda e outros recursos" role="menuitem" aria-haspopup="true" aria-controls="topbar-help-dialog" data-ga="[&quot;top navigation&quot;,&quot;help menu click&quot;,null,null,null]"><svg aria-hidden="true" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zm.81 12.13c-.02.71-.55 1.15-1.24 1.13-.66-.02-1.17-.49-1.15-1.2.02-.72.56-1.18 1.22-1.16.7.03 1.2.51 1.17 1.23zM11.77 8c-.3.34-.65.65-1.02.91l-.53.37c-.26.2-.42.43-.5.69a4 4 0 0 0-.09.75c0 .05-.03.16-.18.16H7.88c-.16 0-.18-.1-.18-.15.03-.66.12-1.21.4-1.66.4-.49.88-.9 1.43-1.22.16-.12.28-.25.38-.39a1.34 1.34 0 0 0 .02-1.71c-.24-.31-.51-.46-1.03-.46-.51 0-.8.26-1.02.6-.21.33-.18.73-.18 1.1H5.75c0-1.38.35-2.25 1.1-2.76.52-.35 1.17-.5 1.93-.5 1 0 1.79.18 2.49.71.64.5.98 1.18.98 2.12 0 .57-.2 1.05-.48 1.44z"></path></svg></a>
+    </li>
+    <div class="topbar-dialog help-dialog js-help-dialog dno" id="topbar-help-dialog" role="menu">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="https://pt.stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })" data-ga="[&quot;top navigation&quot;,&quot;tour submenu click&quot;,null,null,null]">
+                            Tour
+                            <span class="item-summary">
+                                Comece aqui para obter uma visão geral rápida do site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://pt.stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })" data-ga="[&quot;top navigation&quot;,&quot;help center&quot;,null,null,null]">
+                        Central de ajuda
+                        <span class="item-summary">
+                            Respostas detalhadas a qualquer pergunta que você tiver
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://pt.meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })" data-ga="[&quot;top navigation&quot;,&quot;meta submenu click&quot;,null,null,null]">
+                                Meta
+                                <span class="item-summary">
+                                    Discutir o funcionamento e as políticas deste site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })" data-ga="[&quot;top navigation&quot;,&quot;about us submenu click&quot;,null,null,null]">
+                                Sobre Nós
+                                <span class="item-summary">
+                                    Saiba mais sobre a empresa Stack Overflow
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })" data-ga="[&quot;top navigation&quot;,&quot;business submenu click&quot;,null,null,null]">
+                                Negócios
+                                <span class="item-summary">
+                                    Saiba mais sobre a contratação de desenvolvedores ou publicação de anúncios conosco
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+    <li class="-item site-switcher-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" aria-label="Site switcher" title="Todos os 176 sites do Stack Exchange" role="menuitem" aria-haspopup="true" aria-expanded="false" data-ga="[&quot;top navigation&quot;,&quot;stack exchange click&quot;,null,null,null]">
+            <svg aria-hidden="true" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zm16-7H1v4h16V6z"></path></svg>
+        </a>
+    </li>
+
+            <li class="-ctas">
+                        <a href="https://pt.stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fpt.stackoverflow.com%2fquestions%2f3797%2fo-que-s%25c3%25a3o-e-onde-est%25c3%25a3o-o-stack-e-heap" class="login-link s-btn btn-topbar-clear py8 js-gps-track" rel="nofollow" data-gps-track="login.click" data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]">Log-in</a>
+                        <a href="https://pt.stackoverflow.com/users/signup?ssrc=head&amp;returnurl=https%3a%2f%2fpt.stackoverflow.com%2fquestions%2f3797%2fo-que-s%25c3%25a3o-e-onde-est%25c3%25a3o-o-stack-e-heap" class="login-link s-btn s-btn__primary py8 btn-topbar-primary" rel="nofollow" data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">Registrar-se</a>
+
+            </li>
+
+    <li class="js-topbar-dialog-corral" role="presentation">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
+        <div class="header">
+            <h3><a href="https://pt.stackoverflow.com/">comunidade atual</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li class="grid">
+                            <div class="fl1">
+            <a href="https://pt.stackoverflow.com/" class="current-site-link site-link js-gps-track grid gs8 gsx" data-id="526" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="favicon favicon-br site-icon grid--cell" title="Stack Overflow em Português"></div>
+        <span class="grid--cell fl1">
+            Stack Overflow em Português
+        </span>
+    </a>
+
+    </div>
+    <div class="related-links">
+            <a href="https://pt.stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">ajuda</a>
+                    <a href="https://chat.stackexchange.com/?tab=site&amp;host=pt.stackoverflow.com" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+                    </li>
+                    <li class="related-site grid">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                            <a href="https://pt.meta.stackoverflow.com/" class="site-link js-gps-track grid gs8 gsx" data-id="527" data-gps-track="site.switch({ target_site:527, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="favicon favicon-brmeta site-icon grid--cell" title="Stack Overflow em Português Meta"></div>
+        <span class="grid--cell fl1">
+            Stack Overflow em Português Meta
+        </span>
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+suas comunidades            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+Faça <a href="https://pt.stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fpt.stackoverflow.com%2fquestions%2f3797%2fo-que-s%25c3%25a3o-e-onde-est%25c3%25a3o-o-stack-e-heap" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> ou <a href="https://pt.stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fpt.stackoverflow.com%2fquestions%2f3797%2fo-que-s%25c3%25a3o-e-onde-est%25c3%25a3o-o-stack-e-heap" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">registre-se</a> para personalizar suas comunidades
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">mais comunidades stack exchange</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr">Blog da empresa</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+    </li>
+</ol>
+
+    </div>
+</header>
+    <div id="js-gdpr-consent-banner" class="p16 bg-black-700 ff-sans fc-white ps-fixed b0 l0 r0 z-banner" role="banner" aria-hidden="false">
+        <div class="wmx8 mx-auto grid jc-center" role="alertdialog" aria-describedby="notice-message">
+            <div class="grid--cell mr12" aria-label="notice-message">
+                <p class="mb0 lh-lg">
+                    By using our site, you acknowledge that you have read and understand our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/cookie-policy">Cookie Policy</a>, <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/privacy-policy">Privacy Policy</a>, and our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/terms-of-service/public">Terms of Service</a>.
+                </p>
+            </div>
+            <a class="grid--cell fc-white js-notice-close" aria-label="notice-dismiss">
+                <svg aria-hidden="true" class="svg-icon m0 iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41L13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41z"></path></svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init({ observeSize: true }); });
+        StackExchange.scrollPadding.setPaddingTop(50, 10);     </script>
+
+
+
+
+
+
+
+
+<aside class="s-hero s-hero__dark js-dismissable-hero" role="region" aria-hidden="false">
+    <div class="s-hero--container s-hero--circle grid fs-body2 wmx12 md:fd-column ai-center ps-relative sm:pt64" aria-labeledby="banner-title" aria-describedby="banner-message">
+            <div class="js-dismiss">
+                <a class="ps-absolute t16 r16 p8 fc-white" title="Click to hide"><svg aria-hidden="true" class="svg-icon m0 iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41L13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41z"></path></svg></a>
+            </div>
+        <div class="grid--cell4 mr32 md:mr0 md:mb32 md:ta-center">
+            <div class="mb16 wmx4 mx-auto">
+                Stack Overflow em Português é um site de perguntas e respostas para programadores profissionais e entusiastas. Registre-se, leva apenas um minuto.
+
+            </div>
+            <a href="https://pt.stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=https%3a%2f%2fpt.stackoverflow.com%2fquestions%2f3797%2fo-que-s%25c3%25a3o-e-onde-est%25c3%25a3o-o-stack-e-heap" class="s-btn s-btn__filled s-btn__inverted">Registrar-se</a>
+        </div>
+        <div class="grid--cell fl1">
+            <div class="mb16 ta-center fw-bold sm:mb0">Veja como funciona:</div>
+            <div class="grid grid__allcells4 ta-center sm:fd-column">
+                <div class="grid--cell">
+                    <svg class="sm:d-none" width="49" height="72" viewBox="0 0 49 72">
+                        <g fill="none" fill-rule="evenodd">
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M12.3004115,66 L10.9897119,62.8735157 C10.6872428,62.1675354 4.03292181,46.1316968 2.01646091,40.2821456 C1.00823045,37.35737 0.302469136,34.3317401 0,31.2052558 C0,24.7505786 2.62139918,18.5984644 7.15843621,14.0600195 C11.7962963,9.52157463 18.0473251,7.00021636 24.5,7.00021636 C37.936226,6.944219 48.8890725,17.7652019 49,31.2052558 C49,37.659933 46.4794239,43.8120472 41.8415638,48.3504921 C37.2037037,52.888937 30.9526749,55.4102952 24.5,55.4102952 C22.382716,55.4102952 20.1646091,55.1077323 18.1481481,54.5026063 L12.3004115,66 Z M24.399177,10.0258463 C18.7530864,10.0258463 13.308642,12.2446416 9.27572016,16.2788148 C5.24279835,20.2121337 3.02469136,25.5574133 3.02469136,31.2052558 C3.42798354,34.0291771 4.03292181,36.752244 4.94032922,39.3744566 C6.35185185,43.6103385 10.3847737,53.5949173 12.5020576,58.6376338 L16.6358025,50.468433 L18.0473251,51.1744133 C20.063786,51.981248 22.281893,52.3846653 24.5,52.3846653 C30.1460905,52.3846653 35.590535,50.16587 39.6234568,46.1316968 C43.6563786,42.1983779 45.8744856,36.8530983 45.8744856,31.2052558 C45.7736626,19.4052991 36.1954733,9.92499196 24.399177,10.0258463 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M27.5439494,36.1794872 C28.2513593,35.4615385 28.7566521,34.5384615 29.0598277,33.6153846 C29.6527244,31.7220962 29.7226323,29.7000378 29.2619448,27.7692308 C29.0598277,26.9487179 28.6555935,26.1282051 28.1503008,25.4102564 C27.645008,24.6923077 26.9375981,24.0769231 26.2301883,23.6666667 C24.4339194,22.8295749 22.3671782,22.8295749 20.5709093,23.6666667 C19.7624409,24.0769231 19.1560896,24.6923077 18.6507968,25.4102564 C18.1455041,26.1282051 17.7412698,26.9487179 17.5391527,27.7692308 C17.1389975,29.5238152 17.1389975,31.3479797 17.5391527,33.1025641 C17.7412698,33.9230769 18.1455041,34.7435897 18.6507968,35.4615385 C19.1560896,36.1794872 19.8634995,36.7948718 20.5709093,37.2051282 C21.4804363,37.6153846 22.3899633,37.8205128 23.4005488,37.8205128 C24.2090172,37.8205128 25.0174856,37.6153846 25.8259541,37.3076923 L23.9058416,35.6666667 L25.1185442,34.2307692 L27.5439494,36.1794872 Z M27.7460666,38.7435897 C26.4323054,39.4615385 25.0174856,39.7692308 23.5016073,39.7692308 C22.1878462,39.7692308 20.9751435,39.5641026 19.7624409,39.0512821 C18.7518554,38.5384615 17.8423284,37.8205128 17.1349185,37 C15.6476822,35.1560186 14.8910258,32.8156639 15.0126889,30.4358974 C15.0126889,29.2051282 15.214806,27.974359 15.5179817,26.8461538 C15.8211573,25.7179487 16.4275087,24.7948718 17.1349185,23.8717949 C17.8423284,22.9487179 18.7518554,22.3333333 19.7624409,21.8205128 C20.9751435,21.3076923 22.1878462,21 23.5016073,21 C24.8153685,21 26.0280712,21.3076923 27.2407738,21.8205128 C28.2513593,22.3333333 29.1608863,23.0512821 29.8682962,23.8717949 C31.3841744,25.7179487 32.0915843,28.0769231 31.9905258,30.4358974 C31.9905258,31.7692308 31.7884087,33.1025641 31.2831159,34.3333333 C30.8788817,35.5641026 30.1714718,36.6923077 29.2619448,37.6153846 L31.5862916,39.4615385 L30.3735889,41 L27.7460666,38.7435897 Z"></path>
+                        </g>
+                    </svg>
+                    <div>Qualquer pessoa pode fazer uma pergunta</div>
+                </div>
+                <div class="grid--cell">
+                    <svg class="sm:d-none" width="50" height="72" viewBox="0 0 50 72">
+                        <g fill="none" fill-rule="evenodd">
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M40.6128764,30.1613416 C39.5925368,30.4633412 38.4701634,30.6646742 37.3477899,30.6646742 C34.0284004,30.6382717 30.8571885,29.3049419 28.5388649,26.960979 C26.2205413,24.6170161 24.9471558,21.4565938 25.0016816,18.1820252 C25.1037156,11.3367016 30.715583,5.90070932 37.6538917,6.00137584 C44.4901666,6.10204237 50,11.5380347 50,18.2826918 C49.7959321,19.8933562 49.4898302,21.403354 48.9796605,22.9133519 C47.9593209,25.9333476 44.4901666,34.087336 44.3881326,34.3893356 L43.6738949,36 L40.6128764,30.1613416 Z M26.328123,18.3833583 C26.430157,24.3226832 31.3277867,29.1546764 37.3477899,29.1546764 C38.4701634,29.1546764 39.5925368,28.9533433 40.6128764,28.5506772 L41.327114,28.2486777 L43.469827,32.3760051 C44.5922005,29.7586755 46.6328796,24.7253493 47.3471172,22.6113523 C47.857287,21.3026875 48.1633889,19.8933562 48.3674568,18.4840248 C48.2654228,12.5446999 43.3677931,7.71270675 37.3477899,7.71270675 C34.4791678,7.65880322 31.7063844,8.73165221 29.6396832,10.6951374 C27.572982,12.6586227 26.3817375,15.3518286 26.328123,18.1820252 L26.328123,18.3833583 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M38.6128764,13 L43.2044042,24.3785311 L41.469827,24.3785311 L40.2454196,20.9849341 L35.3477899,20.9849341 L34.0213485,24.3785311 L32.4908392,24.3785311 L36.9803331,13 L38.6128764,13 Z M39.7352498,19.6873823 L37.7966047,14.3973635 L35.8579597,19.6873823 L39.7352498,19.6873823 Z M38.6128764,60.2109228 C37.5925368,60.5103578 36.4701634,60.7099812 35.3477899,60.7099812 C32.0284004,60.6838029 28.8571885,59.3617955 26.5388649,57.0377373 C24.2205413,54.7136791 22.9471558,51.5800947 23.0016816,48.3333333 C23.1037156,41.5461394 28.715583,36.1563089 35.6538917,36.2561205 C42.4901666,36.3559322 48,41.7457627 48,48.433145 C47.7959321,50.0301318 47.4898302,51.527307 46.9796605,53.0244821 C45.9593209,56.0188324 42.4901666,64.1035782 42.3881326,64.4030132 L41.6738949,66 L38.6128764,60.2109228 Z M24.2260891,48.433145 C24.328123,54.3220339 29.2257527,59.1129944 35.2457559,59.1129944 C36.3681294,59.1129944 37.4905029,58.913371 38.5108424,58.5141243 L39.2250801,58.2146893 L41.3677931,62.306968 C42.4901666,59.7118644 44.5308456,54.7212806 45.2450833,52.6252354 C45.755253,51.3276836 46.0613549,49.9303202 46.2654228,48.5329567 C46.1633889,42.6440678 41.2657591,37.8531073 35.2457559,37.8531073 C29.2257527,37.7532957 24.328123,42.4444444 24.2260891,48.3333333 L24.2260891,48.433145 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M36.2857143 43L41 54 39.2190476 54 37.9619048 50.7192982 32.9333333 50.7192982 31.5714286 54 30 54 34.6095238 43 36.2857143 43zM37.3333333 49.4649123L35.3428571 44.3508772 33.352381 49.4649123 37.3333333 49.4649123zM15.6128764 41.1613416C14.5925368 41.4633412 13.4701634 41.6646742 12.3477899 41.6646742 9.02840044 41.6382717 5.85718848 40.3049419 3.53886491 37.960979 1.22054134 35.6170161-.0528442254 32.4565938.00168163683 29.1820252.103715589 22.3367016 5.71558298 16.9007093 12.6538917 17.0013758 19.4901666 17.1020424 25 22.5380347 25 29.2826918 24.7959321 30.8933562 24.4898302 32.403354 23.9796605 33.9133519 22.9593209 36.9333476 19.4901666 45.087336 19.3881326 45.3893356L18.6738949 47 15.6128764 41.1613416zM1.32812302 29.2826918C1.43015697 35.2220167 6.32778669 40.0540098 12.3477899 40.0540098 13.4701634 40.0540098 14.5925368 39.8526768 15.6128764 39.4500107L16.327114 39.1480111 18.469827 43.2753386C19.5922005 40.658009 21.6328796 35.6246828 22.3471172 33.5106858 22.857287 32.202021 23.1633889 30.7926896 23.3674568 29.3833583 23.3674568 23.3433669 18.469827 18.5113737 12.3477899 18.5113737 6.22575274 18.5113737 1.32812302 23.2427003 1.32812302 29.2826918z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M13.3301887,24 L18,35 L16.2358491,35 L14.990566,31.7192982 L10.009434,31.7192982 L8.66037736,35 L7,35 L11.5660377,24 L13.3301887,24 Z M14.4716981,30.4649123 L12.5,25.3508772 L10.5283019,30.4649123 L14.4716981,30.4649123 Z"></path>
+                        </g>
+                    </svg>
+                    <div>Qualquer um pode responder</div>
+                </div>
+                <div class="grid--cell">
+                    <svg class="sm:d-none" width="68" height="72" viewBox="0 0 68 72">
+                        <g fill="none" fill-rule="evenodd">
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M60.8750018,54.5578408 C60.0833353,54.8539848 59.1927106,54.9526994 58.4010441,54.9526994 C53.1675688,54.8983153 48.9639814,50.6317155 49.0002327,45.4109683 C49.036484,40.1902212 53.2989171,35.9821177 58.5326454,36.0000571 C63.7663738,36.0179966 67.999716,40.2552208 68,45.4760932 C67.9010417,46.660669 67.6041668,47.8452448 67.2083335,49.0298206 C66.4166671,51.3002575 63.8437511,57.6179949 63.7447927,57.8154242 L63.2500012,59 L60.8750018,54.5578408 Z M49.9895879,45.4760932 C49.9895879,50.1156817 53.7500036,53.7681237 58.4010441,53.7681237 C59.2916689,53.7681237 60.0833353,53.669409 60.8750018,53.2745504 L61.3697933,52.9784065 L62.9531263,56.1372752 C63.7447927,54.1629823 65.3281257,50.2143963 65.9218755,48.634962 C66.3177088,47.6478155 66.5156254,46.5619544 66.713542,45.4760932 C66.713542,40.8365048 62.9531263,37.1840628 58.3020858,37.1840628 C53.7500036,37.1840628 49.9895879,40.8365048 49.9895879,45.4760932 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M59.4255118,41 L63,49.8429487 L61.672333,49.8429487 L60.6510506,47.1602564 L56.7701778,47.1602564 L55.7488955,49.8429487 L54.5233567,49.8429487 L58.0978448,41 L59.4255118,41 Z M60.2425377,46.1666667 L58.7106142,41.9935897 L57.1786907,46.1666667 L60.2425377,46.1666667 Z M50.2339709,69.4166667 C48.0885365,69.9899443 45.7960837,69.3007049 44.3571673,67.6497711 C42.9182509,65.9988374 42.5940569,63.6858797 43.5260817,61.7204024 C44.4581065,59.7549252 46.477173,58.4936935 48.7020474,58.4871795 C51.8680226,58.4871795 54.4212284,60.9711538 54.4212284,64.0512821 C54.3191002,64.7467949 54.1148437,65.4423077 53.9105873,66.1378205 C53.3999461,67.4294872 51.8680226,71.1057692 51.7658944,71.3044872 L51.4595097,72 L50.2339709,69.4166667 Z M43.7998922,64.150641 C43.7998922,66.8333333 46.0467133,68.9198718 48.7020474,68.9198718 L48.8041756,68.9198718 C49.3148168,68.9198718 49.8254579,68.8205128 50.3360991,68.6217949 L50.6424838,68.4230769 L51.5616379,70.3108974 C52.0722791,69.1185897 52.9914332,66.8333333 53.2978179,65.9391026 C53.5020743,65.3429487 53.7063308,64.6474359 53.7063308,64.0512821 C53.7063308,61.3685897 51.4595097,59.2820513 48.8041756,59.2820513 L48.7020474,59.2820513 C45.9445851,59.2820513 43.7998922,61.4679487 43.7998922,64.150641 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M48.9766542,61.9017967 L51,67 L50.1906617,67 L49.5836579,65.4313221 L47.3579775,65.4313221 L46.7509738,67 L46.0428027,67 L48.0661486,61.9017967 L48.9766542,61.9017967 Z M49.4824906,64.9411102 L48.571985,62.5880933 L47.6614794,64.9411102 L49.4824906,64.9411102 Z M34.6108988,61.6076696 C34.0038951,61.8037544 33.295724,61.9017967 32.587553,61.9017967 C28.3548103,61.8478184 24.9632891,58.4882713 25.0003001,54.386074 C25.0373111,50.2838767 28.4889304,46.9823148 32.7219999,47.0000713 C36.9550694,47.0178278 40.377068,50.3482225 40.3774344,54.4505766 C40.2762671,55.4310003 40.0739325,56.411424 39.7704307,57.2938053 C39.1634269,59.058568 37.0389138,64.0587289 36.9377465,64.2548136 L36.5330773,65.2352373 L34.6108988,61.6076696 Z M25.8093445,54.3525342 C25.8093445,57.9801019 28.8443632,60.921373 32.587553,60.921373 C33.295724,61.0194154 34.0038951,60.8233307 34.6108988,60.5292036 L35.015568,60.3331188 L36.3307428,62.8822204 C37.0389138,61.3135425 38.2529213,58.274229 38.7587578,56.9016359 C39.0622596,56.1172969 39.2645942,55.2349156 39.3657615,54.3525342 C39.3657615,50.7249665 36.3307428,47.7836954 32.587553,47.7836954 C28.8443632,47.8817378 25.9105118,50.7249665 25.8093445,54.3525342 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M33.2155711,50.9217322 L36,58 L35.0055611,58 L34.21001,55.9064278 L31.2266932,55.9064278 L30.4311421,58 L29.4367032,58 L32.2211321,50.9217322 L33.2155711,50.9217322 Z M33.8122344,55.1088765 L32.6189077,51.8189774 L31.425581,55.1088765 L33.8122344,55.1088765 Z M15.5145585,49.2269357 C14.4206757,49.6257113 13.3267929,49.7254052 12.2329101,49.7254052 C5.47072551,49.6257113 -0.0981323823,44.0428522 0.00131150853,37.2636661 C0.100755399,30.48448 5.66961329,24.9016209 12.4317979,25.0013148 C19.1939824,25.1010087 24.6633964,30.5841739 24.6633964,37.36336 C24.4645087,38.9584626 24.166177,40.5535652 23.5695136,42.0489739 C22.5750747,45.0397913 19.1939824,53.2146922 18.9950947,53.6134678 L18.2989874,55.2085704 L15.5145585,49.2269357 Z M1.39352598,37.36336 C1.39352598,43.3449948 6.26627663,48.1303026 12.2329101,48.1303026 L12.332354,48.1303026 C13.4262368,48.1303026 14.6195635,47.9309148 15.6140024,47.5321391 L16.3101096,47.1333635 L18.3984313,51.3205078 C19.4923141,48.7284661 21.5806358,43.6440765 22.2767431,41.4508104 C22.7739625,40.0550957 23.0722942,38.6593809 23.271182,37.2636661 C23.271182,31.2820313 18.3984313,26.4967235 12.4317979,26.4967235 L12.332354,26.4967235 C6.36572052,26.4967235 1.49296987,31.3817252 1.39352598,37.36336 Z"></path>
+                            <path fill="#FFFFFF" fill-rule="nonzero" d="M13.4166667 32L18 44 16.2685185 44 14.9444444 40.3793103 9.9537037 40.3793103 8.62962963 44 7 44 11.5833333 32 13.4166667 32zM14.4351852 38.9310345L12.5 33.3448276 10.462963 38.9310345 14.4351852 38.9310345zM39.6505583 39.4778919C37.9338445 39.973835 36.1161474 40.2714009 34.2984504 40.2714009 22.9883355 40.1722123 13.8998503 31.0468586 14.0008334 19.9377325 14.1018166 8.82860636 23.3922681-.0983699988 34.7023831.000818627504 45.9115148.100007254 55 9.12617224 55 20.1361098 54.6970505 22.715014 54.1921346 25.1947297 53.2832861 27.6744454 51.6675554 32.534688 46.012498 45.825964 45.7095485 46.4210957L44.5987336 49 39.6505583 39.4778919zM36.0151643 10.9115675L33.0866524 10.9115675 25.714881 29.6582179 28.3404434 29.6582179 30.46109 24.0044662 38.5397435 24.0044662 40.66039 29.6582179 43.4879187 29.6582179 36.0151643 10.9115675zM37.7318781 21.921505L31.2689553 21.921505 34.5004167 13.1929059 34.6013999 13.1929059 37.7318781 21.921505z"></path>
+                        </g>
+                    </svg>
+                    <div>As melhores respostas recebem votos positivos e sobem para os primeiros lugares</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<script>
+    StackExchange.ready(function () {
+        StackExchange.Hero.init("nso", "a");
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;
+        }
+
+        $('.js-cta-button').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+
+        // TODO: we should review the class names and whatnot in use here. Older heroes use id selectors, the newer
+        // sticky question hero on SO has a .js-dismiss class instead, but it's apparently not used anywhere... 
+        // It's not great. Ideally we'd have a set of classes in the partials above that would correspond to 
+        // the behaviours we want here in a more clear way. 
+
+        // sticky question-page hero at the bottom of the page on SO
+        $('.js-dismiss').on('click', function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close", location: location }, true);
+            });
+            StackExchange.Hero.dismiss();
+            $(".js-dismissable-hero").fadeOut("fast");
+        });
+    });
+</script>
+
+
+    <div class="container">
+
+
+
+
+
+<div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar">
+    <div class="left-sidebar--sticky-container js-sticky-leftnav">
+            <nav role="navigation">
+                <ol class="nav-links">
+                    <li>    </li><li>
+        <a href="https://pt.stackoverflow.com/" class="pl8 js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+Home        </a>
+    </li>
+
+                    <li>
+                        <ol class="nav-links">
+                                <li class=" youarehere">
+        <a id="nav-questions" href="https://pt.stackoverflow.com/questions" class="pl8 js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">
+Perguntas        </a>
+    </li>
+
+    <li>
+        <a id="nav-tags" href="https://pt.stackoverflow.com/tags" class="pl8 js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">
+Tags        </a>
+    </li>
+    <li>
+        <a id="nav-users" href="https://pt.stackoverflow.com/users" class="pl8 js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">
+Usuários        </a>
+    </li>
+                                                    </ol>
+                    </li>
+                </ol>
+            </nav>
+    </div>
+    
+</div>
+
+
+        <div id="content" class="snippet-hidden">
+
+
+            
+
+
+<div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/br/img/apple-touch-icon.png?v=e57f45c9cfaf">
+
+    <div class="inner-content clearfix">
+    
+    
+
+            <div id="question-header" class="grid">
+                    <h1 itemprop="name" class="grid--cell fs-headline1 fl1 ow-break-word"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%c3%a3o-e-onde-est%c3%a3o-o-stack-e-heap" class="question-hyperlink">O que são e onde estão o “stack” e “heap”?</a></h1>
+
+            
+<div class="pl8 aside-cta grid--cell print:d-none">
+        <a href="https://pt.stackoverflow.com/questions/ask" class="ws-nowrap s-btn s-btn__primary">
+            Faça uma pergunta
+        </a>
+</div>
+
+        </div>
+            <div id="mainbar" role="main" aria-label="pergunta e respostas">
+
+            
+
+<div class="question" data-questionid="3797" id="question">
+
+    <style>.everyoneloves__top-leaderboard:empty,.everyoneloves__mid-leaderboard:empty,.everyoneloves__bot-mid-leaderboard:empty{                margin-bottom:0;
+}</style>
+        <div id="dfp-tlb" class="everyonelovesstackoverflow everyoneloves__top-leaderboard" data-google-query-id="CNC8qfm4heMCFc8IswAdT5wGDA" data-clc-prefilled="true" data-clc-ready="true" style="display: none;"><div id="google_ads_iframe_/248424177/pt.stackoverflow.com/lb/question-pages_0__container__" style="border: 0pt none; width: 728px; height: 90px;"></div></div>
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="3797">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta pergunta mostra esforço de pesquisa; é útil e clara" aria-pressed="false" aria-label="votar a favor" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10 2 26z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="182">182</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta pergunta não mostra nenhum esforço de pesquisa; ela não é clara ou não é útil" aria-pressed="false" aria-label="votar contra" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26 2 10z"></path></svg></button>
+
+        <button class="js-favorite-btn s-btn s-btn__unset c-pointer py8" aria-pressed="false" aria-label="favorita (69)" data-selected-classes="fc-yellow-600">
+            <svg aria-hidden="true" class="svg-icon iconStar" width="18" height="18" viewBox="0 0 18 18"><path d="M9 12.65l-5.29 3.63 1.82-6.15L.44 6.22l6.42-.17L9 0l2.14 6.05 6.42.17-5.1 3.9 1.83 6.16L9 12.65z"></path></svg>
+            <div class="js-favorite-count mt8" data-value="69">69</div>
+        </button>
+
+
+</div>
+
+            </div>
+
+            
+<div class="postcell post-layout--right">
+    
+    <div class="post-text" itemprop="text">
+
+<p>O que são esses tais de <em>stack</em> e <em>heap</em> que tanto se fala em gerenciamento de memória?</p>
+
+<p>Isso realmente são porções da memória como algumas pessoas falam ou é apenas um conceito abstrato para facilitar o entendimento da forma como se gerencia a memória?</p>
+
+<p>Algum deles é mais rápido que o outro? Se um é claramente mais rápido, por que existe o outro?</p>
+
+<p>Faz diferença se estou usando, por exemplo, Assembly, C, Java, ou Javascript, Windows ou Linux? Isso é controlado pela "linguagem" ou pelo sistema operacional?</p>
+
+<p>Enfim, queria entender melhor esse conceito que parece ser mal compreendido pelos programadores. Seria muito útil uma explicação para quem está começando ou aprendeu isso de forma errada.</p>
+    </div>
+
+        <div class="post-taglist grid gs4 gsy fd-column">
+            <div class="grid ps-relative d-block">
+                <a href="https://pt.stackoverflow.com/questions/tagged/mem%c3%b3ria" class="post-tag js-gps-track" title="mostrar perguntas com a tag &#39;memória&#39;" rel="tag">memória</a> <a href="https://pt.stackoverflow.com/questions/tagged/gerenciamento-de-mem%c3%b3ria" class="post-tag js-gps-track" title="mostrar perguntas com a tag &#39;gerenciamento-de-memória&#39;" rel="tag">gerenciamento-de-memória</a> <a href="https://pt.stackoverflow.com/questions/tagged/stack" class="post-tag js-gps-track" title="mostrar perguntas com a tag &#39;stack&#39;" rel="tag">stack</a> <a href="https://pt.stackoverflow.com/questions/tagged/heap" class="post-tag js-gps-track" title="mostrar perguntas com a tag &#39;heap&#39;" rel="tag">heap</a> 
+            </div>
+        </div>
+
+    <div class="mb0 ">
+        <div class="mt16 pt4 grid gs8 gsy fw-wrap jc-end ai-start">
+            <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://pt.stackoverflow.com/q/3797" title="permalink curto para esta pergunta" class="short-link" itemprop="url" id="link-post-3797">compartilhar</a><span class="lsep">|</span><a href="https://pt.stackoverflow.com/posts/3797/edit" class="suggest-edit-post" title="">melhorar esta pergunta</a></div>
+            </div>
+
+                <div class="post-signature grid--cell">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://pt.stackoverflow.com/posts/3797/revisions" title="mostrar todas as edições desta publicação">editada <span title="2015-04-01 13:48:18Z" class="relativetime">1/04/15 às 13:48</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span class="d-none" itemprop="name">Maniero</span>
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>                </div>
+            <div class="post-signature owner grid--cell">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        perguntada <span title="2014-02-02 19:19:38Z" class="relativetime">2/02/14 às 19:19</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/101/maniero"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/23y8L.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://pt.stackoverflow.com/users/101/maniero">Maniero</a><span class="mod-flair" title="moderador">♦</span><span class="d-none" itemprop="name">Maniero</span>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação 335.647" dir="ltr">336mil</span><span title="49 medalhas de ouro" aria-hidden="true"><span class="badge1"></span><span class="badgecount">49</span></span><span class="v-visible-sr">49 medalhas de ouro</span><span title="868 medalhas de prata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">868</span></span><span class="v-visible-sr">868 medalhas de prata</span><span title="1293 medalhas de bronze" aria-hidden="true"><span class="badge3"></span><span class="badgecount">1293</span></span><span class="v-visible-sr">1293 medalhas de bronze</span>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+                
+    <div class="post-layout--right">
+	    <div id="comments-3797" class="comments js-comments-container  dno" data-post-id="3797">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-3797" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comentários para pedir mais informações ou sugerir melhorias. Evite responder perguntas em comentários.">comentar</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="ver todos os comentários desta publicação" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" onclick=""></a>
+        </div>         
+    </div>        </div>
+</div>
+
+
+
+            <div id="answers">
+
+                <a name="tab-top"></a>
+                <div id="answers-header">
+                    <div class="subheader answers-subheader">
+                        <h2 data-answercount="4">
+                                4 Respostas
+                            <span style="display:none;" itemprop="answerCount">4</span>
+                        </h2>
+                        <div>
+                            
+<div id="tabs">
+        <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%c3%a3o-e-onde-est%c3%a3o-o-stack-e-heap?answertab=active#tab-top" data-nav-xhref="" title="Respostas com a atividade mais recente primeiro" data-value="active" data-shortcut="A">
+            ativas</a>
+        <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%c3%a3o-e-onde-est%c3%a3o-o-stack-e-heap?answertab=oldest#tab-top" data-nav-xhref="" title="Respostas na ordem em que foram fornecidas" data-value="oldest" data-shortcut="O">
+            mais antigas</a>
+        <a class="youarehere is-selected " href="https://pt.stackoverflow.com/questions/3797/o-que-s%c3%a3o-e-onde-est%c3%a3o-o-stack-e-heap?answertab=votes#tab-top" data-nav-xhref="" title="Respostas com a pontuação mais alta primeiro" data-value="votes" data-shortcut="V">
+            votos</a>
+    </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+  
+<a name="15698"></a>
+<div id="answer-15698" class="answer accepted-answer" data-answerid="15698" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="15698">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta é útil" aria-pressed="false" aria-label="votar a favor" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10 2 26z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="178">178</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta não é útil" aria-pressed="false" aria-label="votar contra" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26 2 10z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4" title="carregando quando esta resposta foi aceita..." tabindex="0" role="note" aria-label="aceitos"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+<div class="answercell post-layout--right">
+    
+    <div class="post-text" itemprop="text">
+<p>Um <em>stack</em> ou pilha, neste contexto, é uma forma otimizada para organizar dados na memória alocados em sequência e abandonados (sim, normalmente não há desalocação) em sequência invertida a da entrada.</p>
+
+<p><a href="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/lN2Fx.png" rel="noreferrer"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/lN2Fx.png" alt="Pilha"></a></p>
+
+<p>Um <em>heap</em> ou monte (ok, ninguém traduz isso) é a organização de memória mais flexível que permite o uso de qualquer área lógica disponível.</p>
+
+<p><a href="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/iwwjW.jpg" rel="noreferrer"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/iwwjW.jpg" alt="Monte"></a></p>
+
+<h1>De que pilha estamos falando?</h1>
+
+<p>Existem alguns conceitos de pilha muito difundidos em computação, para citar alguns:</p>
+
+<ul>
+<li>Existe a <strong>pilha de execução</strong> de alguma arquitetura onde as instruções e dados vão sendo empilhados e após executar algo ali, ocorre o desempilhamento.</li>
+<li>Existe a <strong>pilha de chamadas de funções</strong>, que se confunde com o gerenciamento de memória, onde as funções vão sendo chamadas e empilhadas e quando sua execução termina, ela sai da pilha.</li>
+<li>Existe a <a href="https://pt.stackoverflow.com/questions/8972/como-funciona-e-se-usa-o-stack-em-c/15063#15063"><strong>estrutura de dados genérica</strong></a> que empilha dados diversos. <a href="https://pt.stackoverflow.com/questions/8972/como-funciona-e-se-usa-o-stack-em-c/15063#15063">Exemplo em C#</a>.</li>
+</ul>
+
+<h1>Conceito abstrato</h1>
+
+<p>Os dois conceitos da pergunta são abstratos. Não existe fisicamente uma área da memória específica para o <em>stack</em> (e muito menos sua área é fisicamente empilhada) e não existe uma área reservada para o <em>heap</em>, pelo contrário, ele costuma ser bastante fragmentado. Usamos o conceito para entender melhor o funcionamento e suas implicações, principalmente no caso da pilha.</p>
+
+<p>A maioria das arquiteturas de computadores modernos e populares não tem grandes facilidades para manipular esse <em>stack</em> de memória (costuma ter só o registrador de ponteiro de pilha), assim como o <em>heap</em>, apesar que neste caso, instruções que ajudam manipular memória virtual de uma certa forma ajudam a organizar o <em>heap</em>.</p>
+
+<h1>Ficando um pouco mais concreto</h1>
+
+<p>Já o sistema operacional está bem ciente destes conceitos e é fundamental que eles possuam alguma forma, mesmo que limitada, para manipular a memória das aplicações. Principalmente nos sistemas modernos e de utilidade geral. Os sistemas modernos possuem um gerenciamento complexo através do que se convencionou chamar de memória virtual que também é um conceito abstrato, muitas vezes mal compreendido.</p>
+
+<h1>Onde mexemos diretamente</h1>
+
+<p>Em <em>assembly</em> ou C é muito comum ter contato com esse gerenciamento de memória. Em <em>assembly</em> é comum manipular o <em>stack</em> quase diretamente e em ambas linguagens pelo menos a alocação e desalocação do <em>heap</em> devem ser feitas manualmente através da API do sistema operacional. Em C o <em>stack</em> é gerenciado pelo compilador, salvo alguma operação incomum que seja necessária.</p>
+
+<p>Nada impede que se use alguma biblioteca que abstraia essa manipulação, mas isso só é comum em linguagens de mais alto nível. De fato é muito comum que outras linguagens usem internamente a API do OS para fazer o gerenciamento pesado da memória mas o acesso da memória no "varejo" é feito por um gerenciador próprio, em geral chamado de <em>garbage collector</em> através de técnicas de contagem de referências para um objeto no <em>heap</em> (há quem considere que isto não é uma técnica de <em>garbage collector</em>) ou de verificação posterior se há referências para o objeto no <em>heap</em>. Mesmo usando uma biblioteca mais abstrata, os conceitos permanecem.</p>
+
+<p>Quanto mais alto nível, menos precisam gerenciar tudo isso, mas entender o funcionamento geral é importante em todas linguagens.</p>
+
+<p>Linguagens que não precisam de performance pode deixar tudo no <em>heap</em> e "facilitar".</p>
+
+<h1>Pilha</h1>
+
+<h3>Alocação</h3>
+
+<p>Em condições normais, <strong>o <em>stack</em> é alocado no início da aplicação</strong>, mais precisamente no início da <em>thread</em>, mesmo que a aplicação só tenha a <em>thread</em> principal.</p>
+
+<p>O <em>stack</em> é uma porção contígua de memória reservada para empilhar os dados necessários durante a execução de blocos de código.</p>
+
+<p>Cada necessidade de alocação é um trecho do <em>stack</em> que vai sendo usado sempre em sequência determinado por um marcador, ou seja, um apontador, um <strong>ponteiro</strong>, se "movimenta" para indicar que uma nova parte na sequência desta porção reservada está comprometida.</p>
+
+<p>Quando algo alocado não é mais necessário, este marcador se movimenta em direção contrária a sequência de dados indicando que alguns desses dados podem ser descartados (sobrepostos com novos dados).</p>
+
+<p>A alocação de cada trecho da memória não existe no <em>stack</em>, é apenas o movimento deste ponteiro indicando que aquela área será usada por algum dado.</p>
+
+<p>A grosso modo podemos dizer que a aplicação tem total controle sobre o *stack, exceto quando acaba o espaço disponível nele.</p>
+
+<p>Existem recursos para alterar manualmente o tamanho do <em>stack</em>, mas isso é incomum.</p>
+
+<h1>Funcionamento</h1>
+
+<p>A pilha funciona usado uma forma LIFO (Last in First Out) ou UEPS (Último a entrar, primeiro a sair).</p>
+
+<p>O escopo de uma variável costuma definir o tempo de alocação no <em>stack</em>. Os dados usados como parâmetros e retorno de funções são alocados no <em>stack</em>. Por isso a pilha de chamadas de função se confunde com a pilha da memória.</p>
+
+<p>Podemos dizer que os parâmetros são as primeiras variáveis de uma função alocadas no <em>stack</em>. O acesso aos dados no <em>stack</em> costuma ser feito de forma direta.</p>
+
+<p><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/9UshP.png" alt="alocação stack"></p>
+
+<p>Deu para entender que cada <em>thread</em> tem seu próprio <em>stack</em>, certo? E o tamanho do <em>stack</em> de cada <em>thread</em> criada pode ter seu tamanho definido antes da criação. Um valor <em>default</em> costuma ser usado.</p>
+
+<p>O <em>stack</em> é considerado uma forma <strong>estática</strong> de alocação. Embora tecnicamente exista outra área da memória que realmente seja estática, que seja alocada antes do início da execução. A área efetivamente estática não pode ser manipulada, não pode ser escrita (pelo menos não deveria poder). O <em>stack</em> em si é estático, apesar de que seus dados não sejam, afinal eles vão sendo colocados e abandonados conforme o seu uso.</p>
+
+<h1>Decisão sobre onde alocar</h1>
+
+<p>Assim como no <em>heap</em>, não é possível alocar dados no <em>stack</em> antes de saber seu tamanho (não precisa saber na hora de compilar, mas sim na hora de executar a alocação). Mas se o tamanho for indeterminado em tempo de compilação ou pode ser determinado como <strong>possivelmente</strong> grande (talvez poucas dezenas de <em>bytes</em>), provavelmente a alocação deve ocorrer no <em>heap</em>.</p>
+
+<p>Linguagens de alto nível pré-determinam isto. Outras deixam o programador ter mais controle, podendo até mesmo abusar do <em>stack</em> se for útil e ele souber o que está fazendo.</p>
+
+<h3>Stack overflow</h3>
+
+<p>O famoso <em>stack overflow</em> ocorre quando você tenta alocar algo no <em>stack</em> e não há espaço reservado disponível. Também pode haver <em>overflow</em> de um dado em cima de outro que venha a seguir na pilha.</p>
+
+<h3>Outra pilha</h3>
+
+<p>Também existe uma pilha de chamadas que é onde são armazenados os endereços para onde o ponteiro da pilha deve retornar quando termina a execução de uma função. Execuções recursivas descontroladas causam <em>stack overflow</em>.</p>
+
+<h1>Heap</h1>
+
+<h3>Alocação</h3>
+
+<p>O <em>heap</em>, ao contrário do <em>stack</em>, não impõe um modelo, um padrão de alocação de memória. Isso não é muito eficiente mas é bastante flexível.</p>
+
+<p>O <em>heap</em> é considerado <strong>dinâmico</strong>. Em geral você aloca ou desaloca pequenos trechos de memória, só para a necessidade do dado. Esta alocação pode ocorrer fisicamente em qualquer parte livre da memória.</p>
+
+<p>O gerenciamento de memória virtual do sistema operacional, auxiliado por instruções do processador, ajudam a organizar isto.</p>
+
+<p>Efetivamente estas alocações reais costumam ocorrer em blocos de tamanho fixo chamados de páginas. Isso evita a aplicação fazer dezenas ou centenas de pequenas alocações que fragmentaria a memória de forma extrema.</p>
+
+<h3>Desalocação</h3>
+
+<p>A desalocação do <em>heap</em> costuma acontecer:</p>
+
+<ul>
+<li>manualmente (correndo o risco de bugs), embora isto não esteja disponível para algumas linguagens;</li>
+<li>através do tal <em>garbage collector</em> que identifica quando uma parte do <em>heap</em> não é mais necessária;</li>
+<li>quando uma aplicação se encerra.</li>
+</ul>
+
+<h3>Depende de implementação</h3>
+
+<p>Até existem linguagens que possuem <em>heaps</em> especializados que podem ter um comportamento um pouco diferente, mas vamos simplificar para os casos comuns.</p>
+
+<h1>Conceito abstrato</h1>
+
+<p>Fica claro que o <em>heap</em> não é uma área da memória. Mesmo conceituando abstratamente, ele é um conjunto de pequenas áreas da memória. Fisicamente ele costuma ser fragmentado por toda a memória. Essas partes são muito flexíveis no tamanho e tempo de vida.</p>
+
+<p>Por razões de segurança é bom saber que desalocar é um conceito abstrato também. Costuma ser possível acessar dados de uma aplicação mesmo depois que ela tenha terminado. O conteúdo só é apagado por pedido manual ou quando uma área disponível seja escrita novamente.</p>
+
+<h3>Custo do <em>heap</em></h3>
+
+<p>A <strong>alocação no <em>heap</em> "custa" caro</strong>. Muitas tarefas devem ser realizados pelo sistema operacional para garantir a perfeita alocação de uma área para um trecho dele, principalmente em ambientes concorrentes, muito comuns hoje em dia. Desalocar, ou disponibilizar de volta uma área também tem seu custo.</p>
+
+<p>Até existem formas de evitar as chamadas ao sistema operacional para cada alocação necessária, mas ainda assim o "custo" de processamento disto é considerado alto. Manter listas (em geral ligadas) de áreas ou páginas alocadas não é algo trivial para o processador, pelo menos comparando com o movimento do ponteiro que é necessário no <em>stack</em>.</p>
+
+<h3>Funcionamento</h3>
+
+<p><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/0Obi0.png" alt="alocação heap"></p>
+
+<p>O <em>heap</em> é acessado através de ponteiros. Mesmo em linguagens que não exista o conceito de ponteiros disponíveis para o programador, isto é realizado internamente.</p>
+
+<p><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/NS0k7.jpg" alt="exemplo de alocação geral"></p>
+
+<p>Note que no exemplo, um objeto do tipo <code>class1</code> é alocado no <em>heap</em>. Mas há uma referência para este objeto, que é alocada no <em>stack</em>.</p>
+
+<p>Esta alocação é necessária porque o tamanho do objeto pode ser muito grande para caber no <em>stack</em> (ou pelo menos ocupar uma parte considerável), e porque ele pode sobreviver por mais tempo do que a função que criou ele.</p>
+
+<p>Se estivesse no <em>stack</em> a única forma de mantê-lo "vivo" seria copiando para a função chamadora, e assim sucessivamente para todas as outras, onde ele seja necessário. Imagine como isso sai "caro". Da forma como é organizado, só a referência, que é curta, é que precisa ser copiada.</p>
+
+<h1>Conclusão</h1>
+
+<p>Então o <em>runtime</em> de uma linguagem de programação se comunica com o OS para gerenciar a memória. Se esse <em>runtime</em> é exposto para o programador depende do objetivo da linguagem. Em linguagens chamadas "gerenciadas", tudo isso ocorre, os dois conceitos existem e precisam ser entendidos, mas você não tem que manipular manualmente o <em>heap</em>. Ele passa ser tão transparente quanto o <em>stack</em> é em outras linguagens mais baixo nível (exceto <em>assembly</em>).</p>
+
+<p>A alocação de ambos costumam ser realizados na RAM, mas nada impede que seja alocado em outro local. A memória virtual pode colocar todo ou parte do <em>stack</em> ou do <em>heap</em> em memória de massa, por exemplo.</p>
+
+<p>"Roubei" algumas imagens <a href="https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap">desta resposta do SO</a> que são muito boas para ilustrar tudo isso.</p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2014-05-13T17:59:04"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://pt.stackoverflow.com/a/15698" title="permalink curto para esta resposta" class="short-link" itemprop="url" id="link-post-15698">compartilhar</a><span class="lsep">|</span><a href="https://pt.stackoverflow.com/posts/15698/edit" class="suggest-edit-post" title="">melhorar esta resposta</a></div>                    </div>
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://pt.stackoverflow.com/posts/15698/revisions" title="mostrar todas as edições desta publicação">editada <span title="2017-11-26 12:53:42Z" class="relativetime">26/11/17 às 12:53</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/41056/vnbrs"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/e56208a8d38b336b00b119302898fd50.jpeg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://pt.stackoverflow.com/users/41056/vnbrs">vnbrs</a>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação 11.927" dir="ltr">11,9mil</span><span title="3 medalhas de ouro" aria-hidden="true"><span class="badge1"></span><span class="badgecount">3</span></span><span class="v-visible-sr">3 medalhas de ouro</span><span title="35 medalhas de prata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">35</span></span><span class="v-visible-sr">35 medalhas de prata</span><span title="100 medalhas de bronze" aria-hidden="true"><span class="badge3"></span><span class="badgecount">100</span></span><span class="v-visible-sr">100 medalhas de bronze</span>
+        </div>
+    </div>
+</div>    </div>
+            
+
+
+    <div class="post-signature owner grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        respondida <span title="2014-05-13 17:59:04Z" class="relativetime">13/05/14 às 17:59</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/101/maniero"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/23y8L.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://pt.stackoverflow.com/users/101/maniero">Maniero</a><span class="mod-flair" title="moderador">♦</span><span class="d-none" itemprop="name">Maniero</span>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação 335.647" dir="ltr">336mil</span><span title="49 medalhas de ouro" aria-hidden="true"><span class="badge1"></span><span class="badgecount">49</span></span><span class="v-visible-sr">49 medalhas de ouro</span><span title="868 medalhas de prata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">868</span></span><span class="v-visible-sr">868 medalhas de prata</span><span title="1293 medalhas de bronze" aria-hidden="true"><span class="badge3"></span><span class="badgecount">1293</span></span><span class="v-visible-sr">1293 medalhas de bronze</span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+    
+</div>
+
+    
+    <div class="post-layout--right">
+	    <div id="comments-15698" class="comments js-comments-container " data-post-id="15698">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-709131" class="comment js-comment " data-comment-id="709131">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">você copiou e colou o conteúdo</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/15734/itasouza" title="2.018 reputação" class="comment-user">itasouza</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment709131_15698"><span title="2018-12-31 13:45:00Z" class="relativetime-clean">31/12/18 às 13:45</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+    <li id="comment-709134" class="comment js-comment " data-comment-id="709134">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">@itasouza cite de onde eu copiei.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/101/maniero" title="335.647 reputação" class="comment-user owner">Maniero<span class="mod-flair" title="moderador">♦</span></a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment709134_15698"><span title="2018-12-31 13:56:36Z" class="relativetime-clean">31/12/18 às 13:56</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+    <li id="comment-709135" class="comment js-comment " data-comment-id="709135">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">precisa de fonte? Olha o tamanho da resposta, você teria que ficar o dia todo só para desenvolver uma reposta desta, está resposta não foi criada por você, foram traduzidas de material em inglês de diversas fontes, praticamente todas as ruas respostas são um livro, isso e ser MVP? você foi escolhido moderador porque a comunidade votou em você, mais não próxima eleição você não terá meu voto.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/15734/itasouza" title="2.018 reputação" class="comment-user">itasouza</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment709135_15698"><span title="2018-12-31 14:07:11Z" class="relativetime-clean">31/12/18 às 14:07</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+    <li id="comment-709137" class="comment js-comment " data-comment-id="709137">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+                    <span title="número de votos para &#39;comentários úteis&#39; recebidos" class="cool">1</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">@itasouza quando você faz uma acusação de plágio (algo grave e pode estar incorrendo em crime se não puder provar) você precisa dizer de onde é o plágio. Se eu fiquei o dia todo ou eu levei 30 minutos não faz algo ser plágio ou não e é algo que cabe só a mim. Se isso é ser MVP é uma questão que a MIcrosoft tem que decidir não? Algumas pessoas já foram e não são mais, eu continuo sendo porque a Microsoft continua confiando em mim. Ainda aguardo as fontes para sua acusação não passar de leviana para falsa e mentirosa.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/101/maniero" title="335.647 reputação" class="comment-user owner">Maniero<span class="mod-flair" title="moderador">♦</span></a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment709137_15698"><span title="2018-12-31 14:28:22Z" class="relativetime-clean">31/12/18 às 14:28</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-15698" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comentários para pedir mais informações ou sugerir melhorias. Evite comentários como “+1” ou “obrigado”.">comentar</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="ver todos os comentários desta publicação" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" onclick=""></a>
+        </div>         
+    </div>    </div>
+</div>
+<div id="dfp-mlb" class="everyonelovesstackoverflow everyoneloves__mid-leaderboard" data-google-query-id="CIbOyPm4heMCFc8IswAdT5wGDA" data-clc-prefilled="true" data-clc-ready="true" style=""><div id="google_ads_iframe_/248424177/pt.stackoverflow.com/mlb/question-pages_0__container__" style="border: 0pt none; display: inline-block; width: 728px; height: 90px;"><iframe frameborder="0" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/container.html" id="google_ads_iframe_/248424177/pt.stackoverflow.com/mlb/question-pages_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="2" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div></div>
+  
+<a name="3801"></a>
+<div id="answer-3801" class="answer" data-answerid="3801" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="3801">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta é útil" aria-pressed="false" aria-label="votar a favor" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10 2 26z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="67">67</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta não é útil" aria-pressed="false" aria-label="votar contra" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26 2 10z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="carregando quando esta resposta foi aceita..." tabindex="0" role="note" aria-label="aceitos"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+<div class="answercell post-layout--right">
+    
+    <div class="post-text" itemprop="text">
+<p>A tradução de "stack" é pilha, isto é, uma estrutura de dados em que o último elemento a entrar é o primeiro a sair (pense numa pilha de livros). A pilha, portanto, funciona de forma bastante simples - elementos são adicionados/removidos de forma organizada/restrita, o que permite que os processadores sejam otimizados para realizar as operações envolvidas (e.g. operadores intel possuem registradores dedicados para guardar o endereço da base e do topo da pilha). Por isso, se pode dizer que a pilha é mais rápida que a heap.</p>
+
+<p>Um conceito relacionado à pilha é o de "call frame". Quando funções são chamadas, ponteiros e parâmetros são gravados no topo da pilha de modo que a função chamada tenha acesso aos parametros para executar e depois o programa possa continuar executando do ponto onde houve a chamada de função. Novamente, o processador pode oferecer suporte para isso (comando call do assembly para 8086, por exemplo).</p>
+
+<p>Eu não lembro de ter visto tradução para o termo "heap", mas a principal característica da porção de memória dedicada a um programa a que se refere como "heap" é que ela é destinada à alocação dinâmica de memória (famosos alloc()/malloc()/realloc() em C/new em C++ por exemplo). É justamente pelo fato de que os elementos alocados na heap podem ser alocados/desalocados a qualquer momento e em qualquer ordem que o acesso à heap tende a ser mais lento, podendo levar à fragmentação de memória (espaços perdidos entre regiões de memória utilizada).</p>
+
+<p>Como já mencionei, os processadores intel oferecem suporte para controle da pilha diretamente. Para outros processadores, o sistema operacional pode precisar cuidar disso. Em qualquer caso, quando o programa/thread é inicializado, cabe ao sistema operacional reservar uma porção de memória para o programa/thread. Em muitos casos essa área é "compartilhada" entre a pilha e a heap, uma delas começa dos menor endereço e a outra começa do maior endereço e as duas crescem uma em direção à outra. Quando uma encontra à outra, ocorre uma OutOfMeMory exception ou algo do gênero.</p>
+
+<p>Em assembly/C, o programador deve estar ciente dessas diferenças e estará diretamente envolvido na escolha de onde alocar cada variável. Em linguagems mais "modernas", como Java, que tem conveniências como garbage collection, os conceitos ainda se aplicam, mas é mais fácil um programador viver sem saber os detalhes do que acontece embaixo do capô.</p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2014-02-02T20:00:34"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://pt.stackoverflow.com/a/3801" title="permalink curto para esta resposta" class="short-link" itemprop="url" id="link-post-3801">compartilhar</a><span class="lsep">|</span><a href="https://pt.stackoverflow.com/posts/3801/edit" class="suggest-edit-post" title="">melhorar esta resposta</a></div>                    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info ">
+    <div class="user-action-time">
+        respondida <span title="2014-02-02 20:00:34Z" class="relativetime">2/02/14 às 20:00</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/4428/fpessoa"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/566a7c78607681bd3fa2ef3fc6196d9c.jpeg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://pt.stackoverflow.com/users/4428/fpessoa">fpessoa</a><span class="d-none" itemprop="name">fpessoa</span>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação " dir="ltr">771</span><span title="4 medalhas de prata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">4</span></span><span class="v-visible-sr">4 medalhas de prata</span><span title="2 medalhas de bronze" aria-hidden="true"><span class="badge3"></span><span class="badgecount">2</span></span><span class="v-visible-sr">2 medalhas de bronze</span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+    
+</div>
+
+    
+    <div class="post-layout--right">
+	    <div id="comments-3801" class="comments js-comments-container " data-post-id="3801">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-4608" class="comment js-comment " data-comment-id="4608">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+                    <span title="número de votos para &#39;comentários úteis&#39; recebidos" class="cool">3</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">+1, boa resposta. Falta so' indicar que e' reservada uma stack para cada uma das threads, enquanto que a heap e' partilhada por todas as threads dentro do mesmo processo.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/2360/dcastro" title="6.227 reputação" class="comment-user">dcastro</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment4608_3801"><span title="2014-02-02 20:28:00Z" class="relativetime-clean">2/02/14 às 20:28</span></a></span>
+                        <span title="Este comentário foi editado 1 vez">
+                            <svg aria-hidden="true" class="svg-icon va-text-bottom o50 iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z"></path></svg>
+                        </span>
+                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-3801" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comentários para pedir mais informações ou sugerir melhorias. Evite comentários como “+1” ou “obrigado”.">comentar</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="ver todos os comentários desta publicação" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" onclick=""></a>
+        </div>         
+    </div>    </div>
+</div>
+
+  
+<a name="49274"></a>
+<div id="answer-49274" class="answer" data-answerid="49274" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="49274">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta é útil" aria-pressed="false" aria-label="votar a favor" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10 2 26z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="40">40</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta não é útil" aria-pressed="false" aria-label="votar contra" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26 2 10z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="carregando quando esta resposta foi aceita..." tabindex="0" role="note" aria-label="aceitos"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+<div class="answercell post-layout--right">
+    
+    <div class="post-text" itemprop="text">
+<p>Gostaria de apresentar aqui meu entendimento menos técnico do que as repostas dadas acima mas que podem ser de ajuda ao programador que quer apenas saber do que se trata sem se aprofundar no assunto.</p>
+
+<p>A memória Stack é utilizada para armazenar argumentos de uma função, procedure, método. Sendo ela estática pré-alocada no start do programa e desalocada no final, e por isso é mais veloz do que a memória Heap que precisa ser alocada/desalocada a cada momento que for necessário.</p>
+
+<p>A alocação da memória stack normalmente é feita uma única alocação de um grande bloco e para cada argumento de função/método/procedure é destinada uma parte ou pedaço dessa memória. O Fato de a memória stack ter tamanho fixo especificado no projeto, faz dela potencial fonte de problemas se no caso for especificado tamanho menor do que se pretende usar no programa.</p>
+
+<p>Por isso era comum ver no passado (menos hoje em dia) as famosas mensagems de erro que dá título a este site <strong>"Stack Overflow"</strong>, significando que a memória stack acabou. Isso ocorre ou ocorria muito nas chamadas de funções em cascata (função que chama outra, que chama outra, que...)  e também quando há chamadas recursivas de uma mesma função/procedure/método em que não há o controle de término ou que o término da mesma usaria tanta memória stack que seria necessário aumentar seu tamanho e recompilar o programa. </p>
+
+<p>Hoje em dia é raro ocorrer o famoso <strong>"stack overflow"</strong> devido aos compiladores de hoje reservarem como default uma quantidade bem grande de stack em seu projeto, o que não ocorria no passado em que computadores possuiam bem menos memória do que os atuais, não sendo possível alocar muita quantidade de stack naqueles tempos remotos.</p>
+
+<p>A memória Heap é muito usada para alocação de objetos e desalocados no final do seu uso.  A memória num conceito genérico pode ser estática ou dinâmica, a estática (também chamada de Global) usa o Data Segment(processadores intel 80x86), já a dinâmica usa o Heap e é isso que diferencia uma da outra.</p>
+
+<p>Mas qual a diferença do Heap para a Stack ? Enquanto a stack é usada por funções/métodos/procedures, a heap pode ser usada em qualquer ponto do programa normalmente em criação de objetos ou ponteiros para alguma estrutura de dados.</p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2015-02-03T18:39:05"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://pt.stackoverflow.com/a/49274" title="permalink curto para esta resposta" class="short-link" itemprop="url" id="link-post-49274">compartilhar</a><span class="lsep">|</span><a href="https://pt.stackoverflow.com/posts/49274/edit" class="suggest-edit-post" title="">melhorar esta resposta</a></div>                    </div>
+    <div class="post-signature grid--cell fl0">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://pt.stackoverflow.com/posts/49274/revisions" title="mostrar todas as edições desta publicação">editada <span title="2015-11-19 12:39:24Z" class="relativetime">19/11/15 às 12:39</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info ">
+    <div class="user-action-time">
+        respondida <span title="2015-02-03 18:39:05Z" class="relativetime">3/02/15 às 18:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/21208/claudio-ferreira"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/picture" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://pt.stackoverflow.com/users/21208/claudio-ferreira">Claudio Ferreira</a><span class="d-none" itemprop="name">Claudio Ferreira</span>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação " dir="ltr">779</span><span title="6 medalhas de prata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">6</span></span><span class="v-visible-sr">6 medalhas de prata</span><span title="7 medalhas de bronze" aria-hidden="true"><span class="badge3"></span><span class="badgecount">7</span></span><span class="v-visible-sr">7 medalhas de bronze</span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+    
+</div>
+
+    
+    <div class="post-layout--right">
+	    <div id="comments-49274" class="comments js-comments-container " data-post-id="49274">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-99718" class="comment js-comment " data-comment-id="99718">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+                    <span title="número de votos para &#39;comentários úteis&#39; recebidos" class="cool">1</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Não deixa de ser uma explicação, ela não está errada, mas dá indicações "enganosas" de como é funcionamento destes conceitos.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/101/maniero" title="335.647 reputação" class="comment-user owner">Maniero<span class="mod-flair" title="moderador">♦</span></a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment99718_49274"><span title="2015-02-03 18:45:00Z" class="relativetime-clean">3/02/15 às 18:45</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+    <li id="comment-99720" class="comment js-comment " data-comment-id="99720">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+                    <span title="número de votos para &#39;comentários úteis&#39; recebidos" class="cool">3</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Entendo, mas como disse no início, não pretendi me aprofundar muito tecnicamente, já que existia outras respostas acima mais completas na parte técnica. Procurei focar mais na utilização e como que funciona no processador 80x88.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/21208/claudio-ferreira" title="779 reputação" class="comment-user">Claudio Ferreira</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment99720_49274"><span title="2015-02-03 18:52:39Z" class="relativetime-clean">3/02/15 às 18:52</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-49274" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comentários para pedir mais informações ou sugerir melhorias. Evite comentários como “+1” ou “obrigado”.">comentar</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="ver todos os comentários desta publicação" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" onclick=""></a>
+        </div>         
+    </div>    </div>
+</div>
+
+  
+<a name="59493"></a>
+<div id="answer-59493" class="answer" data-answerid="59493" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="59493">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta é útil" aria-pressed="false" aria-label="votar a favor" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10 2 26z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="37">37</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="Esta resposta não é útil" aria-pressed="false" aria-label="votar contra" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26 2 10z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="carregando quando esta resposta foi aceita..." tabindex="0" role="note" aria-label="aceitos"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+<div class="answercell post-layout--right">
+    
+    <div class="post-text" itemprop="text">
+<h2>Definições</h2>
+
+<h3>Pilha</h3>
+
+<p>Na pilha, são guardados objetos alocados dentro de escopos de funções incluindo variáveis locais das funções, argumentos, endereços das áreas de código sendo executadas antes de outras chamadas de função, retorno de funções.</p>
+
+<p>A alocação de memória ocorre de forma sequencial e, como a posição desses objetos é conhecida durante o tempo de compilação, nós podemos atribuir nomes próprios a esses objetos e acessá-los diretamente. Quando um objeto que é alocado no <em>stack</em> sai de seu respectivo escopo, o objeto é automaticamente deletado. Então você não precisa se preocupar com alocação e desalocação de memória com objetos da pilha mas atenção, o <em>stack</em> tem um tamanho limitado.</p>
+
+<h3>Heap</h3>
+
+<p>O <em>heap</em> é o local de memória adequado para alocar muitos objetos grandes, pois esta seção do programa é bem maior que a pilha, e seu tamanho é limitado apenas pela memória virtual disponível na sua máquina. Os objetos alocados no <em>heap</em> são todos aqueles alocados usando new ou <code>malloc()</code> (objetos alocados dinamicamente). Como a posição em que esses objetos vão estar durante a execução do programa é desconhecida em tempo de compilação, a única forma de acessá-los é via Pointeros. Deve lembrar-se de controlar a desalocação desses objetos, pois não são destruídos automaticamente.</p>
+
+<h2>Repostas</h2>
+
+<blockquote>
+  <p>Algum deles é mais rápido que o outro? Se um é claramente mais rápido, por que existe o outro?</p>
+</blockquote>
+
+<p>A <code>Pilha</code> (Stack) é mais rápida pois as variáveis/objetos são criados em tempo de compilação, a pilha não se estende pela memoria virtual da máquina (HD) logo em algum momento um objeto/variável alocado no <code>Heap</code> podem estar armazenado no HD e logo este deverá ser carregado na RAM.</p>
+
+<blockquote>
+  <p>Faz diferença se estou usando, por exemplo, Assembly, C, Java, ou Javascript, Windows ou Linux? Isso é controlado pela "linguagem" ou pelo sistema operacional?</p>
+</blockquote>
+
+<p>Linguagens como Java e Python possuem um Garbage Collector que remove da memoria objetos e variáveis que já não estão mais sendo referenciados. Quanto a diferença entre SOs pode haver uma quanto ao endereçamento, esta questão acho que pode ser melhor explicada com este <em>link</em> para o <a href="https://stackoverflow.com/questions/22446991/stack-and-heap-address-region-is-differs-in-windows-and-linux">SOen</a> </p>
+
+<p>Referência: <a href="http://www.unidev.com.br/index.php?/topic/55299-entendendo-as-divis%C3%B5es-de-mem%C3%B3ria-stack-heap-global-e-code/" rel="noreferrer">http://www.unidev.com.br/index.php?/topic/55299-entendendo-as-divis%C3%B5es-de-mem%C3%B3ria-stack-heap-global-e-code/</a></p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2015-04-21T22:18:28"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://pt.stackoverflow.com/a/59493" title="permalink curto para esta resposta" class="short-link" itemprop="url" id="link-post-59493">compartilhar</a><span class="lsep">|</span><a href="https://pt.stackoverflow.com/posts/59493/edit" class="suggest-edit-post" title="">melhorar esta resposta</a></div>                    </div>
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://pt.stackoverflow.com/posts/59493/revisions" title="mostrar todas as edições desta publicação">editada <span title="2017-05-23 12:37:27Z" class="relativetime">23/05/17 às 12:37</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/-1/comunidade"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/a007be5a61f6aa8f3e85ae2fc18dd66e.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://pt.stackoverflow.com/users/-1/comunidade">Comunidade</a><span class="mod-flair" title="moderador">♦</span>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação " dir="ltr">1</span>
+        </div>
+    </div>
+</div>    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        respondida <span title="2015-04-21 22:18:28Z" class="relativetime">21/04/15 às 22:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://pt.stackoverflow.com/users/11443/ricardo"><div class="gravatar-wrapper-32"><img src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/TPkgq.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <a href="https://pt.stackoverflow.com/users/11443/ricardo">Ricardo</a><span class="d-none" itemprop="name">Ricardo</span>
+        <div class="-flair">
+            <span class="reputation-score" title="pontos de reputação 10.345" dir="ltr">10,3mil</span><span title="9 medalhas de ouro" aria-hidden="true"><span class="badge1"></span><span class="badgecount">9</span></span><span class="v-visible-sr">9 medalhas de ouro</span><span title="51 medalhas de prata" aria-hidden="true"><span class="badge2"></span><span class="badgecount">51</span></span><span class="v-visible-sr">51 medalhas de prata</span><span title="115 medalhas de bronze" aria-hidden="true"><span class="badge3"></span><span class="badgecount">115</span></span><span class="v-visible-sr">115 medalhas de bronze</span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+    
+</div>
+
+    
+    <div class="post-layout--right">
+	    <div id="comments-59493" class="comments js-comments-container " data-post-id="59493">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-151976" class="comment js-comment " data-comment-id="151976">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score js-comment-edit-hide">
+                    <span title="número de votos para &#39;comentários úteis&#39; recebidos" class="cool">2</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body js-comment-edit-hide">
+                
+                <span class="comment-copy">Só um detalhe, a posição de nenhum objeto é conhecido em tempo de compilação.</span>
+                
+                    –&nbsp;<a href="https://pt.stackoverflow.com/users/101/maniero" title="335.647 reputação" class="comment-user owner">Maniero<span class="mod-flair" title="moderador">♦</span></a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#comment151976_59493"><span title="2015-07-13 16:32:38Z" class="relativetime-clean">13/07/15 às 16:32</span></a></span>
+                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-59493" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comentários para pedir mais informações ou sugerir melhorias. Evite comentários como “+1” ou “obrigado”.">comentar</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="ver todos os comentários desta publicação" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" onclick=""></a>
+        </div>         
+    </div>    </div>
+</div>
+
+
+    <div class="question-status">
+        <h2>                    <b>protegida</b> por <a href="https://pt.stackoverflow.com/users/3635/guilherme-nascimento">Guilherme Nascimento</a> <span dir="ltr"><span title="2018-09-03 18:39:22Z" class="relativetime">3/09/18 às 18:39</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality or spam answers that had to be removed, posting an answer now requires 10 <a href="https://pt.stackoverflow.com/help/whats-reputation">reputation</a> on this site (the <a href="https://pt.stackoverflow.com/help/privileges/new-user">association bonus does not count</a>).
+<br><br>
+Would you like to answer one of these <a href="https://pt.stackoverflow.com/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?</p>
+    </div>
+
+
+
+
+
+                        <h2 class="bottom-notice" data-loc="1">
+Esta não é a resposta que você está procurando?                            Pesquise outras perguntas com a tag <a href="https://pt.stackoverflow.com/questions/tagged/mem%c3%b3ria" class="post-tag" title="mostrar perguntas com a tag &#39;memória&#39;" rel="tag">memória</a> <a href="https://pt.stackoverflow.com/questions/tagged/gerenciamento-de-mem%c3%b3ria" class="post-tag" title="mostrar perguntas com a tag &#39;gerenciamento-de-memória&#39;" rel="tag">gerenciamento-de-memória</a> <a href="https://pt.stackoverflow.com/questions/tagged/stack" class="post-tag" title="mostrar perguntas com a tag &#39;stack&#39;" rel="tag">stack</a> <a href="https://pt.stackoverflow.com/questions/tagged/heap" class="post-tag" title="mostrar perguntas com a tag &#39;heap&#39;" rel="tag">heap</a>  ou <a href="https://pt.stackoverflow.com/questions/ask">faça sua própria pergunta</a>.                        </h2>
+            </div>
+        </div>
+                <div id="sidebar" class="show-votes" role="complementary" aria-label="barra lateral">
+                            <div class="module question-stats">
+                    <table id="qinfo">
+                        <tbody><tr>
+                            <td>
+                                <p class="label-key">perguntada</p>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <p class="label-key" title="2014-02-02 19:19:38Z">
+                                    <b>
+                                        <time itemprop="dateCreated" datetime="2014-02-02T19:19:38">5 anos, 4 meses atrás</time>
+                                    </b>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="label-key">acessada</p>
+                            </td>
+
+                            <td style="padding-left: 10px">
+                                <p class="label-key">
+                                    <b>25.195 vezes</b>
+                                </p>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <p class="label-key">ativas</p>
+                                </td>
+                                <td style="padding-left: 10px">
+                                    <p class="label-key"><b><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap?lastactivity" class="lastactivity-link" title="2017-11-26 12:53:42Z">1 ano, 7 meses atrás</a></b></p>
+                                </td>
+                            </tr>
+                    </tbody></table>
+                </div>
+            <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__default mb16" data-tracker="cb=1">
+            <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text">
+                Em destaque no Meta
+            </div>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://meta.stackexchange.com/questions/329687/tag-synonym-dashboard-2-0?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://meta.stackexchange.com/questions/329687/tag-synonym-dashboard-2-0&quot;,null,null]">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://meta.stackexchange.com/questions/329687/tag-synonym-dashboard-2-0?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://meta.stackexchange.com/questions/329687/tag-synonym-dashboard-2-0&quot;,null,null]">Tag synonym dashboard 2.0</a>
+        </div>
+    </li>
+        </ul>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://meta.stackexchange.com/questions/329763/were-testing-advertisements-across-the-network?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://meta.stackexchange.com/questions/329763/were-testing-advertisements-across-the-network&quot;,null,null]">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://meta.stackexchange.com/questions/329763/were-testing-advertisements-across-the-network?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://meta.stackexchange.com/questions/329763/were-testing-advertisements-across-the-network&quot;,null,null]">We're testing advertisements across the network</a>
+        </div>
+    </li>
+        </ul>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://pt.meta.stackoverflow.com/questions/7108/fechamento-de-perguntas-mal-elaboradas-em-ingl%c3%aas?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/7108/fechamento-de-perguntas-mal-elaboradas-em-ingl%c3%aas&quot;,null,null]">
+<div class="favicon favicon-brmeta" title="Stack Overflow em Português Meta"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://pt.meta.stackoverflow.com/questions/7108/fechamento-de-perguntas-mal-elaboradas-em-ingl%c3%aas?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/7108/fechamento-de-perguntas-mal-elaboradas-em-ingl%c3%aas&quot;,null,null]">Fechamento de perguntas mal-elaboradas em inglês</a>
+        </div>
+    </li>
+        </ul>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://pt.meta.stackoverflow.com/questions/7825/vamos-medir-os-esfor%c3%a7os-da-comunidade-usando-m%c3%a9tricas-espec%c3%adficas?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/7825/vamos-medir-os-esfor%c3%a7os-da-comunidade-usando-m%c3%a9tricas-espec%c3%adficas&quot;,null,null]">
+<div class="favicon favicon-brmeta" title="Stack Overflow em Português Meta"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://pt.meta.stackoverflow.com/questions/7825/vamos-medir-os-esfor%c3%a7os-da-comunidade-usando-m%c3%a9tricas-espec%c3%adficas?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/7825/vamos-medir-os-esfor%c3%a7os-da-comunidade-usando-m%c3%a9tricas-espec%c3%adficas&quot;,null,null]">Vamos medir os esforços da comunidade usando métricas específicas</a>
+        </div>
+    </li>
+        </ul>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://pt.meta.stackoverflow.com/questions/1084/como-devemos-formatar-perguntas-e-respostas?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/1084/como-devemos-formatar-perguntas-e-respostas&quot;,null,null]">
+<div class="favicon favicon-brmeta" title="Stack Overflow em Português Meta"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://pt.meta.stackoverflow.com/questions/1084/como-devemos-formatar-perguntas-e-respostas?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/1084/como-devemos-formatar-perguntas-e-respostas&quot;,null,null]">Como devemos formatar perguntas e respostas?</a>
+        </div>
+    </li>
+        </ul>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://pt.meta.stackoverflow.com/questions/7256/o-que-%c3%a9-o-stack-overflow?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/7256/o-que-%c3%a9-o-stack-overflow&quot;,null,null]">
+<div class="favicon favicon-brmeta" title="Stack Overflow em Português Meta"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://pt.meta.stackoverflow.com/questions/7256/o-que-%c3%a9-o-stack-overflow?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/7256/o-que-%c3%a9-o-stack-overflow&quot;,null,null]">O que é o Stack Overflow?</a>
+        </div>
+    </li>
+        </ul>
+        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+    <li class="s-sidebarwidget--item grid">
+        <div class="grid--cell1 fl-shrink0">
+                <a href="https://pt.meta.stackoverflow.com/questions/1186/como-criar-um-exemplo-m%c3%adnimo-completo-e-verific%c3%a1vel?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/1186/como-criar-um-exemplo-m%c3%adnimo-completo-e-verific%c3%a1vel&quot;,null,null]">
+<div class="favicon favicon-brmeta" title="Stack Overflow em Português Meta"></div>                </a>
+        </div>
+        <div class="grid--cell">
+            <a href="https://pt.meta.stackoverflow.com/questions/1186/como-criar-um-exemplo-m%c3%adnimo-completo-e-verific%c3%a1vel?cb=1" data-ga="[&quot;community bulletin board&quot;,&quot;Em destaque no Meta&quot;,&quot;https://pt.meta.stackoverflow.com/questions/1186/como-criar-um-exemplo-m%c3%adnimo-completo-e-verific%c3%a1vel&quot;,null,null]">Como criar um exemplo Mínimo, Completo e Verificável</a>
+        </div>
+    </li>
+        </ul>
+</div>
+<div id="dfp-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar" data-google-query-id="CNK8qfm4heMCFc8IswAdT5wGDA" data-clc-prefilled="true" data-clc-ready="true" style="display: none;"><div id="google_ads_iframe_/248424177/pt.stackoverflow.com/sb/question-pages_0__container__" style="border: 0pt none; width: 300px; height: 250px;"></div></div>
+<script>;try{(function(a){function b(a){return'string'==typeof a?document.getElementById(a):a}function c(a){return a=b(a),!!a&&'none'===getComputedStyle(a).display}function d(a){return!c(a)}function e(a){return!!a}function f(a){return /^\s*$/.test(b(a).innerHTML)}function g(a){var b=a.style;b.height=b.maxHeight=b.minHeight='auto',b.display='none',[].forEach.call(a.children,g)}function h(a,b){var c;return function(){return a&&(c=a.call(b||this,arguments),a=null),c}}function i(a){var b=document.createElement('script');b.src=a,document.body.appendChild(b)}function j(a){return k([],a)}function k(a,b){return a.push=function(a){return b(),delete this.push,this.push(a)},a}function l(){try{return!new Function('return async()=>{};')}catch(a){return!0}}function m(){return'undefined'!=typeof googletag&&!!googletag.apiReady}function n(){m()||(googletag={cmd:j(A)})}function o(){var a=document.createElement('div');a.className='adsbox',a.id='clc-abd',a.style.position='absolute',a.style.pointerEvents='none',a.innerHTML='&nbsp;',document.body.appendChild(a)}function p(a){var b=a.serviceName,c=a.slot,d=a.lineItemId;try{var e=c.getSlotElementId(),f=[];e||f.push('id=0');var h=document.getElementById(e);if(!e||h?h.hasAttribute('data-clc-stalled')&&f.push('st=1'):f.push('el=0'),0!==f.length)return void B(f.join('&'));-1===x.dh.indexOf(d)?h.setAttribute('data-clc-prefilled','true'):g(h),h.setAttribute('data-clc-ready','true')}catch(a){var i=document.querySelector('#dfp-tsb, #dfp-isb, #clc-tsb');i&&i.setAttribute('data-clc-ready','true'),B('e=1')}}function q(){return Object.keys(F.ids)}function r(a){var b=F.ids[a],c=F.slots[b];'function'==typeof c&&(c=c(a));return{path:'/'+C+'/'+E+'/'+b+'/'+D,sizes:c,zone:b}}function s(a){return!(clc.collapse&&void 0!==clc.collapse[a])||!!clc.collapse[a]}function t(a,b){'dfp-isb'===a&&b.setTargeting('Sidebar',['Inline']),'dfp-tsb'===a&&b.setTargeting('Sidebar',['Right']);var c=r(a),d=c.path,e=c.sizes,f=c.zone,g=googletag.defineSlot(d,e,a);s(f)&&g.setCollapseEmptyDiv(!0,!0),g.addService(b),!1}function u(b){var c=a.dfp&&a.dfp.targeting||{};Object.keys(c).forEach(function(a){b.setTargeting(a,c[a])})}function v(a){var g=a.map(b).filter(e);return{eligible:g.filter(f).filter(d).map(function(a){return a.id}),ineligible:g.filter(c)}}function w(b){if(void 0===b&&(b=q()),!m())return n(),void googletag.cmd.push(function(){return w(b)});var c=v(b),d=c.eligible,e=c.ineligible;if(e.forEach(g),0!==d.length){o(),googletag.destroySlots();var f=googletag.pubads();f.enableSingleRequest(),a.sreEvent||(f.addEventListener('slotRenderEnded',p),a.sreEvent=!0),u(f),d.forEach(function(a){return t(a,f)}),googletag.enableServices(),d.forEach(function(a){googletag.display(a)})}}var x=function(a){for(var b=[],c=1;c<arguments.length;c++)b[c-1]=arguments[c];for(var d,e=0,f=b;e<f.length;e++)for(var g in d=f[e],d)a[g]=d[g];return a}({"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=d5e853c48d84","style":"https://cdn.sstatic.net/clc/styles/clc.min.css?v=7865eeeae8e2","u":"https://clc.stackoverflow.com/markup.js","wa":true,"kt":2000,"tto":true,"h":"clc.stackoverflow.com","allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true,"al":false,"dh":[4385506061,4386578282,4386579572]},a.options||{}),y=h(function(){var a=x.lib;l()&&(a=a.replace(/(\.min)?\.js(\?v=[0-9a-fA-F]+)?$/,'.ie$1.js$2')),i(a)}),z=a.cmd||[];Array.isArray(z)&&(0<z.length?y():k(z,y));var A=h(function(){i('https://www.googletagservices.com/tag/js/gpt.js')}),B=function(a){new Image().src='https://'+x.h+'/stalled.gif?'+a},C='248424177',D=/^\/tags\//.test(location.pathname)||/^\/questions\/tagged\//.test(location.pathname)?'tag-pages':/^\/$/.test(location.pathname)||/^\/home/.test(location.pathname)?'home-page':'question-pages',E=location.hostname;var F={slots:{lb:[[728,90]],mlb:[[728,90]],smlb:[[728,90]],bmlb:[[728,90]],sb:function(a){return'dfp-tsb'===a?[[300,250],[300,600]]:[[300,250]]},"tag-sponsorship":[[730,135]],"mobile-below-question":[[320,50],[300,250]]},ids:{"dfp-tlb":'lb',"dfp-mlb":'mlb',"dfp-smlb":'smlb',"dfp-bmlb":'bmlb',"dfp-tsb":'sb',"dfp-isb":'sb',"dfp-tag":'tag-sponsorship',"dfp-m-aq":'mobile-below-question',"clc-tlb":'lb',"clc-mlb":'mlb',"clc-tsb":'sb'}};(function(){var b=x.al;b&&z.push(function(){return a.load()})})(),n(),a.dfp={load:w},a.options=x,a.cmd=z})(this.clc=this.clc||{})}catch(a){window.console.error(a)}</script>            <script>
+                var clc = clc || {};
+                clc.collapse = { sb: !0,'tag-sponsorship':!0,lb:!0,mlb:!0,smlb:!0,bmlb:!0,'mobile-below-question':!0};
+                                clc.dfp = clc.dfp || {};
+                clc.dfp.targeting = {Registered:['false'],'pt.so-tag':['memória','gerenciamento-de-memória','stack','heap']};
+                
+                var googletag = googletag || {};
+                googletag.cmd = googletag.cmd || [];
+                googletag.cmd.push(function () { clc.dfp.load(); });
+            </script>
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Vinculado</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/227642?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">4</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/227642/o-que-%c3%a9-mais-r%c3%a1pido-aloca%c3%a7%c3%a3o-no-stack-ou-no-heap?noredirect=1&amp;lq=1" class="question-hyperlink">O que é mais rápido: Alocação no Stack ou no Heap?</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/248467?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/248467/o-que-s%c3%a3o-rastro-de-pilha-e-estouro-de-pilha?noredirect=1&amp;lq=1" class="question-hyperlink">O que são rastro de pilha e estouro de pilha?</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/322219?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/322219/alojamento-din%c3%a2mico-de-memoria?noredirect=1&amp;lq=1" class="question-hyperlink">Alojamento dinâmico de memoria</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/337774?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/337774/aloca%c3%a7%c3%a3o-est%c3%a1tica-e-aloca%c3%a7%c3%a3o-din%c3%a2mica-em-listas?noredirect=1&amp;lq=1" class="question-hyperlink">Alocação estática e alocação dinâmica em listas</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/372093?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">18</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/372093/como-acessar-um-array-de-forma-circular?noredirect=1&amp;lq=1" class="question-hyperlink">Como acessar um array de forma circular?</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/160914?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">23</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/160914/qual-diferen%c3%a7a-entre-boolean-e-boolean?noredirect=1&amp;lq=1" class="question-hyperlink">Qual diferença entre Boolean e boolean?</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/14490?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">46</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/14490/aloca%c3%a7%c3%a3o-de-mem%c3%b3ria-em-c-tipos-valor-e-tipos-refer%c3%aancia?noredirect=1&amp;lq=1" class="question-hyperlink">Alocação de memória em C# - Tipos valor e tipos referência</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/91336?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">35</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/91336/arrays-s%c3%a3o-ponteiros?noredirect=1&amp;lq=1" class="question-hyperlink">Arrays são ponteiros?</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/157994?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">24</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/157994/%c3%89-ideal-usar-tipos-primitivos-em-java?noredirect=1&amp;lq=1" class="question-hyperlink">É ideal usar tipos primitivos em Java?</a>
+</div>
+<div class="spacer">
+	<a href="https://pt.stackoverflow.com/q/205049?lq=1" title="Contagem de votos (a favor - contra)">
+		<div class="answer-votes answered-accepted default">20</div>
+	</a>
+	<a href="https://pt.stackoverflow.com/questions/205049/linguagem-com-garbage-collector-pode-ser-usada-para-jogos?noredirect=1&amp;lq=1" class="question-hyperlink">Linguagem com Garbage Collector pode ser usada para jogos?</a>
+</div>					<div class="spacer more">
+				<a href="https://pt.stackoverflow.com/questions/linked/3797?lq=1">consulte mais perguntas vinculadas...</a>
+			</div>
+	</div>
+</div>
+
+                <div class="module sidebar-related">
+                    <h4 id="h-related">Relacionado</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/30221?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes default">6</div></a><a href="https://pt.stackoverflow.com/questions/30221/mensagem-could-not-reserve-enough-space-for-object-heap-no-jvm?rq=1" class="question-hyperlink">Mensagem “Could not reserve enough space for object heap” no JVM</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/36741?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes default">14</div></a><a href="https://pt.stackoverflow.com/questions/36741/heap-de-mem%c3%b3ria-java?rq=1" class="question-hyperlink">Heap de memória Java</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/56580?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes default">14</div></a><a href="https://pt.stackoverflow.com/questions/56580/performance-de-acesso-a-dados-na-heap-e-stack-e-aloca%c3%a7%c3%a3o-de-objetos?rq=1" class="question-hyperlink">Performance de acesso a dados na heap e stack e alocação de objetos</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/59986?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes default">2</div></a><a href="https://pt.stackoverflow.com/questions/59986/armazenando-um-vetor-de-caracteres-dentro-de-uma-memoria-heap?rq=1" class="question-hyperlink">Armazenando um vetor de caracteres dentro de uma memoria heap</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/71527?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes answered-accepted default">6</div></a><a href="https://pt.stackoverflow.com/questions/71527/qual-%c3%a9-a-diferen%c3%a7a-entre-on-heap-e-off-heap-em-java-mem%c3%b3ria-da-jvm?rq=1" class="question-hyperlink">Qual é a diferença entre On heap e Off Heap em Java - Memória da JVM</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/95824?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes answered-accepted default">25</div></a><a href="https://pt.stackoverflow.com/questions/95824/quando-ocorre-stack-overflow?rq=1" class="question-hyperlink">Quando ocorre Stack Overflow?</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/121595?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes answered-accepted default">7</div></a><a href="https://pt.stackoverflow.com/questions/121595/o-que-torna-um-objeto-eleg%c3%advel-para-ser-alocado-no-stack?rq=1" class="question-hyperlink">O que torna um objeto elegível para ser alocado no stack?</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/126865?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes answered-accepted default">5</div></a><a href="https://pt.stackoverflow.com/questions/126865/em-c-onde-as-fun%c3%a7%c3%b5es-dos-objetos-est%c3%a3o-na-mem%c3%b3ria?rq=1" class="question-hyperlink">Em C++ onde as funções dos objetos estão na memória?</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/227642?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes answered-accepted default">4</div></a><a href="https://pt.stackoverflow.com/questions/227642/o-que-%c3%a9-mais-r%c3%a1pido-aloca%c3%a7%c3%a3o-no-stack-ou-no-heap?rq=1" class="question-hyperlink">O que é mais rápido: Alocação no Stack ou no Heap?</a></div><div class="spacer js-gps-track"><a href="https://pt.stackoverflow.com/q/252011?rq=1" title="Contagem de votos (a favor - contra)"><div class="answer-votes answered-accepted default">5</div></a><a href="https://pt.stackoverflow.com/questions/252011/as-vari%c3%a1veis-s%c3%a3o-alocadas-aleatoriamente-na-mem%c3%b3ria?rq=1" class="question-hyperlink">As variáveis são alocadas aleatoriamente na memória?</a></div>
+                    </div>
+                </div>
+
+
+
+    <div id="feed-link" class="js-feed-link">
+        <a href="https://pt.stackoverflow.com/feeds/question/3797" title="Feed of this question and its answers">
+            <svg aria-hidden="true" class="svg-icon fc-orange-400 iconRss" width="18" height="18" viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5z"></path></svg>
+            Question feed
+        </a>
+    </div>
+    <aside class="s-modal js-feed-link-modal" tabindex="-1" role="dialog" aria-labelledby="feed-modal-title" aria-describedby="feed-modal-description" aria-hidden="true">
+        <div class="s-modal--dialog js-modal-dialog wmx4" role="document" data-controller="se-draggable">
+            <h1 class="s-modal--header fw-bold js-first-tabbable c-move" id="feed-modal-title" data-target="se-draggable.handle" tabindex="0">
+                Subscribe to RSS
+            </h1>
+            <div class="grid gs4 gsy fd-column">
+                <div class="grid--cell">
+                    <label class="d-block s-label c-default" for="feed-url">
+                        Question feed
+                        <p class="s-description mt2" id="feed-modal-description">To subscribe to this RSS feed, copy and paste this URL into your RSS reader.</p>
+                    </label>
+                </div>
+                <div class="grid ps-relative">
+                    <input class="s-input" type="text" name="feed-url" id="feed-url" readonly="readonly" value="https://pt.stackoverflow.com/feeds/question/3797">
+                    <svg aria-hidden="true" class="svg-icon s-input-icon fc-orange-400 iconRss" width="18" height="18" viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5z"></path></svg>
+                </div>
+            </div>
+            <a class="s-modal--close s-btn s-btn__muted js-modal-close js-last-tabbable" href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" aria-label="Fechar">
+                <svg aria-hidden="true" class="svg-icon iconClearSm" width="14" height="14" viewBox="0 0 14 14"><path d="M12 3.41L10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41z"></path></svg>
+            </a>
+        </div>
+    </aside>
+        </div>
+    </div>
+<script>StackExchange.ready(function(){$.get('/posts/3797/ivc/984c');});</script>
+<noscript><div><img src="/posts/3797/ivc/984c" class="dno" alt="" width="0" height="0"></div></noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div><script src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/gpt.js.download"></script>
+
+    <footer id="footer" class="site-footer js-footer" role="contentinfo">
+        <div class="site-footer--container">
+            
+            <nav class="site-footer--nav">
+                    <div class="site-footer--col site-footer--col__visible js-footer-col" data-name="default">
+                        <h5 class="-title"><a href="https://pt.stackoverflow.com/">Stack Overflow em Português</a></h5>
+                        <ul class="-list js-primary-footer-links">
+                                    <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 2 })" href="https://pt.stackoverflow.com/tour">Tour</a></li>
+                                <li class="-item"><a href="https://pt.stackoverflow.com/help" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })">Ajuda</a></li>
+                                    <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 5 })" href="https://chat.stackexchange.com/?tab=site&amp;host=pt.stackoverflow.com">Chat</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="https://pt.stackoverflow.com/contact">Contato</a></li>
+                                <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 14 })" href="https://pt.meta.stackoverflow.com/">Feedback</a></li>
+                                                            <li class="-item"><a onclick="StackExchange.switchMobile(&quot;on&quot;)" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 12 })">Móvel</a></li>
+                        <li class="-item"><a class="-link" role="button">Desativar Responsividade</a></li></ul>
+                    </div>
+                <div class="site-footer--col site-footer--col__visible js-footer-col" data-name="default">
+                    <h5 class="-title"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about">Empresa</a></h5>
+                    <ul class="-list">
+                                                    <li class="-item"><a href="https://stackoverflow.com/" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 15})">Stack Overflow</a></li>
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 19 })">Stack Overflow Business</a></li>
+                            <li class="-item"><a href="https://stackoverflow.com/jobs" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 17})">Developer Jobs</a></li>
+                                <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about">Sobre</a></li>
+                        <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 27 })" href="https://stackoverflow.com/company/press">Imprensa</a></li>
+                        <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackoverflow.com/legal">Legal</a></li>
+                        <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackoverflow.com/legal/privacy-policy">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer--col site-footer--categories-nav site-footer--col__visible">
+                    <a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="site-footer--back js-footer-back"><svg aria-hidden="true" class="svg-icon iconArrowLeftAlt" width="18" height="18" viewBox="0 0 18 18"><path d="M10.58 16L12 14.59 6.4 9 12 3.41 10.57 2l-7 7 7 7z"></path></svg></a>
+                    <div>
+                        <h5 class="-title"><a href="https://stackexchange.com/">Stack Exchange<br> Network</a></h5>
+                        <ul class="-list">
+                            <li class="-item"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Technology">Technology</a></li>
+                            <li class="-item"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Life / Arts">Life / Arts</a></li>
+                            <li class="-item"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Culture / Recreation">Culture / Recreation</a></li>
+                            <li class="-item"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Science">Science</a></li>
+                            <li class="-item"><a href="https://pt.stackoverflow.com/questions/3797/o-que-s%C3%A3o-e-onde-est%C3%A3o-o-stack-e-heap#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Other">Other</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="site-footer--categories">
+                    <div class="site-footer--col site-footer--category js-footer-col" data-name="Technology">
+        <ul class="-list">
+                <li class="-item"><a href="https://stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                <li class="-item"><a href="https://serverfault.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="system and network administrators">Server Fault</a></li>
+                <li class="-item"><a href="https://superuser.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="computer enthusiasts and power users">Super User</a></li>
+                <li class="-item"><a href="https://webapps.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="power users of web applications">Web Applications</a></li>
+                <li class="-item"><a href="https://askubuntu.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                <li class="-item"><a href="https://webmasters.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="pro webmasters">Webmasters</a></li>
+                <li class="-item"><a href="https://gamedev.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional and independent game developers">Game Development</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://stats.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                <li class="-item"><a href="https://tex.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                <li class="-item"><a href="https://softwareengineering.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professionals, academics, and students working within the systems development life cycle">Software Engineering</a></li>
+                <li class="-item"><a href="https://unix.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                <li class="-item"><a href="https://apple.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                <li class="-item"><a href="https://wordpress.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="WordPress developers and administrators">WordPress Development</a></li>
+                <li class="-item"><a href="https://gis.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://electronics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                <li class="-item"><a href="https://android.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                <li class="-item"><a href="https://security.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="information security professionals">Information Security</a></li>
+                <li class="-item"><a href="https://dba.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                <li class="-item"><a href="https://drupal.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Drupal developers and administrators">Drupal Answers</a></li>
+                <li class="-item"><a href="https://sharepoint.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="SharePoint enthusiasts">SharePoint</a></li>
+                <li class="-item"><a href="https://ux.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="user experience researchers and experts">User Experience</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://mathematica.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of Wolfram Mathematica">Mathematica</a></li>
+                <li class="-item"><a href="https://money.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                <li class="-item"><a href="https://salesforce.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                <li class="-item"><a href="https://expressionengine.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                <li class="-item"><a href="https://pt.stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programadores profissionais e entusiastas">Stack Overflow em Português</a></li>
+                <li class="-item"><a href="https://blender.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people who use Blender to create 3D graphics, animations, or games">Blender</a></li>
+                <li class="-item"><a href="https://networkengineering.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="network engineers">Network Engineering</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://crypto.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                <li class="-item"><a href="https://codereview.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="peer programmer code reviews">Code Review</a></li>
+                <li class="-item"><a href="https://magento.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of the Magento e-Commerce platform">Magento</a></li>
+                <li class="-item"><a href="https://softwarerecs.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people seeking specific software recommendations">Software Recommendations</a></li>
+                <li class="-item"><a href="https://dsp.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                <li class="-item"><a href="https://emacs.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those using, extending or developing Emacs">Emacs</a></li>
+                <li class="-item"><a href="https://raspberrypi.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://ru.stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="программистов">Stack Overflow на русском</a></li>
+                <li class="-item"><a href="https://codegolf.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programming puzzle enthusiasts and code golfers">Code Golf</a></li>
+                <li class="-item"><a href="https://es.stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programadores y profesionales de la informática">Stack Overflow en español</a></li>
+                <li class="-item"><a href="https://ethereum.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of Ethereum, the decentralized application platform and smart contract enabled blockchain">Ethereum</a></li>
+                <li class="-item"><a href="https://datascience.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Data science professionals, Machine Learning specialists, and those interested in learning more about the field">Data Science</a></li>
+                <li class="-item"><a href="https://arduino.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="developers of open-source hardware and software that is compatible with Arduino">Arduino</a></li>
+                <li class="-item"><a href="https://bitcoin.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Bitcoin crypto-currency enthusiasts">Bitcoin</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#technology" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                        <strong>
+                            more (31)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Life / Arts">
+        <ul class="-list">
+                <li class="-item"><a href="https://photo.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                <li class="-item"><a href="https://scifi.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                <li class="-item"><a href="https://graphicdesign.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                <li class="-item"><a href="https://movies.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                <li class="-item"><a href="https://music.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                <li class="-item"><a href="https://worldbuilding.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="writers/artists using science, geography and culture to construct imaginary worlds and settings">Worldbuilding</a></li>
+                <li class="-item"><a href="https://cooking.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Life / Arts"><ul class="-list">
+                <li class="-item"><a href="https://diy.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="contractors and serious DIYers">Home Improvement</a></li>
+                <li class="-item"><a href="https://academia.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="academics and those enrolled in higher education">Academia</a></li>
+                <li class="-item"><a href="https://law.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="legal professionals, students, and others with experience or interest in law">Law</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#lifearts" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                        <strong>
+                            more (15)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Culture / Recreation">
+        <ul class="-list">
+                <li class="-item"><a href="https://english.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                <li class="-item"><a href="https://skeptics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="scientific skepticism">Skeptics</a></li>
+                <li class="-item"><a href="https://judaism.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                <li class="-item"><a href="https://travel.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="road warriors and seasoned travelers">Travel</a></li>
+                <li class="-item"><a href="https://christianity.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                <li class="-item"><a href="https://ell.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="speakers of other languages learning English">English Language Learners</a></li>
+                <li class="-item"><a href="https://japanese.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Culture / Recreation"><ul class="-list">
+                <li class="-item"><a href="https://gaming.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                <li class="-item"><a href="https://bicycles.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                <li class="-item"><a href="https://rpg.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                <li class="-item"><a href="https://anime.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="anime and manga fans">Anime &amp; Manga</a></li>
+                <li class="-item"><a href="https://puzzling.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those who create, solve, and study puzzles">Puzzling</a></li>
+                <li class="-item"><a href="https://mechanics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#culturerecreation" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                        <strong>
+                            more (33)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Science">
+        <ul class="-list">
+                <li class="-item"><a href="https://mathoverflow.net/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional mathematicians">MathOverflow</a></li>
+                <li class="-item"><a href="https://math.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                <li class="-item"><a href="https://cstheory.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                <li class="-item"><a href="https://physics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="active researchers, academics and students of physics">Physics</a></li>
+                <li class="-item"><a href="https://chemistry.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="scientists, academics, teachers, and students in the field of chemistry">Chemistry</a></li>
+                <li class="-item"><a href="https://biology.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="biology researchers, academics, and students">Biology</a></li>
+                <li class="-item"><a href="https://cs.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Science"><ul class="-list">
+                <li class="-item"><a href="https://philosophy.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#science" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                        <strong>
+                            more (11)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Other">
+        <ul class="-list">
+                <li class="-item"><a href="https://meta.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                <li class="-item"><a href="https://stackapps.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                <li class="-item"><a href="https://api.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programmatic interaction with Stack Exchange sites">API</a></li>
+                <li class="-item"><a href="https://data.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="querying Stack Exchange data using SQL">Data</a></li>
+                    </ul>
+    </div>
+                </div>
+            </nav>
+            <div class="site-footer--copyright fs-fine">
+                <ul class="-list">
+                    <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog/?blb=1">Blog</a></li>
+                    <li class="-item"><a href="https://www.facebook.com/officialstackoverflow/" class="-link">Facebook</a></li>
+                    <li class="-item"><a href="https://twitter.com/stackoverflow" class="-link">Twitter</a></li>
+                    <li class="-item"><a href="https://linkedin.com/company/stack-overflow" class="-link">LinkedIn</a></li>
+                </ul>
+
+                <p class="mt-auto mb24">
+site design / logo © 2019 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a>
+                            with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>.
+                    <span id="svnrev">rev&nbsp;2019.6.25.34117</span>
+                </p>
+            </div>
+        </div>
+
+            </footer>
+            <script>StackExchange.ready(function () { StackExchange.responsiveness.addSwitcher(); })</script>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow em Portugu&#234;s funciona melhor com o JavaScript ativado
+            <img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno">
+        </div>
+    </noscript>
+
+<script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            StackExchange.ready(function () {
+
+                StackExchange.ga.init({
+                    sendTitles: true,
+                    tracker: window.ga,
+                    trackingCodes: [
+                        'UA-108242619-5'
+                    ]
+                });
+
+
+
+                    StackExchange.ga.setDimension('dimension2', '|mem&#243;ria|gerenciamento-de-mem&#243;ria|stack|heap|');
+
+                    StackExchange.ga.setDimension('dimension3', 'Questions/Show');
+
+
+                StackExchange.ga.trackPageView();
+            });
+            
+/**/
+            
+            var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+            (function() {
+                var ssl = 'https:' == document.location.protocol,
+                    s = document.getElementsByTagName('script')[0],
+                    qc = document.createElement('script');
+                 qc.async = true;
+                    qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                    s.parentNode.insertBefore(qc, s);
+                    _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+/**/
+                 var sc = document.createElement('script');
+                    sc.async = true;
+                    sc.src = (ssl ? 'https://sb' : 'http://b') + '.scorecardresearch.com/beacon.js';
+                    s.parentNode.insertBefore(sc, s);
+                    _comscore.push({ c1: "2", c2: "17440561" });
+            })();
+            
+
+</script>
+            
+    
+    
+<div class="adsbox" id="clc-abd" style="position: absolute; pointer-events: none;">&nbsp;</div><iframe id="google_osd_static_frame_513933820627" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./memória - O que são e onde estão o _stack_ e _heap__ - Stack Overflow em Português_files/saved_resource(1).html"></iframe></body></html>

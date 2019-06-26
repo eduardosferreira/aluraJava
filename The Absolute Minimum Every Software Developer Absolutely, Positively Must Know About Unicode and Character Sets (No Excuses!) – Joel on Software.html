@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!-- saved from url=(0164)https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/ -->
+<html lang="pt" class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.joelonsoftware.com/xmlrpc.php">
+
+<title>The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software</title>
+<!-- Jetpack Site Verification Tags -->
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Joel on Software » Feed" href="https://www.joelonsoftware.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Joel on Software » Comments Feed" href="https://www.joelonsoftware.com/comments/feed/">
+		<script type="text/javascript" async="" id="gauges-tracker" data-site-id="57a9715ec88d90063f018386" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/track.js.download"></script><script id="twitter-wjs" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/widgets.js.download"></script><script async="" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/analytics.js.download"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.joelonsoftware.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="editor-style-css" href="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="editor-font-awesome-css-css" href="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/font-awesome.css" type="text/css" media="screen">
+<!--[if IE]>
+<link rel='stylesheet' id='ie7-style-css'  href='https://6602cxue4uk2h2m2-zippykid.netdna-ssl.com/wp-content/themes/editor-redux/inc/styles/ie.css?ver=1559091807' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="editor-fonts-css" href="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/jquery.js.download"></script>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/jquery-migrate.min.js.download"></script>
+<link rel="https://api.w.org/" href="https://www.joelonsoftware.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.joelonsoftware.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.joelonsoftware.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="01" href="https://www.joelonsoftware.com/2003/10/01/01-3/">
+<link rel="next" title="10" href="https://www.joelonsoftware.com/2003/10/10/10/">
+
+<link rel="canonical" href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">
+<link rel="shortlink" href="https://wp.me/p83KNI-eH">
+<link rel="alternate" type="application/json+oembed" href="https://www.joelonsoftware.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.joelonsoftware.com%2F2003%2F10%2F08%2Fthe-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.joelonsoftware.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.joelonsoftware.com%2F2003%2F10%2F08%2Fthe-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://i1.wp.com/">
+<link rel="dns-prefetch" href="https://i2.wp.com/">
+<link rel="dns-prefetch" href="https://c0.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-225715-5', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<meta name="description" content="Ever wonder about that mysterious Content-Type tag? You know, the one you&#39;re supposed to put in HTML and you never quite know what it should be? Did you ever get an email from your friends in Bulgaria with the subject line &quot;???? ?????? ??? ????&quot;? I&#39;ve been dismayed to discover just how many software developers…">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)">
+<meta property="og:url" content="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">
+<meta property="og:description" content="Ever wonder about that mysterious Content-Type tag? You know, the one you’re supposed to put in HTML and you never quite know what it should be? Did you ever get an email from your friends in…">
+<meta property="article:published_time" content="2003-10-08T00:15:12+00:00">
+<meta property="article:modified_time" content="2017-11-17T21:42:17+00:00">
+<meta property="og:site_name" content="Joel on Software">
+<meta property="og:image" content="https://6602cxue4uk2h2m2-zippykid.netdna-ssl.com/wp-content/uploads/2003/10/rose.jpg">
+<meta property="og:image:width" content="300">
+<meta property="og:image:height" content="225">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:text:title" content="The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)">
+<meta name="twitter:card" content="summary">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=32%2C32&amp;ssl=1" sizes="32x32">
+<link rel="icon" href="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=192%2C192&amp;ssl=1" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=180%2C180&amp;ssl=1">
+<meta name="msapplication-TileImage" content="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=270%2C270&amp;ssl=1">
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+/* Joel Test Div */
+.joel-test {
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	font-size: 16px;
+	margin: 2.5em auto;
+	max-width: 400px;
+	padding: 10px;
+}
+
+.joel-test-title {
+	font-size: 25px;
+	font-weight: 700;
+	text-align: center;
+}			</style>
+		<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script charset="utf-8" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/moment_timeline_tweet.a20574004ea824b1c047f200045ffa1e.js.download"></script><script charset="utf-8" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/timeline.49693ebcd57b08708ebca7502c7c343d.js.download"></script><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><link type="text/css" rel="stylesheet" charset="UTF-8" href="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/translateelement.css"></head>
+
+<body class="post-template-default single single-post postid-911 single-format-standard">
+
+
+<div id="page" class="hfeed site container">
+
+	<a class="skip-link screen-reader-text" href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/#content"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ir para o conteúdo</font></font></a>
+
+	<!-- Get sidebar color option (Appearance -> Customize -> Theme Options) -->
+		<header id="masthead" class="site-header light" role="banner">
+		<!-- Tab navigation -->
+		<ul class="toggle-bar" role="tablist">
+			<!-- Main navigation -->
+			<li id="panel-1" class="current" role="presentation">
+				<a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" class="current nav-toggle" data-tab="tab-1"><i class="fa fa-bars"></i><span class="screen-reader-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visualizar menu</font></font></span></a>
+			</li>
+
+			<!-- Featured Posts navigation -->
+			
+			<!-- Sidebar widgets navigation -->
+			<li id="panel-3" role="presentation">
+				<a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/#tab-3" role="tab" aria-controls="tab-3" aria-selected="false" class="folder-toggle" data-tab="tab-3"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i><span class="screen-reader-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visualizar barra lateral</font></font></span></a>
+			</li>
+		</ul>
+
+		<div id="tabs" class="toggle-tabs">
+			<div class="site-header-inside">
+				<!-- Logo, description and main navigation -->
+				<div id="tab-1" class="tab-content current fadeIn">
+					<div class="site-branding">
+						<!-- Get the site branding -->
+													<h1 class="site-title"><a href="https://www.joelonsoftware.com/" rel="home"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Joel on Software</font></font></a></h1>
+							<h2 class="site-description"></h2>
+											</div>
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+											</nav><!-- #site-navigation -->
+
+					
+					<div id="front-widgets" class="widget-area" role="complementary">
+
+	<aside id="text-3" class="widget widget_text"><h2 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seu anfitrião</font></font></h2>			<div class="textwidget"><a href="https://www.joelonsoftware.com/about-me/"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/Pong.png" notsrc="https://6602cxue4uk2h2m2-zippykid.netdna-ssl.com/wp-content/uploads/2016/12/11969842-1.jpg" data-recalc-dims="1" width="243" height="481" src-orig="https://i1.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/Pong.png?w=730&amp;ssl=1" scale="1.25"></a><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sou Joel Spolsky, um desenvolvedor de software em Nova York. </font></font><a href="https://www.joelonsoftware.com/about-me/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mais sobre mim</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+</div>
+		</aside>
+</div><!-- #front-widgets -->
+
+				</div><!-- #tab-1 -->
+
+				<!-- Featured Posts template (template-featured-posts.php) -->
+				
+				<!-- Sidebar widgets -->
+				<div id="tab-3" class="tab-content animated fadeIn" role="tabpanel" aria-labelledby="panel-3" aria-hidden="true">
+					<div id="secondary" class="widget-area" role="complementary">
+
+	<aside id="search-3" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="https://www.joelonsoftware.com/search-results/" id="cse-search-box">
+	<div>
+		<input type="hidden" name="cx" value="004631902266951669168:g9jvyociwrg">
+		<input type="hidden" name="ie" value="UTF-8">
+	</div>
+	<input type="search" class="search-field" placeholder="Search …" value="" name="q" title="Search for:">
+	
+	<input type="submit" class="search-submit" name="sa"><span class="screen-reader-text">Search</span>
+</form>
+</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/newdesign-books.png" style="float: left; margin-right: 15px;" data-recalc-dims="1" width="42" height="100" src-orig="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/newdesign-books.png?w=730&amp;ssl=1" scale="1.25">Read the archives in dead-tree format! Many of these articles have been collected into <a href="https://www.joelonsoftware.com/buy-the-books/">four books</a>, available at your favorite bookstore. It’s an excellent way to read the site in the bath, or throw it at your boss.</div>
+		</aside><aside id="text-4" class="widget widget_text"><h2 class="widget-title">Careers</h2>			<div class="textwidget"><p><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/jobs.jpg" data-recalc-dims="1" width="215" height="223" src-orig="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/jobs.jpg?w=730&amp;ssl=1" scale="1.25"></p>
+<p>Ready to level up? <a href="http://stackoverflow.com/jobs">Stack Overflow Jobs</a> is the job site that puts the needs of developers first. Whether you want to take control of your search or <a href="http://stackoverflow.com/jobs/why-jobs">let employers discover you</a>, we’re on a mission to help every developer find a job they love.</p>
+<p>Looking to hire smart programmers who get things done? <a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a> is a fully-customized sourcing solution that helps you understand, reach, and attract developers on the platform they trust most. Find the right candidates for your jobs. <a href="https://www.stackoverflowbusiness.com/talent/request-a-demo?utm_source=joelonsoftware&amp;utm_medium=referral&amp;utm_term=learn-more">Learn more.</a></p>
+</div>
+		</aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><p><a href="http://stackoverflow.com/"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/so-logo.png" data-recalc-dims="1" width="730" height="173" src-orig="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/so-logo.png?w=730&amp;ssl=1" scale="1.25"></a></p>
+<p>For my day job, I'm the co-founder and CEO of <a href="http://stackoverflow.com/">Stack Overflow</a>, the largest online community for programmers to learn, share their knowledge, and level up. Each month, more than 40 million professional and aspiring programmers visit Stack Overflow to ask and answer questions and find better jobs. Stack Overflow is also the flagship site of the <a href="http://stackexchange.com/">Stack Exchange network</a>, 160+ question and answer sites dedicated to all kinds of topics from cooking to gaming. According to Quantcast, Stack Overflow is the 30th largest web property in the United States and in the top 100 in the world.<br>
+<a href="https://stackoverflow.com/users/story/4"><br>
+<img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/4.png" width="208" height="58" alt="profile for Joel Spolsky on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Joel Spolsky on Stack Exchange, a network of free, community-driven Q&amp;A sites" data-recalc-dims="1" srcset="https://i0.wp.com/stackexchange.com/users/flair/4.png?zoom=1.25&amp;resize=208%2C58&amp;ssl=1" src-orig="https://i0.wp.com/stackexchange.com/users/flair/4.png?resize=208%2C58&amp;ssl=1" scale="1.25"><br>
+</a></p>
+</div>
+		</aside><aside id="text-7" class="widget widget_text">			<div class="textwidget"><p><a href="http://fogcreek.com/"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/fc-logo.png" data-recalc-dims="1" width="412" height="93" src-orig="https://i1.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/fc-logo.png?w=730&amp;ssl=1" scale="1.25"></a><br>
+I also founded <a href="http://fogcreek.com/">Fog Creek Software</a>, one of the most influential small tech companies in the world. As an independent, privately-owned company, we’ve been making customers happy since the turn of the century. We share what we've learned about how to make great software, both by writing about our ideas and by creating products, like <a href="http://www.fogcreek.com/fogbugz">FogBugz</a>, <a href="http://trello.com/">Trello</a> and <a href="https://gomix.com/">Gomix</a>, that help others make great technology. As a result, Fog Creek's impact on the world of developers rivals companies a thousand times our size.</p>
+</div>
+		</aside><aside id="twitter_timeline-4" class="widget widget_twitter_timeline"><h2 class="widget-title">Twitter! Twitter!</h2><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 100%; height: 0px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px;" data-widget-id="profile:spolsky" title="Twitter Timeline" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/saved_resource.html"></iframe></aside>
+</div><!-- #secondary -->
+				</div><!-- #tab-3 -->
+			</div><!-- .site-header-inside -->
+		</div><!-- #tabs -->
+	</header><!-- #masthead -->
+	<div id="content" class="site-content fadeInFast">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-911" class="post post-911 type-post status-publish format-standard hentry category-top-10 category-new-developer category-news">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/" rel="bookmark"><time class="entry-date published" datetime="2003-10-08T00:15:12+00:00"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8 de outubro de 2003</font></font></time><time class="updated" datetime="2017-11-17T21:42:17+00:00">November 17, 2017</time></a></span><span class="byline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de </font></font></span> <span class="author vcard"><a class="url fn n" href="https://www.joelonsoftware.com/author/joelonsoftware/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Joel Spolsky</font></font></a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O Mínimo Absoluto que Todo Desenvolvedor de Software Absolutamente, Positivamente Deve Saber Sobre Unicode e Conjuntos de Caracteres (Sem desculpas!)</font></font></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://www.joelonsoftware.com/category/reading-lists/top-10/" rel="category tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Top 10</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , </font></font><a href="https://www.joelonsoftware.com/category/reading-lists/new-developer/" rel="category tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Novo desenvolvedor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , </font></font><a href="https://www.joelonsoftware.com/category/news/" rel="category tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notícias</font></font></a></li>
+									</ul>
+</div>
+
+	<div class="entry-content">
+		<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Você já se perguntou sobre essa misteriosa tag Content-Type? </font><font style="vertical-align: inherit;">Você sabe, aquele que você deveria colocar em HTML e você nunca sabe o que deveria ser?</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Você já recebeu um email de seus amigos na Bulgária com o assunto “???? </font><font style="vertical-align: inherit;">?????? </font><font style="vertical-align: inherit;">??? </font><font style="vertical-align: inherit;">????</font></font></p>
+<p><img style="margin-left: 5px;" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/ibm.jpg" alt="" width="150" height="143" align="right" border="0" data-recalc-dims="1" srcset="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/ibm.jpg?zoom=1.25&amp;resize=150%2C143&amp;ssl=1" src-orig="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/ibm.jpg?resize=150%2C143&amp;ssl=1" scale="1.25"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fiquei desanimado ao descobrir quantos desenvolvedores de software não estão realmente atualizados sobre o mundo misterioso de conjuntos de caracteres, codificações, Unicode, todas essas coisas. </font><font style="vertical-align: inherit;">Um par de anos atrás, um beta tester para </font></font><a href="http://www.fogcreek.com/FogBUGZ"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FogBUGZ</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estava imaginando se poderia lidar com e-mails recebidos em japonês. </font><font style="vertical-align: inherit;">Japonês? </font><font style="vertical-align: inherit;">Eles têm email em japonês? </font><font style="vertical-align: inherit;">Eu não fazia ideia. </font><font style="vertical-align: inherit;">Quando eu olhei de perto para o controle ActiveX comercial que estávamos usando para analisar mensagens de e-mail MIME, descobrimos que estava fazendo exatamente a coisa errada com os conjuntos de caracteres, então tivemos que escrever código heróico para desfazer a conversão errada que tinha feito e refazer corretamente. </font><font style="vertical-align: inherit;">Quando eu olhei para outra biblioteca comercial, ela também teve uma implementação de código de caractere completamente quebrada. </font><font style="vertical-align: inherit;">Eu me correspondi com o desenvolvedor desse pacote e ele meio que achou que eles “não podiam fazer nada sobre isso”. Como muitos programadores, ele apenas desejava que tudo fosse acabar de alguma forma.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mas não vai. </font><font style="vertical-align: inherit;">Quando descobri que a popular ferramenta de desenvolvimento web PHP tem </font></font><a href="http://ca3.php.net/manual/en/language.types.string.php"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uma ignorância</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> quase </font><a href="http://ca3.php.net/manual/en/language.types.string.php"><font style="vertical-align: inherit;">completa dos problemas de codificação de caracteres</font></a><font style="vertical-align: inherit;"> , usando alegremente 8 bits para caracteres, tornando praticamente impossível desenvolver boas aplicações web internacionais, pensei, </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">já chega</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Então eu tenho um anúncio para fazer: se você é um programador trabalhando em 2003 e você não sabe o básico de caracteres, conjuntos de caracteres, codificações e Unicode, e eu </font><font style="vertical-align: inherit;">te </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pego</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , eu vou punir você fazendo você Descasque as cebolas por 6 meses em um submarino. </font><font style="vertical-align: inherit;">Eu juro que vou.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E mais uma coisa:</font></font></p>
+<p align="center"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NÃO É TÃO DIFÍCIL.</font></font></strong></p>
+<p align="left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Neste artigo, mostrarei exatamente o que </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">todo programador em funcionamento</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> deve saber. </font><font style="vertical-align: inherit;">Todas essas coisas sobre "texto simples = ascii = caracteres são 8 bits" não é apenas errado, é irremediavelmente errado, e se você ainda está programando dessa forma, você não é muito melhor do que um médico que não acredita em germes. </font><font style="vertical-align: inherit;">Por favor, não escreva outra linha de código até terminar de ler este artigo.</font></font></p>
+<p align="left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Antes de começar, devo avisá-lo que, se você é uma daquelas pessoas raras que conhece a internacionalização, vai achar minha discussão toda um pouco simplificada demais. </font><font style="vertical-align: inherit;">Eu estou realmente apenas tentando definir um mínimo de barras aqui para que todos possam entender o que está acontecendo e possam escrever código que tenha a </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esperança</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> de trabalhar com texto em qualquer idioma diferente do subconjunto do inglês que não inclua palavras com acentos. </font><font style="vertical-align: inherit;">E devo avisá-lo que a manipulação de caracteres é apenas uma pequena parte do que é necessário para criar software que funcione internacionalmente, mas só posso escrever sobre uma coisa de cada vez, então hoje são conjuntos de caracteres.</font></font></p>
+<p><strong><span style="font-size: large;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uma perspectiva histórica</font></font></span></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A maneira mais fácil de entender essas coisas é ir cronologicamente.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Você provavelmente acha que vou falar sobre conjuntos de caracteres muito antigos como o EBCDIC aqui. </font><font style="vertical-align: inherit;">Bem, eu não vou. </font><font style="vertical-align: inherit;">EBCDIC não é relevante para a sua vida. </font><font style="vertical-align: inherit;">Nós não temos que ir tão longe no tempo.</font></font></p>
+<p><img style="margin-left: 5px;" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/ascii.png" alt="Tabela ASCII" width="274" height="146" align="right" border="0" data-recalc-dims="1" srcset="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/ascii.png?zoom=1.25&amp;resize=274%2C146&amp;ssl=1" src-orig="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/ascii.png?resize=274%2C146&amp;ssl=1" scale="1.25"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos velhos tempos, quando o Unix estava sendo inventado e a K &amp; R escrevia </font></font><a href="http://cm.bell-labs.com/cm/cs/cbook/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The C Programming Language</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , tudo era muito simples. </font><font style="vertical-align: inherit;">EBCDIC estava a caminho. </font><font style="vertical-align: inherit;">Os únicos personagens que importavam eram letras inglesas antigas e não acentuadas, e nós tínhamos um código para eles chamado </font></font><a href="http://www.robelle.com/library/smugbook/ascii.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ASCII</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que era capaz de representar todos os personagens usando um número entre 32 e 127. O espaço era 32, a letra "A" era 65, etc. Isso poderia ser convenientemente armazenado em 7 bits. </font><font style="vertical-align: inherit;">A maioria dos computadores naqueles dias usava bytes de 8 bits, portanto, não apenas você poderia armazenar todos os caracteres ASCII possíveis, mas você tinha um pouco de sobra, o que, se fosse perverso, poderia ser usado para seus propósitos desonestos: bulbos no WordStar na verdade ligaram o bit alto para indicar a última letra de uma palavra, condenando WordStar ao texto em inglês apenas. </font><font style="vertical-align: inherit;">Códigos abaixo de 32 foram chamados de </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">não imprimíveis</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e foram usados ​​para xingar. </font><font style="vertical-align: inherit;">Só brincando. </font><font style="vertical-align: inherit;">Eles foram usados ​​para caracteres de controle, como o 7, que fez o seu computador emitir um sinal sonoro e 12, o que fez com que a página atual de papel saísse da impressora e uma nova fosse alimentada.</font></font></p>
+<p>And all was good, assuming you were an English speaker.</p>
+<p><img style="margin-left: 5px;" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/oem.png" alt="" width="271" height="209" align="right" border="0" data-recalc-dims="1" srcset="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/oem.png?zoom=1.25&amp;resize=271%2C209&amp;ssl=1" src-orig="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/oem.png?resize=271%2C209&amp;ssl=1" scale="1.25">Because bytes have room for up to eight bits, lots of people got to thinking, “gosh, we can use the codes 128-255 for our own purposes.” The trouble was, <em>lots</em> of people had this idea at the same time, and they had their own ideas of what should go where in the space from 128 to 255. The IBM-PC had something that came to be known as the OEM character set which provided some accented characters for European languages and <a href="http://www.jimprice.com/ascii-dos.gif">a bunch of line drawing characters</a>… horizontal bars, vertical bars, horizontal bars with little dingle-dangles dangling off the right side, etc., and you could use these line drawing characters to make spiffy boxes and lines on the screen, which you can still see running on the 8088 computer at your dry cleaners’. In fact&nbsp; as soon as people started buying PCs outside of America all kinds of different OEM character sets were dreamed up, which all used the top 128 characters for their own purposes. For example on some PCs the character code 130 would display as é, but on computers sold in Israel it was the Hebrew letter Gimel (<img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/gimel.png" alt="ג" width="5" height="9" border="0" data-recalc-dims="1" srcset="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/gimel.png?zoom=1.25&amp;resize=5%2C9&amp;ssl=1" src-orig="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/gimel.png?resize=5%2C9&amp;ssl=1" scale="1.25">), so when Americans would send their résumés to Israel they would arrive as r<img style="margin-right: 2px;" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/gimel.png" alt="ג" width="5" height="9" border="0" data-recalc-dims="1" srcset="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/gimel.png?zoom=1.25&amp;resize=5%2C9&amp;ssl=1" src-orig="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/gimel.png?resize=5%2C9&amp;ssl=1" scale="1.25">sum<img style="margin-right: 2px;" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/gimel.png" alt="ג" width="5" height="9" border="0" data-recalc-dims="1" srcset="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/gimel.png?zoom=1.25&amp;resize=5%2C9&amp;ssl=1" src-orig="https://i2.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/gimel.png?resize=5%2C9&amp;ssl=1" scale="1.25">s. In many cases, such as Russian, there were lots of different ideas of what to do with the upper-128 characters, so you couldn’t even reliably interchange Russian documents.</p>
+<p>Eventually this OEM free-for-all got codified in the ANSI standard. In the ANSI standard, everybody agreed on what to do below 128, which was pretty much the same as ASCII, but there were lots of different ways to handle the characters from 128 and on up, depending on where you lived. These different systems were called <em><a href="http://www.i18nguy.com/unicode/codepages.html#msftdos">code pages</a></em>. So for example in Israel DOS used a code page called 862, while Greek users used 737. They were the same below 128 but different from 128 up, where all the funny letters resided. The national versions of MS-DOS had dozens of these code pages, handling everything from English to Icelandic and they even had a few “multilingual” code pages that could do Esperanto and Galician <em>on the same computer! Wow!</em> But getting, say, Hebrew and Greek on the same computer was a complete impossibility unless you wrote your own custom program that displayed everything using bitmapped graphics, because Hebrew and Greek required different code pages with different interpretations of the high numbers.</p>
+<p>Meanwhile, in Asia, even more crazy things were going on to take into account the fact that Asian alphabets have thousands of letters, which were never going to fit into 8 bits. This was usually solved by the messy system called DBCS, the “double byte character set” in which <em>some</em> letters were stored in one byte and others took two. It was easy to move forward in a string, but dang near impossible to move backwards. Programmers were encouraged not to use s++ and s– to move backwards and forwards, but instead to call functions such as Windows’ AnsiNext and AnsiPrev which knew how to deal with the whole mess.</p>
+<p>But still, most people just pretended that a byte was a character and a character was 8 bits and as long as you never moved a string from one computer to another, or spoke more than one language, it would sort of always work. But of course, as soon as the Internet happened, it became quite commonplace to move strings from one computer to another, and the whole mess came tumbling down. Luckily, Unicode had been invented.</p>
+<p><strong><span style="font-size: large;">Unicode</span></strong></p>
+<p>Unicode was a brave effort to create a single character set that included every reasonable writing system on the planet and some make-believe ones like Klingon, too. Some people are under the misconception that Unicode is simply a 16-bit code where each character takes 16 bits and therefore there are 65,536 possible characters. <strong>This is not, actually, correct.</strong> It is the single most common myth about Unicode, so if you thought that, don’t feel bad.</p>
+<p>In fact, Unicode has a different way of thinking about characters, and you have to understand the Unicode way of thinking of things or nothing will make sense.</p>
+<p>Until now, we’ve assumed that a letter maps to some bits which you can store on disk or in memory:</p>
+<p>A -&gt; 0100 0001</p>
+<p>In Unicode, a letter maps to something called a <em>code point</em> which is still just a theoretical concept. How that code point is represented in memory or on disk is a whole nuther story.</p>
+<p>In Unicode, the letter A is a platonic ideal. It’s just floating in heaven:</p>
+<p align="center"><span style="font-size: xx-large;">A</span></p>
+<p>This platonic <span style="font-size: xx-large;">A</span> is different than <span style="font-size: xx-large;">B</span>, and different from <span style="font-size: xx-large;">a</span>, but the same as <span style="font-family: arial, helvetica, &#39;sans serif&#39;; font-size: xx-large;">A</span> and <i><b><span style="font-size: xx-large;">A</span></b></i> and A. The idea that A in a Times New Roman font is the same character as the A in a Helvetica font, but <em>different</em> from “a” in lower case, does not seem very controversial, but in some languages just figuring out what a letter <em>is</em> can cause controversy. Is the German letter ß a real letter or just a fancy way of writing ss? If a letter’s shape changes at the end of the word, is that a different letter? Hebrew says yes, Arabic says no. Anyway, the smart people at the Unicode consortium have been figuring this out for the last decade or so, accompanied by a great deal of highly political debate, and you don’t have to worry about it. They’ve figured it all out already.</p>
+<p>Every platonic letter in every alphabet is assigned a magic number by the Unicode consortium which is written like this: <strong>U+0639</strong>.&nbsp; This magic number is called a <em>code point</em>. The U+ means “Unicode” and the numbers are hexadecimal. <strong>U+0639</strong> is the Arabic letter Ain. The English letter A would be <strong>U+0041</strong>. You can find them all using the <strong>charmap</strong> utility on Windows 2000/XP or visiting <a href="http://www.unicode.org/">the Unicode web site</a>.</p>
+<p>There is no real limit on the number of letters that Unicode can define and in fact they have gone beyond 65,536 so not every unicode letter can really be squeezed into two bytes, but that was a myth anyway.</p>
+<p>OK, so say we have a string:</p>
+<p align="center"><strong>Hello</strong></p>
+<p>which, in Unicode, corresponds to these five code points:</p>
+<p align="center">U+0048 U+0065 U+006C U+006C U+006F.</p>
+<p>Just a bunch of code points. Numbers, really. We haven’t yet said anything about how to store this in memory or represent it in an email message.</p>
+<p><strong><span style="font-size: large;">Encodings</span></strong></p>
+<p>That’s where <em>encodings</em> come in.</p>
+<p>The earliest idea for Unicode encoding, which led to the myth about the two bytes, was, hey, let’s just store those numbers in two bytes each. So Hello becomes</p>
+<p align="center">00 48 00 65 00 6C 00 6C 00 6F</p>
+<p>Right? Not so fast! Couldn’t it also be:</p>
+<p align="center">48 00 65 00 6C 00 6C 00 6F 00 ?</p>
+<p>Well, technically, yes, I do believe it could, and, in fact, early implementors wanted to be able to store their Unicode code points in high-endian or low-endian mode, whichever their particular CPU was fastest at, and lo, it was evening and it was morning and there were already <em>two</em> ways to store Unicode. So the people were forced to come up with the bizarre convention of storing a FE FF at the beginning of every Unicode string; this is called a <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/intl/unicode_42jv.asp">Unicode Byte Order Mark</a> and if you are swapping your high and low bytes it will look like a FF FE and the person reading your string will know that they have to swap every other byte. Phew. Not every Unicode string in the wild has a byte order mark at the beginning.</p>
+<p align="center"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/hummers.jpg" alt="" width="390" height="61" border="0" data-recalc-dims="1" srcset="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/hummers.jpg?zoom=1.25&amp;resize=390%2C61&amp;ssl=1" src-orig="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/hummers.jpg?resize=390%2C61&amp;ssl=1" scale="1.25"></p>
+<p>For a while it seemed like that might be good enough, but programmers were complaining. “Look at all those zeros!” they said, since they were Americans and they were looking at English text which rarely used code points above U+00FF. Also they were liberal hippies in California who wanted to <em>conserve (sneer)</em>. If they were Texans they wouldn’t have minded guzzling twice the number of bytes. But those Californian wimps couldn’t bear the idea of <em>doubling</em> the amount of storage it took for strings, and anyway, there were already all these doggone documents out there using various ANSI and DBCS character sets and who’s going to convert them all? <em>Moi?</em> For this reason alone most people decided to ignore Unicode for several years and in the meantime things got worse.</p>
+<p>Thus was <a href="http://www.cl.cam.ac.uk/~mgk25/ucs/utf-8-history.txt">invented</a>&nbsp;the brilliant concept of <a href="http://www.utf-8.com/">UTF-8</a>. UTF-8 was another system for storing your string of Unicode code points, those magic U+ numbers, in memory using 8 bit bytes. In UTF-8, every code point from 0-127 is stored <em>in a single byte</em>. Only code points 128 and above are stored using 2, 3, in fact, up to 6 bytes.</p>
+<p align="center"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/utf8.png" alt="Como UTF-8 funciona" width="398" height="62" border="1" data-recalc-dims="1" srcset="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/utf8.png?zoom=1.25&amp;resize=396%2C62&amp;ssl=1" src-orig="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/utf8.png?resize=400%2C63&amp;ssl=1" scale="1.25"></p>
+<p>This has the neat side effect that English text looks <em>exactly the same in UTF-8 as it did in ASCII,</em> so Americans don’t even notice anything wrong. Only the rest of the world has to jump through hoops. Specifically, <strong>Hello</strong>, which was U+0048 U+0065 U+006C U+006C U+006F, will be stored as 48 65 6C 6C 6F, which, behold! is the same as it was stored in ASCII, and ANSI, and every OEM character set on the planet. Now, if you are so bold as to use accented letters or Greek letters or Klingon letters, you’ll have to use several bytes to store a single code point, but the Americans will never notice. (UTF-8 also has the nice property that ignorant old string-processing code that wants to use a single 0 byte as the null-terminator will not truncate strings).</p>
+<p>So far I’ve told you <em>three</em> ways of encoding Unicode. The traditional store-it-in-two-byte methods are called UCS-2 (because it has two bytes) or UTF-16 (because it has 16 bits), and you still have to figure out if it’s high-endian UCS-2 or low-endian UCS-2. And there’s the popular new UTF-8 <a href="http://www.zvon.org/tmRFC/RFC2279/Output/chapter2.html">standard</a> which has the nice property of also working respectably if you have the happy coincidence of English text and braindead programs that are completely unaware that there is anything other than ASCII.</p>
+<p>There are actually a bunch of other ways of encoding Unicode. There’s something called UTF-7, which is a lot like UTF-8 but guarantees that the high bit will always be zero, so that if you have to pass Unicode through some kind of draconian police-state email system that thinks 7 bits are <em>quite enough, thank you</em> it can still squeeze through unscathed. There’s UCS-4, which stores each code point in 4 bytes, which has the nice property that every single code point can be stored in the same number of bytes, but, golly, even the Texans wouldn’t be so bold as to waste <em>that</em> much memory.</p>
+<p>And in fact now that you’re thinking of things in terms of platonic ideal letters which are represented by Unicode code points, those unicode code points can be encoded in any old-school encoding scheme, too! For example, you could encode the Unicode string for Hello (U+0048 U+0065 U+006C U+006C U+006F) in ASCII, or the old OEM Greek Encoding, or the Hebrew ANSI Encoding, or any of several hundred encodings that have been invented so far, <em>with one catch:</em> some of the letters might not show up! If there’s no equivalent for the Unicode code point you’re trying to represent in the encoding you’re trying to represent it in, you usually get a little question mark: ? or, if you’re <em>really</em> good, a box. Which did you get? -&gt; �</p>
+<p>There are hundreds of traditional encodings which can only store <em>some</em> code points correctly and change all the other code points into question marks. Some popular encodings of English text are Windows-1252 (the Windows 9x standard for Western European languages) and&nbsp;<a href="http://www.htmlhelp.com/reference/charset/">ISO-8859-1</a>, aka Latin-1 (also useful for any Western European language). But try to store Russian or Hebrew letters in these encodings and you get a bunch of question marks. UTF 7, 8, 16, and 32 all have the nice property of being able to store <em>any</em> code point correctly.</p>
+<p><strong><span style="font-size: large;">The Single Most Important Fact About Encodings</span></strong></p>
+<p>If you completely forget everything I just explained, please remember one extremely important fact. <strong>It does not make sense to have a string without knowing what encoding it uses</strong>. You can no longer stick your head in the sand and pretend that “plain” text is ASCII.</p>
+<p align="center"><strong><u>There Ain’t No Such Thing As Plain Text.</u></strong></p>
+<p>If you have a string, in memory, in a file, or in an email message, you have to know what encoding it is in or you cannot interpret it or display it to users correctly.</p>
+<p>Almost every stupid “my website looks like gibberish” or “she can’t read my emails when I use accents” problem comes down to one naive programmer who didn’t understand the simple fact that if you don’t tell me whether a particular string is encoded using UTF-8 or ASCII or ISO 8859-1 (Latin 1) or Windows 1252 (Western European), you simply cannot display it correctly or even figure out where it ends. There are over a hundred encodings and above code point 127, all bets are off.</p>
+<p>How do we preserve this information about what encoding a string uses? Well, there are standard ways to do this. For an email message, you are expected to have a string in the header of the form</p>
+<blockquote dir="ltr" style="margin-right: 0px;"><p><strong>Content-Type: text/plain;&nbsp;charset="UTF-8"</strong></p></blockquote>
+<p>For a web page, the original idea was that the web server would return a similar <strong>Content-Type</strong> http header along with the web page itself — not in the HTML itself, but as one of the response headers that are sent before the HTML page.</p>
+<p>This causes problems. Suppose you have a big web server with lots of sites and hundreds of pages contributed by lots of people in lots of different languages and all using whatever encoding their copy of Microsoft FrontPage saw fit to generate. The web server itself wouldn’t really <em>know</em> what encoding each file was written in, so it couldn’t send the Content-Type header.</p>
+<p>It would be convenient if you could put the Content-Type of the HTML file right in the HTML file itself, using some kind of special tag. Of course this drove purists crazy… how can you <em>read</em> the HTML file until you know what encoding it’s in?! Luckily, almost every encoding in common use does the same thing with characters between 32 and 127, so you can always get this far on the HTML page without starting to use funny letters:</p>
+<blockquote dir="ltr" style="margin-right: 0px;"><p><strong>&lt;html&gt;<br>
+&lt;head&gt;<br>
+<!--StartFragment --></strong><strong>&lt;<span class="start-tag">meta</span> <span class="attribute-name">http-equiv</span>=<span class="attribute-value">"Content-Type"</span> <span class="attribute-name">content</span>=<span class="attribute-value">"text/html; charset=utf-8"</span>&gt;</strong></p></blockquote>
+<p>But that meta tag really has to be the very first thing in the &lt;head&gt; section because as soon as the web browser sees this tag it’s going to stop parsing the page and start over after reinterpreting the whole page using the encoding you specified.</p>
+<p>What do web browsers do if they don’t find any Content-Type, either in the http headers or the meta tag? Internet Explorer actually does something quite interesting: it tries to guess, based on the frequency in which various bytes appear in typical text in typical encodings of various languages, what language and encoding was used. Because the various old 8 bit code pages tended to put their national letters in different ranges between 128 and 255, and because every human language has a different characteristic histogram of letter usage, this actually has a chance of working. It’s truly weird, but it does seem to work often enough that naïve web-page writers who never knew they needed a Content-Type header look at their page in a web browser and it <em>looks ok</em>, until one day, they write something that doesn’t exactly conform to the letter-frequency-distribution of their native language, and Internet Explorer decides it’s Korean and displays it thusly, proving, I think, the point that Postel’s Law about being “conservative in what you emit and liberal in what you accept” is quite frankly not a good engineering principle. Anyway, what does the poor reader of this website, which was written in Bulgarian but appears to be Korean (and not even cohesive Korean), do? He uses the View | Encoding menu and tries a bunch of different encodings (there are at least a dozen for Eastern European languages) until the picture comes in clearer. If he knew to do that, which most people don’t.</p>
+<p align="center"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/rose.jpg" alt="" width="300" height="225" border="0" data-recalc-dims="1" srcset="https://i1.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/rose.jpg?zoom=1.25&amp;resize=300%2C225&amp;ssl=1" src-orig="https://i1.wp.com/www.joelonsoftware.com/wp-content/uploads/2003/10/rose.jpg?resize=300%2C225&amp;ssl=1" scale="1.25"></p>
+<p>For the latest version of <a href="http://www.fogcreek.com/CityDesk">CityDesk</a>, the web site management software published by <a href="http://www.fogcreek.com/">my company</a>, we decided to do everything internally in UCS-2 (two byte) Unicode, which is what Visual Basic, COM, and Windows NT/2000/XP use as their native string type. In C++ code we just declare strings as <strong>wchar_t</strong> (“wide char”) instead of <strong>char</strong> and use the <strong>wcs</strong> functions instead of the <strong>str</strong> functions (for example <strong>wcscat</strong> and <strong>wcslen</strong> instead of <strong>strcat</strong> and <strong>strlen</strong>). To create a literal UCS-2 string in C code you just put an L before it as so: <strong>L"Hello"</strong>.</p>
+<p>When CityDesk publishes the web page, it converts it to UTF-8 encoding, which has been well supported by web browsers for many years. That’s the way all <a href="https://www.joelonsoftware.com/navLinks/OtherLanguages.html">29 language versions</a> of <em>Joel on Software</em> are encoded and I have not yet heard a single person who has had any trouble viewing them.</p>
+<p>This article is getting rather long, and I can’t possibly cover everything there is to know about character encodings and Unicode, but I hope that if you’ve read this far, you know enough to go back to programming, using antibiotics instead of leeches and spells, a task to which I will leave you now.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+
+
+	<div id="post-footer-widgets" class="widget-area" role="complementary">
+
+	<aside id="text-8" class="widget widget_text"><h2 class="widget-title">Subscribe!</h2>			<div class="textwidget"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Você está lendo </font></font><a href="https://www.joelonsoftware.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Joel on Software</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , recheado de anos e anos de artigos loucos sobre desenvolvimento de software, gerenciamento de equipes de software, design de interfaces de usuário, empresas de software de sucesso e patinhos de borracha.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se você quiser saber quando eu publicar algo novo, recomendo que você </font></font><a href="https://newsblur.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">adquira</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> um leitor de RSS como o </font><a href="https://newsblur.com/"><font style="vertical-align: inherit;">NewsBlur</font></a><font style="vertical-align: inherit;"> e assine o meu </font></font><a href="https://www.joelonsoftware.com/feed/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">feed RSS</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+</div>
+		</aside>
+</div><!-- #post-footer-widgets -->
+
+<div class="author-info">
+	<div class="author-avatar">
+		<img alt="" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/d95216e70bed7430716b91ddd6df55fe.jpeg" srcset="https://secure.gravatar.com/avatar/d95216e70bed7430716b91ddd6df55fe?s=128&amp;d=mm&amp;r=pg 2x" class="avatar avatar-64 photo" height="64" width="64" originals="64" src-orig="https://secure.gravatar.com/avatar/d95216e70bed7430716b91ddd6df55fe?s=64&amp;d=mm&amp;r=pg" scale="1.25">	</div><!-- .author-avatar -->
+
+	<div class="author-description">
+		<h2 class="author-title"><span class="author-heading"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre o autor.</font></font></span></h2>
+
+		<p class="author-bio"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			Sou Joel Spolsky, co-fundador da </font></font><a href="https://trello.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trello</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e da </font></font><a href="http://www.fogcreek.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fog Creek Software</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> , e CEO da </font></font><a href="http://stackoverflow.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stack Overflow. </font></font></a><a href="https://www.joelonsoftware.com/about-me/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mais sobre mim</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .		</font></font></p><!-- .author-bio -->
+	</div><!-- .author-description -->
+</div><!-- .author-info -->
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pós-navegação</font></font></h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="https://www.joelonsoftware.com/2003/10/01/01-3/" rel="prev"><span class="meta-nav"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">← Post anterior</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 01</font></font></a></div><div class="nav-next"><a href="https://www.joelonsoftware.com/2003/10/10/10/" rel="next"><span class="meta-nav"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Próximo Post →</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 10</font></font></a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+		
+			
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a class="powered-by" href="https://wordpress.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+				Orgulhosamente desenvolvido com WordPress			</font></font></a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<div style="display:none">
+	<div class="grofile-hash-map-d95216e70bed7430716b91ddd6df55fe">
+	</div>
+	</div>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/photon.min.js.download"></script>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/devicepx-jetpack.js.download"></script>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/jquery.fitvids.js.download"></script>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/editor.js.download"></script>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/twitter-timeline.min.js.download"></script>
+<script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/wp-embed.min.js.download"></script>
+	  <script type="text/javascript">
+		(function() {
+		  var t   = document.createElement( 'script' );
+		  t.type  = 'text/javascript';
+		  t.async = true;
+		  t.id    = 'gauges-tracker';
+		  t.setAttribute( 'data-site-id', '57a9715ec88d90063f018386' );
+		  t.src = '//secure.gaug.es/track.js';
+		  var s = document.getElementsByTagName( 'script' )[0];
+		  s.parentNode.insertBefore( t, s );
+		})();
+	  </script>
+	  <script type="text/javascript" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/e-201926.js.download" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.4.1',blog:'119105578',post:'911',tz:'0',srv:'www.joelonsoftware.com'} ]);
+	_stq.push([ 'clickTrackerInit', '119105578', '911' ]);
+</script>
+
+
+
+<!--
+	generated 271 seconds ago
+	generated in 0.158 seconds
+	served from batcache in 0.004 seconds
+	expires in 29 seconds
+-->
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/widget_iframe.d753e00c3e838c1b2558149bd3f6ecb8.html" title="Twitter settings iframe" style="display: none;"></iframe><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/translate_24dp.png" width="20" height="20" alt="Google Tradutor" scale="0"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Texto original</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Sugerir uma tradução melhor</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><img src="./The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!) – Joel on Software_files/g.gif" alt=":)" width="6" height="5" id="wpstats" scale="0"><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

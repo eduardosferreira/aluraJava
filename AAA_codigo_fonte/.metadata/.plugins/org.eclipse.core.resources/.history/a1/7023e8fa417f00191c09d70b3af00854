@@ -1,0 +1,17 @@
+
+public class TestaVariaveis {
+
+	public static void main(String[] args) {
+		
+		int idade;
+		idade = 37;
+		System.out.println(idade);
+		idade++;
+		System.out.println(idade);
+		idade = (7*2)*idade;
+		System.out.print(idade);
+		System.out.println(" idade : " + idade + " , parabéns!");
+		
+	}
+	
+}

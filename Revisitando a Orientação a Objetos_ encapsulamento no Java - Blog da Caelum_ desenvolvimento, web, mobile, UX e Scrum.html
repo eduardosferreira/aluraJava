@@ -1,0 +1,3249 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/ -->
+<html lang="pt-BR" prefix="og: http://ogp.me/ns#" class=" js csstransforms3d csstransitions" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<link rel="pingback" href="https://blog.caelum.com.br/xmlrpc.php">
+
+<!-- This site is optimized with the Yoast SEO plugin v10.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Revisitando a Orientação a Objetos: encapsulamento no Java - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum</title>
+<link rel="canonical" href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Revisitando a Orientação a Objetos: encapsulamento no Java - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta property="og:description" content="Façamos uma aposta. Tenho certeza que você, ao ver a classe abaixo, consegue perceber um problema nela: Sim. Os atributos estão todos públicos! Isso vai exatamente contra uma das nossas primeiras lições quando aprendemos Java: …">
+<meta property="og:url" content="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/">
+<meta property="og:site_name" content="Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta property="article:tag" content="boas práticas">
+<meta property="article:tag" content="encapsulamento">
+<meta property="article:tag" content="fj-11">
+<meta property="article:tag" content="fj-15">
+<meta property="article:tag" content="getters e setters">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="orientação a objetos">
+<meta property="article:section" content="Arquitetura">
+<meta property="article:published_time" content="2012-06-14T12:50:40+00:00">
+<meta property="article:modified_time" content="2017-03-06T15:39:05+00:00">
+<meta property="og:updated_time" content="2017-03-06T15:39:05+00:00">
+<meta property="og:image" content="https://blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento1.png">
+<meta property="og:image:secure_url" content="https://blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento1.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Façamos uma aposta. Tenho certeza que você, ao ver a classe abaixo, consegue perceber um problema nela: Sim. Os atributos estão todos públicos! Isso vai exatamente contra uma das nossas primeiras lições quando aprendemos Java: […]">
+<meta name="twitter:title" content="Revisitando a Orientação a Objetos: encapsulamento no Java - Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum">
+<meta name="twitter:image" content="https://blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento1.png">
+<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script async="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/analytics.js.download"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","url":"https://blog.caelum.com.br/","sameAs":[],"@id":"https://blog.caelum.com.br/#organization","name":"Caelum","logo":""}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://secure.gravatar.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Feed para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum »" href="https://blog.caelum.com.br/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum »" href="https://blog.caelum.com.br/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum » Revisitando a Orientação a Objetos: encapsulamento no Java" href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.caelum.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-layout-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="prism-theme-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/prism-css.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/related-posts.min.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/fitvids.min.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/modernizr.min.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/general.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/spin.min.js.download"></script><style type="text/css"></style>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jquery.spin.min.js.download"></script>
+<link rel="https://api.w.org/" href="https://blog.caelum.com.br/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.caelum.com.br/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.caelum.com.br/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.1.1">
+<link rel="shortlink" href="https://wp.me/p8tqQy-1j5">
+<link rel="alternate" type="application/json+oembed" href="https://blog.caelum.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.caelum.com.br%2Frevisitando-a-orientacao-a-objetos-encapsulamento-no-java%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://blog.caelum.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.caelum.com.br%2Frevisitando-a-orientacao-a-objetos-encapsulamento-no-java%2F&amp;format=xml">
+<link rel="stylesheet" type="text/css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/all.css"><!--[if IE]><link rel="stylesheet" type="text/css" href="https://blog.caelum.com.br/wp-content/plugins/highlight-source-pro/ie.css" /><![endif]--><script type="text/javascript" data-cfasync="false">var _mmunch = {'front': false, 'page': false, 'post': false, 'category': false, 'author': false, 'search': false, 'attachment': false, 'tag': false};_mmunch['post'] = true; _mmunch['postData'] = {"ID":5027,"post_name":"revisitando-a-orientacao-a-objetos-encapsulamento-no-java","post_title":"Revisitando a Orienta\u00e7\u00e3o a Objetos: encapsulamento no Java","post_type":"post","post_author":"39","post_status":"publish"}; _mmunch['postCategories'] = [{"term_id":34,"name":"Arquitetura","slug":"arquitetura","term_group":0,"term_taxonomy_id":35,"taxonomy":"category","description":"","parent":0,"count":89,"filter":"raw","cat_ID":34,"category_count":89,"category_description":"","cat_name":"Arquitetura","category_nicename":"arquitetura","category_parent":0},{"term_id":1367,"name":"Programa\u00e7\u00e3o","slug":"programacao","term_group":0,"term_taxonomy_id":1440,"taxonomy":"category","description":"","parent":0,"count":301,"filter":"raw","cat_ID":1367,"category_count":301,"category_description":"","cat_name":"Programa\u00e7\u00e3o","category_nicename":"programacao","category_parent":0}]; _mmunch['postTags'] = [{"term_id":86,"name":"boas pr\u00e1ticas","slug":"boas-praticas","term_group":0,"term_taxonomy_id":96,"taxonomy":"post_tag","description":"","parent":0,"count":4,"filter":"raw"},{"term_id":943,"name":"encapsulamento","slug":"encapsulamento","term_group":0,"term_taxonomy_id":1020,"taxonomy":"post_tag","description":"","parent":0,"count":3,"filter":"raw"},{"term_id":760,"name":"fj-11","slug":"fj-11","term_group":0,"term_taxonomy_id":837,"taxonomy":"post_tag","description":"","parent":0,"count":10,"filter":"raw"},{"term_id":1061,"name":"fj-15","slug":"fj-15","term_group":0,"term_taxonomy_id":1138,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"},{"term_id":1050,"name":"getters e setters","slug":"getters-e-setters","term_group":0,"term_taxonomy_id":1127,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw"},{"term_id":2,"name":"Java","slug":"java","term_group":0,"term_taxonomy_id":2,"taxonomy":"post_tag","description":"","parent":0,"count":228,"filter":"raw"},{"term_id":210,"name":"orienta\u00e7\u00e3o a objetos","slug":"orientacao-a-objetos","term_group":0,"term_taxonomy_id":233,"taxonomy":"post_tag","description":"","parent":0,"count":9,"filter":"raw"}]; _mmunch['postAuthor'] = {"name":"Maur\u00edcio Aniche","ID":39};</script><script data-cfasync="false" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/site.js.download" id="mailmunch-script" data-plugin="mc_mm" data-mailmunch-site-id="400098" async=""></script>
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://i1.wp.com/">
+<link rel="dns-prefetch" href="https://i2.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<!-- Theme version -->
+<meta name="generator" content="On Topic 1.1.2">
+<meta name="generator" content="WooFramework 5.5.5">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile viewport scale | Disable user zooming as the layout is optimised -->
+<meta content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no" name="viewport">
+<!--[if lt IE 9]>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+		<link rel="amphtml" href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/amp/"><link rel="stylesheet" type="text/css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shThemeEclipse.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+			<style type="text/css" id="wp-custom-css">
+				/*
+Você pode adicionar seu próprio CSS aqui.
+
+Clique no ícone de ajuda acima para saber mais.
+*/
+
+/* author Alex feat Mairo ajuste no blockquote */
+.post .entry blockquote {
+    border-left: 5px solid #ccc;
+    padding-left: 25px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+}
+
+.post .entry blockquote:before {
+	display: none;
+}
+
+.post .entry blockquote p {
+	margin: 0px
+}
+			</style>
+		
+<!-- Woo Custom Styling -->
+<style type="text/css">
+body { background: #ffffff !important; }
+.entry a, .home-tabber li a { color: #7D95A5 !important; }
+.entry a:hover, .home-tabber li a:hover { color: #5A7C92 !important; }
+a.button, a.comment-reply-link, #commentform #submit, #contact-page .submit { background: #7D95A5 !important; }
+a.button:hover, a.button.hover, a.button.active, a.comment-reply-link:hover, #commentform #submit:hover, #contact-page .submit:hover { background: #7D95A5 !important; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+</style>
+
+<!-- Google Webfonts -->
+<link href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/css" rel="stylesheet" type="text/css">
+
+<!-- Woo Custom Typography -->
+<style type="text/css">
+body { font:normal 1.6em/1.9em 'Merriweather', arial, sans-serif;color:#1c1c1c; }
+#navigation ul.nav > li > a { font:300 1.1em/1em 'Varela', arial, sans-serif;color:#FFFFFF; }
+.page header h1 { font:bold italic 3.5em/1em 'Open Sans', arial, sans-serif;color:#000000; }
+.post header h1, .post header h1 a:link, .post header h1 a:visited { font:bold 3em/1em 'PT Sans', arial, sans-serif;color:#25343F; }
+.post header h1 a:link, .post header h1 a:visited { font:bold 0.7em/1em 'PT Sans', arial, sans-serif;color:#000000; }
+.post-meta { font:300 0.9em/1em 'Merriweather', arial, sans-serif;color:#828282; }
+.entry, .entry p { font:300 1em/1.5em 'Merriweather', arial, sans-serif;color:#1c1c1c; } h1, h2, h3, h4, h5, h6 { font-family: Merriweather, arial, sans-serif; }
+</style>
+
+<!-- Alt Stylesheet -->
+<link href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/default.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Favicon -->
+<link rel="shortcut icon" href="https://blog.caelum.com.br/wp-content/uploads/2006/08/favicon.ico">
+<!-- Options Panel Custom CSS -->
+<style type="text/css">
+.entry a, .home-tabber li a { color:#068AE0 !important; }
+
+</style>
+
+
+<!-- Woo Shortcodes CSS -->
+<link href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shortcodes.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Stylesheet -->
+<link href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/custom.css" rel="stylesheet" type="text/css">
+
+
+	<style>
+	
+		
+		#header  {
+			
+							background-color: #081c27;
+						
+							background-image: url(https://blog.caelum.com.br/wp-content/uploads/2006/08/bg-02.jpg);
+						
+							background-position: top left;
+						
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+		}
+	
+				
+			@media only screen and (min-width: 768px) {
+				
+				.page #post-entries a, .single-post #post-entries a, .single-product #post-entries a  {
+					background-color: #081c27;
+				}
+				
+			}
+			
+			
+	</style>
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-270161-5');
+</script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/services.min.css"><style type="text/css">.backpack.dropzone {
+  font-family: 'SF UI Display', 'Segoe UI';
+  font-size: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  font-weight: lighter;
+  color: white;
+  will-change: right;
+  z-index: 2147483647;
+  bottom: 20%;
+  background: #333;
+  position: fixed;
+  user-select: none;
+  transition: left .5s, right .5s;
+  right: 0px; }
+  .backpack.dropzone .animation {
+    height: 80px;
+    width: 250px;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+  .backpack.dropzone .title::before {
+    content: 'Save to'; }
+  .backpack.dropzone.closed {
+    right: -250px; }
+  .backpack.dropzone.hover .animation {
+    animation: sxt-play-anim-hover 0.91s steps(21);
+    animation-fill-mode: forwards;
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png") left center; }
+
+@keyframes sxt-play-anim-hover {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -5250px; } }
+  .backpack.dropzone.saving .title::before {
+    content: 'Saving to'; }
+  .backpack.dropzone.saving .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png") left center;
+    animation: sxt-play-anim-saving steps(59) 2.46s infinite; }
+
+@keyframes sxt-play-anim-saving {
+  100% {
+    background-position: -14750px; } }
+  .backpack.dropzone.saved .title::before {
+    content: 'Saved to'; }
+  .backpack.dropzone.saved .animation {
+    background: url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png") left center;
+    animation: sxt-play-anim-saved steps(20) 0.83s forwards; }
+
+@keyframes sxt-play-anim-saved {
+  100% {
+    background-position: -5000px; } }
+</style><link rel="stylesheet" type="text/css" href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/styles.css"><style type="text/css">/*===============================
+=            Choices            =
+===============================*/
+.choices {
+    position: relative;
+    margin-bottom: 24px;
+    font-size: 16px;
+    background-color: #FFF;
+    height: 38px;
+  }
+
+  .choices:focus {
+    outline: none;
+  }
+
+  .choices:last-child {
+    margin-bottom: 0;
+  }
+
+  .choices.is-disabled .choices__inner,
+  .choices.is-disabled .choices__input {
+    background-color: #EAEAEA;
+    cursor: not-allowed;
+    user-select: none;
+  }
+
+  .choices.is-disabled .choices__item {
+    cursor: not-allowed;
+  }
+
+  .choices[data-type*="select-one"] {
+    cursor: pointer;
+  }
+
+  .choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 7.5px;
+  }
+
+  .choices[data-type*="select-one"] .choices__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    margin: 0;
+  }
+
+  .choices[data-type*="select-one"] .choices__button {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+    padding: 0;
+    background-size: 8px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    margin-right: 25px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10em;
+    opacity: .5;
+  }
+
+  .choices[data-type*="select-one"] .choices__button:hover, .choices[data-type*="select-one"] .choices__button:focus {
+    opacity: 1;
+  }
+
+  .choices[data-type*="select-one"] .choices__button:focus {
+    box-shadow: 0px 0px 0px 2px #00BCD4;
+  }
+
+  .choices[data-type*="select-one"]:after {
+    content: "";
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent;
+    border-width: 5px;
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    margin-top: -2.5px;
+    pointer-events: none;
+  }
+
+  .choices[data-type*="select-one"].is-open:after {
+    border-color: transparent transparent #333333 transparent;
+    margin-top: -7.5px;
+  }
+
+  .choices[data-type*="select-one"][dir="rtl"]:after {
+    left: 11.5px;
+    right: auto;
+  }
+
+  .choices[data-type*="select-one"][dir="rtl"] .choices__button {
+    right: auto;
+    left: 0;
+    margin-left: 25px;
+    margin-right: 0;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__inner,
+  .choices[data-type*="text"] .choices__inner {
+    cursor: text;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button,
+  .choices[data-type*="text"] .choices__button {
+    position: relative;
+    display: inline-block;
+    margin-top: 0;
+    margin-right: -4px;
+    margin-bottom: 0;
+    margin-left: 8px;
+    padding-left: 16px;
+    border-left: 1px solid #008fa1;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+    background-size: 8px;
+    width: 8px;
+    line-height: 1;
+    opacity: .75;
+    border-radius: 0;
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button:hover, .choices[data-type*="select-multiple"] .choices__button:focus,
+  .choices[data-type*="text"] .choices__button:hover,
+  .choices[data-type*="text"] .choices__button:focus {
+    opacity: 1;
+  }
+
+  .choices__inner {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 7.5px 7.5px 3.75px;
+    border-radius: 2.5px;
+    font-size: 14px;
+    min-height: 38px;
+    overflow: hidden;
+  }
+
+  .is-focused .choices__inner,
+  .is-open .choices__inner {
+    border-color: #5897fb !important;
+  }
+
+  .is-open .choices__inner {
+    border-radius: 2.5px 2.5px 0 0 !important;
+    border-bottom: none !important;
+  }
+
+  .is-flipped.is-open .choices__inner {
+    border-radius: 0 0 2.5px 2.5px !important;
+    border-bottom: 1px solid #5897fb !important;
+  }
+
+  .choices__list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    padding:4px !important;
+  }
+
+  .choices__list--single {
+    display: inline-block;
+    padding: 4px 16px 4px 4px;
+    width: 100%;
+    line-height: 28px !important;
+    text-indent: 5px;
+  }
+
+  [dir="rtl"] .choices__list--single {
+    padding-right: 4px;
+    padding-left: 16px;
+  }
+
+  .choices__list--single .choices__item {
+    width: 100%;
+  }
+
+  .choices__list--multiple {
+    display: inline;
+  }
+
+  .choices__list--multiple .choices__item {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 3.75px;
+    margin-bottom: 3.75px;
+    background-color: #00BCD4;
+    border: 1px solid #00a5bb;
+    color: #FFFFFF;
+    word-break: break-all;
+  }
+
+  .choices__list--multiple .choices__item[data-deletable] {
+    padding-right: 5px;
+  }
+
+  [dir="rtl"] .choices__list--multiple .choices__item {
+    margin-right: 0;
+    margin-left: 3.75px;
+  }
+
+  .choices__list--multiple .choices__item.is-highlighted {
+    background-color: #00a5bb;
+    border: 1px solid #008fa1;
+  }
+
+  .is-disabled .choices__list--multiple .choices__item {
+    background-color: #aaaaaa;
+    border: 1px solid #919191;
+  }
+
+  .choices__list--dropdown {
+    display: none;
+    z-index: 999999 !important;
+    position: absolute;
+    width: 100%;
+    background-color: #FFFFFF;
+    top: 100%;
+    margin-top: -1px;
+    border-bottom-left-radius: 2.5px;
+    border-bottom-right-radius: 2.5px;
+    overflow: hidden;
+    word-break: break-all;
+    border-bottom: 1px solid #cacaca !important;
+    border-left: 1px solid #cacaca !important;
+    border-right: 1px solid #cacaca !important;
+
+  }
+
+  .choices__list--dropdown.is-active {
+    display: block;
+    border-bottom: 1px solid #5897fb !important;
+    border-left: 1px solid #5897fb !important;
+    border-right: 1px solid #5897fb !important;
+    margin-top: -1px !important;
+  }
+
+  .is-open .choices__list--dropdown {
+    border-color: #b7b7b7;
+  }
+
+  .is-flipped .choices__list--dropdown {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: -1px !important;
+    border-radius: .25rem .25rem 0 0;
+    border-top: 1px solid #5897fb !important;
+    border-bottom: none !important;
+  }
+
+  .choices__list--dropdown .choices__list {
+    position: relative;
+    max-height: 300px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+  }
+
+  .choices__list--dropdown .choices__item {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    padding: 5px !important;
+  }
+
+  [dir="rtl"] .choices__list--dropdown .choices__item {
+    text-align: right;
+  }
+
+  @media (min-width: 640px) {
+    .choices__list--dropdown .choices__item--selectable {
+      padding-right: 100px;
+    }
+    .choices__list--dropdown .choices__item--selectable:after {
+      content: attr(data-select-text);
+      font-size: 12px;
+      opacity: 0;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    [dir="rtl"] .choices__list--dropdown .choices__item--selectable {
+      text-align: right;
+      padding-left: 100px;
+      padding-right: 10px;
+    }
+    [dir="rtl"] .choices__list--dropdown .choices__item--selectable:after {
+      right: auto;
+      left: 10px;
+    }
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background-color: #3875d7 !important;
+    color: #fff !important;
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted:after {
+    opacity: .5;
+  }
+
+  .choices__item {
+    cursor: default;
+  }
+
+  .choices__item--selectable {
+    cursor: pointer;
+  }
+
+  .choices__item--disabled {
+    cursor: not-allowed;
+    user-select: none;
+    opacity: .5;
+  }
+
+  .choices__heading {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #f7f7f7;
+    color: gray;
+  }
+
+  .choices__button {
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .choices__button:focus {
+    outline: none;
+  }
+
+  .choices__input {
+    display: inline-block;
+    vertical-align: baseline;
+    background-color: #f9f9f9;
+    border: 1px solid #aaa !important;
+    font-size: 14px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    max-width: 100%;
+    padding: 4px 0 4px 2px;
+    margin-top: 6px;
+    height:28px !important;
+  }
+
+  .choices__input:focus {
+    outline: 0;
+  }
+
+  [dir="rtl"] .choices__input {
+    padding-right: 2px;
+    padding-left: 0;
+  }
+
+  .choices__placeholder {
+    opacity: .5;
+  }
+
+  .choices__input.is-hidden,
+  .choices[data-type*="select-one"] .choices__input.is-hidden,
+  .choices[data-type*="select-multiple"] .choices__input.is-hidden {
+    display: none !important;
+  }
+
+  /*=====  End of Choices  ======*/
+</style></head>
+<body class="post-template-default single single-post postid-5027 single-format-standard chrome alt-style-default layout-default"><div id="popup-_lw1dyepap" style="display: none;">
+
+<!-- Bricks Main Styles -->
+<style type="text/css" rel="stylesheet">
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw article, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw aside,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw details, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw figcaption,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw figure, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw footer,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw header, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw hgroup,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw menu, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw nav,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw section {
+    display: block;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw ol, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw ul {
+    list-style: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q {
+    quotes: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote:before, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw blockquote:after,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q:before, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw q:after {
+    content: '';
+    content: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw b, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw strong {
+    font-weight: bold;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw i, #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw em {
+    font-style: italic;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--section {
+    width: 100%;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--section > div {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 600px;
+    position: relative;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--row {
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--column > div {
+    padding: 7px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-box {
+    width: 100%
+  }
+
+  @media screen and (min-width: 768px) {
+    #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--row {
+      flex-flow: row nowrap;
+    }
+  }
+</style>
+
+<!-- Bricks Component Text Styles -->
+<style>
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text {
+    color: #333;
+    line-height: 1.42;
+    word-wrap: break-word;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text a {
+    color: #31a2ff;
+    text-decoration: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sub,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sub {
+    bottom: -0.25em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text sup {
+    top: -0.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul {
+    padding-left: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol > li,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul > li {
+    list-style-type: none;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul > li::before {
+    content: '\2022';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li:not(.ql-direction-rtl)::before {
+    margin-left: -1.5em;
+    margin-right: 0.3em;
+    text-align: right;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-direction-rtl::before {
+    margin-left: 0.3em;
+    margin-right: -1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li:not(.ql-direction-rtl),
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul li:not(.ql-direction-rtl) {
+    padding-left: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-direction-rtl,
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ul li.ql-direction-rtl {
+    padding-right: 1.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li:before {
+    content: counter(list-0, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1 {
+    counter-increment: list-1;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1:before {
+    content: counter(list-1, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-1 {
+    counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2 {
+    counter-increment: list-2;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2:before {
+    content: counter(list-2, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-2 {
+    counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3 {
+    counter-increment: list-3;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3:before {
+    content: counter(list-3, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-3 {
+    counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4 {
+    counter-increment: list-4;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4:before {
+    content: counter(list-4, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-4 {
+    counter-reset: list-5 list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5 {
+    counter-increment: list-5;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5:before {
+    content: counter(list-5, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-5 {
+    counter-reset: list-6 list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6 {
+    counter-increment: list-6;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6:before {
+    content: counter(list-6, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-6 {
+    counter-reset: list-7 list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7 {
+    counter-increment: list-7;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7:before {
+    content: counter(list-7, lower-alpha) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-7 {
+    counter-reset: list-8 list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8 {
+    counter-increment: list-8;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8:before {
+    content: counter(list-8, lower-roman) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-8 {
+    counter-reset: list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-9 {
+    counter-increment: list-9;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text ol li.ql-indent-9:before {
+    content: counter(list-9, decimal) '. ';
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 3em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 4.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 3em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-1.ql-direction-rtl.ql-align-right {
+    padding-right: 4.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 6em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 7.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 6em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-2.ql-direction-rtl.ql-align-right {
+    padding-right: 7.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 9em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 10.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 9em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-3.ql-direction-rtl.ql-align-right {
+    padding-right: 10.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 12em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 13.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 12em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-4.ql-direction-rtl.ql-align-right {
+    padding-right: 13.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 15em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 16.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 15em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-5.ql-direction-rtl.ql-align-right {
+    padding-right: 16.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 18em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 19.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 18em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-6.ql-direction-rtl.ql-align-right {
+    padding-right: 19.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 21em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 22.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 21em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-7.ql-direction-rtl.ql-align-right {
+    padding-right: 22.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 24em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 25.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 24em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-8.ql-direction-rtl.ql-align-right {
+    padding-right: 25.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 27em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-9:not(.ql-direction-rtl) {
+    padding-left: 28.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 27em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text li.ql-indent-9.ql-direction-rtl.ql-align-right {
+    padding-right: 28.5em;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks--component-text .ql-direction-rtl {
+    direction: rtl;
+    text-align: inherit;
+  }
+</style>
+
+<!-- Bricks Component Form Styles -->
+<style>
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form {
+    padding: 0 5px;
+    height: auto;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__fieldset {
+    display: flex;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  /* Hide generated jQuery validator label */
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field label.error {
+    display: none !important;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    line-height: 1.42857;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__input {
+    display: block;
+    width: 100%;
+    padding: 0 10px;
+    line-height: 1.42857;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__input.error {
+    border: 1px solid red !important;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option + #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__field__option {
+    margin-top: -5px;
+  }
+
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form__submit {
+    width: 100%;
+    position: relative;
+  }
+
+  @media screen and (min-width: 768px) {
+    #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw .bricks-form {
+      padding: 0;
+    }
+  }
+</style>
+
+<link href="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/css(1)" rel="stylesheet">
+
+<style type="text/css" rel="stylesheet">
+  #rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw {
+    position: fixed;
+    z-index: 99999;
+  }
+
+  .rdstation-popup-position-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .rdstation-popup-position-top_left {
+    top: 0;
+    left: 0;
+  }
+
+  .rdstation-popup-position-top_right {
+    top: 0;
+    right: 0;
+  }
+
+  .rdstation-popup-position-bottom_left {
+    bottom: 0;
+    left: 0;
+  }
+
+  .rdstation-popup-position-bottom_right {
+    bottom: 0;
+    right: 0;
+  }
+
+  
+    #bricks-component-_l47rIZkz89xeBMOvNEKKw-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      display: block !important;
+      background: #000 !important;
+      opacity: .6 !important;
+    }
+
+    #bricks-component-_l47rIZkz89xeBMOvNEKKw {
+      position: relative;
+      display: block !important;
+      min-width: 600px;
+      min-height: 1px;
+      width: 600px;
+      box-shadow: 0px 0px 8px #333 !important;
+      overflow: hidden !important;
+      border-bottom-style: solid;
+      border-color: transparent;
+      border-left-style: solid;
+      border-radius: 0px;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-width: 0px;
+      background-color: #fff;
+      z-index: 999999 !important;
+    }
+  
+</style>
+
+
+
+<div id="rdstation-bricks-popup-bricks-component-_l47rIZkz89xeBMOvNEKKw" class="rdstation-popup-position-center">
+  
+    <div id="bricks-component-_l47rIZkz89xeBMOvNEKKw-overlay" class="rdstation-popup-js-overlay"></div>
+  
+  <div id="bricks-component-_l47rIZkz89xeBMOvNEKKw" class="bricks--component bricks--component-popup">
+    
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-gTU1wZeIrUfmsL_JBZP8UQ {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border: none;
+      background: transparent;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    #rd-gTU1wZeIrUfmsL_JBZP8UQ svg {
+      width: 12px;
+      height: 12px;
+      fill: #888;
+    }
+  
+</style>
+
+<button id="rd-gTU1wZeIrUfmsL_JBZP8UQ" class="bricks--close--button rdstation-popup-js-close-button ">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 348.333 348.334">
+      <title>Fechar</title>
+      <path d="M336.559,68.611L231.016,174.165l105.543,105.549c15.699,15.705,15.699,41.145,0,56.85
+          c-7.844,7.844-18.128,11.769-28.407,11.769c-10.296,0-20.581-3.919-28.419-11.769L174.167,231.003L68.609,336.563
+          c-7.843,7.844-18.128,11.769-28.416,11.769c-10.285,0-20.563-3.919-28.413-11.769c-15.699-15.698-15.699-41.139,0-56.85
+          l105.54-105.549L11.774,68.611c-15.699-15.699-15.699-41.145,0-56.844c15.696-15.687,41.127-15.687,56.829,0l105.563,105.554
+          L279.721,11.767c15.705-15.687,41.139-15.687,56.832,0C352.258,27.466,352.258,52.912,336.559,68.611z"></path>
+    </svg>
+</button>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-uNPbaeMYY4py1SfiqqvCLA {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-uNPbaeMYY4py1SfiqqvCLA > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-uNPbaeMYY4py1SfiqqvCLA" class="bricks--section ">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-96HyVlxjcuXOgtB1lEXIfQ {
+      min-height: 0px;
+    }
+
+    #rd-96HyVlxjcuXOgtB1lEXIfQ .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-96HyVlxjcuXOgtB1lEXIfQ" class="bricks--row ">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-1EGU9DqtuA_24lgALiNbiA {
+      flex: 12 0 0;
+    }
+
+    #rd-1EGU9DqtuA_24lgALiNbiA > div {
+      
+          background-color: transparent;
+        
+      justify-content: center;
+      padding-top: 7px;
+      padding-right: 7px;
+      padding-bottom: 7px;
+      padding-left: 7px;
+    }
+  
+</style>
+
+<div id="rd-1EGU9DqtuA_24lgALiNbiA" class="bricks--column ">
+  <div>
+    
+<style type="text/css" rel="stylesheet">
+  
+    #rd-h5gk818MuNT0uF_RzfAuUw {
+      border-bottom-style: none;
+      border-color: transparent;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 0px;
+      min-height: auto-35px;
+      max-width: 550px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-h5gk818MuNT0uF_RzfAuUw" class="bricks--component bricks--component-text ">
+  <h3 style="text-align: center; line-height: 200%;"><strong style="font-size: 30px; font-family: Helvetica, Arial, sans-serif; color: #4e4e4e;">Quer receber mais conteúdo bacana de tecnologia?</strong></h3>
+</div>
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-text-johhf15c {
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+      min-height: auto-20px;
+      max-width: 550px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-text-johhf15c" class="bricks--component bricks--component-text rd-text">
+  <p style="line-height: 125%; text-align: center;"><span style="font-size: 17px; font-family: Helvetica, Arial, sans-serif; color: #4e4e4e;">Temos bastante material pra te ajudar a alavancar sua carreira</span></p>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-section-johhefho {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-section-johhefho > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-section-johhefho" class="bricks--section rd-section">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-row-johhefhp {
+      min-height: 0px;
+    }
+
+    #rd-row-johhefhp .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-row-johhefhp" class="bricks--row rd-row">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-column-johhefhq {
+      flex: 12 0 0;
+    }
+
+    #rd-column-johhefhq > div {
+      
+          background-color: #f2f2f2;
+        
+      justify-content: center;
+      padding-top: 0px;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      padding-left: 10px;
+    }
+  
+</style>
+
+<div id="rd-column-johhefhq" class="bricks--column rd-column">
+  <div>
+    
+
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-4XK-4tKscGl-FE1AjAlOBQ {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      max-width: 550px;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__fieldset {
+      flex-flow: column nowrap;
+      align-items: flex-start;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__field {
+      margin-bottom: 13px;
+      padding: 0;
+      width: 100.0%;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__label {
+      color: #888;
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__label.always-visible,
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__field__option .bricks-form__label {
+      display: inline-block;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input {
+      color: #000000;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+
+      background-color: #fff;
+
+      border-bottom-style: solid;
+      border-left-style: solid;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-color: #cdcfd3;
+      border-radius: 2px;
+      border-width: 1px;
+
+      
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input::placeholder {
+      color: transparent;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input.select2-container {
+      padding: 0 !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .select2-container .select2-choice {
+      height: 40px !important;
+      line-height: 40px !important;
+
+      color: #000000 !important;
+      font-family: Helvetica, Arial, sans-serif !important;
+      font-size: 16px !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .select2-container .select2-choice .select2-arrow b {
+      background-position: 0 7px !important;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__input:not(textarea) {
+      height: 40px;
+    }
+
+    #rd-4XK-4tKscGl-FE1AjAlOBQ .bricks-form__submit {
+      display: flex;
+      flex-direction: column;
+    }
+  
+</style>
+
+
+<div id="rd-4XK-4tKscGl-FE1AjAlOBQ" class="bricks--component bricks-form ">
+  <form id="conversion-form" class="rdstation-popup-js-form-identifier" action="https://www.rdstation.com.br/api/1.3/conversions">
+    <input type="hidden" name="token_rdstation" value="4b7bbfbbbe5c7e29f1c12ecb3b59096b">
+    <input type="hidden" name="identificador" value="blog-da-caelum">
+    <input type="hidden" name="_is" value="9">
+    <input type="hidden" name="c_utmz" value="33425121.1560468618.4.4.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)">
+    <input type="hidden" name="traffic_source" value="encoded_eyJmaXJzdF9zZXNzaW9uIjp7InZhbHVlIjoiMzM0MjUxMjEuMTU1ODk3NDI4Ny4yLjIudXRtY3NyPWdvb2dsZXx1dG1jY249KG9yZ2FuaWMpfHV0bWNtZD1vcmdhbmljfHV0bWN0cj0obm90IHByb3ZpZGVkKSIsImV4dHJhX3BhcmFtcyI6e319LCJjdXJyZW50X3Nlc3Npb24iOnsidmFsdWUiOiIobm9uZSkiLCJleHRyYV9wYXJhbXMiOnt9fSwiY3JlYXRlZF9hdCI6MTU2MDY0MTMxNzI0NX0=">
+    <input type="hidden" name="client_id" value="08ccee05-439a-4b91-9e1a-73fef2efa967">
+    <input type="hidden" name="redirect_to" value="">
+    <input type="hidden" name="_doe" value="">
+    <div class="bricks-form__fieldset" data-progressive-profiling="">
+  <div class="bricks-form__field">
+  <label for="form-name" class="bricks-form__label">
+    Nome*
+  </label>
+  <input id="form-name" class="bricks-form__input required js-text" name="name" type="text" placeholder="Nome" required="required">
+</div>
+<div class="bricks-form__field">
+  <label for="form-email" class="bricks-form__label">
+    Email*
+  </label>
+  <input id="form-email" class="bricks-form__input required js-email" name="email" type="email" placeholder="Email" required="required">
+</div>
+
+</div>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-yBU0Jb4Qzbx2I2deBdpDvA.bricks--component {
+      -ms-flex-align: center;
+      -ms-flex-direction: column;
+      -ms-flex-pack: center;
+      align-items: center;
+      align-self: center;
+      background-color: #16a085;
+      border-bottom-style: solid;
+      border-color: #138770;
+      border-left-style: solid;
+      border-radius: 2px;
+      border-right-style: solid;
+      border-top-style: solid;
+      border-width: 1px;
+      color: #fff;
+      cursor: pointer;
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+      height: 38px;
+      justify-content: center;
+      line-height: 1.42857;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      max-width: 550px;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+    }
+  
+</style>
+
+
+  <div class="bricks-form__submit">
+    <button class="bricks--component bricks--component-button rdstation-popup-js-submit-button " id="rd-yBU0Jb4Qzbx2I2deBdpDvA">
+      QUERO RECEBER!
+    </button>
+  </div>
+
+
+  </form>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-section-johhhu55 {
+      
+          background-color: transparent;
+        
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+    }
+
+    #rd-section-johhhu55 > div:not(.bricks--row) {
+      min-height: 0px;
+    }
+  
+</style>
+
+<section id="rd-section-johhhu55" class="bricks--section rd-section">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-row-johhhu56 {
+      min-height: 0px;
+    }
+
+    #rd-row-johhhu56 .bricks--column > div {
+      min-height: 0px;
+    }
+  
+</style>
+
+<div id="rd-row-johhhu56" class="bricks--row rd-row">
+  
+
+<style type="text/css" rel="stylesheet">
+  
+    #rd-column-johhhu57 {
+      flex: 12 0 0;
+    }
+
+    #rd-column-johhhu57 > div {
+      
+          background-color: #fff;
+        
+      justify-content: center;
+      padding-top: 0px;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      padding-left: 10px;
+    }
+  
+</style>
+
+<div id="rd-column-johhhu57" class="bricks--column rd-column">
+  <div>
+    
+<style type="text/css" rel="stylesheet">
+  
+    #rd-text-johhhvvo {
+      border-bottom-style: none;
+      border-color: #000000;
+      border-left-style: none;
+      border-radius: 0px;
+      border-right-style: none;
+      border-top-style: none;
+      border-width: 1px;
+      min-height: auto-20px;
+      max-width: 550px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      align-self: center;
+      width: 100%;
+      word-break: break-word;
+    }
+  
+</style>
+
+<div id="rd-text-johhhvvo" class="bricks--component bricks--component-text rd-text">
+  <p style="text-align: center;"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#closePopup" target="_self" title="" style="color: #888; font-size: 14px; font-family: Helvetica, Arial, sans-serif;"><u>Não quero alavancar minha carreira :(</u></a></p>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+  </div>
+</div>
+</div>
+
+<div id="wrapper" class="loaded">
+	<div id="inner-wrapper">
+
+    
+	<header id="header">
+		
+	<a id="logo" href="https://blog.caelum.com.br/" title="Aprenda sobre tecnologia com a Caelum. Artigos de programação, web, mobile, ux e agile">
+						<img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/caelum-logo.png" alt="Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum" scale="0">
+			
+	</a>
+
+
+
+		<span class="nav-toggle"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#navigation"><span>Navigation</span></a></span>
+		
+		<!--
+	    <hgroup>
+			<h1 class="site-title"><a href="https://blog.caelum.com.br/">Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum</a></h1>
+			<h2 class="site-description">Aprenda sobre tecnologia com a Caelum. Artigos de programação, web, mobile, ux e agile</h2>
+		</hgroup>
+		-->
+
+                
+        
+        <div class="search_main fix"><form role="search" class="searchform" method="get" id="searchform" action="https://blog.caelum.com.br/">
+				<div>
+					<label class="screen-reader-text" for="s">Pesquisar por:</label>
+					<input type="text" value="" name="s" class="field s" placeholder="Busca..." id="s">
+					<input type="submit" class="search-submit" id="searchsubmit" value="Pesquisar">
+				</div>
+			</form></div>
+		<nav id="navigation" class="col-full" role="navigation">
+
+			<section class="menus">
+
+			<a href="https://blog.caelum.com.br/" class="nav-home"><span>Home</span></a>
+			
+			<div class="menu-toggle"><h3>Categorias</h3><ul id="menu-categorias" class="nav main-nav"><li id="menu-item-8609" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-8609"><a href="https://blog.caelum.com.br/category/programacao/">Programação</a></li>
+<li id="menu-item-4145" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4145"><a href="https://blog.caelum.com.br/category/front-end/">Front-end</a></li>
+<li id="menu-item-8610" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8610"><a href="https://blog.caelum.com.br/category/mobile/">Mobile</a></li>
+<li id="menu-item-7474" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7474"><a href="https://blog.caelum.com.br/category/design-ux/">Design &amp; UX</a></li>
+<li id="menu-item-4143" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4143"><a href="https://blog.caelum.com.br/category/agile/">Agile</a></li>
+<li id="menu-item-4142" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-4142"><a href="https://blog.caelum.com.br/category/arquitetura/">Arquitetura</a></li>
+<li id="menu-item-4141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4141"><a href="https://blog.caelum.com.br/category/inovacao/">Inovação</a></li>
+</ul></div><div class="menu-toggle"><h3>Conheça também</h3><ul id="menu-sec-menu" class="nav main-nav"><li id="menu-item-6142" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6142"><a href="https://www.caelum.com.br/">Cursos Caelum</a></li>
+<li id="menu-item-6143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6143"><a href="https://www.alura.com.br/">Cursos online Alura</a></li>
+<li id="menu-item-6144" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6144"><a href="https://www.casadocodigo.com.br/">Editora Casa do Código</a></li>
+</ul></div>	        <ul class="nav rss">
+	            
+				
+	        </ul>
+
+	    	</section><!--/.menus-->
+
+	    	 <div id="connect">
+<div class="social">
+<a href="https://blog.caelum.com.br/feed/" title="Subscribe to our RSS feed" class="subscribe"><span>Subscribe to our RSS feed</span></a>
+<a href="https://twitter.com/caelum" title="Follow Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Twitter" class="twitter"><span>Follow Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Twitter</span></a>
+<a href="https://www.facebook.com/caelumbr" title="Like Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Facebook" class="facebook"><span>Like Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum on Facebook</span></a>
+</div>
+</div>
+
+	        <!-- <a href="#top" class="nav-close"><span>Return to Content</span></a> -->
+
+		</nav><!-- /#navigation -->
+
+				
+	</header><!-- /#header -->
+
+	
+    <div id="content" class="col-full">
+
+    	
+		<section id="main">
+        			<article class="post-5027 post type-post status-publish format-standard hentry category-arquitetura category-programacao tag-boas-praticas tag-encapsulamento tag-fj-11 tag-fj-15 tag-getters-e-setters tag-java tag-orientacao-a-objetos">
+
+				
+                <header style="background-image: url(https://i1.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento3.png?fit=624%2C355&amp;ssl=1); background-size: cover; background-position: center center;">
+                
+                	<section class="header-content">
+
+	                	<h1>Revisitando a Orientação a Objetos: encapsulamento no Java</h1>
+                		<aside class="post-meta">
+	<span class="post-date">Postado dia 14/06/2012</span>
+	<span class="post-author">por Maurício Aniche</span>
+	<span class="post-category">em <a href="https://blog.caelum.com.br/category/arquitetura/" rel="category tag">Arquitetura</a>, <a href="https://blog.caelum.com.br/category/programacao/" rel="category tag">Programação</a></span>
+	<span class="post-comments"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comments">39</a></span>
+	</aside>
+
+                	</section>
+                	
+                	<!--
+                	<nav id="post-entries" class="fix">
+	        		    <div class="nav-prev fl"><a href="https://blog.caelum.com.br/enviando-mensagens-curtas-para-o-android-via-c2dm/" rel="prev">Enviando mensagens curtas para o Android via C2DM</a></div>
+	        		    <div class="nav-next fr"><a href="https://blog.caelum.com.br/css-facil-flexivel-e-dinamico-com-less/" rel="next">CSS fácil, flexível e dinâmico com LESS</a></div>
+	        		</nav>
+	        	-->
+                	
+                	                	
+<!--                 	<a href="#" title="#"><img src="https://i1.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento3.png?fit=624%2C355&#038;ssl=1" alt="" /></a> -->
+
+                </header>
+
+                <section class="entry fix">
+					
+                	<div class="mailmunch-forms-before-post" style="display: none !important;"></div><p>Façamos uma aposta. Tenho certeza que você, ao ver a classe abaixo, consegue perceber um problema nela:</p>
+<div><div id="highlighter_474631" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java keyword">class</code> <code class="java plain">Pedido {</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java plain">String comprador;</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java keyword">double</code> <code class="java plain">valorTotal;</code></div><div class="line number4 index3 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java comments">// outros atributos</code></div><div class="line number5 index4 alt2"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Sim. Os atributos estão todos públicos! Isso vai exatamente contra uma das nossas primeiras lições quando aprendemos Java: atributos devem ser privados e precisamos de getters e setters para acessá-los. Vamos então fazer essa mudança no código.</p>
+<div><div id="highlighter_192973" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java keyword">class</code> <code class="java plain">Pedido {</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">private</code> <code class="java plain">String comprador;</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">private</code> <code class="java keyword">double</code> <code class="java plain">valorTotal;</code></div><div class="line number4 index3 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java comments">// outros atributos</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java plain">String getComprador() { </code><code class="java keyword">return</code> <code class="java plain">comprador; }</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java keyword">void</code> <code class="java plain">setComprador(String comprador) { </code><code class="java keyword">this</code><code class="java plain">.comprador = comprador; }</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java keyword">double</code> <code class="java plain">getValorTotal() { </code><code class="java keyword">return</code> <code class="java plain">valorTotal; }</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java keyword">void</code> <code class="java plain">setValorTotal(</code><code class="java keyword">double</code> <code class="java plain">valorTotal) { </code><code class="java keyword">this</code><code class="java plain">.valorTotal = ValorTotal; }</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java comments">// outros getters e setters</code></div><div class="line number13 index12 alt2"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Agora está melhor, certo? Ainda não. Deixamos escapar na verdade o grande princípio que está por trás da ideia de colocar atributos como privados. Do jeito que a classe <code>Pedido</code> está nesse momento, podemos fazer coisas como:</p>
+<div><div id="highlighter_332314" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Pedido p = </code><code class="java keyword">new</code> <code class="java plain">Pedido();</code></div><div class="line number2 index1 alt1"><code class="java comments">// muda valor do pedido para 200 reais!</code></div><div class="line number3 index2 alt2"><code class="java plain">p.setValorTotal(p.getValorTotal() + </code><code class="java value">200.0</code><code class="java plain">);</code></div></div></td></tr></tbody></table></div></div>
+<p>Mas aonde está o problema? Imagine outras 10 classes que fazem a mesma coisa: de alguma forma, elas manipulam o valor total do pedido.</p>
+<p><img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/encapsulamento1.png" alt="" title="encapsulamento1" width="499" height="284" class="alignnone size-full wp-image-5028" srcset="https://i1.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento1.png?zoom=1.25&amp;resize=499%2C284&amp;ssl=1" src-orig="https://i1.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento1.png?resize=499%2C284&amp;ssl=1" scale="1.25"></p>
+<p>Agora imagine que a regra de negócio do pedido mude:  todo item comprado ganha desconto de 5% se o valor dele for superior a 1000 reais. Implementar essa mudança não será tarefa fácil. Precisaríamos fazê-la em diferentes classes do sistema.</p>
+<p><img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/encapsulamento2.png" alt="" title="encapsulamento2" width="499" height="284" class="alignnone size-full wp-image-5029" srcset="https://i0.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento2.png?zoom=1.25&amp;resize=499%2C284&amp;ssl=1" src-orig="https://i0.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento2.png?resize=499%2C284&amp;ssl=1" scale="1.25"></p>
+<p>Quanto tempo demoraremos para mudar o sistema? Não sabemos exatamente aonde devemos fazer as mudanças já que elas estão espalhadas pelo código. Esse, aliás, é um dos grandes problemas de códigos legados: uma simples mudança precisa ser feita em tantas classes e, na prática, sempre esquecemos algum ponto, e nosso sistema frequentemente quebra.</p>
+<p>A classe <code>Pedido</code> não foi bem desenhada. Demos acesso direto ao atributo <code>valorTotal</code>, um atributo importante da classe. Veja que o modificador <code>private</code> nesse caso não adiantou de nada, já que demos também um setter para ele. Vamos tentar diminuir o acesso ao atributo, criando métodos mais claros para a operação de depósito:</p>
+<div><div id="highlighter_193390" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java keyword">class</code> <code class="java plain">Pedido {</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">private</code> <code class="java plain">String comprador;</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">private</code> <code class="java keyword">double</code> <code class="java plain">valorTotal;</code></div><div class="line number4 index3 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java comments">// outros atributos</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java plain">String getComprador() { </code><code class="java keyword">return</code> <code class="java plain">comprador; }</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java keyword">double</code> <code class="java plain">getValorTotal() { </code><code class="java keyword">return</code> <code class="java plain">valorTotal; }</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">public</code> <code class="java keyword">void</code> <code class="java plain">adiciona(Item item) {</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">if</code><code class="java plain">(item.getValor() &lt; </code><code class="java value">1000</code><code class="java plain">) </code><code class="java keyword">this</code><code class="java plain">.valorTotal += item.getValor();</code></div><div class="line number11 index10 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java keyword">else</code> <code class="java keyword">this</code><code class="java plain">.valorTotal += item.getValor() * </code><code class="java value">0.95</code><code class="java plain">;</code></div><div class="line number12 index11 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java plain">}</code></div><div class="line number13 index12 alt2"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Agora, para adicionarmos um item no <code>Pedido</code>, faremos uso desse novo comportamento:</p><div class="mailmunch-forms-in-post-middle" style="display: none !important;"></div>
+<div><div id="highlighter_422657" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Pedido p = </code><code class="java keyword">new</code> <code class="java plain">Pedido();</code></div><div class="line number2 index1 alt1"><code class="java plain">p.adiciona(</code><code class="java keyword">new</code> <code class="java plain">Item(</code><code class="java string">"Chuveiro Elétrico"</code><code class="java plain">, </code><code class="java value">500.0</code><code class="java plain">));</code></div></div></td></tr></tbody></table></div></div>
+<p>Mas qual a diferença entre os dois códigos abaixo?</p>
+<div><div id="highlighter_186936" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java plain">Item item = </code><code class="java keyword">new</code> <code class="java plain">Item(</code><code class="java string">"Super Geladeira"</code><code class="java plain">, </code><code class="java value">1500.0</code><code class="java plain">);</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="java comments">// antiga</code></div><div class="line number4 index3 alt1"><code class="java keyword">if</code> <code class="java plain">(item.getValor() &gt; </code><code class="java value">1000</code><code class="java plain">) {</code></div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">c1.setValorTotal(c1.getValorTotal() + item.getValor() * </code><code class="java value">0.95</code><code class="java plain">);</code></div><div class="line number6 index5 alt1"><code class="java plain">}</code></div><div class="line number7 index6 alt2"><code class="java keyword">else</code> <code class="java plain">{</code></div><div class="line number8 index7 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">c1.setValorTotal(c1.getValorTotal() + item.getValor());</code></div><div class="line number9 index8 alt2"><code class="java plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="java comments">// nova</code></div><div class="line number12 index11 alt1"><code class="java plain">c1.adiciona(item);</code></div></div></td></tr></tbody></table></div></div>
+<p>Veja que na primeira linha de código, sabemos exatamente <b>COMO</b> funciona a adição de um novo ítem no pedido: devemos pegar o valor total e somar o valor novo com desconto de 5% se ele for maior que 1000. Já na segunda linha de código, não sabemos <b>como</b> esse processo funciona.</p>
+<p>Quando sabemos <b>O QUÊ</b> um método faz (igual ao método <code>adiciona</code>, sabemos que ele adiciona um ítem no pedido, por causa do nome dele), mas não sabemos exatamente <b>como</b> ele faz, dizemos que esse comportamento está <b>encapsulado</b>!</p>
+<p>A partir do momento que as outras classes não sabem <b>como</b> a classe principal faz o seu trabalho, significa que as mudanças ocorrerão apenas em um lugar! Afinal, elas estão escondidas (encapsuladas)!</p>
+<p><img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/encapsulamento3.png" alt="" title="encapsulamento3" width="499" height="284" class="alignnone size-full wp-image-5030" srcset="https://i1.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento3.png?zoom=1.25&amp;resize=499%2C284&amp;ssl=1" src-orig="https://i1.wp.com/blog.caelum.com.br/wp-content/uploads/2012/06/encapsulamento3.png?resize=499%2C284&amp;ssl=1" scale="1.25"></p>
+<p>Ou seja, para implementar a regra de negócios nova, bastaria mexermos em um único lugar:</p>
+<div><div id="highlighter_930631" class="syntaxhighlighter nogutter  java"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="java keyword">public</code> <code class="java keyword">void</code> <code class="java plain">adiciona(Item item) {</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">if</code> <code class="java plain">(item.getValor() &gt; </code><code class="java value">1000</code><code class="java plain">) </code><code class="java keyword">this</code><code class="java plain">.valorTotal += item.getValor();</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java keyword">else</code> <code class="java keyword">this</code><code class="java plain">.valorTotal += item.getValor() * </code><code class="java value">0.95</code><code class="java plain">;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;</code><code class="java comments">// nova regra de negócio aqui</code></div><div class="line number6 index5 alt1"><code class="java plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>No fim, a real utilidade do <code>private</code> é esconder acesso de atributos que precisam ser acessados de maneira mais inteligente. Mas veja que de nada adianta colocar todos os atributos como <code>private</code> e criar getters e setters para todos eles. Deixamos o encapsulamento “vazar” do mesmo jeito.</p>
+<p>Esconda os atributos, mas pense em comportamentos inteligentes para acessá-los. Uma ótima maneira para saber se o comportamento está encapsulado é olhar para o código que faz uso dele! Se conseguirmos dizer <code>o que</code> o método faz, mas sem dizer <code>como</code> ele faz, então podemos afirmar que o comportamento está encapsulado!</p>
+<p>Muitas vezes deixamos esses princípios passarem. Se quiser revisitar essas e outras boas práticas de Orientação a Objetos junto com os instrutores da Caelum, há mais posts por aqui, como um específico sobre esse <a href="https://blog.caelum.com.br/nao-aprender-oo-getters-e-setters/">problema dos getters e setters</a>, o <a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-o-excesso-de-ifs/">excesso de ifs</a> e o <a href="https://blog.caelum.com.br/como-nao-aprender-orientacao-a-objetos-relacionamento-bidirecional/">relacionamento bidirecional entre classes</a>. Quer praticar tudo isso com video aulas, respostas dos instrutores e correção dos seus exercícios? <a href="http://www.caelum.com.br/curso/online/orientacao-objetos-java/">Confira nosso novo curso online de boas práticas de orientação a objetos</a>!.</p>
+<div class="mailmunch-forms-after-post" style="display: none !important;"></div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Compartilhe isso:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-5027" class="share-twitter sd-button share-icon no-text" href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/?share=twitter&amp;nb=1" target="_blank" title="Clique para compartilhar no Twitter"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Twitter(abre em nova janela)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-5027" class="share-facebook sd-button share-icon no-text" href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/?share=facebook&amp;nb=1" target="_blank" title="Clique para compartilhar no Facebook"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Facebook(abre em nova janela)</span></a></li><li class="share-end"></li></ul></div></div></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Relacionado</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal jp-relatedposts-grid "><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="31" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/nao-aprender-oo-getters-e-setters/" title="Como não aprender Java e Orientação a Objetos: getters e setters
+
+Muitas pessoas perguntam: como aprender orientação a objetos? Há várias maneiras de aprender O.O., creio que não tenha uma melhor, mas existem maneiras de não aprender. Esse post, criado em 2006 e atualizado em 2017, mostra como o design de classes continua seguindo algumas regras de boas práticas importantes. Uma…" rel="nofollow" data-origin="5027" data-position="0">Como não aprender Java e Orientação a Objetos: getters e setters</a></span><span class="jp-relatedposts-post-date">14/02/2017</span><span class="jp-relatedposts-post-context">In “Arquitetura”</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="5459" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/java-menos-verboso-com-lombok/" title="Java menos verboso com Lombok
+
+Já vimos como não aprender Java e Orientação a Objetos. Aprendemos que a geração indiscriminada de getters e setters pode quebrar o encapsulamento de suas classes. Quando há realmente a necessidade de alguns getters e setters, podemos gerá-los com o auxílio de nossa IDE preferida, inclusive é boa prática reescrevermos…" rel="nofollow" data-origin="5027" data-position="1">Java menos verboso com Lombok</a></span><span class="jp-relatedposts-post-date">14/02/2013</span><span class="jp-relatedposts-post-context">In “Inovação”</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="6869" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.caelum.com.br/novidades-do-c-6-0/" title="Novidades do C# 6.0
+
+A versão 2015 do Visual Studio(versão Release Candidate) já está disponível para download e com ele podemos utilizar o novo C# 6. De acordo com Mads Torgensen, um dos principais responsáveis pelo futuro da linguagem, a ideia geral dessa nova versão é não ter grandes conceitos para você ter que…" rel="nofollow" data-origin="5027" data-position="2">Novidades do C# 6.0</a></span><span class="jp-relatedposts-post-date">19/05/2015</span><span class="jp-relatedposts-post-context">In “Programação”</span></p></div></div>					
+
+
+<a class="share-social" href="https://www.alura.com.br/" style="padding: 16px">
+<img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/alura-logo.1465499610.svg" alt="Alura" style="margin-right: 16px" scale="0">
+<strong style="">Estude online na Alura</strong>
+<p style="margin: 12px 0 0 0">Programação, Mobile, Front-end, Design &amp; UX, Infraestrutura e Business</p>
+</a>
+
+					<div class="tags">Tags: <a href="https://blog.caelum.com.br/tag/boas-praticas/" rel="tag">boas práticas</a>, <a href="https://blog.caelum.com.br/tag/encapsulamento/" rel="tag">encapsulamento</a>, <a href="https://blog.caelum.com.br/tag/fj-11/" rel="tag">fj-11</a>, <a href="https://blog.caelum.com.br/tag/fj-15/" rel="tag">fj-15</a>, <a href="https://blog.caelum.com.br/tag/getters-e-setters/" rel="tag">getters e setters</a>, <a href="https://blog.caelum.com.br/tag/java/" rel="tag">Java</a>, <a href="https://blog.caelum.com.br/tag/orientacao-a-objetos/" rel="tag">orientação a objetos</a></div>
+				</section>
+
+            </article><!-- .post -->
+
+						<aside id="post-author" class="fix">
+				<div class="profile-image">
+											<img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/mauricio-aniche-90.jpg" scale="0">
+									</div>
+				<div class="profile-content">
+					<h3 class="title">
+						Maurício Aniche						
+													<small>(<a rel="author" href="https://plus.google.com/117343938173983824052?rel=author">Google+</a>)</small>
+											</h3>
+
+											<div class="profile-link">
+							<a href="http://www.caelum.com.br/instrutores/mauricio-aniche">
+								Mais sobre o autor
+							</a><br>
+							<a href="https://blog.caelum.com.br/author/maniche">
+								Outros posts do autor
+							</a>
+						</div><!-- #profile-link	-->
+									</div><!-- .post-entries -->
+			</aside><!-- .post-author-box -->
+			
+			
+				
+            
+
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+			<h3>39 Comentários</h3>
+
+		<ol class="commentlist">
+
+			
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-106993"></a>
+
+	      	<div id="li-comment-106993" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/980272c143891fd80959dd6f9239442b.jpeg" srcset="https://secure.gravatar.com/avatar/980272c143891fd80959dd6f9239442b?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" originals="50" src-orig="https://secure.gravatar.com/avatar/980272c143891fd80959dd6f9239442b?s=50&amp;r=g" scale="1.25" id="grav-980272c143891fd80959dd6f9239442b-0"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Rodrigo Ferreira</span>
+	                <span class="date">14/06/2012 at 10:14</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-106993" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-106993">
+				<p>Excelente post Mauricio!</p>
+<p>Bem simples de entender.<br>
+É uma pena que ainda existam programadores java que acham que encapsulamento se resume a atributos private e métodos get/set público.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-106994"></a>
+
+	      	<div id="li-comment-106994" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/6e7d5233c80a811e930b680307a91b3c.png" srcset="https://secure.gravatar.com/avatar/6e7d5233c80a811e930b680307a91b3c?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" originals="50" src-orig="https://secure.gravatar.com/avatar/6e7d5233c80a811e930b680307a91b3c?s=50&amp;r=g" scale="1.25" id="grav-6e7d5233c80a811e930b680307a91b3c-0"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Rafael Rossignol</span>
+	                <span class="date">14/06/2012 at 10:23</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-106994" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-106994">
+				<p>Concordo em todos os aspectos, porém os frameworks/apis de persistência nos obrigam a implementar getters e setters pra todos os atributos que são persistidos, portanto, esse controle de encapsulamento  ainda tem q estar na nossa cabeça, já que não podemos deixar de implementar o setter</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107000"></a>
+
+	      	<div id="li-comment-107000" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/8f0177a9392d74b69d85155c312d8f22.jpg" srcset="https://secure.gravatar.com/avatar/8f0177a9392d74b69d85155c312d8f22?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" originals="50" src-orig="https://secure.gravatar.com/avatar/8f0177a9392d74b69d85155c312d8f22?s=50&amp;r=g" scale="1.25" id="grav-8f0177a9392d74b69d85155c312d8f22-0"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Anderson Souza</span>
+	                <span class="date">14/06/2012 at 10:42</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107000" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107000">
+				<p>Muito bom artigo! Só uma dúvida, se a regra diz que todos produtos com valor maior do R$ 1.000,00 recebe desconto, o ‘if’ do código da classe Pedido não está invertido?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107016"></a>
+
+	      	<div id="li-comment-107016" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e55889456ef8da65b4d68233ebe11926.jpeg" srcset="https://secure.gravatar.com/avatar/e55889456ef8da65b4d68233ebe11926?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-e55889456ef8da65b4d68233ebe11926-0" originals="50" src-orig="https://secure.gravatar.com/avatar/e55889456ef8da65b4d68233ebe11926?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Carlos Antônio.</span>
+	                <span class="date">14/06/2012 at 11:55</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107016" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107016">
+				<p>Exelente post, está modo deve ser ótimo para JAVA, mas com certeza se encaixa muito bem em PHP e outras linguagens…</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107017"></a>
+
+	      	<div id="li-comment-107017" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e913dfb341cab135514dda21c2f8c58e.jpg" srcset="https://secure.gravatar.com/avatar/e913dfb341cab135514dda21c2f8c58e?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-e913dfb341cab135514dda21c2f8c58e-0" originals="50" src-orig="https://secure.gravatar.com/avatar/e913dfb341cab135514dda21c2f8c58e?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Leonardo Nunes</span>
+	                <span class="date">14/06/2012 at 11:56</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107017" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107017">
+				<p>Ótimo artigo!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107018"></a>
+
+	      	<div id="li-comment-107018" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/6dcedb4d07cd0f6deb4e622c5f66b55c.jpeg" srcset="https://secure.gravatar.com/avatar/6dcedb4d07cd0f6deb4e622c5f66b55c?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-6dcedb4d07cd0f6deb4e622c5f66b55c-0" originals="50" src-orig="https://secure.gravatar.com/avatar/6dcedb4d07cd0f6deb4e622c5f66b55c?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Edinei</span>
+	                <span class="date">14/06/2012 at 12:10</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107018" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107018">
+				<p>Muito bom post !!!</p>
+<p>É muito comum vermos isso no dia a dia, criar o atributo gerar os getter/setter (normalmente pela IDE) sem ao menos saber se de fato esses atributos deveriam ser acessados diretamente pelo cliente. Onde na verdade métodos voltados para a lógica de negócio seriam os mais indicados.</p>
+<p>Acontece bastante isso também quando usamos collection em nossas classes e temos um set(Collection) e um getCollection expondo demais as estruturas internas de um objeto, além de permitir os clientes manipularem o conteúdo das coleções diretamente sem ser o “dono” dessas collections. Martin Fowler mostra isso no seu livro de Refactorings, para quem quiser ver:</p>
+<p><a href="http://sourcemaking.com/refactoring/encapsulate-collection" rel="nofollow">http://sourcemaking.com/refactoring/encapsulate-collection</a></p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107019"></a>
+
+	      	<div id="li-comment-107019" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/f853760c988228c4a153333407e64f09.jpeg" srcset="https://secure.gravatar.com/avatar/f853760c988228c4a153333407e64f09?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-f853760c988228c4a153333407e64f09-0" originals="50" src-orig="https://secure.gravatar.com/avatar/f853760c988228c4a153333407e64f09?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.rponte.com.br/" rel="external nofollow" url="" url'="">Rafael Ponte</a></span>
+	                <span class="date">14/06/2012 at 12:23</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107019" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107019">
+				<p>Como sempre muito simples e didático ao escrever sobre design de software – assunto este que sempre me chamou a atenção.</p>
+<p>Só faltou você comentar que um código com encapsulamento bem definido pode ser facilmente testado através de testes de unidade.</p>
+<p>Um post que também vale muito a pena ler é o post que o Phillip Calçado (aka Shoes) escreveu em 2008, <a href="http://blog.fragmental.com.br/2008/05/18/objetos-nao-sao-atributos-funcoes/" rel="nofollow">http://blog.fragmental.com.br/2008/05/18/objetos-nao-sao-atributos-funcoes/</a> . </p>
+<p>Ah, como o Anderson Souza comentou, o if() do método adiciona() está invertido.</p>
+<p>@RafaelRossignol<br>
+Na verdade já faz alguns bons anos que frameworks de persistência não te obrigam a ter getters e setters, como o Hibernate por exemplo.</p>
+<p>Contudo, a maioria gritante dos frameworks MVC te obrigam a seguir o padrão JavaBeans, ou seja, você precisará de getters e setters.</p>
+<p>No mais, excelente post, Aniche</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107027"></a>
+
+	      	<div id="li-comment-107027" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/1c30b4d2b05d0b9ae10fa570ca987de5.jpg" srcset="https://secure.gravatar.com/avatar/1c30b4d2b05d0b9ae10fa570ca987de5?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-1c30b4d2b05d0b9ae10fa570ca987de5-0" originals="50" src-orig="https://secure.gravatar.com/avatar/1c30b4d2b05d0b9ae10fa570ca987de5?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">jonas</span>
+	                <span class="date">14/06/2012 at 14:55</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107027" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107027">
+				<p>Parabéns pelo post Mauricio Aniche</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor even thread-even depth-1">
+
+	    	<a name="comment-107060"></a>
+
+	      	<div id="li-comment-107060" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-0" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">14/06/2012 at 18:31</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107060" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107060">
+				<p>Olá galera, obrigado! Fico feliz que gostaram!</p>
+<p>@Rafael Rossignol</p>
+<p>Sim, infelizmente esse é um problema sério que temos: a infra-estrutura influenciando no nosso projeto de classes. Isso não deveria acontecer.</p>
+<p>Como citado acima, o Hibernate hoje até que não te força tanto, mas a maioria dos frameworks MVC pedem que vc tenha getters/setters nos seus objetos. A sacada é pensar em como lidar com isso.</p>
+<p>Momento plin-plin: O VRaptor te permite receber os dados pelo construtor, e assim você não precisa de setters aonde não quer.</p>
+<p>Mas concordo em abosluto com teu ponto!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107062"></a>
+
+	      	<div id="li-comment-107062" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-1" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">14/06/2012 at 19:09</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107062" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107062">
+				<p>Ah, e obrigado pessoal, o if estava invertido mesmo! Já arrumei! </p>
+<p>“Cadê o teste desse código, Aniche!?” <img draggable="false" class="emoji" alt="😛" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/1f61b.svg" scale="0"></p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107089"></a>
+
+	      	<div id="li-comment-107089" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/90d2d726b689ecb124f81cd489319aab.jpg" srcset="https://secure.gravatar.com/avatar/90d2d726b689ecb124f81cd489319aab?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-90d2d726b689ecb124f81cd489319aab-0" originals="50" src-orig="https://secure.gravatar.com/avatar/90d2d726b689ecb124f81cd489319aab?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Felipe</span>
+	                <span class="date">14/06/2012 at 22:36</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107089" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107089">
+				<p>Excelente, Maurício !</p>
+<p>Amigo, posso utilizar esse conteúdo para uma aula que vou dar ?<br>
+Colocarei a fonte do seu site</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107090"></a>
+
+	      	<div id="li-comment-107090" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-2" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">14/06/2012 at 22:38</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107090" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107090">
+				<p>Oi Felipe,</p>
+<p>Claro que pode! Fico feliz que tennha gostado!</p>
+<p>Um abraço!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107091"></a>
+
+	      	<div id="li-comment-107091" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/215536cfeb0cdd2aa964e9149cbae2b4.jpg" srcset="https://secure.gravatar.com/avatar/215536cfeb0cdd2aa964e9149cbae2b4?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-215536cfeb0cdd2aa964e9149cbae2b4-0" originals="50" src-orig="https://secure.gravatar.com/avatar/215536cfeb0cdd2aa964e9149cbae2b4?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.hramires.com/" rel="external nofollow" url="" url'="">Herbert</a></span>
+	                <span class="date">14/06/2012 at 22:44</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107091" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107091">
+				<p>Sei que para bom entendedor, meia palavra basta. Mas nas primeiras linha de código existe um minúsculo erro:</p>
+<p>Pedido c1 = new Pedido();<br>
+// muda valor do pedido para 200 reais!<br>
+c.setValorTotal(c.getValorTotal() + 200.0);</p>
+<p>Foi criado objeto c1 e não c.</p>
+<p>Muito bom o artigo, parabéns mais uma vez.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107093"></a>
+
+	      	<div id="li-comment-107093" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-3" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">14/06/2012 at 22:45</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107093" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107093">
+				<p>Corrigido, Herbert!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107094"></a>
+
+	      	<div id="li-comment-107094" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/215536cfeb0cdd2aa964e9149cbae2b4.jpg" srcset="https://secure.gravatar.com/avatar/215536cfeb0cdd2aa964e9149cbae2b4?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-215536cfeb0cdd2aa964e9149cbae2b4-1" originals="50" src-orig="https://secure.gravatar.com/avatar/215536cfeb0cdd2aa964e9149cbae2b4?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.hramires.com/" rel="external nofollow" url="" url'="">Herbert</a></span>
+	                <span class="date">14/06/2012 at 22:54</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107094" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107094">
+				<p>só falta mudar o c.getValorTotal() para p.getValorTotal() também. Acho que não foi a toa que meu apelido no curso FJ11 era de “compilador”.</p>
+<p><img draggable="false" class="emoji" alt="😉" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/1f609.svg" scale="0"></p>
+<p>Abraços e parabéns novamente.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107097"></a>
+
+	      	<div id="li-comment-107097" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/90e16a14ced5363bb2f3f8ca5d54dab4.jpg" srcset="https://secure.gravatar.com/avatar/90e16a14ced5363bb2f3f8ca5d54dab4?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-90e16a14ced5363bb2f3f8ca5d54dab4-0" originals="50" src-orig="https://secure.gravatar.com/avatar/90e16a14ced5363bb2f3f8ca5d54dab4?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.mastriaweb.com/" rel="external nofollow" url="" url'="">Guilherme Mastria</a></span>
+	                <span class="date">14/06/2012 at 23:29</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107097" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107097">
+				<p>mas não é pra isso que utilizamos a classe de negócio?<br>
+instanciando uma DAO, convém colocar esse tipo de verificação dentro de um bean??</p>
+<p>abraço</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor even thread-even depth-1">
+
+	    	<a name="comment-107138"></a>
+
+	      	<div id="li-comment-107138" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-4" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">15/06/2012 at 12:07</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107138" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107138">
+				<p>Oi Guilherme,</p>
+<p>Por classes que negócio, vc quer dizer aquelas camadas onde enfiamos somente as regras de negócio, conforme sugerido por aquele catálogo de padrões da Sun?</p>
+<p>Infelizmente esses padrões promovem más práticas de código. Separar “regras de negócio” em uma camada e “dados” em outra, é voltar a programar de maneira procedural!</p>
+<p>E já sabemos os problemas desse paradigma: repetição de código, manutenção em diversos pontos diferentes, pois tudo está longe, e assim por diante.</p>
+<p>A discussão é parecida com a dos comentários acima. A infra estrutura sempre nos empurra a fazer mau uso da OO. Devemos lutar contra isso!</p>
+<p>Respondi?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107157"></a>
+
+	      	<div id="li-comment-107157" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/ab9dde5ef7280037f5b8c6fab9c6d0df.jpg" srcset="https://secure.gravatar.com/avatar/ab9dde5ef7280037f5b8c6fab9c6d0df?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-ab9dde5ef7280037f5b8c6fab9c6d0df-0" originals="50" src-orig="https://secure.gravatar.com/avatar/ab9dde5ef7280037f5b8c6fab9c6d0df?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Gilmar M. dos Santos</span>
+	                <span class="date">15/06/2012 at 13:55</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107157" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107157">
+				<p>O post é muito bom, mas nada adianta saber disso, ser os frameworks mvc nos obrigado a implementar getters e setters.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107167"></a>
+
+	      	<div id="li-comment-107167" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/087f24e65c1f0d1ce67a3f70e22d39e8.jpeg" srcset="https://secure.gravatar.com/avatar/087f24e65c1f0d1ce67a3f70e22d39e8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-087f24e65c1f0d1ce67a3f70e22d39e8-0" originals="50" src-orig="https://secure.gravatar.com/avatar/087f24e65c1f0d1ce67a3f70e22d39e8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Paulo Vinícius Moreira Dutra</span>
+	                <span class="date">15/06/2012 at 15:00</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107167" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107167">
+				<p>Excelente post. Sempre presei o uso dos bons princípios da orientação a objetos.  É uma pena ainda alguns frameworks nos obrigarem a usar métodos getters e setters sem realmente ser necessário.<br>
+Um bom sistema OO, concerteza será mais fácil de dar manutenção.</p>
+<p>E vamos utilizar o métodos getters e setters com moderação.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107180"></a>
+
+	      	<div id="li-comment-107180" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/03bb35280a86473a7c46c17385886c73.png" srcset="https://secure.gravatar.com/avatar/03bb35280a86473a7c46c17385886c73?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-03bb35280a86473a7c46c17385886c73-0" originals="50" src-orig="https://secure.gravatar.com/avatar/03bb35280a86473a7c46c17385886c73?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Luiz</span>
+	                <span class="date">15/06/2012 at 20:58</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107180" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107180">
+				<p>Maurício,</p>
+<p>Ótimo post.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107188"></a>
+
+	      	<div id="li-comment-107188" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/7e1d785f211b3cc43c690ca208626be1.jpeg" srcset="https://secure.gravatar.com/avatar/7e1d785f211b3cc43c690ca208626be1?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-7e1d785f211b3cc43c690ca208626be1-0" originals="50" src-orig="https://secure.gravatar.com/avatar/7e1d785f211b3cc43c690ca208626be1?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Luis Vasconcellos</span>
+	                <span class="date">15/06/2012 at 22:50</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107188" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107188">
+				<p>Perfeito. A ideia é encapsular dados e expor comportamento !</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107218"></a>
+
+	      	<div id="li-comment-107218" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/d515cf7c9de650eee08dc8f4421af732.jpg" srcset="https://secure.gravatar.com/avatar/d515cf7c9de650eee08dc8f4421af732?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-d515cf7c9de650eee08dc8f4421af732-0" originals="50" src-orig="https://secure.gravatar.com/avatar/d515cf7c9de650eee08dc8f4421af732?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Antonio Cesar</span>
+	                <span class="date">16/06/2012 at 13:10</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107218" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107218">
+				<p>Independente de frameworks e especificações que nos obrigam a utilizar “Más Práticas” um bom post e uma discussão inteligente sobre boas práticas são sempre muito bem vindas….<br>
+Excelente post que estimula e valoriza o conhecimento bem utilizado… Parabéns….</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107360"></a>
+
+	      	<div id="li-comment-107360" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/530fceb572fa78bb6776c2f51405eae5.jpeg" srcset="https://secure.gravatar.com/avatar/530fceb572fa78bb6776c2f51405eae5?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-530fceb572fa78bb6776c2f51405eae5-0" originals="50" src-orig="https://secure.gravatar.com/avatar/530fceb572fa78bb6776c2f51405eae5?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Raphael Lacerda</span>
+	                <span class="date">18/06/2012 at 12:00</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107360" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107360">
+				<p>Galera, apesar da maioria dos frameworks nos obrigarem a implementar os setters, vale lembrar que existem alternativas</p>
+<p><a href="http://www.guj.com.br/java/208491-iogi---usando-objetos-imutaveis-junto-com-o-vraptor" rel="nofollow">http://www.guj.com.br/java/208491-iogi—usando-objetos-imutaveis-junto-com-o-vraptor</a></p>
+<p>Excelente post… principalmente para quebrar mitos sobre atributos privados..</p>
+<p>o q eu fico pé da vida é q os analista de mais alto nível dizem que o software precisa ter manutenibilidade…<br>
+agora, como vc vai explicar para o cidadao que encapsular sem usar setter vai te ajudar nesse quesito???</p>
+<p>Enfim, dae o q acontece na maioria dos projetos é q fica uma história para ingles ver… o cara pede manutebilidade e o programador diz q fez um codigo totalmente manutivel seguindo os conceitos de “encapsulamento”</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-107371"></a>
+
+	      	<div id="li-comment-107371" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/086b36bcf771c99b21f1a317305b9221.jpg" srcset="https://secure.gravatar.com/avatar/086b36bcf771c99b21f1a317305b9221?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-086b36bcf771c99b21f1a317305b9221-0" originals="50" src-orig="https://secure.gravatar.com/avatar/086b36bcf771c99b21f1a317305b9221?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Mauricio de Mello</span>
+	                <span class="date">18/06/2012 at 13:51</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107371" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107371">
+				<p>A Ideia básica de um bom código é não repetir código, seja em java, c# ou linguagens não orientadas a objetos.<br>
+Ótimo post!!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-107954"></a>
+
+	      	<div id="li-comment-107954" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/ffb5931d1a66b616ff4a6d716042b023.jpg" srcset="https://secure.gravatar.com/avatar/ffb5931d1a66b616ff4a6d716042b023?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-ffb5931d1a66b616ff4a6d716042b023-0" originals="50" src-orig="https://secure.gravatar.com/avatar/ffb5931d1a66b616ff4a6d716042b023?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Henrique S.</span>
+	                <span class="date">26/06/2012 at 12:23</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-107954" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-107954">
+				<p>Excelente post!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-108100"></a>
+
+	      	<div id="li-comment-108100" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/b31ddfd453004a87e79854ef698fb1da.jpeg" srcset="https://secure.gravatar.com/avatar/b31ddfd453004a87e79854ef698fb1da?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-b31ddfd453004a87e79854ef698fb1da-0" originals="50" src-orig="https://secure.gravatar.com/avatar/b31ddfd453004a87e79854ef698fb1da?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Rafael</span>
+	                <span class="date">28/06/2012 at 14:50</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-108100" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-108100">
+				<p>Parabens pelo otimos post.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-108345"></a>
+
+	      	<div id="li-comment-108345" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/90e16a14ced5363bb2f3f8ca5d54dab4.jpg" srcset="https://secure.gravatar.com/avatar/90e16a14ced5363bb2f3f8ca5d54dab4?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-90e16a14ced5363bb2f3f8ca5d54dab4-1" originals="50" src-orig="https://secure.gravatar.com/avatar/90e16a14ced5363bb2f3f8ca5d54dab4?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.mastriaweb.com/" rel="external nofollow" url="" url'="">Guilherme Mastria</a></span>
+	                <span class="date">03/07/2012 at 22:56</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-108345" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-108345">
+				<p>…depende de empresa para empresa e principalmente dos canais de acesso que aquela DAO vai ter! Se você tiver o seu sistema simplesmente Web, ok, tudo bem não ter o BO, mas você deixa o sistema altamente acoplado, ou seja, caso o seu sistema necessite de uma integração com outro de uma empresa (que comprou a sua ou foi adquirida por) ou simplesmente seja acessado por um mobile, TV digital, Web e Desktop, e com regras distintas… como o você faria? rs E hoje isso é bem propício.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-108388"></a>
+
+	      	<div id="li-comment-108388" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-5" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">04/07/2012 at 14:34</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-108388" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-108388">
+				<p>Oi Guilherme,</p>
+<p>Se você ainda não consegue trafegar a própria entidade de um lado pro outro (serializando em XML, JSON, ou coisa do tipo), aí vc cria uma classe que só tem atributos e só serve unica e exclusivamente para navegar de um lado pro outro (os famosos DTOs).</p>
+<p>Esconda a “sujeira” de converter sua entidade em um DTO, e pronto. Mas veja que essas classes não terão regra de negócio nenhum e só servirão para transferir dados de uma camada para outra.</p>
+<p>Faz sentido?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-109054"></a>
+
+	      	<div id="li-comment-109054" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/382314a4d7339b907629d2fe297f8c3f.jpg" srcset="https://secure.gravatar.com/avatar/382314a4d7339b907629d2fe297f8c3f?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-382314a4d7339b907629d2fe297f8c3f-0" originals="50" src-orig="https://secure.gravatar.com/avatar/382314a4d7339b907629d2fe297f8c3f?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Hélio Moura</span>
+	                <span class="date">23/07/2012 at 15:48</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-109054" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-109054">
+				<p>Muito bem colocado este seu exemplo Maurício.<br>
+Ótimo para aulas de orientação a objetos.</p>
+<p>Saliento ainda que o uso de DDD (Domain Driven Design) vem crescendo justamente por permitir que boas práticas como esta possam ser aplicadas.</p>
+<p>O uso de DDD permite ao analista/desenvolvedor isolar de fato a camada de negócio, camada esta que é composta por classes completas, isto é, com suas propriedades e comportamentos.</p>
+<p>Este isolamente evita ter que se criar métodos de acesso às propriedades exigidos por certos frameworks, evitando assim, a quebra do encapsulamento.</p>
+<p>Venho utilizando DDD ultimamente e isto me tem remetido às origens da teoria da orientação a objetos onde o quê se procurava era apenas oque hoje chamamos de boas práticas na orientação a objetos.</p>
+<p>Vocês da Caelum fazem um excelente trabalho!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-maniche bypostauthor odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-109061"></a>
+
+	      	<div id="li-comment-109061" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/77cc77ccdaf329705ce14a9d3ff1e8a8.jpeg" srcset="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-77cc77ccdaf329705ce14a9d3ff1e8a8-6" originals="50" src-orig="https://secure.gravatar.com/avatar/77cc77ccdaf329705ce14a9d3ff1e8a8?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.aniche.com.br/" rel="external nofollow" url="" url'="">Mauricio Aniche</a></span>
+	                <span class="date">23/07/2012 at 18:43</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-109061" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-109061">
+				<p>Oi Hélio,</p>
+<p>Obrigado! E concordo com vc: DDD faz o programador relembrar da boa e velha OO! <img draggable="false" class="emoji" alt="🙂" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/1f642.svg" scale="0"></p>
+<p>Um abraço,<br>
+Mauricio</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-110204"></a>
+
+	      	<div id="li-comment-110204" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e1d712dbe17881bd408de2b45aca97cb.jpg" srcset="https://secure.gravatar.com/avatar/e1d712dbe17881bd408de2b45aca97cb?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-e1d712dbe17881bd408de2b45aca97cb-0" originals="50" src-orig="https://secure.gravatar.com/avatar/e1d712dbe17881bd408de2b45aca97cb?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Andre Alves Pinto</span>
+	                <span class="date">16/08/2012 at 10:34</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-110204" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-110204">
+				<p>Valeu Maurício!</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-110344"></a>
+
+	      	<div id="li-comment-110344" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/45ad3047056300eabfc6000f50409785.jpg" srcset="https://secure.gravatar.com/avatar/45ad3047056300eabfc6000f50409785?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-45ad3047056300eabfc6000f50409785-0" originals="50" src-orig="https://secure.gravatar.com/avatar/45ad3047056300eabfc6000f50409785?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Maicon</span>
+	                <span class="date">19/08/2012 at 11:02</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-110344" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-110344">
+				<p>Parabéns pelo post Mauricio!! Explicou de forma simples e objetiva. abraços</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-128819"></a>
+
+	      	<div id="li-comment-128819" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/2029b575d96c942a039966e077169237.jpeg" srcset="https://secure.gravatar.com/avatar/2029b575d96c942a039966e077169237?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-2029b575d96c942a039966e077169237-0" originals="50" src-orig="https://secure.gravatar.com/avatar/2029b575d96c942a039966e077169237?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Clayton Passos</span>
+	                <span class="date">24/09/2013 at 16:25</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-128819" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-128819">
+				<p>Legal!</p>
+<p>Mas e quando você está usando um framework de persistencia que te obriga a criar getters e setters publicos?</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-peas odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-128842"></a>
+
+	      	<div id="li-comment-128842" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/c621f1575c6b408ed20d110b86873357.jpeg" srcset="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-c621f1575c6b408ed20d110b86873357-0" originals="50" src-orig="https://secure.gravatar.com/avatar/c621f1575c6b408ed20d110b86873357?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://www.caelum.com.br/" rel="external nofollow" url="" url'="">Paulo Silveira</a></span>
+	                <span class="date">24/09/2013 at 23:24</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-128842" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-128842">
+				<p>Clayton, ai nao tem muito jeito mesmo. Alias, muitas vezes quebramos orientacao a objetos por causa dos frameworks!</p>
+<p>Vale lembrar que pra usar JPA/Hibernate nao precisa de getters e setters, da pra usar via atributos</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-191340"></a>
+
+	      	<div id="li-comment-191340" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/4f2a3e9741199791019ae731147cd6a5.jpeg" srcset="https://secure.gravatar.com/avatar/4f2a3e9741199791019ae731147cd6a5?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-4f2a3e9741199791019ae731147cd6a5-0" originals="50" src-orig="https://secure.gravatar.com/avatar/4f2a3e9741199791019ae731147cd6a5?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Luiz Freneda</span>
+	                <span class="date">01/09/2014 at 10:44</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-191340" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-191340">
+				<p>Simples e bem explicado <img draggable="false" class="emoji" alt="🙂" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/1f642.svg" scale="0"></p>
+<p>Muitas pessoas pensam apenas em private para getters e setters porque quando aprendemos sobre encapsulamento é passado o conceito de – Information hidding -, acho que um nome melhor para o conceito seria – Implementation hidding – </p>
+<p>Anyway, ótimo post \o\~</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1">
+
+	    	<a name="comment-253901"></a>
+
+	      	<div id="li-comment-253901" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/796fa94c04357356e0f3387a6958b09f.jpg" srcset="https://secure.gravatar.com/avatar/796fa94c04357356e0f3387a6958b09f?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-796fa94c04357356e0f3387a6958b09f-0" originals="50" src-orig="https://secure.gravatar.com/avatar/796fa94c04357356e0f3387a6958b09f?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Andre</span>
+	                <span class="date">05/12/2014 at 09:03</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-253901" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-253901">
+				<p>Show,  muito bem explicado</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1">
+
+	    	<a name="comment-293981"></a>
+
+	      	<div id="li-comment-293981" class="comment-container">
+
+					                <div class="comment-avatar"><img alt="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/9fbfb1871fb38947f1c3110385495145.jpeg" srcset="https://secure.gravatar.com/avatar/9fbfb1871fb38947f1c3110385495145?s=100&amp;r=g 2x" class="photo avatar avatar-50 photo grav-hashed grav-hijack" height="50" width="50" id="grav-9fbfb1871fb38947f1c3110385495145-0" originals="50" src-orig="https://secure.gravatar.com/avatar/9fbfb1871fb38947f1c3110385495145?s=50&amp;r=g" scale="1.25"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Felipe Portela</span>
+	                <span class="date">02/03/2015 at 07:13</span>
+	                <span class="perma"><a href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#comment-293981" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry" id="comment-293981">
+				<p>Mauricio Aniche, sou estudante e estou iniciando os estudos em programação orientada a objetos. Procurei por um bom tempo um real conçeito para Encapsulamento pois um professor já havia me dito que o mal de programador moderno é achar que o encapsulamento é feito através de set/get públicos. Parabéns pelo post, é de grande conhecimento entender bem o processo de encapsular. São em detalhes como este que um programador é mais diferençiado! </p>
+<p>Grato.</p>
+				
+	                <div class="reply">
+	                    	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+
+		</ol>
+
+		<nav class="navigation fix">
+			<div class="fl"></div>
+			<div class="fr"></div>
+		</nav><!-- /.navigation -->
+	
+</div> <!-- /#comments_wrap -->
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Deixe uma resposta <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://blog.caelum.com.br/revisitando-a-orientacao-a-objetos-encapsulamento-no-java/#respond" style="display:none;">Click here to cancel reply.</a></small></h3>			<form action="https://blog.caelum.com.br/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-form-comment"><label for="comment">Comentário</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><input id="author" class="txt" name="author" type="text" value="" size="30" aria-required="true" placeholder="Nome  (Obrigatório)"></p>
+<p class="comment-form-email"><input id="email" class="txt" name="email" type="text" value="" size="30" aria-required="true" placeholder="E-mail  (Obrigatório)"></p>
+<p class="comment-form-url"><input id="url" class="txt" name="url" type="text" value="" size="30" placeholder="Site"></p>
+<p class="form-submit"></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notifique-me sobre novos comentários por e-mail.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notifique-me sobre novas publicações por e-mail.</label></p><input name="submit" type="submit" id="submit" class="submit" value="Enviar comentário"> <input type="hidden" name="comment_post_ID" value="5027" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+<p></p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c8e9588832"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1560641316994"></form>
+			</div><!-- #respond -->
+	
+		</section><!-- #main -->
+
+		
+    </div><!-- #content -->
+
+	
+	<footer id="footer">
+	
+		<div class="footer-inner">
+	
+					
+				<div id="copyright" class="col-left">
+									<p>Blog da Caelum: desenvolvimento, web, mobile, UX e Scrum © 2019.</p>
+								</div>
+		
+				<div id="credit" class="col-right">
+		        								</div>
+		
+		</div>
+
+	</footer><!-- /#footer  -->
+	</div><!-- /#inner-wrapper -->
+</div><!-- /#wrapper -->
+<!-- Your Google Analytics Plugin is missing the tracking ID -->
+	<div style="display:none">
+	<div class="grofile-hash-map-980272c143891fd80959dd6f9239442b">
+	</div>
+	<div class="grofile-hash-map-6e7d5233c80a811e930b680307a91b3c">
+	</div>
+	<div class="grofile-hash-map-8f0177a9392d74b69d85155c312d8f22">
+	</div>
+	<div class="grofile-hash-map-e55889456ef8da65b4d68233ebe11926">
+	</div>
+	<div class="grofile-hash-map-e913dfb341cab135514dda21c2f8c58e">
+	</div>
+	<div class="grofile-hash-map-6dcedb4d07cd0f6deb4e622c5f66b55c">
+	</div>
+	<div class="grofile-hash-map-f853760c988228c4a153333407e64f09">
+	</div>
+	<div class="grofile-hash-map-1c30b4d2b05d0b9ae10fa570ca987de5">
+	</div>
+	<div class="grofile-hash-map-77cc77ccdaf329705ce14a9d3ff1e8a8">
+	</div>
+	<div class="grofile-hash-map-90d2d726b689ecb124f81cd489319aab">
+	</div>
+	<div class="grofile-hash-map-215536cfeb0cdd2aa964e9149cbae2b4">
+	</div>
+	<div class="grofile-hash-map-90e16a14ced5363bb2f3f8ca5d54dab4">
+	</div>
+	<div class="grofile-hash-map-ab9dde5ef7280037f5b8c6fab9c6d0df">
+	</div>
+	<div class="grofile-hash-map-087f24e65c1f0d1ce67a3f70e22d39e8">
+	</div>
+	<div class="grofile-hash-map-03bb35280a86473a7c46c17385886c73">
+	</div>
+	<div class="grofile-hash-map-7e1d785f211b3cc43c690ca208626be1">
+	</div>
+	<div class="grofile-hash-map-d515cf7c9de650eee08dc8f4421af732">
+	</div>
+	<div class="grofile-hash-map-530fceb572fa78bb6776c2f51405eae5">
+	</div>
+	<div class="grofile-hash-map-086b36bcf771c99b21f1a317305b9221">
+	</div>
+	<div class="grofile-hash-map-ffb5931d1a66b616ff4a6d716042b023">
+	</div>
+	<div class="grofile-hash-map-b31ddfd453004a87e79854ef698fb1da">
+	</div>
+	<div class="grofile-hash-map-382314a4d7339b907629d2fe297f8c3f">
+	</div>
+	<div class="grofile-hash-map-e1d712dbe17881bd408de2b45aca97cb">
+	</div>
+	<div class="grofile-hash-map-45ad3047056300eabfc6000f50409785">
+	</div>
+	<div class="grofile-hash-map-2029b575d96c942a039966e077169237">
+	</div>
+	<div class="grofile-hash-map-c621f1575c6b408ed20d110b86873357">
+	</div>
+	<div class="grofile-hash-map-4f2a3e9741199791019ae731147cd6a5">
+	</div>
+	<div class="grofile-hash-map-796fa94c04357356e0f3387a6958b09f">
+	</div>
+	<div class="grofile-hash-map-9fbfb1871fb38947f1c3110385495145">
+	</div>
+	</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-270161-5', 'caelum.com.br');
+  ga('send', 'pageview');
+
+</script>
+<!--[if lt IE 9]>
+<script src="https://blog.caelum.com.br/wp-content/themes/blog-v3/includes/js/respond.js"></script>
+<![endif]-->
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/blog.caelum.com.br\/revisitando-a-orientacao-a-objetos-encapsulamento-no-java\/":5027};
+	</script>
+				<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/shBrushJava.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://blog.caelum.com.br/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://blog.caelum.com.br/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/photon.min.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/devicepx-jetpack.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/gprofiles.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wpgroho.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/prism-js.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"pt","ajaxurl":"https:\/\/blog.caelum.com.br\/wp-admin\/admin-ajax.php","nonce":"41236412e8","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Coment\u00e1rio","post_comment":"Publicar coment\u00e1rio","write_comment":"Escreva um Coment\u00e1rio","loading_comments":"Carregando coment\u00e1rios...","download_original":"Visualizar tamanho original <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Certifique-se de enviar algum texto com o seu coment\u00e1rio.","no_comment_email":"Informe um endere\u00e7o de e-mail para comentar.","no_comment_author":"Forne\u00e7a seu nome para comentar.","comment_post_error":"Desculpe, mas ocorreu um erro ao postar seu coment\u00e1rio. Tente novamente mais tarde.","comment_approved":"Seu coment\u00e1rio foi aprovado.","comment_unapproved":"Seu coment\u00e1rio est\u00e1 aguardando modera\u00e7\u00e3o.","camera":"C\u00e2mera","aperture":"Abertura","shutter_speed":"Velocidade do Obturador","focal_length":"Comprimento Focal","copyright":"Direito autoral","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/blog.caelum.com.br\/wp-login.php?redirect_to=https%3A%2F%2Fblog.caelum.com.br%2Frevisitando-a-orientacao-a-objetos-encapsulamento-no-java%2F","blog_id":"1","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">E-mail (obrigat\u00f3rio)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Nome (obrigat\u00f3rio)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Site<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/jetpack-carousel.min.js.download"></script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/form.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/sharing.min.js.download"></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/e-201924.js.download" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.1.1',blog:'125225402',post:'5027',tz:'-3',srv:'blog.caelum.com.br'} ]);
+	_stq.push([ 'clickTrackerInit', '125225402', '5027' ]);
+</script>
+<script type="text/javascript" async="" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/20bd5d95-759f-4313-ad3e-1663fd4de6c0-loader.js.download"></script>
+
+<img src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/g.gif" alt=":)" width="6" height="5" id="wpstats" scale="0"><script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/traffic-source-cookie.min.js.download"></script><iframe style="width: 1px; height: 1px; position: absolute; top: -100px;" id="rd_tmgr" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/saved_resource.html"></iframe><script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/lead-tracking.min.js.download"></script><script type="text/javascript" src="./Revisitando a Orientação a Objetos_ encapsulamento no Java - Blog da Caelum_ desenvolvimento, web, mobile, UX e Scrum_files/rdstation-popup.min.js.download"></script></body></html>
